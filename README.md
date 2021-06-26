@@ -11,7 +11,7 @@ Included in config files/Needed to install:
 - zsh & oh-my-zsh
 - tmux
 - neovim
-    - Install from source: `https://github.com/neovim/neovim`
+    - Install from source: https://github.com/neovim/neovim
     - `sudo apt-get install xclip` for clipboard + `set clipboard+=unamedplus`
     - For coc, python can cause problems:
         - Need to create a `.config/nvim/coc-settings.json`
