@@ -216,8 +216,8 @@ bar {
 
 set $bg-color 	         #fcdd00
 set $inactive-bg-color   #bca0dc
-set $text-color          #d6143c
-set $inactive-text-color #d6143c
+set $text-color          #1520a6
+set $inactive-text-color #1520a6
 set $urgent-bg-color     #fcdd00
 set $urgent-text-color   #4d4d4d
 
