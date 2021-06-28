@@ -9,7 +9,9 @@ Included in config files/Needed to install:
         - For example, touchpad settings are modified / compton is used for gui stuff
         - Brigthness is modified etc
 - zsh & oh-my-zsh
+    - Go to line after prompt: https://github.com/agnoster/agnoster-zsh-theme/issues/65
 - tmux
+    - Plugins such as `tmux resurect` need https://github.com/tmux-plugins/tpm
 - alacritty
     - picom for transparency. Install from source, as su: https://github.com/yshui/picom
 - neovim

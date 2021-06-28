@@ -12,10 +12,10 @@ Plug 'tpope/vim-commentary'
 " Plug 'arcticicestudio/nord-vim'
 " Plug 'gruvbox-community/gruvbox'
 " Plug 'sainnhe/gruvbox-material'
-" Plug 'rktjmp/lush.nvim'
-" Plug 'npxbr/gruvbox.nvim'
+Plug 'rktjmp/lush.nvim'
+Plug 'npxbr/gruvbox.nvim'
 " Plug 'folke/tokyonight.nvim'
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Fuzzy finder
 Plug 'nvim-lua/popup.nvim'
@@ -47,5 +47,5 @@ source ~/.vim/plugins/coc.vim
 
 syntax on
 set background=dark " or light if you want light mode
-colorscheme dracula
+colorscheme gruvbox
 set termguicolors

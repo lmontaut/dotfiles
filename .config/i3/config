@@ -12,6 +12,7 @@
 # ----- My settings
 exec_always feh --bg-fill ~/.config/wpp.png
 bindsym $mod+Shift+x exec i3lock --color 475263
+exec_always picom
 exec_always xinput set-prop 19 345 1
 exec_always xinput set-prop 19 327 1
 for_window [class="^.*"] border pixel 5

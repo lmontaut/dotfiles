@@ -46,3 +46,5 @@ export PATH=$HOME/pkgs_source/picom/build/src:$PATH
 alias audio="alsamixer"
 alias vim="nvim"
 alias picom="picom --config ~/.config/picom.conf -b"
+alias tat="tmux attach -t"
+alias tls="tmux ls"
