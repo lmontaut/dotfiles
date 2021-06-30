@@ -21,6 +21,7 @@ Plug 'npxbr/gruvbox.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " Plug 'ctrlpvim/ctrlp.vim'
 
 "Status bar

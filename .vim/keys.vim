@@ -34,12 +34,19 @@ nnoremap <silent> <leader>t <C-W>s<C-W>T
 noremap > >>
 noremap < <<
 
-" Delete after word
-inoremap <C-e> <Esc>dwi
+" Delete line
 nnoremap ) dd
-nnoremap _ ddp
-nnoremap + ddkP
 
+" Delete after word in edit mode
+inoremap <C-e> <Esc>ldea
+
+" Move lines around
+nnoremap ddp
+nnoremap + ddkP
+vnoremap + :m '>+1<CR>gv=gv
+vnoremap _ :m '<-2<CR>gv=gv
+
+" Comment
 vnoremap > >gv 
 vnoremap < <gv
 

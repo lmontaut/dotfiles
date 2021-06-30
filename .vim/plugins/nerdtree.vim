@@ -1,1 +1,1 @@
-autocmd BufEnter * lcd %:p:h
+" autocmd BufEnter * lcd %:p:h

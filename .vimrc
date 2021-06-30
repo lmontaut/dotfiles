@@ -21,4 +21,5 @@ source ~/.vim/keys.vim
  
 " Transparent background - Needs to be in .vimrc for some reason
 hi Normal guibg=NONE ctermbg=NONE
+nnoremap <C-b> <cmd>Telescope file_browser<cr>
 "-----------END-------------- 

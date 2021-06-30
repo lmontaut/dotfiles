@@ -3,12 +3,13 @@ let g:mapleader = "\<Space>"
 
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
-set nowrap                              " Display long lines as just one line
+" set nowrap                              " Display long lines as just one line
+set wrap
 set encoding=utf-8                      " The encoding displayed
 set pumheight=10                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
 set cursorline              			" Show the cursor position all the time
-set cmdheight=2                         " More space for displaying messages
+set cmdheight=1                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 set mouse=a                             " Enable mouse
 set splitbelow                          " Horizontal splits will automatically be below
@@ -32,7 +33,9 @@ set noshowmode                          " We don't need to see things like -- IN
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
-set timeoutlen=500                      " By default timeoutlen is 1000 ms
+" set timeoutlen=500                      " By default timeoutlen is 1000 ms
+set timeoutlen=1000
+set ttimeoutlen=0
 set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard+=unnamedplus               " Copy paste between vim and everything else
 "set autochdir                           " Your working directory will always be the same as your working directory
