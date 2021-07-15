@@ -20,6 +20,8 @@ require('telescope').setup{
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-s>"] = actions.select_vertical,
+        ["<C-a>"] = actions.select_horizontal,
+        ["<C-n>"] = actions.select_tab,
         },
     },
     vimgrep_arguments = {

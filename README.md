@@ -26,10 +26,13 @@ Included in config files/Needed to install:
     - For coc c++:
         - Need a language server such as `clangd`
         - Install clangd, then `:CocInstall coc-clangd`
-        - CocCommand clandg.install
+        - `:CocCommand clandg.install`
 
 Git clone this repo in `$HOME` folder then simply dot a `ln -sf $HOME/dotfiles/file-to-link $HOME/location-path-to-link`.</br>
 It should be is as simple as doing a `ln -sf $HOME/dotfiles/* $HOME/` as the structure in `dotfiles` is the same as the structure needed for config files to work in `$HOME`.
 
+How to use Coc clangd:
+    - First build your project `mkdir build && cd build && cmake .. (+ cmake flags like where conda env path is etc) && ccmake. (to check compilation flags) make install`
+    - Then `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..` will create a `compile_commands.json` which clangd will use to provide completion.
 glhf
 

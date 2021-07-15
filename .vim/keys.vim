@@ -26,8 +26,8 @@ nnoremap <silent> <C-a> :split<CR>
 nnoremap <silent> <C-c> :q<CR>
 
 " Tab related
-nnoremap <C-M-p> :tabnext<CR>
-nnoremap <C-M-o> :tabprevious<CR>
+nnoremap <TAB> :tabnext<CR>
+nnoremap <S-TAB> :tabprevious<CR>
 nnoremap <silent> <leader>t <C-W>s<C-W>T
 
 " Better tabbing
@@ -43,8 +43,9 @@ inoremap <C-e> <Esc>ldea
 " Move lines around
 nnoremap ddp
 nnoremap + ddkP
-vnoremap + :m '>+1<CR>gv=gv
-vnoremap _ :m '<-2<CR>gv=gv
+nnoremap _ ddp
+vnoremap _ :m '>+1<CR>gv=gv
+vnoremap + :m '<-2<CR>gv=gv
 
 " Comment
 vnoremap > >gv 
