@@ -34,5 +34,11 @@ It should be is as simple as doing a `ln -sf $HOME/dotfiles/* $HOME/` as the str
 How to use Coc clangd:
     - First build your project `mkdir build && cd build && cmake .. (+ cmake flags like where conda env path is etc) && ccmake. (to check compilation flags) make install`
     - Then `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..` will create a `compile_commands.json` which clangd will use to provide completion.
+
+Treesitter error:
+    - TSError is assigned to a color/behavior which is dependent only on the colorscheme used
+    - We pick a colorscheme compatible with TS like gruvbox but in gruvbox, TSError underlines stuff which is MEGA annoying.
+    - So got there: `vim ~/.vim/plugged/gruvbox.nvim/lua/gruvbox/plugins/highlights.lua` and delete line where there is TSError
+
 glhf
 

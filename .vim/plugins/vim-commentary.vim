@@ -4,10 +4,10 @@ function! UnmapCommentary()
   nunmap gcu
 endfunction
 
-xmap ( <Plug>Commentary
-nmap ( <Plug>Commentary
-omap ( <Plug>Commentary
-nmap (( <Plug>CommentaryLine
+xmap \ <Plug>Commentary
+nmap \ <Plug>Commentary
+omap \ <Plug>Commentary
+nmap \\ <Plug>CommentaryLine
 nmap <leader>cl <Plug>ChangeCommentary
 nmap <leader>cu <Plug>Commentary<Plug>Commentary
 

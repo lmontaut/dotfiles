@@ -26,16 +26,16 @@ nnoremap <silent> <C-a> :split<CR>
 nnoremap <silent> <C-c> :q<CR>
 
 " Tab related
-nnoremap <TAB> :tabnext<CR>
-nnoremap <S-TAB> :tabprevious<CR>
-nnoremap <silent> <leader>t <C-W>s<C-W>T
+nnoremap ) :tabnext<CR>
+nnoremap ( :tabprevious<CR>
+nnoremap <silent> <C-t> <C-W>s<C-W>T
 
 " Better tabbing
 noremap > >>
 noremap < <<
 
 " Delete line
-nnoremap ) dd
+nnoremap D dd
 
 " Delete after word in edit mode
 inoremap <C-e> <Esc>ldea
