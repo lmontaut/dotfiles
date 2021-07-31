@@ -6,7 +6,7 @@ Included in config files/Needed to install:
         - There are ppa, pull them i.e `sudo add-apt-repository -y ppa:regolith-linux/stable`
         - Then `sudo apt-get update` && `sudo apt-get install i3-gaps`
     - Check the config file for installs/modification.
-        - For example, touchpad settings are modified / compton is used for gui stuff
+        - For example, touchpad settings are modified / picom is used for gui stuff
         - Brigthness is modified etc
 - zsh & oh-my-zsh
     - Go to line after prompt: https://github.com/agnoster/agnoster-zsh-theme/issues/65
