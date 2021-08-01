@@ -8,6 +8,8 @@ Included in config files/Needed to install:
     - Check the config file for installs/modification.
         - For example, touchpad settings are modified / picom is used for gui stuff
         - Brigthness is modified etc
+        - Touchpad may not work as expected: `xinput` to list devices. You'll find the id of the touchpad.
+        - `xinput list-props <touchpad-id>`. This will give you in parenthesis the ids of parameters you want to modify. 
 - zsh & oh-my-zsh
     - Go to line after prompt: https://github.com/agnoster/agnoster-zsh-theme/issues/65
 - tmux
