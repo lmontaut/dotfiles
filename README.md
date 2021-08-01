@@ -10,6 +10,9 @@ Included in config files/Needed to install:
         - Brigthness is modified etc
         - Touchpad may not work as expected: `xinput` to list devices. You'll find the id of the touchpad.
         - `xinput list-props <touchpad-id>`. This will give you in parenthesis the ids of parameters you want to modify. 
+    - Polybar needs to be installed: https://github.com/polybar/polybar
+    - Lots of polybar themes: https://github.com/adi1090x/polybar-themes#shades
+    - You can also switch to using i3bar, comment/decomment in i3/config
 - zsh & oh-my-zsh
     - Go to line after prompt: https://github.com/agnoster/agnoster-zsh-theme/issues/65
 - tmux
@@ -44,8 +47,12 @@ Treesitter error:
     - We pick a colorscheme compatible with TS like gruvbox but in gruvbox, TSError underlines stuff which is MEGA annoying.
     - So got there: `vim ~/.vim/plugged/gruvbox.nvim/lua/gruvbox/plugins/highlights.lua` and delete line where there is TSError
 
-Fresh Linux install:
+Fresh ArchLinux install:
 - Normally if you have the /home/user clone with neovim and anaconda installed locally, there is nothing to do. Some packages are installed for the system though, so reinstall them:
     - Nodejs & npm (for neovim-coc to work)
-    - slack, firefox, zoom
+    - slack, firefox, zoom, feh, xorg-xinput, picom 
+    - for bluetooth: bluez-utils
+    - alsa, pulseaudio, pulseaudio-alsa (to link them), pulseaudio-bluetooth, pavucontrol (gtk to control pulseaudio)
+    - For alsa, needed to unmute the different channels otherwise no sound
+    - yay for AUR packages
 

@@ -13,11 +13,12 @@
 exec_always feh --bg-fill ~/.config/wpp.png
 bindsym $mod+Shift+x exec i3lock --color 475263
 exec_always picom
-exec_always xinput set-prop 19 345 1
-exec_always xinput set-prop 19 327 1
-for_window [class="^.*"] border pixel 6
-gaps inner 6
-gaps outer 6
+# Touch pad: xinput to locate its id then xinput list-props <id>
+# exec_always xinput set-prop 12 310 1
+# exec_always xinput set-prop 12 290 1
+for_window [class="^.*"] border pixel 3
+gaps inner 5
+gaps outer 5
 # Activate smart borders (always)
 smart_borders on
 # -----
@@ -122,6 +123,7 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
+# 
 set $ws1 "1: Terminal"
 set $ws2 "2: Web"
 set $ws3 "3: Chat"
@@ -158,12 +160,11 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Force i3 to put certain windows to certain workspace
-assign [class="Terminator"] $ws1
-assign [class="Firefox"] $ws2
+assign [class="firefox"] $ws2
+assign [class="Mattermost"] $ws3
 assign [class="Slack"] $ws3
-assign [class="Gnome-control-center"] $ws4
-assign [class="Google-chrome"] $ws1
-assign [class="Org.gnome.Nautilus"] $ws4
+# assign [class="Gnome-control-center"] $ws4
+# assign [class="Org.gnome.Nautilus"] $ws4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -201,30 +202,33 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        height 25
-        position top
-        status_command i3status
-	colors {
-		background #bca0dc
-	   	separator  #d55209
-        statusline #1520a6
-		#                  border           background       text
-		focused_workspace  #bcb0dc          #bcb0dc          #1520a6
-		inactive_workspace #bca0dc          #bca0dc          #1520a6
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $urgent-text-color
-	}
-}
+# bar {
+#         height 25
+#         position top
+#         status_command i3status
+#         font 14
+# 	colors {
+# 		background #ffae78
+# 	   	separator  #000000
+#         statusline #000000
+# 		#                  border           background       text
+# 		focused_workspace  #000000          #fcdd00          #000000
+# 		inactive_workspace #000000          #ffae78          #000000
+# 		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $urgent-text-color
+# 	}
+# }
 
-set $bg-color 	         #fcdd00
-set $inactive-bg-color   #bca0dc
-set $text-color          #1520a6
-set $inactive-text-color #1520a6
+# Polybar
+exec_always --no-startup-id bash $HOME/.config/polybar/launch.sh --forest
+
+set $bg-color 	         #ffae78
+set $inactive-bg-color   #FFFFFF
+set $text-color          #000000
+set $inactive-text-color #000000
 set $urgent-bg-color     #fcdd00
-set $urgent-text-color   #4d4d4d
+set $urgent-text-color   #dc143c
 
 # window colors
-#                       border              background         text                 indicator
 client.focused          $bg-color           $bg-color           $text-color          #e27429
 client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-color #e27429
 client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color #e27429

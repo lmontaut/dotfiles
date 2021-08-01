@@ -36,13 +36,13 @@ export CMAKE_PREFIX_PATH=/opt/openrobots/lib/cmake/eigenpy/:$CMAKE_PREFIX_PATH
 
 # I guess this is usefull ? Can't remember
 export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/installed_libs/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export PYTHONPATH=/usr/local/lib/python3.8/site-packages:$PYTHONPATH
 export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
 
 # Picom path
 export PATH=$HOME/pkgs_source/picom/build/src:$PATH
-export PATH=$HOME/installed_libs/bin/nvim:$PATH
 
 # -------- Aliases --------
 alias audio="alsamixer"
