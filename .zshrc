@@ -1,4 +1,5 @@
 # If you come from bash you might have to change your $PATH.
+ZSH_DISABLE_COMPFIX=true
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -41,6 +42,7 @@ export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
 
 # Picom path
 export PATH=$HOME/pkgs_source/picom/build/src:$PATH
+export PATH=$HOME/installed_libs/bin/nvim:$PATH
 
 # -------- Aliases --------
 alias audio="alsamixer"

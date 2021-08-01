@@ -6,7 +6,7 @@ Included in config files/Needed to install:
         - There are ppa, pull them i.e `sudo add-apt-repository -y ppa:regolith-linux/stable`
         - Then `sudo apt-get update` && `sudo apt-get install i3-gaps`
     - Check the config file for installs/modification.
-        - For example, touchpad settings are modified / compton is used for gui stuff
+        - For example, touchpad settings are modified / picom is used for gui stuff
         - Brigthness is modified etc
 - zsh & oh-my-zsh
     - Go to line after prompt: https://github.com/agnoster/agnoster-zsh-theme/issues/65
@@ -16,9 +16,11 @@ Included in config files/Needed to install:
     - picom for transparency. Install from source, as su: https://github.com/yshui/picom
 - neovim
     - Install from source: https://github.com/neovim/neovim
+    - Don't install from conda env, even base. Simply conda deactivate as much as possible
     - `sudo apt-get install xclip` for clipboard + `set clipboard+=unamedplus`
     - `:PlugInstall` and `:CocInstall` are your friends
     - For coc python:
+        - Install nodejs && npm
         - Need to create a `.config/nvim/coc-settings.json`
         - Need to say: `"python.pythonPath": "python"`
         - This `python` will be the one used by `which python`. So make sure it uses the python from env you want
@@ -40,5 +42,8 @@ Treesitter error:
     - We pick a colorscheme compatible with TS like gruvbox but in gruvbox, TSError underlines stuff which is MEGA annoying.
     - So got there: `vim ~/.vim/plugged/gruvbox.nvim/lua/gruvbox/plugins/highlights.lua` and delete line where there is TSError
 
-glhf
+Fresh Linux install:
+- Normally if you have the /home/user clone with neovim and anaconda installed locally, there is nothing to do. Some packages are installed for the system though, so reinstall them:
+    - Nodejs & npm (for neovim-coc to work)
+    - slack, firefox, zoom
 
