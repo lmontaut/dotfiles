@@ -12,6 +12,7 @@ Included in config files/Needed to install:
         - `xinput list-props <touchpad-id>`. This will give you in parenthesis the ids of parameters you want to modify. 
     - Polybar needs to be installed: https://github.com/polybar/polybar
     - Lots of polybar themes: https://github.com/adi1090x/polybar-themes#shades
+        - Add systray icon by replacing in config.ini
     - You can also switch to using i3bar, comment/decomment in i3/config
 - zsh & oh-my-zsh
     - Go to line after prompt: https://github.com/agnoster/agnoster-zsh-theme/issues/65
