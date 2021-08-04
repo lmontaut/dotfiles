@@ -28,7 +28,10 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Git integration
 Plug 'tpope/vim-fugitive'
+" Git little icons to show modif/add/rm
+Plug 'mhinz/vim-signify'
 
 " Autocompletion
 if has("nvim")
@@ -45,6 +48,7 @@ source ~/.vim/plugins/vim-commentary.vim
 source ~/.vim/plugins/telescope.vim
 source ~/.vim/plugins/airline.vim
 source ~/.vim/plugins/coc.vim
+source ~/.vim/plugins/fugitive.vim
 
 syntax on
 set background=dark " or light if you want light mode

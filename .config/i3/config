@@ -163,6 +163,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 assign [class="firefox"] $ws2
 assign [class="Mattermost"] $ws3
 assign [class="Slack"] $ws3
+assign [class="Element"] $ws3
 assign [class="Mendeley Desktop"] $ws4
 # assign [class="Gnome-control-center"] $ws4
 # assign [class="Org.gnome.Nautilus"] $ws4
