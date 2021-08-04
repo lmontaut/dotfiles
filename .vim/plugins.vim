@@ -2,8 +2,12 @@
 " They must be installed first w/ :PlugInstall command in vim
 
 call plug#begin('~/.vim/plugged')
+
+" Start menu
+Plug 'mhinz/vim-startify'
+
 " Navigation tree
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 
 " Commenting
 Plug 'tpope/vim-commentary'
@@ -33,6 +37,7 @@ Plug 'tpope/vim-fugitive'
 " Git little icons to show modif/add/rm
 Plug 'mhinz/vim-signify'
 
+
 " Autocompletion
 if has("nvim")
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -43,7 +48,8 @@ endif
 call plug#end()
 
 " Plugins settings
-source ~/.vim/plugins/nerdtree.vim
+" source ~/.vim/plugins/nerdtree.vim
+source ~/.vim/plugins/startify.vim
 source ~/.vim/plugins/vim-commentary.vim
 source ~/.vim/plugins/telescope.vim
 source ~/.vim/plugins/airline.vim

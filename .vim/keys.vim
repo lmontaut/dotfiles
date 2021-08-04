@@ -28,6 +28,8 @@ nnoremap <silent> <C-c> :q<CR>
 " Tab related
 nnoremap ) :tabnext<CR>
 nnoremap ( :tabprevious<CR>
+nnoremap <leader>0 :bnext<CR>
+nnoremap <leader>9 :bprevious<CR>
 nnoremap <silent> <C-t> <C-W>s<C-W>T
 
 " Better tabbing
