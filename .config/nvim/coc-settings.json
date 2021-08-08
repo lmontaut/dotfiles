@@ -10,7 +10,7 @@
     "jedi.enable": true,
     "jedi.executable.command": "jedi-language-server",
     "diagnostic-languageserver.filetypes": {
-    "python": "flake8",
+    "python": "flake8"
     },
     "diagnostic-languageserver.linters": {
         "flake8": {
@@ -43,5 +43,7 @@
             "N": "hint"
           }
         }
-    }
+    },
+    "jedi.workspace.extraPaths": ["/home/lou/anaconda3/envs/col"],
+    "coc.preferences.formatOnSaveFiletypes": ["python"]
 }

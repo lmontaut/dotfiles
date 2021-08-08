@@ -2,7 +2,7 @@ nnoremap <leader>1 :Startify<CR>
 nnoremap <leader>[ :SSave<CR>y
 nnoremap <leader>] :SLoad<space>
 nnoremap <leader>' :SSave<CR>y:SClose<CR>
-let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_session_dir = '~/.config/nvim/sessions'
 
 let g:startify_lists = [
           \ { 'type': 'files',     'header': ['   Files']            },
