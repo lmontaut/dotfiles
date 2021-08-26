@@ -28,12 +28,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Pinocchio croc etc path
-export LD_LIBRARY_PATH=/opt/openrobots/lib:$LD_LIBRARY_PATH
-export PYTHONPATH=/opt/openrobots/lib/python3.8/site-packages:$PYTHONPATH # Adapt your desired python version here
-export CMAKE_PREFIX_PATH=/opt/openrobots:$CMAKE_PREFIX_PATH
-export CMAKE_PREFIX_PATH=/opt/openrobots/lib/cmake/eigenpy/:$CMAKE_PREFIX_PATH
-
 # I guess this is usefull ? Can't remember
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/installed_libs/bin:$PATH
@@ -42,7 +36,15 @@ export PYTHONPATH=/usr/local/lib/python3.8/site-packages:$PYTHONPATH
 export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
 
 # Picom path
-export PATH=$HOME/pkgs_source/picom/build/src:$PATH
+# export PATH=$HOME/pkgs_source/picom/build/src:$PATH
+
+# Doom Emacs path 
+export PATH=$HOME/.emacs.d/bin:$PATH
+export PATH=$HOME/.doom.d/bin:$PATH
+
+# Zotero path
+export PATH=$HOME/libs/zotero:$PATH
+export PATH=$HOME/.local/share/applications:$PATH
 
 # -------- Aliases --------
 alias audio="alsamixer"
@@ -53,3 +55,5 @@ alias tls="tmux ls"
 alias lum05="xrandr --output eDP-1 --brightness 0.5"
 alias lum10="xrandr --output eDP-1 --brightness 1.0"
 alias lum15="xrandr --output eDP-1 --brightness 1.5"
+alias ca="conda activate"
+alias ip="ipython"

@@ -130,20 +130,20 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-# export PATH=/opt/openrobots/bin:$PATH
-# export PKG_CONFIG_PATH=/opt/openrobots/lib/pkgconfig:$PKG_CONFIG_PATH
 export LD_LIBRARY_PATH=/opt/openrobots/lib:$LD_LIBRARY_PATH
 export PYTHONPATH=/opt/openrobots/lib/python3.8/site-packages:$PYTHONPATH # Adapt your desired python version here
 export CMAKE_PREFIX_PATH=/opt/openrobots:$CMAKE_PREFIX_PATH
 export CMAKE_PREFIX_PATH=/opt/openrobots/lib/cmake/eigenpy:$CMAKE_PREFIX_PATH
 
-# export PYTHONPATH=/home/lou/dev/tests/montaut_louis_liba:$PYTHONPATH # Adapt your desired python version here
 
 export PATH=$HOME/installed_libs/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-# export PKG_CONFIG_PATH =/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export PYTHONPATH=/usr/local/lib/python3.8/site-packages:$PYTHONPATH
 export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
+
+export PATH=$HOME/.local/share/applications:$PATH
+export PATH=$HOME/.local/share/bin:$PATH
+export PATH=$HOME/libs/zotero:$PATH
 
 exec zsh

@@ -2,9 +2,11 @@
 let g:mapleader = "\<Space>"
 
 syntax enable                           " Enables syntax highlighing
+set textwidth=88
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
 " set wrap
+set foldlevel=99
 set encoding=utf-8                      " The encoding displayed
 set pumheight=10                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
@@ -32,8 +34,7 @@ set showtabline=2                       " Always show tabs
 set noshowmode                          " We don't need to see things like -- INSERT -- anymore
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
-set updatetime=500                      " Faster completion
-" set timeoutlen=500                      " By default timeoutlen is 1000 ms
+set updatetime=1000                      " Faster completion
 set timeoutlen=300
 set ttimeoutlen=0
 set formatoptions-=cro                  " Stop newline continution of comments

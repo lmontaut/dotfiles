@@ -23,13 +23,13 @@ nnoremap <silent> <C-s> :vertical split<CR>
 nnoremap <silent> <C-a> :split<CR>
 
 " Window quit
-nnoremap <silent> <C-c> :q<CR>
+nnoremap <silent> <C-c> :bd<CR>
 
 " Tab related
-nnoremap ) :tabnext<CR>
-nnoremap ( :tabprevious<CR>
-nnoremap <leader>0 :bnext<CR>
-nnoremap <leader>9 :bprevious<CR>
+nnoremap <leader>0 :tabnext<CR>
+nnoremap <leader>9 :tabprevious<CR>
+nnoremap ) :bnext<CR>
+nnoremap ( :bprevious<CR>
 nnoremap <silent> <C-t> <C-W>s<C-W>T
 
 " Better tabbing

@@ -1,0 +1,268 @@
+let SessionLoad = 1
+let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
+let v:this_session=expand("<sfile>:p")
+silent only
+silent tabonly
+cd ~/dev/control/hpp-fcl
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+argglobal
+%argdel
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabnew
+tabrewind
+edit src/distance_func_matrix.cpp
+argglobal
+balt include/hpp/fcl/distance_func_matrix.h
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 334 - ((31 * winheight(0) + 26) / 52)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 334
+normal! 051|
+lcd ~/dev/control/hpp-fcl
+tabnext
+edit ~/dev/control/hpp-fcl/include/hpp/fcl/narrowphase/narrowphase.h
+argglobal
+balt ~/dev/control/hpp-fcl/include/hpp/fcl/narrowphase/gjk.h
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 224 - ((51 * winheight(0) + 26) / 52)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 224
+normal! 020|
+lcd ~/dev/control/hpp-fcl
+tabnext
+edit ~/dev/control/hpp-fcl/src/collision.cpp
+argglobal
+balt ~/dev/control/hpp-fcl/src/collision.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 163 - ((25 * winheight(0) + 26) / 52)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 163
+normal! 013|
+lcd ~/dev/control/hpp-fcl
+tabnext
+edit ~/dev/control/hpp-fcl/src/narrowphase/gjk.cpp
+argglobal
+balt ~/dev/control/hpp-fcl/src/narrowphase/gjk.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 66 - ((25 * winheight(0) + 26) / 52)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 66
+normal! 010|
+lcd ~/dev/control/hpp-fcl
+tabnext
+argglobal
+enew
+file ~/dev/control/hpp-fcl/__vista__
+balt ~/dev/control/hpp-fcl/include/hpp/fcl/narrowphase/gjk.h
+setlocal fdm=expr
+setlocal fde=vista#fold#Expr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
+lcd ~/dev/control/hpp-fcl
+tabnext
+edit ~/dev/control/hpp-fcl/python/gjk.cc
+argglobal
+balt ~/anaconda3/envs/col/include/boost/python/tuple.hpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 94 - ((23 * winheight(0) + 26) / 52)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 94
+normal! 051|
+lcd ~/dev/control/hpp-fcl
+tabnext
+edit ~/dev/control/hpp-fcl/src/mesh_loader/loader.cpp
+argglobal
+balt ~/dev/control/hpp-fcl/python/fcl.cc
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 47 - ((33 * winheight(0) + 26) / 52)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 47
+normal! 0
+lcd ~/dev/control/hpp-fcl
+tabnext
+edit ~/dev/control/hpp-fcl/include/hpp/fcl/shape/convex.h
+argglobal
+balt ~/dev/control/hpp-fcl/include/hpp/fcl/shape/geometric_shapes.h
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 89 - ((51 * winheight(0) + 26) / 52)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 89
+normal! 0
+lcd ~/dev/control/hpp-fcl
+tabnext
+edit ~/dev/control/hpp-fcl/src/mesh_loader/loader.cpp
+argglobal
+balt ~/dev/control/hpp-fcl/include/hpp/fcl/BV/BV.h
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 58 - ((23 * winheight(0) + 26) / 52)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 58
+normal! 0
+lcd ~/dev/control/hpp-fcl
+tabnext
+edit ~/dev/control/hpp-fcl/include/hpp/fcl/mesh_loader/loader.h
+argglobal
+balt ~/dev/control/hpp-fcl/src/mesh_loader/loader.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 58 - ((24 * winheight(0) + 26) / 52)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 58
+normal! 031|
+lcd ~/dev/control/hpp-fcl
+tabnext 5
+badd +80 ~/dev/control/hpp-fcl/src/distance_func_matrix.cpp
+badd +153 ~/dev/control/hpp-fcl/include/hpp/fcl/narrowphase/narrowphase.h
+badd +1 ~/dev/control/hpp-fcl/src/collision.cpp
+badd +1 ~/dev/control/hpp-fcl/src/narrowphase/gjk.cpp
+badd +1 ~/dev/control/hpp-fcl/python/gjk.cc
+badd +1 ~/dev/control/hpp-fcl/src/mesh_loader/loader.cpp
+badd +1 ~/dev/control/hpp-fcl/include/hpp/fcl/shape/convex.h
+badd +58 ~/dev/control/hpp-fcl/include/hpp/fcl/mesh_loader/loader.h
+badd +65 ~/dev/control/hpp-fcl/include/hpp/fcl/distance_func_matrix.h
+badd +237 ~/dev/control/hpp-fcl/include/hpp/fcl/narrowphase/gjk.h
+badd +36 ~/anaconda3/envs/col/include/boost/python/tuple.hpp
+badd +72 ~/dev/control/hpp-fcl/python/fcl.cc
+badd +493 ~/dev/control/hpp-fcl/include/hpp/fcl/shape/geometric_shapes.h
+badd +46 ~/dev/control/hpp-fcl/include/hpp/fcl/BV/BV.h
+badd +280 /usr/include/c++/11.1.0/x86_64-pc-linux-gnu/bits/c++config.h
+badd +149 ~/dev/control/hpp-fcl/src/BVH/BVH_model.cpp
+badd +200 ~/dev/control/hpp-fcl/include/hpp/fcl/BVH/BVH_model.h
+badd +1 ~/dev/control/hpp-fcl/include/hpp/fcl/data_types.h
+badd +39 ~/dev/control/hpp-fcl/python/collision-geometries.cc
+badd +43 ~/dev/control/hpp-fcl/include/hpp/fcl/BVH/BVH_internal.h
+badd +46 ~/dev/control/hpp-fcl/test/bvh_models.cpp
+badd +85 ~/dev/control/hpp-fcl/src/distance.cpp
+badd +285 ~/dev/control/hpp-fcl/include/hpp/fcl/internal/traversal_node_setup.h
+badd +60 ~/dev/control/hpp-fcl/src/collision_node.cpp
+badd +58 ~/dev/control/hpp-fcl/src/traversal/traversal_recurse.cpp
+badd +161 ~/dev/control/hpp-fcl/include/hpp/fcl/internal/traversal_node_base.h
+badd +151 ~/dev/control/hpp-fcl/include/hpp/fcl/internal/traversal_node_shapes.h
+badd +24 ~/dev/control/hpp-fcl/src/shape/convex.cpp
+if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToOFcI
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if filereadable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &g:so = s:so_save | let &g:siso = s:siso_save
+set hlsearch
+nohlsearch
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
