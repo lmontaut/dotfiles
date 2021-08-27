@@ -10,28 +10,32 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit main.tex
+edit sections/3_connection_gjk_fw/3_3.tex
 argglobal
-balt main.tex
-setlocal fdm=manual
-setlocal fde=0
+balt sections/3_connection_gjk_fw/connection_gjk_fw.tex
+setlocal fdm=expr
+setlocal fde=vimtex#fold#level(v:lnum)
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=0
+setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 76 - ((51 * winheight(0) + 26) / 52)
+19
+normal! zo
+31
+normal! zo
+let s:l = 41 - ((40 * winheight(0) + 25) / 51)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 76
-normal! 044|
-lcd ~/Documents/papers/FW_GJK
+keepjumps 41
+normal! 073|
 tabnext 1
-badd +0 ~/Documents/papers/FW_GJK/main.tex
+badd +167 sections/3_connection_gjk_fw/3_2.tex
+badd +17 sections/3_connection_gjk_fw/connection_gjk_fw.tex
+badd +186 main.tex
+badd +1 sections/3_connection_gjk_fw/3_3.tex
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

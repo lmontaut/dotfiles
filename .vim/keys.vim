@@ -22,7 +22,7 @@ nnoremap <silent> <C-Left> :vertical resize -5<CR>
 nnoremap <silent> <C-s> :vertical split<CR>
 nnoremap <silent> <C-a> :split<CR>
 
-" Window quit
+" Buffer quit
 nnoremap <silent> <C-c> :bd<CR>
 
 " Tab related
@@ -61,3 +61,6 @@ inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+
+" Close all buffers except current one
+nnoremap <C-x> :%bd\|e#<CR>

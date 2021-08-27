@@ -18,7 +18,6 @@ tabnew
 tabnew
 tabnew
 tabnew
-tabnew
 tabrewind
 edit src/distance_func_matrix.cpp
 argglobal
@@ -33,7 +32,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 334 - ((31 * winheight(0) + 26) / 52)
+let s:l = 334 - ((33 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -54,7 +53,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 224 - ((51 * winheight(0) + 26) / 52)
+let s:l = 224 - ((54 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -75,7 +74,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 163 - ((25 * winheight(0) + 26) / 52)
+let s:l = 163 - ((26 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -96,26 +95,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 66 - ((25 * winheight(0) + 26) / 52)
+let s:l = 66 - ((26 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 66
 normal! 010|
-lcd ~/dev/control/hpp-fcl
-tabnext
-argglobal
-enew
-file ~/dev/control/hpp-fcl/__vista__
-balt ~/dev/control/hpp-fcl/include/hpp/fcl/narrowphase/gjk.h
-setlocal fdm=expr
-setlocal fde=vista#fold#Expr()
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
 lcd ~/dev/control/hpp-fcl
 tabnext
 edit ~/dev/control/hpp-fcl/python/gjk.cc
@@ -131,11 +116,11 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 94 - ((23 * winheight(0) + 26) / 52)
+let s:l = 101 - ((31 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 94
+keepjumps 101
 normal! 051|
 lcd ~/dev/control/hpp-fcl
 tabnext
@@ -152,7 +137,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 47 - ((33 * winheight(0) + 26) / 52)
+let s:l = 47 - ((35 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -173,7 +158,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 89 - ((51 * winheight(0) + 26) / 52)
+let s:l = 89 - ((54 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -194,7 +179,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 58 - ((23 * winheight(0) + 26) / 52)
+let s:l = 58 - ((24 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -215,7 +200,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 58 - ((24 * winheight(0) + 26) / 52)
+let s:l = 58 - ((25 * winheight(0) + 27) / 55)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
