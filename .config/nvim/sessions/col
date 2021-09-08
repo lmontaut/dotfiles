@@ -12,30 +12,28 @@ argglobal
 %argdel
 edit fwcollision/solvers.py
 argglobal
-balt ~/dev/control/fwcollision/fwcollision/simplexes.py
+balt exp/shape_net_6_optimal_momentum.py
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=0
+setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 88 - ((25 * winheight(0) + 26) / 52)
+let s:l = 301 - ((19 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 88
-normal! 014|
+keepjumps 301
+normal! 026|
 tabnext 1
-badd +88 fwcollision/solvers.py
-badd +25 ~/dev/control/fwcollision/fwcollision/simplexes.py
-badd +51 test/simplexes/test_simplexes.py
-badd +4 paper/todo.md
-badd +114 fwcollision/utils_render.py
-badd +3 ./fwcollision/utils.py
+badd +100 exp/shape_net_6_optimal_momentum.py
+badd +1 exp/polyhedral_ellipsoids_1.py
+badd +1 fwcollision/solvers.py
+badd +61 exp/shape_net_4_batch.py
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

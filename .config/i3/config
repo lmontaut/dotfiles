@@ -35,8 +35,8 @@ exec --no-startup-id feh --bg-fill ~/.config/wpp_future.jpg
 # Stuff
 exec --no-startup-id picom -b
 # Touch pad: xinput to locate its id then xinput list-props <id>
-exec_always xinput set-prop 19 315 1
-# exec_always xinput set-prop 12 290 1
+# exec_always xinput set-prop 19 315 1
+exec_always xinput set-prop 14 344 1
 for_window [class="^.*"] border pixel 3
 gaps inner 5
 gaps outer 5
@@ -106,7 +106,6 @@ bindsym $mod+z exec --no-startup-id morc_menu
 
 # Start applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-
 
 # change focus
 bindsym $mod+h focus left
@@ -204,6 +203,7 @@ assign [class="Element"] $ws3
 assign [class="Mendeley Desktop"] $ws4
 assign [class="Zotero"] $ws4
 assign [class="Pcmanfm"] $ws5
+assign [class="matplotlib"] $ws10
 # assign [class="Gnome-control-center"] $ws4
 # assign [class="Org.gnome.Nautilus"] $ws4
 

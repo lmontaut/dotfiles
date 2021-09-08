@@ -2,7 +2,10 @@
 let g:mapleader = "\<Space>"
 
 syntax enable                           " Enables syntax highlighing
-set textwidth=88
+" set textwidth=88
+autocmd bufreadpre *.txt setlocal textwidth=88
+autocmd bufreadpre *.tex setlocal textwidth=88
+autocmd bufreadpre *.md setlocal textwidth=88
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set nowrap                              " Display long lines as just one line
 " set wrap

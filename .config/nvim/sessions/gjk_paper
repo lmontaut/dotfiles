@@ -10,9 +10,9 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-edit sections/3_connection_gjk_fw/3_3.tex
+edit sections/4_accelerated_gjk/accelerated_gjk.tex
 argglobal
-balt sections/3_connection_gjk_fw/connection_gjk_fw.tex
+balt sections/3_connection_gjk_fw/3_2.tex
 setlocal fdm=expr
 setlocal fde=vimtex#fold#level(v:lnum)
 setlocal fmr={{{,}}}
@@ -21,21 +21,32 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-19
+2
 normal! zo
-31
+12
 normal! zo
-let s:l = 41 - ((40 * winheight(0) + 25) / 51)
+22
+normal! zo
+32
+normal! zo
+let s:l = 35 - ((34 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 41
-normal! 073|
+keepjumps 35
+normal! 045|
 tabnext 1
-badd +167 sections/3_connection_gjk_fw/3_2.tex
-badd +17 sections/3_connection_gjk_fw/connection_gjk_fw.tex
-badd +186 main.tex
-badd +1 sections/3_connection_gjk_fw/3_3.tex
+badd +0 sections/4_accelerated_gjk/accelerated_gjk.tex
+badd +93 sections/3_connection_gjk_fw/3_2.tex
+badd +102 NOTES.md
+badd +33 sections/1_introduction/introduction.tex
+badd +189 main.tex
+badd +130 bib.bib
+badd +22 sections/3_connection_gjk_fw/3_3.tex
+badd +18 sections/3_connection_gjk_fw/connection_gjk_fw.tex
+badd +1 sections/6_experiments/experiments.tex
+badd +11 sections/0_abstract/abstract.tex
+badd +1 TODO.md
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

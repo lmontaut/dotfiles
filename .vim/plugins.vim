@@ -50,6 +50,10 @@ Plug 'tpope/vim-fugitive'
 " --- Latex
 Plug 'lervag/vimtex'
 
+" --- Markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
 " Delete buffers without touching current window
 " Activate by :Bdelete
 Plug 'famiu/bufdelete.nvim'
@@ -83,6 +87,7 @@ source ~/.vim/plugins/fugitive.vim
 source ~/.vim/plugins/vista.vim
 source ~/.vim/plugins/vimtex.vim
 source ~/.vim/plugins/ultisnpis.vim
+source ~/.vim/plugins/vim-markdown.vim
 
 syntax on
 colorscheme gruvbox
