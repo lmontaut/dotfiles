@@ -1,3 +1,5 @@
 .vim/plugged
 .vim/.netrwhist
 .vim/autoload
+.vim/sessions
+.config/nvim/sessions
