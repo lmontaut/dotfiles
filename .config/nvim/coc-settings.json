@@ -19,7 +19,7 @@
           "debounce": 200,
           "rootPatterns": [".git", "pyproject.toml", "setup.py"],
           "args": [
-            "--ignore=E402,C901,W503,W504,E116,E702,C0103,C0114,C0115,C0116,C0103,C0301,W0613,W0102,R0903,R0902,R0914,R0915,R0205,W0703,W0702,W0603",
+            "--ignore=E501,E305,E402,E302,W605,E261,E128",
             "--format=%(row)d,%(col)d,%(code).1s,%(code)s: %(text)s",
             "-"
           ],
@@ -44,6 +44,5 @@
           }
         }
     },
-    "jedi.workspace.extraPaths": ["/home/lou/anaconda3/envs/col"],
     "coc.preferences.formatOnSaveFiletypes": ["python"]
 }

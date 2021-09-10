@@ -6,7 +6,7 @@ syntax enable                           " Enables syntax highlighing
 autocmd bufreadpre *.txt setlocal textwidth=88
 autocmd bufreadpre *.tex setlocal textwidth=88
 autocmd bufreadpre *.md setlocal textwidth=88
-set hidden                              " Required to keep multiple buffers open multiple buffers
+set hidden                              " Required to keep multiple buffers open
 set nowrap                              " Display long lines as just one line
 " set wrap
 set foldlevel=99
@@ -42,7 +42,8 @@ set timeoutlen=300
 set ttimeoutlen=0
 set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard+=unnamedplus               " Copy paste between vim and everything else
-"set autochdir                           " Your working directory will always be the same as your working directory
+" multiple buffersset autochdir                           " Your working directory will always be the same as your working directory
+"
 set modifiable
 set showcmd             " show (partial) command in status line
 
