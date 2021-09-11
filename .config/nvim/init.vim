@@ -10,7 +10,9 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-require('gitsigns').setup()
+-- Plugins
+require('gitsigns-config')
+require('lspconfig-config')
 
 EOF
 set signcolumn=yes

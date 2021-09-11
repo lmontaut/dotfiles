@@ -13,14 +13,13 @@ let g:startify_lists = [
 
 let g:startify_bookmarks = [
             \ { 'c': '~/.config/i3/config' },
-            \ { 'v': '~/.vim' },
+            \ { 'c': '~/.config/nvim/init.vim' },
+            \ { 'c': '~/.config/nvim/coc-settings.json' },
+            \ { 'v': '~/.vim/plugins.vim' },
+            \ { 'v': '~/.vim/keys.vim' },
+            \ { 'v': '~/.vim/settings.vim' },
             \ { 'i': '~/.vimrc' },
             \ { 'z': '~/.zshrc' },
-            \ '~/dev',
-            \ '~/dev/control',
-            \ '~/dev/control/pinocchio',
-            \ '~/dev/control/diffsim',
-            \ '~/dev/control/hpp-fcl',
             \ ]
 
 " Automatically restart a session

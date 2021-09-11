@@ -1,3 +1,17 @@
+" LSP config (the mappings used in the default file don't quite work right)
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
+" nnoremap <silent> gt <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <C-[> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> <C-]> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+
+" Auto format
+autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
+
 if executable('pyls')
     " pip install python-language-server
     au User lsp_setup call lsp#register_server({

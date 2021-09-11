@@ -11,9 +11,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Navigation tree
-map <F2> :NERDTreeToggle<CR>
-
 " Window resize
 nnoremap <silent> <C-Up> :resize +5<CR>
 nnoremap <silent> <C-Down> :resize -5<CR>
