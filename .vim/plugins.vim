@@ -46,8 +46,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " --- LSP
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neovim/nvim-lspconfig'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neovim/nvim-lspconfig'
 
 " Autocomplete
 Plug 'hrsh7th/nvim-compe'
@@ -69,7 +69,7 @@ source ~/.vim/plugins/fugitive.vim
 source ~/.vim/plugins/airline.vim
 source ~/.vim/plugins/vim-commentary.vim
 source ~/.vim/plugins/startify.vim
-" source ~/.vim/plugins/coc.vim
+source ~/.vim/plugins/coc.vim
 " source ~/.vim/plugins/lsp.vim
 " source ~/.vim/plugins/cmp.vim
 
