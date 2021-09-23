@@ -54,8 +54,8 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " Navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> <C-[> <Plug>(coc-diagnostic-prev)
-nmap <silent> <C-]> <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>j <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -157,10 +157,6 @@ nnoremap <silent><nowait> <space>c :<C-u>CocList commands<cr>
 nnoremap <silent><nowait> <space>o :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <space>s :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p :<C-u>CocListResume<CR>
 

@@ -7,3 +7,4 @@ let g:vimtex_fold_enabled =1
 let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : 'build',
             \}
+nnoremap \lv :VimtexView<CR>

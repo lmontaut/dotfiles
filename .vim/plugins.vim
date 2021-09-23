@@ -60,6 +60,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 endif
 call plug#end()
 
+source ~/.vim/plugins/coc.vim
+" source ~/.vim/plugins/lsp.vim
+" source ~/.vim/plugins/cmp.vim
 source ~/.vim/plugins/vista.vim
 source ~/.vim/plugins/telescope.vim
 source ~/.vim/plugins/ultisnpis.vim
@@ -69,9 +72,6 @@ source ~/.vim/plugins/fugitive.vim
 source ~/.vim/plugins/airline.vim
 source ~/.vim/plugins/vim-commentary.vim
 source ~/.vim/plugins/startify.vim
-source ~/.vim/plugins/coc.vim
-" source ~/.vim/plugins/lsp.vim
-" source ~/.vim/plugins/cmp.vim
 
 syntax on
 colorscheme gruvbox

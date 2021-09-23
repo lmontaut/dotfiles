@@ -13,6 +13,7 @@ let g:startify_lists = [
 
 let g:startify_bookmarks = [
             \ { 'c': '~/.config/i3/config' },
+            \ { 'c': '~/.config/alacritty/alacritty.yml' },
             \ { 'c': '~/.config/nvim/init.vim' },
             \ { 'c': '~/.config/nvim/coc-settings.json' },
             \ { 'v': '~/.vim/plugins.vim' },
