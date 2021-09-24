@@ -14,27 +14,39 @@ Included in config files/Needed to install:
     - Lots of polybar themes: https://github.com/adi1090x/polybar-themes#shades
         - Add systray icon by replacing in config.ini
     - You can also switch to using i3bar, comment/decomment in i3/config
+
 - zsh & oh-my-zsh
     - Go to line after prompt: https://github.com/agnoster/agnoster-zsh-theme/issues/65
+
 - tmux
     - Plugins such as `tmux resurect` need https://github.com/tmux-plugins/tpm
+
 - alacritty
     - picom for transparency. Install from source, as su: https://github.com/yshui/picom
+
 - neovim
     - Install from source: https://github.com/neovim/neovim
     - Don't install from conda env, even base. Simply conda deactivate as much as possible
     - `sudo apt-get install xclip` for clipboard + `set clipboard+=unamedplus`
     - `:PlugInstall` and `:CocInstall` are your friends
     - For coc python:
-        - Install nodejs && npm
+        - Install nodejs && npm: `sudo pacman -S nodejs npm`
         - Need to create a `.config/nvim/coc-settings.json`
         - Need to say: `"python.pythonPath": "python"`
-        - This `python` will be the one used by `which python`. So make sure it uses the python from env you want
-        - Install `:CocInstall coc-jedi` for autocompletion related stuff
+        - This `python` will be the one used by `which python`. So make sure it uses the python from env you want.
     - For coc c++:
         - Need a language server such as `clangd`
         - Install clangd, then `:CocInstall coc-clangd`
         - `:CocCommand clandg.install`
+    - In a new conda env, install:
+        - `neovim`
+        - `jedi-language-server`
+        - `flake8`
+    - Coc things to install:
+        - `coc-diagnostic`
+        - `coc-jedi`
+        - `coc-clangd`
+        - `coc-explorer`
 
 Git clone this repo in `$HOME` folder then simply dot a `ln -sf $HOME/dotfiles/file-to-link $HOME/location-path-to-link`.</br>
 It should be is as simple as doing a `ln -sf $HOME/dotfiles/* $HOME/` as the structure in `dotfiles` is the same as the structure needed for config files to work in `$HOME`.
