@@ -38,7 +38,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'sirver/ultisnips'
 
 if has("nvim")
-
 " --- Fuzzy finder
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -57,6 +56,10 @@ Plug 'liuchengxu/vista.vim'
 
 " --- Syntax for a bunch of languages
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+" --- Vim OrgMode
+Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+
 endif
 call plug#end()
 

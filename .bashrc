@@ -130,11 +130,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-export LD_LIBRARY_PATH=/opt/openrobots/lib:$LD_LIBRARY_PATH
-export PYTHONPATH=/opt/openrobots/lib/python3.8/site-packages:$PYTHONPATH # Adapt your desired python version here
-export CMAKE_PREFIX_PATH=/opt/openrobots:$CMAKE_PREFIX_PATH
-export CMAKE_PREFIX_PATH=/opt/openrobots/lib/cmake/eigenpy:$CMAKE_PREFIX_PATH
-
 
 export PATH=$HOME/installed_libs/bin:$PATH
 export PATH=/usr/local/bin:$PATH

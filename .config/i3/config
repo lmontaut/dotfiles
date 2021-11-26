@@ -36,7 +36,7 @@ exec --no-startup-id feh --bg-fill ~/.config/wpp_future.jpg
 exec --no-startup-id picom -b
 # Touch pad: xinput to locate its id then xinput list-props <id>
 # exec_always xinput set-prop 19 315 1
-exec_always xinput set-prop 14 344 1
+# exec_always xinput set-prop 14 344 0
 for_window [class="^.*"] border pixel 3
 gaps inner 5
 gaps outer 5
@@ -57,6 +57,10 @@ font pango:monospace 8
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# Screenshot
+# bindsym Print exec /usr/bin/flameshot
+bindsym Print exec flameshot gui
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##

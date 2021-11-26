@@ -43,7 +43,7 @@ require('telescope').setup{
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
+    file_ignore_patterns = {'.csv', '.png', '.jpg', '.obj', '.stl', '.dae', '.blend', '.fbx', '.x3d', '.ply', '.dxf', '.wrl', '.abc', '.npy'},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},

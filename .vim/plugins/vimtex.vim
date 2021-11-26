@@ -8,3 +8,4 @@ let g:vimtex_compiler_latexmk = {
             \ 'build_dir' : 'build',
             \}
 nnoremap \lv :VimtexView<CR>
+" \le to toggle the compilation console

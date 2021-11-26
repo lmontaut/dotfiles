@@ -12,15 +12,16 @@ let g:startify_lists = [
           \ ]
 
 let g:startify_bookmarks = [
-            \ { 'c': '~/.config/i3/config' },
-            \ { 'c': '~/.config/alacritty/alacritty.yml' },
-            \ { 'c': '~/.config/nvim/init.vim' },
-            \ { 'c': '~/.config/nvim/coc-settings.json' },
-            \ { 'v': '~/.vim/plugins.vim' },
-            \ { 'v': '~/.vim/keys.vim' },
-            \ { 'v': '~/.vim/settings.vim' },
-            \ { 'i': '~/.vimrc' },
-            \ { 'z': '~/.zshrc' },
+            \ { 'c': '~/dotfiles/.config/i3/config' },
+            \ { 'c': '~/dotfiles/.config/alacritty/alacritty.yml' },
+            \ { 'c': '~/dotfiles/.config/nvim/init.vim' },
+            \ { 'c': '~/dotfiles/.config/nvim/coc-settings.json' },
+            \ { 'c': '~/dotfiles/.vim/my_snippets/tex.snippets' },
+            \ { 'v': '~/dotfiles/.vim/plugins.vim' },
+            \ { 'v': '~/dotfiles/.vim/keys.vim' },
+            \ { 'v': '~/dotfiles/.vim/settings.vim' },
+            \ { 'i': '~/dotfiles/.vimrc' },
+            \ { 'z': '~/dotfiles/.zshrc' },
             \ ]
 
 " Automatically restart a session

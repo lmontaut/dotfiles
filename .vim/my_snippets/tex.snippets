@@ -85,12 +85,16 @@ endsnippet
 
 priority 100
 snippet equation "\equation" b
+%%%%%%%%%% EQUATION %%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{equation}
 	\begin{aligned}
 		$1
 	\end{aligned}
 	\label{$0}
 \end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 endsnippet
 
 
@@ -106,12 +110,16 @@ snippet table "Table environment" b
 endsnippet
 
 snippet fig "Figure environment" b
+%%%%%%%%%% FIGURE %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[${1:htpb}]
 	\centering
 	${2:\includegraphics[width=0.8\textwidth]{$3}}
 	\caption{${4:$3}}
 	\label{fig:${5:${3/\W+/-/g}}}
 \end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 endsnippet
 
 snippet enum "Enumerate" b
