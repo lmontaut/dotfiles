@@ -46,6 +46,9 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " --- LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+" --> coc release might not work, use yarn alternative. Yarn can be installed
+"       in conda btw.
 " Plug 'neovim/nvim-lspconfig'
 
 " Autocomplete
@@ -63,11 +66,13 @@ Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
 endif
 call plug#end()
 
-source ~/.vim/plugins/coc.vim
-" source ~/.vim/plugins/lsp.vim
-" source ~/.vim/plugins/cmp.vim
+if has("nvim")
+    source ~/.vim/plugins/coc.vim
+    " source ~/.vim/plugins/lsp.vim
+    " source ~/.vim/plugins/cmp.vim
+    source ~/.vim/plugins/telescope.vim
+endif
 source ~/.vim/plugins/vista.vim
-source ~/.vim/plugins/telescope.vim
 source ~/.vim/plugins/ultisnpis.vim
 source ~/.vim/plugins/vim-markdown.vim
 source ~/.vim/plugins/vimtex.vim
@@ -78,4 +83,6 @@ source ~/.vim/plugins/startify.vim
 
 syntax on
 colorscheme gruvbox
-set termguicolors
+if has("nvim")
+    set termguicolors
+endif

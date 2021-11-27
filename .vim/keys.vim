@@ -40,7 +40,6 @@ nnoremap D dd
 inoremap <C-e> <Esc>ldea
 
 " Move lines around
-nnoremap ddp
 nnoremap + ddkP
 nnoremap _ ddp
 vnoremap _ :m '>+1<CR>gv=gv
