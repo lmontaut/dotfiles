@@ -6,6 +6,7 @@ syntax enable                           " Enables syntax highlighing
 autocmd bufreadpre *.txt setlocal textwidth=88
 autocmd bufreadpre *.tex setlocal textwidth=88
 autocmd bufreadpre *.md setlocal textwidth=88
+autocmd bufreadpre *.norg setlocal textwidth=88
 set hidden                              " Required to keep multiple buffers open
 set nowrap                              " Display long lines as just one line
 " set wrap
