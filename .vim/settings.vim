@@ -51,6 +51,7 @@ set showcmd             " show (partial) command in status line
 set cindent
 set cino=>2
 
+autocmd Filetype vim setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype c setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype cpp setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype h setlocal expandtab tabstop=2 shiftwidth=2

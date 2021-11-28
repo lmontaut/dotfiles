@@ -23,10 +23,6 @@ Plug 'vim-airline/vim-airline-themes'
 " --- Git integration
 Plug 'tpope/vim-fugitive'
 
-" Git little icons to show modif/add/rm
-Plug 'nvim-lua/plenary.nvim'
-Plug 'lewis6991/gitsigns.nvim'
-
 " --- Latex
 Plug 'lervag/vimtex'
 
@@ -38,41 +34,73 @@ Plug 'plasticboy/vim-markdown'
 Plug 'sirver/ultisnips'
 
 if has("nvim")
+Plug 'nvim-lua/plenary.nvim'
 " --- Fuzzy finder
 Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+"
+" Git little icons to show modif/add/rm
+Plug 'lewis6991/gitsigns.nvim'
 
-" --- LSP
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-" --> coc release might not work, use yarn alternative. Yarn can be installed
-"       in conda btw.
-" Plug 'neovim/nvim-lspconfig'
-
-" Autocomplete
-Plug 'hrsh7th/nvim-compe'
-
-" --- Search LSP symbols
-Plug 'liuchengxu/vista.vim'
 
 " --- Syntax for a bunch of languages
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-
+"
 " --- Vim OrgMode
 Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
 
+" 2 possibilities for language server protocols: Coc or neovim native lsp
+" ----- COC -----
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+" --> coc release might not work, use yarn alternative. Yarn can be installed
+"       in conda btw.
+" ----- END COC -----
+
+" ----- NATIVE LSP -----
+Plug 'neovim/nvim-lspconfig'
+
+" File explorer
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
+" Autocompletion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'onsails/lspkind-nvim'
+
+" Latex support
+" ----- END NATIVE LSP -----
 endif
+"
+" --- Search LSP symbols
+Plug 'liuchengxu/vista.vim'
 call plug#end()
 
 if has("nvim")
-    source ~/.vim/plugins/coc.vim
-    " source ~/.vim/plugins/lsp.vim
-    " source ~/.vim/plugins/cmp.vim
+    " If using CoC
+    " source ~/.vim/plugins/coc.vim
+    " nmap <leader>i :Vista coc<CR>
+
+    " If using native lsp
+    source ~/.vim/plugins/cmp.vim
+    source ~/.vim/plugins/lsp.vim
+    source ~/.vim/plugins/nvim-tree.vim
+
+    " Usable with both lsp options
+    source ~/.vim/plugins/tree-sitter.vim
+    source ~/.vim/plugins/neorg.vim
+    source ~/.vim/plugins/gitsigns.vim
     source ~/.vim/plugins/telescope.vim
+    source ~/.vim/plugins/vista.vim
+    nmap <leader>i :Vista nvim_lsp<CR>
 endif
-source ~/.vim/plugins/vista.vim
 source ~/.vim/plugins/ultisnpis.vim
 source ~/.vim/plugins/vim-markdown.vim
 source ~/.vim/plugins/vimtex.vim

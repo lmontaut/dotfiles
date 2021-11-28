@@ -3,4 +3,4 @@
 " e.g., more compact: ["▸ ", ""]
 " Note: this option only works for the kind renderer, not the tree renderer.
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-nmap <leader>i :Vista coc<CR>
+
