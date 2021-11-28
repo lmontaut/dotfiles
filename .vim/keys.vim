@@ -76,6 +76,26 @@ endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <leader>2 :ZoomToggle<CR>
 
+" Code folding
+function! NextClosedFold(dir)
+    let cmd = 'norm!z' . a:dir
+    let view = winsaveview()
+    let [l0, l, open] = [0, view.lnum, 1]
+    while l != l0 && open
+        exe cmd
+        let [l0, l] = [l, line('.')]
+        let open = foldclosed(l) < 0
+    endwhile
+    if open
+        call winrestview(view)
+    endif
+endfunction
+nnoremap <silent> <leader>zj :call NextClosedFold('j')<CR>
+nnoremap <silent> <leader>zk :call NextClosedFold('k')<CR>
+nnoremap zn :set foldlevel=0<CR>
+nnoremap zm :set foldlevel=99<CR>
+" --- Needed for it to work in Python 
+autocmd bufreadpre *.py setlocal foldmethod=indent
 
 " Close all buffers except current one
 nnoremap <C-x> :%bd\|e#<CR>

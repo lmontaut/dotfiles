@@ -10,11 +10,12 @@ autocmd bufreadpre *.norg setlocal textwidth=88
 set hidden                              " Required to keep multiple buffers open
 set nowrap                              " Display long lines as just one line
 " set wrap
-set foldlevel=99
+set foldmethod=indent
+" set foldlevel=99
 set encoding=utf-8                      " The encoding displayed
 set pumheight=10                        " Makes popup menu smaller
 set fileencoding=utf-8                  " The encoding written to file
-set cursorline              			" Show the cursor position all the time
+set cursorline              			      " Show the cursor position all the time
 set cmdheight=1                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 set mouse=a                             " Enable mouse
@@ -58,7 +59,3 @@ autocmd Filetype h setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype hpp setlocal expandtab tabstop=2 shiftwidth=2
 autocmd Filetype hxx setlocal expandtab tabstop=2 shiftwidth=2
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
-
-" You can't stop me
-" NOTE: No idea what this does. 
-cmap w!! w !sudo tee %
