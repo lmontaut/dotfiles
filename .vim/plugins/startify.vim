@@ -12,15 +12,14 @@ let g:startify_lists = [
           \ ]
 
 let g:startify_bookmarks = [
+            \ { 'a': '~/dotfiles/cheatsheat.md' },
             \ { 'c': '~/dotfiles/.config/i3/config' },
-            \ { 'c': '~/dotfiles/.config/alacritty/alacritty.yml' },
-            \ { 'c': '~/dotfiles/.config/nvim/init.vim' },
-            \ { 'c': '~/dotfiles/.config/nvim/coc-settings.json' },
-            \ { 'c': '~/dotfiles/.vim/my_snippets/tex.snippets' },
-            \ { 'v': '~/dotfiles/.vim/plugins.vim' },
-            \ { 'v': '~/dotfiles/.vim/keys.vim' },
-            \ { 'v': '~/dotfiles/.vim/settings.vim' },
-            \ { 'i': '~/dotfiles/.vimrc' },
+            \ { 'i': '~/dotfiles/.config/nvim/init.vim' },
+            \ { 'k': '~/dotfiles/.vim/keys.vim' },
+            \ { 'p': '~/dotfiles/.vim/plugins.vim' },
+            \ { 's': '~/dotfiles/.vim/settings.vim' },
+            \ { 't': '~/dotfiles/.vim/my_snippets/tex.snippets' },
+            \ { 'v': '~/dotfiles/.vimrc' },
             \ { 'z': '~/dotfiles/.zshrc' },
             \ ]
 

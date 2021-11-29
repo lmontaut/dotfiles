@@ -6,3 +6,4 @@ au FileType markdown syn region myMkdHeaderFold
 
 au FileType markdown syn sync fromstart
 au FileType markdown set foldmethod=syntax
+au FileType markdown setlocal foldlevel=99
