@@ -96,7 +96,7 @@ if has("nvim")
     source ~/.vim/plugins/neorg.vim
     source ~/.vim/plugins/gitsigns.vim
     source ~/.vim/plugins/telescope.vim
-    source ~/.vim/plugins/vista.vim
+    source ~/.vim/plugins/vista.vim " Need univeral ctags https://github.com/universal-ctags/ctags.git
     nmap <leader>i :Vista!!<CR>
 endif
 source ~/.vim/plugins/ultisnpis.vim
