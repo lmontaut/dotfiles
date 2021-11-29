@@ -51,13 +51,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
 
 " 2 possibilities for language server protocols: Coc or neovim native lsp
-" ----- COC -----
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-" --> coc release might not work, use yarn alternative. Yarn can be installed
-"       in conda btw.
-" ----- END COC -----
-
 " ----- NATIVE LSP -----
 Plug 'neovim/nvim-lspconfig'
 
@@ -74,9 +67,14 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'onsails/lspkind-nvim'
-
-" Latex support
 " ----- END NATIVE LSP -----
+
+" ----- COC -----
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+" --> coc release might not work, use yarn alternative. Yarn can be installed
+"       in conda btw.
+" ----- END COC -----
 endif
 "
 " --- Search LSP symbols
@@ -84,14 +82,14 @@ Plug 'liuchengxu/vista.vim'
 call plug#end()
 
 if has("nvim")
-    " If using CoC
-    " source ~/.vim/plugins/coc.vim
-    " nmap <leader>i :Vista coc<CR>
-
     " If using native lsp
     source ~/.vim/plugins/cmp.vim
     source ~/.vim/plugins/lsp.vim
     source ~/.vim/plugins/nvim-tree.vim
+
+    " If using CoC
+    " source ~/.vim/plugins/coc.vim
+    " nmap <leader>i :Vista coc<CR>
 
     " Usable with both lsp options
     source ~/.vim/plugins/tree-sitter.vim
@@ -99,7 +97,7 @@ if has("nvim")
     source ~/.vim/plugins/gitsigns.vim
     source ~/.vim/plugins/telescope.vim
     source ~/.vim/plugins/vista.vim
-    nmap <leader>i :Vista nvim_lsp<CR>
+    nmap <leader>i :Vista!!<CR>
 endif
 source ~/.vim/plugins/ultisnpis.vim
 source ~/.vim/plugins/vim-markdown.vim

@@ -15,7 +15,7 @@ let g:startify_bookmarks = [
             \ { 'a': '~/dotfiles/cheatsheat.md' },
             \ { 'c': '~/dotfiles/.config/i3/config' },
             \ { 'i': '~/dotfiles/.config/nvim/init.vim' },
-            \ { 'k': '~/dotfiles/.vim/keys.vim' },
+            \ { 'b': '~/dotfiles/.vim/keys.vim' },
             \ { 'p': '~/dotfiles/.vim/plugins.vim' },
             \ { 's': '~/dotfiles/.vim/settings.vim' },
             \ { 't': '~/dotfiles/.vim/my_snippets/tex.snippets' },

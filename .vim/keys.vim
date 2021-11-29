@@ -12,10 +12,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Window resize
-nnoremap <silent> <C-Up> :resize +5<CR>
-nnoremap <silent> <C-Down> :resize -5<CR>
-nnoremap <silent> <C-Right> :vertical resize +5<CR>
-nnoremap <silent> <C-Left> :vertical resize -5<CR>
+nnoremap <silent> <C-Up> :resize +20<CR>
+nnoremap <silent> <C-Down> :resize -20<CR>
+nnoremap <silent> <C-Right> :vertical resize +20<CR>
+nnoremap <silent> <C-Left> :vertical resize -20<CR>
 nnoremap <silent> <C-s> :vertical split<CR>
 nnoremap <silent> <C-a> :split<CR>
 
