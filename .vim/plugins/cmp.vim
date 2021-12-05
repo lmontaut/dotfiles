@@ -1,9 +1,10 @@
 set completeopt=menu,menuone,noselect
 
-lua <<EOF
+lua << EOF
   -- Setup nvim-cmp.
   local cmp = require'cmp'
   local lspkind = require('lspkind')
+  local compare = require('cmp.config.compare')
 
   cmp.setup({
     snippet = {
@@ -24,7 +25,7 @@ lua <<EOF
       -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
       ['<C-Space>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.abort()
+          cmp.close()
         else
           cmp.complete()
         end
@@ -52,28 +53,31 @@ lua <<EOF
         end
       end, {"i", "s"}),
     },
+
     sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
+      { name = 'nvim_lsp'},
       -- { name = 'vsnip' }, -- For vsnip users.
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
-    }, {
+      },{
+      { name = 'path' },
+      }, {
       { name = 'buffer' },
-    })
+      })
   })
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline('/', {
     sources = {
       { name = 'buffer' }
-    }
+    },
   })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
-      { name = 'path' }
+      { name = 'path'  },
     }, {
       { name = 'cmdline' }
     })

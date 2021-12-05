@@ -4,6 +4,8 @@ autocmd BufWritePre *.py lua vim.lsp.buf.formatting()
 " autocmd BufWritePre *.h lua vim.lsp.buf.formatting()
 " autocmd BufWritePre *.cpp lua vim.lsp.buf.formatting()
 
+nnoremap <leader>lr :LspRestart<CR>
+
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
@@ -41,8 +43,8 @@ end
 -- Setup LSPs
 -- In order to have the lua lsp: https://www.chrisatmachine.com/Neovim/28-neovim-lua-development/
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace with each lsp server you've enabled.
-local servers = {'clangd', 'cmake', 'pylsp', 'texlab'}
+-- Replace with each lsp server
+local servers = {'clangd', 'cmake', 'texlab'}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
       on_attach = on_attach,
@@ -52,4 +54,14 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities
     }
 end
+
+-- Python
+-- nvim_lsp['pyright'].setup{
+nvim_lsp['jedi_language_server'].setup{
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+capabilities = capabilities,
+}
 EOF

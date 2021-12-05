@@ -58,3 +58,21 @@
 ## Vista
 - `<ctrl>i`: open vista
 
+# Misc
+- Update plugins: `:PlugUpdate`
+- Checkhealth: `:checkhealth`
+- `Pyright`:
+    - Pyright is strong as it allows for type-checks which allow for much more lsp
+        capabilities than other python lsp.
+    - If you don't create a `pyrightconfig.json` in your project (same level as `.git`
+        file), pyright will ONLY check types of libraries which produce `.pyi` files. It
+        won't parse files to discover types and code structure.
+    - If you put `useLibraryCodeForType` to true in `pyrightconfig.json`, it will TRY
+        to extract type info out of library which don't have `.pyi` files. It will still
+        use them if they are present.
+    - Otherwise, you can run `pyright --createstub <name-library>` to let pyright
+        attempt creating stub files of your library. You will likely have to manullay
+        update these files as they may contain errors. You need to DELETE stubs files
+        when re-running `pyright --createstub` for a library.
+    - Some libraries still won't work for some reason like `pandas`. Run the createstub
+        thing on them.

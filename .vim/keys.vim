@@ -5,6 +5,12 @@ let mapleader = " "
 imap jk <Esc>
 imap kj <Esc>
 
+" Open file eventhough it doesn't exist
+map gf :edit <cfile><CR>
+
+" Open file with default system program
+nmap <leader>x :!xdg-open %<CR><CR>:bd<CR>
+
 " Better window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -99,3 +105,6 @@ autocmd bufreadpre *.py setlocal foldmethod=indent
 
 " Close all buffers except current one
 nnoremap <C-x> :%bd\|e#<CR>
+
+" Automatically sources vim
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<CR>

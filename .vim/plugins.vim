@@ -2,6 +2,9 @@
 " They must be installed first w/ :PlugInstall command in vim
 
 call plug#begin('~/.vim/plugged')
+" --- Themes
+Plug 'rktjmp/lush.nvim'
+Plug 'npxbr/gruvbox.nvim'
 
 " --- Start menu
 Plug 'mhinz/vim-startify'
@@ -11,10 +14,6 @@ Plug 'tpope/vim-commentary'
 
 " --- Auto close things 
 Plug 'tpope/vim-surround'
-
-" --- Themes
-Plug 'rktjmp/lush.nvim'
-Plug 'npxbr/gruvbox.nvim'
 
 " --- Status bar
 Plug 'vim-airline/vim-airline'
@@ -67,6 +66,10 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'onsails/lspkind-nvim'
+
+" Formatting
+" Plug 'google/yapf' " Python
+Plug 'tell-k/vim-autopep8' " Python
 " ----- END NATIVE LSP -----
 
 " ----- COC -----
@@ -84,6 +87,7 @@ call plug#end()
 if has("nvim")
     " If using native lsp
     source ~/.vim/plugins/cmp.vim
+    source ~/.vim/plugins/autopep8.vim
     source ~/.vim/plugins/lsp.vim
     source ~/.vim/plugins/nvim-tree.vim
 

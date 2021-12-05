@@ -34,23 +34,32 @@ Included in config files/Needed to install:
         - Need to create a `.config/nvim/coc-settings.json`
         - Need to say: `"python.pythonPath": "python"`
         - This `python` will be the one used by `which python`. So make sure it uses the python from env you want.
-    - For coc c++:
+    - DEPRECATED: For coc c++:
         - Need a language server such as `clangd`
         - Install clangd, then `:CocInstall coc-clangd`
         - `:CocCommand clandg.install`
-    - In a new conda env, install:
-        - `neovim`
-        - `jedi-language-server`
-        - `flake8`
-    - Coc things to install:
-        - `coc-diagnostic`
-        - `coc-jedi`
-        - `coc-clangd`
-        - `coc-explorer`
+        - Other Coc things to install:
+            - `coc-diagnostic`
+            - `coc-jedi`
+            - `coc-clangd`
+            - `coc-explorer`
+    - LSP (wether native or Coc)
+        - C++:
+            - Need to have `clangd`
+                - Install `clang` or `clangd` or `clang-tools` can't remember...
+            - In a project, go in `project/build_folder_name` folder than run `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..` to export the
+                config in a `compile_commands.json`. It will export the config of the generated cmake files for this build folder.
+                Then `ln -s ~/path_to_project/build_folder_name/compile_commands.json ~/path_to_project`
+        - Python: in a new conda env, install:
+            - `neovim`
+            - `jedi-language-server` with conda/pip or `pyright` with npm
+            - `autopep8` for formatting
+            - neovim will use python's lsp on the conda env. Cool.
 
 Git clone this repo in `$HOME` folder then simply dot a `ln -sf $HOME/dotfiles/file-to-link $HOME/location-path-to-link`.</br>
 It should be is as simple as doing a `ln -sf $HOME/dotfiles/* $HOME/` as the structure in `dotfiles` is the same as the structure needed for config files to work in `$HOME`.
 
+# NOTES / FIXES
 How to use Coc clangd:
     - First build your project `mkdir build && cd build && cmake .. (+ cmake flags like where conda env path is etc) && ccmake. (to check compilation flags) make install`
     - Then `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..` will create a `compile_commands.json` which clangd will use to provide completion.
