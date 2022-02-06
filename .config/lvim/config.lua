@@ -1,11 +1,19 @@
--- general
+-----------------------------
+-- GENERAL
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "gruvbox-flat"
-vim.g.gruvbox_flat_style = "dark"
+vim.g.gruvbox_flat_style = "hard"
 vim.g.gruvbox_transparent = true
+lvim.colorscheme = "gruvbox-flat"
 
--- Additional Plugins
+-----------------------------
+-- SETTINGS
+vim.o.relativenumber = true
+vim.wo.showbreak = ">>"
+vim.wo.wrap = true
+
+-----------------------------
+-- ADDITIONAL PLUGINS
 lvim.plugins = {
     {"lunarvim/colorschemes"},
     {'eddyekofo94/gruvbox-flat.nvim'},
@@ -16,13 +24,17 @@ lvim.plugins = {
     },
 }
 
--- keymappings [view all the defaults by pressing <leader>Lk]
+-----------------------------
+-- KEYMAPPINGS [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
+
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
--- unmap a default keymapping
+lvim.keys.normal_mode["<C-c>"] = ":q<cr>"
+
+-- unmap a default keymapping:
 -- lvim.keys.normal_mode["<C-Up>"] = false
--- edit a default keymapping
+-- edit a default keymapping:
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
