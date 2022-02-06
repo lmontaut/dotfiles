@@ -18,26 +18,15 @@ lvim.autocommands.custom_groups = {
 }
 
 -----------------------------
--- KEYMAPPINGS [view all the defaults by pressing <leader>Lk]
-lvim.leader = "space"
-lvim.keys.normal_mode["<C-s>"]   = ":w<cr>"
-lvim.keys.normal_mode["<C-c>"]   = ":q<cr>"
-lvim.keys.normal_mode["<"]       = "<<"
-lvim.keys.normal_mode[">"]       = ">>"
-lvim.keys.normal_mode[">"]       = ">>"
-lvim.keys.insert_mode["<S-Tab>"] = {'<C-d>', { noremap = true }}
--- unmap a default keymapping:
--- lvim.keys.normal_mode["<C-Up>"] = false
--- edit a default keymapping:
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
-
------------------------------
 -- ADDITIONAL PLUGINS
 lvim.plugins = {
     -- colorschemes
     {'eddyekofo94/gruvbox-flat.nvim'},
     {"lunarvim/colorschemes"},
     {"folke/tokyonight.nvim"},
+
+    -- cmp
+    {'hrsh7th/cmp-cmdline'},
 
     -- Latex
     {'lervag/vimtex'},
@@ -54,6 +43,98 @@ lvim.plugins = {
 
 -- PLUGINS SETTINGS
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+
+-----------------------------
+-- KEYMAPPINGS [view all the defaults by pressing <leader>Lk]
+lvim.leader = "space"
+-- lvim.keys.normal_mode["<C-s>"]   = ":w<cr>"
+-- lvim.keys.normal_mode["<C-c>"]   = ":q<cr>"
+-- lvim.keys.normal_mode["<"]       = "<<"
+-- lvim.keys.normal_mode[">"]       = ">>"
+lvim.keys.insert_mode["<S-Tab>"] = {'<C-d>', { noremap = true }}
+-- unmap a default keymapping:
+-- lvim.keys.normal_mode["<C-Up>"] = false
+-- edit a default keymapping:
+-- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+
+-- Which-key: add key-bindings and keep track of them!
+-- Basically you register some mappings to a which-key options
+local _, wk = pcall(require, "which-key")
+-- options
+local nopts = {
+  mode = "n", -- NORMAL mode
+  prefix = nil,
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+local vopts = {
+  mode = "v", -- NORMAL mode
+  prefix = nil,
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+-- mappings
+local nmappings = {
+  ["\\"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
+  ["<C-S>"]   = { ":w<cr>", "Save buffer" },
+  ["<C-C>"]   = { ":q<cr>", "Quit window" },
+  ["<"]       = { "<<", "Unindent" },
+  [">"]       = { ">>", "Indent" },
+  ["<C-H>"]   = { "<C-W>h", "Left window" },
+  ["<C-L>"]   = { "<C-W>l", "Right window" },
+  ["<C-J>"]   = { "<C-W>j", "Down window" },
+  ["<C-K>"]   = { "<C-W>k", "Up window" },
+  ["%"]       = { "%", "Next symbol" },
+  ["<C-Q>"]       = { ":call QuickFixToggle()<CR>", "QuickFix" },
+}
+local vmappings = {
+  ["\\"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" }
+}
+-- registering
+wk.register(nmappings, nopts)
+wk.register(vmappings, vopts)
+
+-- Use which-key to add extra bindings with the leader-key prefix
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+lvim.builtin.which_key.mappings["t"] = {
+  name = "+Trouble",
+  r = { "<cmd>Trouble lsp_references<cr>", "References" },
+  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
+  d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnostics" },
+  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
+  w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
+}
+
+-- cmp
+local _, cmp = pcall(require, "cmp")
+lvim.builtin.cmp.mapping = {
+      ['<C-Space>'] = cmp.mapping(function()
+        if cmp.visible() then
+          cmp.close()
+        else
+          cmp.complete()
+        end
+      end, {"i", "s", "c"}),
+}
+-- Autocomplete in the "/" research
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  },
+})
+-- Autocomplete in the ":" command line
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path'  },
+  }, {
+    { name = 'cmdline' }
+  })
+})
 
 -- vimtex
 vim.cmd("let g:vimtex_view_method = 'zathura'")
@@ -79,18 +160,6 @@ lvim.builtin.telescope.defaults.mappings = {
     ["<C-j>"] = actions.move_selection_next,
     ["<C-k>"] = actions.move_selection_previous,
   },
-}
-
--- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["t"] = {
-  name = "+Trouble",
-  r = { "<cmd>Trouble lsp_references<cr>", "References" },
-  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-  d = { "<cmd>Trouble lsp_document_diagnostics<cr>", "Diagnostics" },
-  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-  w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
 }
 
 -- Dashboard

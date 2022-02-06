@@ -5,3 +5,4 @@
 .config/nvim/sessions
 .config/lvim/lv-settings.lua
 .vim/view/~=+dotfiles=+cheatsheat.md=
+.config/lvim/plugin/packer_compiled.lua
