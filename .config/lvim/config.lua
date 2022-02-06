@@ -1,42 +1,68 @@
 -----------------------------
--- GENERAL
+-- GENERAL SETTINGS
 lvim.log.level = "warn"
-lvim.format_on_save = true
-vim.g.gruvbox_flat_style = "hard"
+lvim.format_on_save = false
+
+vim.g.gruvbox_flat_style  = "hard"
 vim.g.gruvbox_transparent = true
+vim.cmd("set termguicolors")
 lvim.colorscheme = "gruvbox-flat"
 
------------------------------
--- SETTINGS
 vim.o.relativenumber = true
-vim.wo.showbreak = ">>"
 vim.wo.wrap = true
+vim.wo.showbreak = ">>"
+
+-- Autocommands (https://neovim.io/doc/user/autocmd.html)
+lvim.autocommands.custom_groups = {
+  { "BufWinEnter", "*", "setlocal nospell" },
+}
+
+-----------------------------
+-- KEYMAPPINGS [view all the defaults by pressing <leader>Lk]
+lvim.leader = "space"
+lvim.keys.normal_mode["<C-s>"]   = ":w<cr>"
+lvim.keys.normal_mode["<C-c>"]   = ":q<cr>"
+lvim.keys.normal_mode["<"]       = "<<"
+lvim.keys.normal_mode[">"]       = ">>"
+lvim.keys.normal_mode[">"]       = ">>"
+lvim.keys.insert_mode["<S-Tab>"] = {'<C-d>', { noremap = true }}
+-- unmap a default keymapping:
+-- lvim.keys.normal_mode["<C-Up>"] = false
+-- edit a default keymapping:
+-- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
 -----------------------------
 -- ADDITIONAL PLUGINS
 lvim.plugins = {
-    {"lunarvim/colorschemes"},
+    -- colorschemes
     {'eddyekofo94/gruvbox-flat.nvim'},
+    {"lunarvim/colorschemes"},
     {"folke/tokyonight.nvim"},
+
+    -- Latex
+    {'lervag/vimtex'},
+
+    -- Allows to align stuff! This is amazing.
+    {"godlygeek/tabular"},
+
+    -- Better errors/diagnostics etc.
     {
       "folke/trouble.nvim",
       cmd = "TroubleToggle",
     },
 }
 
------------------------------
--- KEYMAPPINGS [view all the defaults by pressing <leader>Lk]
-lvim.leader = "space"
+-- PLUGINS SETTINGS
+-- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 
--- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
-lvim.keys.normal_mode["<C-c>"] = ":q<cr>"
+-- vimtex
+vim.cmd("let g:vimtex_view_method = 'zathura'")
+vim.cmd('let g:vimtex_compiler_latexmk = { "build_dir" : "build",}')
+vim.cmd("let g:vimtex_enabled=1")
+vim.cmd("let g:vimtex_quickfix_mode=0")
+vim.cmd("let g:vimtex_complete_recursive_bib=1")
 
--- unmap a default keymapping:
--- lvim.keys.normal_mode["<C-Up>"] = false
--- edit a default keymapping:
--- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
-
+-- Telescope
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 local _, actions = pcall(require, "telescope.actions")
@@ -67,32 +93,36 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
 }
 
--- TODO: User Config for predefined plugins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+-- Dashboard
 lvim.builtin.dashboard.active = true
-lvim.builtin.notify.active = true
-lvim.builtin.terminal.active = true
-lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
 
--- if you don't want all the parsers change this to a table of the ones you want
+-- Notify
+lvim.builtin.notify.active = true
+
+-- Terminal
+lvim.builtin.terminal.active = true
+
+-- NvimTree
+lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.show_icons.git  = 1
+vim.cmd("autocmd Colorscheme * highlight NvimTreeNormal guibg=#21252B guifg=#9da5b3")
+
+-- Treesitter
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
   "c",
-  "javascript",
+  "cpp",
+  "cmake",
   "json",
   "lua",
   "python",
-  "typescript",
-  "css",
   "rust",
-  "java",
   "yaml",
   "markdown",
 }
-
-lvim.builtin.treesitter.ignore_install = { "haskell" }
+-- lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
 
 -- generic LSP settings
 
@@ -151,7 +181,3 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   },
 -- }
 
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- lvim.autocommands.custom_groups = {
---   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
--- }
