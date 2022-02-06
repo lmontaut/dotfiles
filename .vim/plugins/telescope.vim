@@ -1,8 +1,8 @@
 " Find files using Telescope command-line sugar.
 nnoremap <C-p> <cmd>Telescope find_files<cr>
-nnoremap <C-b> <cmd>Telescope file_browser<cr>
+nnoremap <C-b> <cmd>Telescope buffers<cr>
+nnoremap <C-f> <cmd>Telescope file_browser<cr>
 nnoremap <C-g> <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 lua << EOF
@@ -45,7 +45,7 @@ require('telescope').setup{
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {'.csv', '.png', '.jpg', '.obj', '.stl', '.dae', '.blend', '.fbx', '.x3d', '.ply',
                             '.dxf', '.wrl', '.abc', '.npy', '.JPG', '.PNG', '.jpeg', '.tif', '.mtl', '.binvox',
-                            '.tga','.pdf','.svg', '.pyi'},
+                            '.tga','.pdf','.svg', '.pyi', '.ipynb'},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},

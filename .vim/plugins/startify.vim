@@ -5,13 +5,14 @@ nnoremap <leader>' :SSave<CR>y:SClose<CR>
 let g:startify_session_dir = '~/.config/nvim/sessions'
 
 let g:startify_lists = [
-          \ { 'type': 'files',     'header': ['   Files']            },
-          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
           \ { 'type': 'sessions',  'header': ['   Sessions']       },
           \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
+          \ { 'type': 'files',     'header': ['   Files']            },
           \ ]
 
 let g:startify_bookmarks = [
+            \ { 'o': '~/orga/TODO.md' },
             \ { 'a': '~/dotfiles/cheatsheat.md' },
             \ { 'c': '~/dotfiles/.config/i3/config' },
             \ { 'i': '~/dotfiles/.config/nvim/init.vim' },

@@ -131,14 +131,14 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export PATH=$HOME/installed_libs/bin:$PATH
-export PATH=/usr/local/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-export PYTHONPATH=/usr/local/lib/python3.8/site-packages:$PYTHONPATH
-export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
+# export PATH=$HOME/installed_libs/bin:$PATH
+# export PATH=/usr/local/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+# export PYTHONPATH=/usr/local/lib/python3.8/site-packages:$PYTHONPATH
+# export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
 
-export PATH=$HOME/.local/share/applications:$PATH
-export PATH=$HOME/.local/share/bin:$PATH
-export PATH=$HOME/libs/zotero:$PATH
+# export PATH=$HOME/.local/share/applications:$PATH
+# export PATH=$HOME/.local/share/bin:$PATH
+# export PATH=$HOME/libs/zotero:$PATH
 
 exec zsh

@@ -29,18 +29,18 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # I guess this is usefull ? Can't remember
-export PATH=/usr/local/bin:$PATH
-export PATH=$HOME/installed_libs/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-export PYTHONPATH=/usr/local/lib/python3.8/site-packages:$PYTHONPATH
-export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
+# export PATH=/usr/local/bin:$PATH
+# export PATH=$HOME/installed_libs/bin:$PATH
+# export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+# export PYTHONPATH=/usr/local/lib/python3.8/site-packages:$PYTHONPATH
+# export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
 
 # Picom path
 # export PATH=$HOME/pkgs_source/picom/build/src:$PATH
 
 # Doom Emacs path 
-export PATH=$HOME/.emacs.d/bin:$PATH
-export PATH=$HOME/.doom.d/bin:$PATH
+# export PATH=$HOME/.emacs.d/bin:$PATH
+# export PATH=$HOME/.doom.d/bin:$PATH
 
 # Zotero path
 export PATH=$HOME/libs/zotero:$PATH
@@ -59,4 +59,5 @@ alias lum15="xrandr --output eDP-1 --brightness 1.5"
 alias ca="conda activate"
 alias open="xdg-open"
 alias ip="ipython"
+alias orga="cd ~/orga"
 . "$HOME/.cargo/env"

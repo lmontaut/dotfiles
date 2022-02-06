@@ -70,12 +70,14 @@ inoremap <S-Tab> <C-d>
 " Zoom / Restore window.
 function! s:ZoomToggle() abort
     if exists('t:zoomed') && t:zoomed
-        execute t:zoom_winrestcmd
+        " execute t:zoom_winrestcmd
+        exe 'tabclose'
         let t:zoomed = 0
     else
-        let t:zoom_winrestcmd = winrestcmd()
-        resize
-        vertical resize
+        " let t:zoom_winrestcmd = winrestcmd()
+        " resize
+        " vertical resize
+        exe '-tabedit %'
         let t:zoomed = 1
     endif
 endfunction

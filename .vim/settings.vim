@@ -23,7 +23,6 @@ autocmd bufreadpre *.norg setlocal showbreak=""
 " To get the context while scrolling
 set scrolloff=8
 set sidescrolloff=8
-
 set foldmethod=indent
 set foldlevel=99
 set encoding=utf-8                      " The encoding displayed

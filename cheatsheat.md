@@ -10,6 +10,9 @@
 - `<space>(/)`: previous/next buffer
 - `<space>9/0`: previous/next tab
 - `<ctrl>t`: opens file in new tab
+- `cs + <thing_to_surround> + <thing_to_surround_by> `: vim-surround -
+    ex: `csw"` takes `word` into `"word"`
+    ex: `cs"'` replaces `""` by `''`
 
 ## Code folding
 - `zn`: fold entire file
@@ -19,8 +22,8 @@
 ## LSP related
 - `gd`: go to def
 - `[d / ]d`: go to next/prev diagnostics
-- `<ctrl>e`: shows line diagnostics in window
-- `<space>q`: shows all current file diagnostics in window
+- `<ctrl>e`: shows diagnostics in box
+- `<space>q`: diagnostics
 - `K`: hover info
 - `<space>rn`: rename / refactor
 - `<space>f`: format file
@@ -35,16 +38,21 @@
 - `s / u`: stage/unstage
 - `i`: shows modifications on file where cursor is
 - `cc`: commit with message
+- `gp`: git push
 
 ## Tree (Nvim tree)
 - `<space>e`: toggle tree
 - `<space>n`: find current file in tree
 - `<space>r`: refresh tree
+- `<space>o`: opens the file with `xdg-open` i.e the default software on
+    system meant to open this type of file
 
 ## Fuzzy finder (Telescope)
+- `<space>fh`: help finder for all vim functions
 - `<ctrl>p`: fuzzy file finder
 - `<ctrl>g`: live grep
-- `<ctrl>b`: file browser
+- `<ctrl>b`: fuzzy find in buffers
+- `<ctrl>f`: file browser
 - `<ctrl>j/k`: up/down
 - `<ctrl>s/a`: open file in vertical/horizontal flip
 - `<ctrl>n`: open file in other tab
