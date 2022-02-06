@@ -25,25 +25,17 @@ Included in config files/Needed to install:
     - picom for transparency. Install from source, as su: https://github.com/yshui/picom
 
 - neovim
-    - Install from source: https://github.com/neovim/neovim
-    - Don't install from conda env, even base. Simply conda deactivate as much as possible
-    - `sudo apt-get install xclip` for clipboard + `set clipboard+=unamedplus`
-    - `:PlugInstall` and `:CocInstall` are your friends
-    - For coc python:
-        - Install nodejs && npm: `sudo pacman -S nodejs npm`
-        - Need to create a `.config/nvim/coc-settings.json`
-        - Need to say: `"python.pythonPath": "python"`
-        - This `python` will be the one used by `which python`. So make sure it uses the python from env you want.
-    - DEPRECATED: For coc c++:
-        - Need a language server such as `clangd`
-        - Install clangd, then `:CocInstall coc-clangd`
-        - `:CocCommand clandg.install`
-        - Other Coc things to install:
-            - `coc-diagnostic`
-            - `coc-jedi`
-            - `coc-clangd`
-            - `coc-explorer`
-    - LSP (wether native or Coc)
+    - Easiest (if available): 
+      - ARCH: pacman -S neovim
+      - Debian: apt-get install neovim (might not be >= 0.5)
+    - Also easy but less so, from source: 
+      - Install from source: https://github.com/neovim/neovim
+      - Don't install from conda env, even base. Simply conda deactivate as much as possible
+      - `sudo apt-get install xclip` for clipboard + `set clipboard+=unamedplus`
+    - `:PlugInstall` (plugins), `TSInstall` (Treesitter) and `LspInstall` (language-server) -> these commands are friends
+    - Alternative for native LSP: `:CocInstall`
+    - LSP specifics (wether native or Coc):
+        - I think you need to install node/npm
         - C++:
             - Need to have `clangd`
                 - Install `clang` or `clangd` or `clang-tools` can't remember...
@@ -55,12 +47,17 @@ Included in config files/Needed to install:
             - `jedi-language-server` with conda/pip or `pyright` with npm
             - `autopep8` for formatting
             - neovim will use python's lsp on the conda env. Cool.
+        - For Coc, other things to install:
+            - `coc-diagnostic`
+            - `coc-jedi`
+            - `coc-clangd`
+            - `coc-explorer`
 
 Git clone this repo in `$HOME` folder then simply dot a `ln -sf $HOME/dotfiles/file-to-link $HOME/location-path-to-link`.</br>
 It should be is as simple as doing a `ln -sf $HOME/dotfiles/* $HOME/` as the structure in `dotfiles` is the same as the structure needed for config files to work in `$HOME`.
 
 # NOTES / FIXES
-How to use Coc clangd:
+How to use clangd:
     - First build your project `mkdir build && cd build && cmake .. (+ cmake flags like where conda env path is etc) && ccmake. (to check compilation flags) make install`
     - Then `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..` will create a `compile_commands.json` which clangd will use to provide completion.
 
@@ -71,7 +68,7 @@ Treesitter error (lots of lines underlined):
 
 Fresh ArchLinux install:
 - Normally if you have the /home/user clone with neovim and anaconda installed locally, there is nothing to do. Some packages are installed for the system though, so reinstall them:
-    - Nodejs & npm (for neovim-coc to work)
+    - Nodejs & npm (for LSPs to work)
     - slack, firefox, zoom, feh, xorg-xinput, picom 
     - for bluetooth: bluez-utils
     - alsa, pulseaudio, pulseaudio-alsa (to link them), pulseaudio-bluetooth, pavucontrol (gtk to control pulseaudio)
