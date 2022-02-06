@@ -3,3 +3,5 @@
 .vim/autoload
 .vim/sessions
 .config/nvim/sessions
+.config/lvim/lv-settings.lua
+.vim/view/~=+dotfiles=+cheatsheat.md=
