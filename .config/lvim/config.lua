@@ -28,6 +28,9 @@ lvim.plugins = {
     -- cmp
     {'hrsh7th/cmp-cmdline'},
 
+    -- Startify
+    {'mhinz/vim-startify'},
+
     -- Latex
     {'lervag/vimtex'},
 
@@ -79,17 +82,21 @@ local vopts = {
 }
 -- mappings
 local nmappings = {
-  ["\\"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
-  ["<C-S>"]   = { ":w<cr>", "Save buffer" },
-  ["<C-C>"]   = { ":q<cr>", "Quit window" },
-  ["<"]       = { "<<", "Unindent" },
-  [">"]       = { ">>", "Indent" },
-  ["<C-H>"]   = { "<C-W>h", "Left window" },
-  ["<C-L>"]   = { "<C-W>l", "Right window" },
-  ["<C-J>"]   = { "<C-W>j", "Down window" },
-  ["<C-K>"]   = { "<C-W>k", "Up window" },
-  ["%"]       = { "%", "Next symbol" },
-  ["<C-Q>"]       = { ":call QuickFixToggle()<CR>", "QuickFix" },
+  ["\\"]         = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
+  ["<C-S>"]      = { ":w<cr>", "Save buffer" },
+  ["<C-C>"]      = { ":q<cr>", "Quit window" },
+  ["<"]          = { "<<", "Unindent" },
+  [">"]          = { ">>", "Indent" },
+  ["<C-H>"]      = { "<C-W>h", "Left window" },
+  ["<C-L>"]      = { "<C-W>l", "Right window" },
+  ["<C-J>"]      = { "<C-W>j", "Down window" },
+  ["<C-K>"]      = { "<C-W>k", "Up window" },
+  ["%"]          = { "%", "Next symbol" },
+  ["<C-Q>"]      = { ":call QuickFixToggle()<CR>", "QuickFix" },
+  ["<leader>1 "] = { ":Startify<CR>", "Startify menu" },
+  ["<leader>["]  = { ":SSave<CR>y", "Session save" },
+  ["<leader>]"]  = { ":SLoad<space>", "Session load" },
+  ["<leader>'"]  = { ":SSave<CR>y:SClose<CR>", "Session quit" }
 }
 local vmappings = {
   ["\\"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" }
@@ -112,15 +119,15 @@ lvim.builtin.which_key.mappings["t"] = {
 
 -- cmp
 local _, cmp = pcall(require, "cmp")
-lvim.builtin.cmp.mapping = {
-      ['<C-Space>'] = cmp.mapping(function()
+-- With the following, you replace ONLY the ctrl+space mapping of cmp
+lvim.builtin.cmp.mapping['<C-Space>'] = cmp.mapping(function()
         if cmp.visible() then
           cmp.close()
         else
           cmp.complete()
         end
-      end, {"i", "s", "c"}),
-}
+      end, {"i", "s", "c"})
+
 -- Autocomplete in the "/" research
 cmp.setup.cmdline('/', {
   sources = {
@@ -137,16 +144,17 @@ cmp.setup.cmdline(':', {
 })
 
 -- vimtex
-vim.cmd("let g:vimtex_view_method = 'zathura'")
-vim.cmd('let g:vimtex_compiler_latexmk = { "build_dir" : "build",}')
-vim.cmd("let g:vimtex_enabled=1")
-vim.cmd("let g:vimtex_quickfix_mode=0")
-vim.cmd("let g:vimtex_complete_recursive_bib=1")
+vim.g.vimtex_view_method = 'zathura'
+vim.g.vimtex_compiler_latexmk = { build_dir = "build" }
+vim.g.vimtex_enabled = 1
+vim.g.vimtex_quickfix_mode = 0
+vim.g.vimtex_complete_recursive_bib = 1
 
 -- Telescope
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 local _, actions = pcall(require, "telescope.actions")
+-- With the following, you replace ALL the "mappings" table in telescope
 lvim.builtin.telescope.defaults.mappings = {
   -- for input mode
   i = {
@@ -162,8 +170,8 @@ lvim.builtin.telescope.defaults.mappings = {
   },
 }
 
--- Dashboard
-lvim.builtin.dashboard.active = true
+-- Dashboard -> remove, I prefer startify
+lvim.builtin.dashboard.active = false
 
 -- Notify
 lvim.builtin.notify.active = true
@@ -250,3 +258,51 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   },
 -- }
 
+-- Startify
+vim.g.startify_session_dir = '~/.cache/nvim/sessions'
+vim.g.startify_lists = {
+  { type = 'sessions', header = {' Sessions'} },
+  { type = 'bookmarks', header= {' Bookmarks'} },
+  { type = 'files', header= {' Files'} }
+}
+vim.g.startify_bookmarks = {
+  { o = '~/orga/TODO.md' },
+  { a = '~/dotfiles/cheatsheat.md' },
+  { c = '~/dotfiles/.config/i3/config' },
+  { i = '~/dotfiles/.config/nvim/init.vim' },
+  { b = '~/dotfiles/.vim/keys.vim' },
+  { p = '~/dotfiles/.vim/plugins.vim' },
+  { s = '~/dotfiles/.vim/settings.vim' },
+  { t = '~/dotfiles/.vim/my_snippets/tex.snippets' },
+  { v = '~/dotfiles/.vimrc' },
+  { z = '~/dotfiles/.zshrc' },
+}
+
+-- Automatically restart a session
+vim.g.startify_session_autoload = 1
+-- Let startify handle buffers
+vim.g.startify_session_delete_buffers = 1
+
+vim.g.startify_change_to_vcs_root = 1
+
+-- Automatically update sessions
+vim.g.startify_session_persistence = 1
+
+-- Get rid of buffer on quit
+vim.g.startify_enable_special = 0
+
+vim.g.startify_custom_header = {
+"  ____    ____                          ____     ___                ",
+"  `MM'    `MM'                          `MM(     )M'                ",
+"   MM      MM                            `MM.    d'                 ",
+"   MM      MM   ____  ____    ___         `MM.  d' _____  ___   ___ ",
+"   MM      MM  6MMMMb `MM(    )M'          `MM d' 6MMMMMb `MM    MM ",
+"   MMMMMMMMMM 6M'  `Mb `Mb    d'            `MM' 6M'   `Mb MM    MM ",
+"   MM      MM MM    MM  YM.  ,P              MM  MM     MM MM    MM ",
+"   MM      MM MMMMMMMM   MM  M               MM  MM     MM MM    MM ",
+"   MM      MM MM         `Mbd'               MM  MM     MM MM    MM ",
+"   MM      MM YM    d9    YMP                MM  YM.   ,M9 YM.   MM ",
+"  _MM_    _MM_ YMMMM9      M                _MM_  YMMMMM9   YMMM9MM_",
+"                          d'                                        ",
+"                      (8),P                                         ",
+"                       YMM                                          "}
