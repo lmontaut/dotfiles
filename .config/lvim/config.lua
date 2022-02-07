@@ -34,6 +34,9 @@ lvim.plugins = {
     -- Latex
     {'lervag/vimtex'},
 
+    -- symbol outline
+    {'simrat39/symbols-outline.nvim'},
+
     -- Allows to align stuff! This is amazing.
     {"godlygeek/tabular"},
 
@@ -41,6 +44,45 @@ lvim.plugins = {
     {
       "folke/trouble.nvim",
       cmd = "TroubleToggle",
+    },
+
+    {
+      "karb94/neoscroll.nvim",
+      event = "WinScrolled",
+      config = function()
+      require('neoscroll').setup({
+            -- All these keys will be mapped to their corresponding default scrolling animation
+            mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+            '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+            hide_cursor = true,          -- Hide cursor while scrolling
+            stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+            use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+            respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+            cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+            easing_function = nil,        -- Default easing function
+            pre_hook = nil,              -- Function to run before the scrolling animation starts
+            post_hook = nil,              -- Function to run after the scrolling animation ends
+            })
+      end
+    },
+
+    {
+      "rmagatti/goto-preview",
+      config = function()
+      require('goto-preview').setup {
+            width = 120; -- Width of the floating window
+            height = 25; -- Height of the floating window
+            default_mappings = true; -- Bind default mappings
+            debug = false; -- Print debug information
+            opacity = nil; -- 0-100 opacity level of the floating window where 100 is fully transparent.
+            post_open_hook = nil -- A function taking two arguments, a buffer and a window to be ran as a hook.
+            -- You can use "default_mappings = true" setup option
+            -- Or explicitly set keybindings
+            -- vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>")
+            -- vim.cmd("nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>")
+            -- vim.cmd("nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>")
+        }
+      end
     },
 }
 
@@ -57,6 +99,7 @@ lvim.leader = "space"
 lvim.keys.insert_mode["<S-Tab>"] = {'<C-d>', { noremap = true }}
 -- unmap a default keymapping:
 -- lvim.keys.normal_mode["<C-Up>"] = false
+lvim.lsp.buffer_mappings.normal_mode["gp"] = nil
 -- edit a default keymapping:
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
@@ -80,23 +123,36 @@ local vopts = {
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true, -- use `nowait` when creating keymaps
 }
--- mappings
+-- plugins mappings
 local nmappings = {
+  -- comment
   ["\\"]         = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
+  -- buffer/window save/quit
   ["<C-S>"]      = { ":w<cr>", "Save buffer" },
   ["<C-C>"]      = { ":q<cr>", "Quit window" },
+  --indentation
   ["<"]          = { "<<", "Unindent" },
   [">"]          = { ">>", "Indent" },
+  --window related
   ["<C-H>"]      = { "<C-W>h", "Left window" },
   ["<C-L>"]      = { "<C-W>l", "Right window" },
   ["<C-J>"]      = { "<C-W>j", "Down window" },
   ["<C-K>"]      = { "<C-W>k", "Up window" },
   ["%"]          = { "%", "Next symbol" },
   ["<C-Q>"]      = { ":call QuickFixToggle()<CR>", "QuickFix" },
-  ["<leader>1 "] = { ":Startify<CR>", "Startify menu" },
+  -- Startify
+  ["<leader>1"] = { ":Startify<CR>", "Startify menu" },
   ["<leader>["]  = { ":SSave<CR>y", "Session save" },
   ["<leader>]"]  = { ":SLoad<space>", "Session load" },
-  ["<leader>'"]  = { ":SSave<CR>y:SClose<CR>", "Session quit" }
+  ["<leader>'"]  = { ":SSave<CR>y:SClose<CR>", "Session quit" },
+  -- symbols-outline
+  ["<leader>i"]  = { ":SymbolsOutline<CR>", "Symbols outline" },
+  -- goto-preview
+  ["gpd"] = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "Preview definition"},
+  ["gpi"] = { "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", "Preview implementation"},
+  ["gP"] = { "<cmd>lua require('goto-preview').close_all_win()<CR>", "Preview close"},
+  --      Only set if you have telescope installed
+  ["gpr"] = { "<cmd>lua require('goto-preview').goto_preview_references()<CR>", "Preview references"},
 }
 local vmappings = {
   ["\\"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" }
@@ -105,8 +161,8 @@ local vmappings = {
 wk.register(nmappings, nopts)
 wk.register(vmappings, vopts)
 
--- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+-- Trouble
+-- TIP: Use which-key to add extra bindings with the leader-key prefix
 lvim.builtin.which_key.mappings["t"] = {
   name = "+Trouble",
   r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -115,6 +171,27 @@ lvim.builtin.which_key.mappings["t"] = {
   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
+}
+
+-- Telescope
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+-- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
+-- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
+local _, actions = pcall(require, "telescope.actions")
+-- With the following, you replace ALL the "mappings" table in telescope
+lvim.builtin.telescope.defaults.mappings = {
+  -- for input mode
+  i = {
+    ["<C-j>"] = actions.move_selection_next,
+    ["<C-k>"] = actions.move_selection_previous,
+    ["<C-n>"] = actions.cycle_history_next,
+    ["<C-p>"] = actions.cycle_history_prev,
+  },
+  -- for normal mode
+  n = {
+    ["<C-j>"] = actions.move_selection_next,
+    ["<C-k>"] = actions.move_selection_previous,
+  },
 }
 
 -- cmp
@@ -150,26 +227,6 @@ vim.g.vimtex_enabled = 1
 vim.g.vimtex_quickfix_mode = 0
 vim.g.vimtex_complete_recursive_bib = 1
 
--- Telescope
--- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
--- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
-local _, actions = pcall(require, "telescope.actions")
--- With the following, you replace ALL the "mappings" table in telescope
-lvim.builtin.telescope.defaults.mappings = {
-  -- for input mode
-  i = {
-    ["<C-j>"] = actions.move_selection_next,
-    ["<C-k>"] = actions.move_selection_previous,
-    ["<C-n>"] = actions.cycle_history_next,
-    ["<C-p>"] = actions.cycle_history_prev,
-  },
-  -- for normal mode
-  n = {
-    ["<C-j>"] = actions.move_selection_next,
-    ["<C-k>"] = actions.move_selection_previous,
-  },
-}
-
 -- Dashboard -> remove, I prefer startify
 lvim.builtin.dashboard.active = false
 
@@ -199,7 +256,6 @@ lvim.builtin.treesitter.ensure_installed = {
 }
 -- lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
-
 
 -- generic LSP settings
 
@@ -266,16 +322,9 @@ vim.g.startify_lists = {
   { type = 'files', header= {' Files'} }
 }
 vim.g.startify_bookmarks = {
+  { c = '~/dotfiles/.config/lvim/config.lua' },
   { o = '~/orga/TODO.md' },
-  { a = '~/dotfiles/cheatsheat.md' },
-  { c = '~/dotfiles/.config/i3/config' },
-  { i = '~/dotfiles/.config/nvim/init.vim' },
-  { b = '~/dotfiles/.vim/keys.vim' },
-  { p = '~/dotfiles/.vim/plugins.vim' },
-  { s = '~/dotfiles/.vim/settings.vim' },
-  { t = '~/dotfiles/.vim/my_snippets/tex.snippets' },
-  { v = '~/dotfiles/.vimrc' },
-  { z = '~/dotfiles/.zshrc' },
+  { i = '~/dotfiles/.config/i3/config' },
 }
 
 -- Automatically restart a session

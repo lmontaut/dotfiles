@@ -61,3 +61,5 @@ alias open="xdg-open"
 alias ip="ipython"
 alias orga="cd ~/orga"
 # . "$HOME/.cargo/env"
+ export VISUAL=lvim;
+ export EDITOR=lvim;
