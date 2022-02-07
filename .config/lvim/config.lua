@@ -86,9 +86,6 @@ lvim.plugins = {
     },
 }
 
--- PLUGINS SETTINGS
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-
 -----------------------------
 -- KEYMAPPINGS [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -102,6 +99,10 @@ lvim.keys.insert_mode["<S-Tab>"] = {'<C-d>', { noremap = true }}
 lvim.lsp.buffer_mappings.normal_mode["gp"] = nil
 -- edit a default keymapping:
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
+
+-----------------------------
+-- PLUGINS SETTINGS
+-- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 
 -- Which-key: add key-bindings and keep track of them!
 -- Basically you register some mappings to a which-key options
@@ -171,6 +172,12 @@ lvim.builtin.which_key.mappings["t"] = {
   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
+}
+
+-- symbols-outline
+vim.g.symbols_outline = {
+  width = 50,
+  auto_preview = true
 }
 
 -- Telescope
