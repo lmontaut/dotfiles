@@ -46,26 +46,28 @@ lvim.plugins = {
       cmd = "TroubleToggle",
     },
 
-    {
-      "karb94/neoscroll.nvim",
-      event = "WinScrolled",
-      config = function()
-      require('neoscroll').setup({
-            -- All these keys will be mapped to their corresponding default scrolling animation
-            mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
-            '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
-            hide_cursor = true,          -- Hide cursor while scrolling
-            stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-            use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-            respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-            cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-            easing_function = nil,        -- Default easing function
-            pre_hook = nil,              -- Function to run before the scrolling animation starts
-            post_hook = nil,              -- Function to run after the scrolling animation ends
-            })
-      end
-    },
+    -- better(?) scrolling
+    -- {
+    --   "karb94/neoscroll.nvim",
+    --   event = "WinScrolled",
+    --   config = function()
+    --   require('neoscroll').setup({
+    --         -- All these keys will be mapped to their corresponding default scrolling animation
+    --         mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+    --         '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+    --         hide_cursor = true,          -- Hide cursor while scrolling
+    --         stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+    --         use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+    --         respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+    --         cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+    --         easing_function = nil,        -- Default easing function
+    --         pre_hook = nil,              -- Function to run before the scrolling animation starts
+    --         post_hook = nil,              -- Function to run after the scrolling animation ends
+    --         })
+    --   end
+    -- },
 
+    -- goto-preview
     {
       "rmagatti/goto-preview",
       config = function()
@@ -79,6 +81,12 @@ lvim.plugins = {
         }
       end
     },
+
+    -- cmake
+    {'cdelledonne/vim-cmake'},
+
+    -- maximizer
+    {"szw/vim-maximizer"}
 }
 
 -----------------------------
@@ -98,6 +106,10 @@ lvim.lsp.buffer_mappings.normal_mode["gp"] = nil
 -----------------------------
 -- PLUGINS SETTINGS
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+
+-- Dashboard -> remove, I prefer startify
+lvim.builtin.dashboard.active = false
+lvim.builtin.which_key.mappings[";"] = nil
 
 -- Which-key: add key-bindings and keep track of them!
 -- Basically you register some mappings to a which-key options
@@ -124,8 +136,8 @@ local nmappings = {
   -- comment
   ["\\"]         = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
   -- buffer/window save/quit
-  ["<C-S>"]      = { ":w<cr>", "Save buffer" },
-  ["<C-C>"]      = { ":q<cr>", "Quit window" },
+  ["<C-S>"]      = { "<cmd>w<CR>", "Save buffer" },
+  ["<C-C>"]      = { "<cmd>q<CR>", "Quit window" },
   --indentation
   ["<"]          = { "<<", "Unindent" },
   [">"]          = { ">>", "Indent" },
@@ -135,20 +147,22 @@ local nmappings = {
   ["<C-J>"]      = { "<C-W>j", "Down window" },
   ["<C-K>"]      = { "<C-W>k", "Up window" },
   ["%"]          = { "%", "Next symbol" },
-  ["<C-Q>"]      = { ":call QuickFixToggle()<CR>", "QuickFix" },
+  ["<C-Q>"]      = { "<cmd>call QuickFixToggle()<CR>", "QuickFix" },
   -- Startify
-  ["<leader>1"] = { ":Startify<CR>", "Startify menu" },
+  ["<leader>1"] = { "<cmd>Startify<CR>", "Startify menu" },
   ["<leader>["]  = { ":SSave<CR>y", "Session save" },
   ["<leader>]"]  = { ":SLoad<space>", "Session load" },
   ["<leader>'"]  = { ":SSave<CR>y:SClose<CR>", "Session quit" },
   -- symbols-outline
-  ["<leader>i"]  = { ":SymbolsOutline<CR>", "Symbols outline" },
+  ["<leader>i"]  = { "<cmd>SymbolsOutline<CR>", "Symbols outline" },
   -- goto-preview
   ["gpd"] = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "Preview definition"},
   ["gpi"] = { "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", "Preview implementation"},
   ["gP"] = { "<cmd>lua require('goto-preview').close_all_win()<CR>", "Preview close"},
   --      Only set if you have telescope installed
   ["gpr"] = { "<cmd>lua require('goto-preview').goto_preview_references()<CR>", "Preview references"},
+  -- vim-maximizer
+  ["<leader>;"] = { "<cmd>MaximizerToggle<CR>", "Zoom toggle"},
 }
 local vmappings = {
   ["\\"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" }
@@ -156,6 +170,23 @@ local vmappings = {
 -- registering
 wk.register(nmappings, nopts)
 wk.register(vmappings, vopts)
+
+-- which_key remap some stuff associated to space bar
+lvim.builtin.which_key.mappings["bc"] = { "<cmd>BufferClose!<CR>" , "Close buffer" }
+
+-- cmake
+lvim.builtin.which_key.mappings["c"] = {
+  name = "+CMake",
+  g = { ":CMakeGenerate -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX", "Generate" },
+  r = { ":CMakeGenerate Release -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX", "Generate release" },
+  d = { ":CMakeGenerate Debug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX", "Generate debug" },
+  i = { "<cmd>CMakeInstall<CR>", "Install" },
+  s = { ":CMakeSwitch<space>", "Switch" },
+  b = { ":CMakeBuild<space>", "Build" },
+  o = { "<cmd>CMakeOpen<CR>", "Open" },
+  c = { "<cmd>CMakeClose<CR>", "Close" },
+  w = { "<cmd>CMakeClean<CR>", "Wipe/clean" },
+}
 
 -- Trouble
 -- TIP: Use which-key to add extra bindings with the leader-key prefix
@@ -228,9 +259,6 @@ vim.g.vimtex_compiler_latexmk = { build_dir = "build" }
 vim.g.vimtex_enabled = 1
 vim.g.vimtex_quickfix_mode = 0
 vim.g.vimtex_complete_recursive_bib = 1
-
--- Dashboard -> remove, I prefer startify
-lvim.builtin.dashboard.active = false
 
 -- Notify
 lvim.builtin.notify.active = true
