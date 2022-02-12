@@ -92,6 +92,7 @@ lvim.plugins = {
 -----------------------------
 -- KEYMAPPINGS [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
+lvim.lsp.diagnostics.virtual_text = true
 -- lvim.keys.normal_mode["<C-s>"]   = ":w<cr>"
 -- lvim.keys.normal_mode["<C-c>"]   = ":q<cr>"
 -- lvim.keys.normal_mode["<"]       = "<<"
