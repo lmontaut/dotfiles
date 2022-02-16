@@ -364,9 +364,9 @@ vim.g.startify_lists = {
   { type = 'files', header= {' Files'} }
 }
 vim.g.startify_bookmarks = {
-  { c = '~/dotfiles/.config/lvim/config.lua' },
+  { c = '~/dotfiles/lvim/.config/lvim/config.lua' },
   { o = '~/orga/TODO.md' },
-  { i = '~/dotfiles/.config/i3/config' },
+  { i = '~/dotfiles/i3/.config/i3/config' },
 }
 
 -- Automatically restart a session
