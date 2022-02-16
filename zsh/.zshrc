@@ -8,7 +8,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Theme
 ZSH_THEME="robbyrussell"
 
-plugins=(git)
+plugins=(git ssh-agent)
+zstyle :omz:plugins:ssh-agent identities < $HOME/.ssh/keys
 source $ZSH/oh-my-zsh.sh
 
 

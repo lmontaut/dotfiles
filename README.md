@@ -10,6 +10,8 @@ Run `pacman -S < program/.pacman.list`.
 
 [Polybar](https://github.com/polybar/polybar) probably needs to be installed (at least the themes).
 
+Clone [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh): `git clone https://github.com/ohmyzsh/ohmyzsh $HOME/.oh-my-zsh`.
+
 # NOTES / FIXES
 C++ `clangd`:
     - First build your project `mkdir build && cd build && cmake .. (+ other cmake flags) && make install`
