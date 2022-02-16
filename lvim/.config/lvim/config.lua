@@ -3,9 +3,12 @@
 lvim.log.level = "warn"
 lvim.format_on_save = false
 
+-----------------------------
+-- COLOR SCHEME
 vim.g.gruvbox_flat_style  = "hard"
 vim.g.gruvbox_transparent = true
-vim.cmd("set termguicolors")
+-- vim.cmd("set termguicolors")
+vim.opt.termguicolors = true
 lvim.colorscheme = "gruvbox-flat"
 
 vim.o.relativenumber = true
@@ -24,6 +27,8 @@ lvim.plugins = {
     {'eddyekofo94/gruvbox-flat.nvim'},
     {"lunarvim/colorschemes"},
     {"folke/tokyonight.nvim"},
+    {'EdenEast/nightfox.nvim'},
+    {"savq/melange"},
 
     -- cmp
     {'hrsh7th/cmp-cmdline'},
@@ -86,7 +91,7 @@ lvim.plugins = {
     {'cdelledonne/vim-cmake'},
 
     -- maximizer
-    {"szw/vim-maximizer"}
+    {"szw/vim-maximizer"},
 }
 
 -----------------------------
@@ -164,6 +169,9 @@ local nmappings = {
   ["gpr"] = { "<cmd>lua require('goto-preview').goto_preview_references()<CR>", "Preview references"},
   -- vim-maximizer
   ["<leader>;"] = { "<cmd>MaximizerToggle<CR>", "Zoom toggle"},
+  -- bufferline
+  ["<leader>b{"] = { "<cmd>BufferLineMovePrev<CR>", "Tab move prev"},
+  ["<leader>b}"] = { "<cmd>BufferLineMoveNext<CR>", "Tab move next"},
 }
 local vmappings = {
   ["\\"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" }
@@ -173,7 +181,10 @@ wk.register(nmappings, nopts)
 wk.register(vmappings, vopts)
 
 -- which_key remap some stuff associated to space bar
-lvim.builtin.which_key.mappings["bc"] = { "<cmd>BufferClose!<CR>" , "Close buffer" }
+lvim.builtin.which_key.mappings["bc"] = { "<cmd>bd!<CR>" , "Close buffer" }
+
+-- terminal
+lvim.builtin.terminal.open_mapping = [[<c-p>]]
 
 -- cmake
 lvim.builtin.which_key.mappings["c"] = {

@@ -39,8 +39,8 @@ unset __conda_setup
 # export PATH=$HOME/pkgs_source/picom/build/src:$PATH
 
 # Doom Emacs path 
-# export PATH=$HOME/.emacs.d/bin:$PATH
-# export PATH=$HOME/.doom.d/bin:$PATH
+export PATH=$HOME/.emacs.d/bin:$PATH
+export PATH=$HOME/.doom.d/bin:$PATH
 
 # Zotero path
 export PATH=$HOME/libs/zotero:$PATH
@@ -61,6 +61,7 @@ alias ca="conda activate"
 alias open="xdg-open"
 alias ip="ipython"
 alias orga="cd ~/orga"
+alias lg="lazygit"
 # . "$HOME/.cargo/env"
  export VISUAL=lvim;
  export EDITOR=lvim;

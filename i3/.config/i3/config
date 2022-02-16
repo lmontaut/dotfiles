@@ -12,6 +12,8 @@
 set $mod Mod1
 
 # ---- Autostart applications
+
+exec --no-startup-id setxkbmap us altgr-intl
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
