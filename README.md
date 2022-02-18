@@ -12,7 +12,7 @@ Run `pacman -S < program/.pacman.list`.
 
 Clone [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh): `git clone https://github.com/ohmyzsh/ohmyzsh $HOME/.oh-my-zsh`.
 
-# NOTES / FIXES
+## NOTES / FIXES
 C++ `clangd`:
     - First build your project `mkdir build && cd build && cmake .. (+ other cmake flags) && make install`
     - Then `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..` will create a `compile_commands.json` which clangd will use to provide completion.
@@ -22,3 +22,7 @@ C++ `clangd`:
     - We pick a colorscheme compatible with TS like gruvbox but in gruvbox, underlines (TSError or LSP reference or ...) stuff which is MEGA annoying.
     - So go there: `vim ~/.vim/plugged/gruvbox.nvim/lua/gruvbox/plugins/highlights.lua` and modify lines
 
+Visit [Lsp config](https://github.com/neovim/nvim-lspconfig), [server configs](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md).
+
+## More plugins
+Visi [awesome-neovim]("https://github.com/rockerBOO/awesome-neovim")

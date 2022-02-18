@@ -152,6 +152,12 @@ return packer.startup(function(use)
   -- symbol outline
   use "lmontaut/symbols-outline.nvim"
 
+  -- lightbulb when code action is available --> handlded by saga
+  -- use "kosayoda/nvim-lightbulb"
+
+  -- LSP saga
+  use "tami5/lspsaga.nvim"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

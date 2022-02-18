@@ -25,17 +25,30 @@ vim.g.startify_session_persistence = 1
 vim.g.startify_enable_special = 0
 
 vim.g.startify_custom_header = {
-"  ____    ____                          ____     ___                ",
-"  `MM'    `MM'                          `MM(     )M'                ",
-"   MM      MM                            `MM.    d'                 ",
-"   MM      MM   ____  ____    ___         `MM.  d' _____  ___   ___ ",
-"   MM      MM  6MMMMb `MM(    )M'          `MM d' 6MMMMMb `MM    MM ",
-"   MMMMMMMMMM 6M'  `Mb `Mb    d'            `MM' 6M'   `Mb MM    MM ",
-"   MM      MM MM    MM  YM.  ,P              MM  MM     MM MM    MM ",
-"   MM      MM MMMMMMMM   MM  M               MM  MM     MM MM    MM ",
-"   MM      MM MM         `Mbd'               MM  MM     MM MM    MM ",
-"   MM      MM YM    d9    YMP                MM  YM.   ,M9 YM.   MM ",
-"  _MM_    _MM_ YMMMM9      M                _MM_  YMMMMM9   YMMM9MM_",
-"                          d'                                        ",
-"                      (8),P                                         ",
-"                       YMM                                          "}
+            [[       ___          ___                                      ___          ___     ]],
+            [[      /\  \        /\__\                                    /\  \        /\  \    ]],
+            [[      \:\  \      /:/ _/_       ___                 ___    /::\  \       \:\  \   ]],
+            [[       \:\  \    /:/ /\__\     /|  |               /|  |  /:/\:\  \       \:\  \  ]],
+            [[   ___ /::\  \  /:/ /:/ _/_   |:|  |              |:|  | /:/  \:\  \  ___  \:\  \ ]],
+            [[  /\  /:/\:\__\/:/_/:/ /\__\  |:|  |              |:|  |/:/__/ \:\__\/\  \  \:\__\]],
+            [[  \:\/:/  \/__/\:\/:/ /:/  /__|:|__|            __|:|__|\:\  \ /:/  /\:\  \ /:/  /]],
+            [[   \::/__/      \::/_/:/  //::::\  \           /::::\  \ \:\  /:/  /  \:\  /:/  / ]],
+            [[    \:\  \       \:\/:/  / ~~~~\:\  \          ~~~~\:\  \ \:\/:/  /    \:\/:/  /  ]],
+            [[     \:\__\       \::/  /       \:\__\              \:\__\ \::/  /      \::/  /   ]],
+            [[      \/__/        \/__/         \/__/               \/__/  \/__/        \/__/    ]]
+}
+
+-- "  ____    ____                          ____     ___                ",
+-- "  `MM'    `MM'                          `MM(     )M'                ",
+-- "   MM      MM                            `MM.    d'                 ",
+-- "   MM      MM   ____  ____    ___         `MM.  d' _____  ___   ___ ",
+-- "   MM      MM  6MMMMb `MM(    )M'          `MM d' 6MMMMMb `MM    MM ",
+-- "   MMMMMMMMMM 6M'  `Mb `Mb    d'            `MM' 6M'   `Mb MM    MM ",
+-- "   MM      MM MM    MM  YM.  ,P              MM  MM     MM MM    MM ",
+-- "   MM      MM MMMMMMMM   MM  M               MM  MM     MM MM    MM ",
+-- "   MM      MM MM         `Mbd'               MM  MM     MM MM    MM ",
+-- "   MM      MM YM    d9    YMP                MM  YM.   ,M9 YM.   MM ",
+-- "  _MM_    _MM_ YMMMM9      M                _MM_  YMMMMM9   YMMM9MM_",
+-- "                          d'                                        ",
+-- "                      (8),P                                         ",
+-- "                       YMM                                          "

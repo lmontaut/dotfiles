@@ -100,15 +100,17 @@ local leader_nmappings = {
 
   f = {
     name = "Find",
-    f = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find file" }        ,
-    b = { "<cmd>Telescope buffers<CR>"                                                             , "Find buffer" }      ,
-    g = { "<cmd>Telescope live_grep<CR>"                                                           , "Grep" }             ,
-    r = { "<cmd>Telescope oldfiles<CR>"                                                            , "Open Recent File" } ,
-    h = { "<cmd>Telescope help_tags<CR>"                                                           , "Find Help" }        ,
-    k = { "<cmd>Telescope keymaps<CR>"                                                             , "Keymaps" }          ,
-    R = { "<cmd>Telescope registers<CR>"                                                           , "Registers" }        ,
-    M = { "<cmd>Telescope man_pages<CR>"                                                           , "Man Pages" }        ,
-    C = { "<cmd>Telescope commands<CR>"                                                            , "Commands" }         ,
+    f = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find file" }          ,
+    b = { "<cmd>Telescope buffers<CR>"                                                             , "Find buffer" }        ,
+    d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<CR>"                                   , "Buffer Diagnostics" } ,
+    D = { "<cmd>Telescope diagnostics<CR>"                                                         , "All diagnostics" }    ,
+    g = { "<cmd>Telescope live_grep<CR>"                                                           , "Grep" }               ,
+    r = { "<cmd>Telescope oldfiles<CR>"                                                            , "Open Recent File" }   ,
+    h = { "<cmd>Telescope help_tags<CR>"                                                           , "Find Help" }          ,
+    k = { "<cmd>Telescope keymaps<CR>"                                                             , "Keymaps" }            ,
+    R = { "<cmd>Telescope registers<CR>"                                                           , "Registers" }          ,
+    M = { "<cmd>Telescope man_pages<CR>"                                                           , "Man Pages" }          ,
+    C = { "<cmd>Telescope commands<CR>"                                                            , "Commands" }           ,
   },
 
   b = {
@@ -128,7 +130,7 @@ local leader_nmappings = {
   },
 
   c = {
-    name = "+CMake",
+    name = "CMake",
     g = { ":CMakeGenerate -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX", "Generate" },
     r = { ":CMakeGenerate Release -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX", "Generate release" },
     d = { ":CMakeGenerate Debug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX", "Generate debug" },
@@ -150,16 +152,18 @@ local leader_nmappings = {
 
   l = {
     name = "LSP",
-    a = { "<cmd>lua require('config.plugins_config.telescope_functions.code_actions').code_actions()<CR>" , "Code Action" }        ,
-    d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<CR>"                                          , "Buffer Diagnostics" } ,
-    w = { "<cmd>Telescope diagnostics<CR>"                                                                , "All diagnostics" }    ,
-    s = { "<cmd>Telescope lsp_document_symbols<CR>"                                                       , "Document Symbols" }   ,
-    S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>"                                              , "Workspace Symbols" }  ,
-    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>"                                                         , "Format" }             ,
-    i = { "<cmd>LspInfo<cr>"                                                                              , "Info" }               ,
-    I = { "<cmd>LspInstallInfo<cr>"                                                                       , "Installer Info" }     ,
-    j = { "<cmd>lua vim.diagnostic.goto_next()<cr>"                                                       , "Next Diagnostic" }    ,
-    k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>"                                                       , "Prev Diagnostic" }    ,
+    -- a = { "<cmd>lua require('config.plugins_config.telescope_functions.code_actions').code_actions()<CR>" , "Code Action" }        ,
+    a = { "<cmd>Lspsaga code_action<CR>"                     , "Code Action" }        ,
+    r = { "<cmd>Lspsaga rename<CR>"                          , "Rename" }             ,
+    d = { "<cmd>Trouble document_diagnostics<CR>"            , "Buffer diagnostics" } ,
+    D = { "<cmd>Trouble lsp_workspace_diagnostics<CR>"       , "All diagnostics" }    ,
+    s = { "<cmd>Telescope lsp_document_symbols<CR>"          , "Document Symbols" }   ,
+    S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>" , "Workspace Symbols" }  ,
+    f = { "<cmd>lua vim.lsp.buf.formatting()<CR>"            , "Format" }             ,
+    i = { "<cmd>LspInfo<CR>"                                 , "Info" }               ,
+    I = { "<cmd>LspInstallInfo<CR>"                          , "Installer Info" }     ,
+    j = { "<cmd>Lspsaga diagnostic_jump_next<CR>"            , "Next Diagnostic" }    ,
+    k = { "<cmd>Lspsaga diagnostic_jump_prev<CR>"            , "Prev Diagnostic" }    ,
   },
 
   v = {
@@ -169,15 +173,15 @@ local leader_nmappings = {
     w = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins_config/whichkey.lua<CR>" , "Edit whichkey"}
   },
 
-  t = {
-    name = "Trouble",
-    r = { "<cmd>Trouble lsp_references<cr>", "References" },
-    f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-    d = { "<cmd>Trouble document_diagnostics<cr>", "Buffer diagnostics" },
-    q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-    l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-    w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "All diagnostics" },
-  },
+  -- t = { --> replaced lsp reference/diagnostics
+  --   name = "Trouble",
+  --   r = { "<cmd>Trouble lsp_references<cr>"            , "References" }         ,
+  --   f = { "<cmd>Trouble lsp_definitions<cr>"           , "Definitions" }        ,
+  --   d = { "<cmd>Trouble document_diagnostics<cr>"      , "Buffer diagnostics" } ,
+  --   q = { "<cmd>Trouble quickfix<cr>"                  , "QuickFix" }           ,
+  --   l = { "<cmd>Trouble loclist<cr>"                   , "LocationList" }       ,
+  --   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>" , "All diagnostics" }    ,
+  -- },
 
   T = {
     name = "Treesitter",
@@ -210,14 +214,18 @@ local ctrl_nmappings = {
 which_key.register(ctrl_nmappings, ctrl_nopts)
 
 local nmappings = {
-  ["\\"]         = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment" },
+  -- Comment
+  ["\\"]         = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>" , "Comment" }               ,
+  -- Show line diagnostic
+  ["gl"] = { "<cmd>Lspsaga show_line_diagnostics<cr>"                                , "Line diagnostic" }       ,
   -- goto-preview
+  ["gr"] = { "<cmd>Trouble lsp_references<cr>"                                       , "References" }            ,
   ["gp"] = {
-    name = "Goto Preview",
-    d = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "Preview definition"},
-    i = { "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", "Preview implementation"},
-    r = { "<cmd>lua require('goto-preview').goto_preview_references()<CR>", "Preview references"}, -- Only set if you have telescope installed
-    c = { "<cmd>lua require('goto-preview').close_all_win()<CR>", "Preview close"},
+    name = "Goto Preview"                                                            ,
+    d = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>"           , "Preview definition"}     ,
+    i = { "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>"       , "Preview implementation"} ,
+    r = { "<cmd>lua require('goto-preview').goto_preview_references()<CR>"           , "Preview references"}     , -- Only set if you have telescope installed
+    c = { "<cmd>lua require('goto-preview').close_all_win()<CR>"                     , "Preview close"}          ,
   }
 }
 local nopts = {
@@ -230,6 +238,7 @@ local nopts = {
 }
 which_key.register(nmappings, nopts)
 local vmappings = {
+  -- Comment
   ["\\"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
 }
 local vopts = {

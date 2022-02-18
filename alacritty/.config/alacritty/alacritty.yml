@@ -135,6 +135,8 @@
 #     white:   '0xbbc2cf'
 
 # Colors (Gruvbox Material Dark Medium)
+window:
+  opacity: 0.93
 colors:
   primary:
     background: '0x282828'
@@ -160,4 +162,3 @@ colors:
     cyan:    '0x89b482'
     white:   '0xdfbf8e'
 
-window.opacity: 0.95
