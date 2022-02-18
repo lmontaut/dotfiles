@@ -26,3 +26,6 @@ Visit [Lsp config](https://github.com/neovim/nvim-lspconfig), [server configs](h
 
 ## More plugins
 Visi [awesome-neovim]("https://github.com/rockerBOO/awesome-neovim")
+
+## Credit
+Configuration heavily inspired from [LunarVim](https://github.com/LunarVim/LunarVim)
