@@ -74,6 +74,13 @@ which_key.setup(setup)
 
 ---------------------
 -- KEYBINDINGS
+local Terminal = require("toggleterm.terminal").Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float"})
+
+function _LAZYGIT_TOGGLE()
+	lazygit:toggle()
+end
+
 local leader_nopts = {
   mode = "n", -- NORMAL mode
   prefix = "<leader>",
@@ -147,7 +154,7 @@ local leader_nmappings = {
     o = { "<cmd>Telescope git_status<CR>"   , "Open changed file" } ,
     b = { "<cmd>Telescope git_branches<CR>" , "Checkout branch" }   ,
     c = { "<cmd>Telescope git_commits<CR>"  , "Checkout commit" }   ,
-
+    l = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>"  , "Lazygit" }   ,
   },
 
   l = {
@@ -213,13 +220,29 @@ local ctrl_nmappings = {
 }
 which_key.register(ctrl_nmappings, ctrl_nopts)
 
+local ipython = Terminal:new({ cmd = "ipython", hidden = true, direction = "float" })
+
+function _PYTHON_TOGGLE()
+	ipython:toggle()
+end
+
+local htop = Terminal:new({ cmd = "htop", hidden = true, direction = "float"})
+
+function _HTOP_TOGGLE()
+	htop:toggle()
+end
+
 local nmappings = {
   -- Comment
-  ["\\"]         = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>" , "Comment" }               ,
+  ["\\"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>" , "Comment" }         ,
+  -- Terminal
+  ["<C-g>"] = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>" , "Lazygit" } ,
+  ["<C-p>"] = { "<cmd>lua _PYTHON_TOGGLE()<CR>" , "IPython" } ,
+  ["<C-x>"] = { "<cmd>lua _HTOP_TOGGLE()<CR>" , "Htop" } ,
   -- Show line diagnostic
-  ["gl"] = { "<cmd>Lspsaga show_line_diagnostics<cr>"                                , "Line diagnostic" }       ,
+  ["gl"] = { "<cmd>Lspsaga show_line_diagnostics<CR>" , "Line diagnostic" } ,
   -- goto-preview
-  ["gr"] = { "<cmd>Trouble lsp_references<cr>"                                       , "References" }            ,
+  ["gr"] = { "<cmd>Trouble lsp_references<CR>"                                       , "References" }            ,
   ["gp"] = {
     name = "Goto Preview"                                                            ,
     d = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>"           , "Preview definition"}     ,
@@ -250,3 +273,19 @@ local vopts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 which_key.register(vmappings, vopts)
+
+local tmappings = {
+  -- Terminal
+  ["<C-g>"] = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>" , "Lazygit" } ,
+  ["<C-p>"] = { "<cmd>lua _PYTHON_TOGGLE()<CR>" , "IPython" } ,
+  ["<C-x>"] = { "<cmd>lua _HTOP_TOGGLE()<CR>" , "Htop" } ,
+}
+local topts = {
+  mode = "t", -- TERMINAL mode
+  prefix = nil,
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+which_key.register(tmappings, topts)

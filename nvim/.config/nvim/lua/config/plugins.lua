@@ -57,8 +57,8 @@ return packer.startup(function(use)
   use "moll/vim-bbye" -- better closing buffers
   use "nvim-lualine/lualine.nvim"
 
-  -- TODO: Toggleterm
-  -- use "akinsho/toggleterm.nvim"
+  -- Toggleterm
+  use "akinsho/toggleterm.nvim"
 
   -- maximizer
   use "szw/vim-maximizer"
