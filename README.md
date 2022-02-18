@@ -19,6 +19,6 @@ C++ `clangd`:
 
 `Treesitter` error (lots of lines underlined):
     - TSError is assigned to a color/behavior which is dependent only on the colorscheme used
-    - We pick a colorscheme compatible with TS like gruvbox but in gruvbox, TSError underlines stuff which is MEGA annoying.
-    - So go there: `vim ~/.vim/plugged/gruvbox.nvim/lua/gruvbox/plugins/highlights.lua` and delete line where there is TSError
+    - We pick a colorscheme compatible with TS like gruvbox but in gruvbox, underlines (TSError or LSP reference or ...) stuff which is MEGA annoying.
+    - So go there: `vim ~/.vim/plugged/gruvbox.nvim/lua/gruvbox/plugins/highlights.lua` and modify lines
 

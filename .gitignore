@@ -3,6 +3,7 @@ vim/.vim/.netrwhist
 vim/.vim/autoload
 vim/.vim/sessions
 nvim/.config/nvim/sessions
+nvim/.config/nvim/plugin
 lvim/.config/lvim/lv-settings.lua
 vim/.vim/view/~=+dotfiles=+cheatsheat.md=
 lvim/.config/lvim/plugin/packer_compiled.lua
