@@ -25,7 +25,9 @@ C++ `clangd`:
 Visit [Lsp config](https://github.com/neovim/nvim-lspconfig), [server configs](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md).
 
 ## More plugins
-Visi [awesome-neovim]("https://github.com/rockerBOO/awesome-neovim")
+Visit [awesome-neovim]("https://github.com/rockerBOO/awesome-neovim")
+
+Wallpapers: [wallhaven](https://wallhaven.cc/)
 
 ## Credit
 Configuration heavily inspired from [LunarVim](https://github.com/LunarVim/LunarVim)
