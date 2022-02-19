@@ -154,12 +154,12 @@ local leader_nmappings = {
     o = { "<cmd>Telescope git_status<CR>"   , "Open changed file" } ,
     b = { "<cmd>Telescope git_branches<CR>" , "Checkout branch" }   ,
     c = { "<cmd>Telescope git_commits<CR>"  , "Checkout commit" }   ,
-    l = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>"  , "Lazygit" }   ,
+    l = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>"  , "Lazygit" }           ,
   },
 
   l = {
     name = "LSP",
-    -- a = { "<cmd>lua require('config.plugins_config.telescope_functions.code_actions').code_actions()<CR>" , "Code Action" }        ,
+    -- a = { "<cmd>lua require('config.plugins_config.telescope_functions.code_actions').code_actions()<CR>" , "Code Action" },
     a = { "<cmd>Lspsaga code_action<CR>"                     , "Code Action" }        ,
     r = { "<cmd>Lspsaga rename<CR>"                          , "Rename" }             ,
     d = { "<cmd>Trouble document_diagnostics<CR>"            , "Buffer diagnostics" } ,
@@ -177,7 +177,8 @@ local leader_nmappings = {
     name = "Nvim",
     r = { "<cmd>lua require('config.plugins_config.reload_config').reload()<CR>"               , "Reload config" } ,
     p = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins.lua<CR>"                 , "Edit plugins" }  ,
-    w = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins_config/whichkey.lua<CR>" , "Edit whichkey"}
+    w = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins_config/whichkey.lua<CR>" , "Edit whichkey"}  ,
+    k = { "<cmd>Telescope keymaps<CR>"                                                         , "Keymaps" }       ,
   },
 
   -- t = { --> replaced lsp reference/diagnostics
@@ -232,13 +233,20 @@ function _HTOP_TOGGLE()
 	htop:toggle()
 end
 
+local ranger = Terminal:new({ cmd = "ranger", hidden = true, direction = "float"})
+
+function _RANGER_TOGGLE()
+	ranger:toggle()
+end
+
 local nmappings = {
   -- Comment
   ["\\"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>" , "Comment" }         ,
   -- Terminal
-  ["<C-g>"] = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>" , "Lazygit" } ,
-  ["<C-p>"] = { "<cmd>lua _PYTHON_TOGGLE()<CR>" , "IPython" } ,
-  ["<C-x>"] = { "<cmd>lua _HTOP_TOGGLE()<CR>" , "Htop" } ,
+  ["<C-]>"] = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>" , "Lazygit" } ,
+  ["<C-p>"] = { "<cmd>lua _PYTHON_TOGGLE()<CR>"  , "IPython" } ,
+  ["<C-x>"] = { "<cmd>lua _HTOP_TOGGLE()<CR>"    , "Htop" }    ,
+  ["<C-q>"] = { "<cmd>lua _RANGER_TOGGLE()<CR>"  , "Ranger" }  ,
   -- Show line diagnostic
   ["gl"] = { "<cmd>Lspsaga show_line_diagnostics<CR>" , "Line diagnostic" } ,
   -- goto-preview
@@ -276,9 +284,10 @@ which_key.register(vmappings, vopts)
 
 local tmappings = {
   -- Terminal
-  ["<C-g>"] = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>" , "Lazygit" } ,
-  ["<C-p>"] = { "<cmd>lua _PYTHON_TOGGLE()<CR>" , "IPython" } ,
-  ["<C-x>"] = { "<cmd>lua _HTOP_TOGGLE()<CR>" , "Htop" } ,
+  ["<C-]>"] = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>" , "Lazygit" } ,
+  ["<C-p>"] = { "<cmd>lua _PYTHON_TOGGLE()<CR>"  , "IPython" } ,
+  ["<C-x>"] = { "<cmd>lua _HTOP_TOGGLE()<CR>"    , "Htop" }    ,
+  ["<C-q>"] = { "<cmd>lua _RANGER_TOGGLE()<CR>"  , "Ranger" }  ,
 }
 local topts = {
   mode = "t", -- TERMINAL mode
