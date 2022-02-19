@@ -99,7 +99,8 @@ return packer.startup(function(use)
   -- use "vim-test/vim-test"
 
   -- Colorschemes
-  use "lmontaut/gruvbox.nvim"
+  -- use "lmontaut/gruvbox.nvim"
+  use "$HOME/louis_nvim_plugins/gruvbox.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -157,6 +158,9 @@ return packer.startup(function(use)
 
   -- LSP saga
   use "tami5/lspsaga.nvim"
+
+  -- Transparent
+  use "xiyaowong/nvim-transparent"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

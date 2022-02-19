@@ -175,10 +175,11 @@ local leader_nmappings = {
 
   v = {
     name = "Nvim",
-    r = { "<cmd>lua require('config.plugins_config.reload_config').reload()<CR>"               , "Reload config" } ,
-    p = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins.lua<CR>"                 , "Edit plugins" }  ,
-    w = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins_config/whichkey.lua<CR>" , "Edit whichkey"}  ,
-    k = { "<cmd>Telescope keymaps<CR>"                                                         , "Keymaps" }       ,
+    r = { "<cmd>lua require('config.plugins_config.reload_config').reload()<CR>"               , "Reload config" }      ,
+    p = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins.lua<CR>"                 , "Edit plugins" }       ,
+    w = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins_config/whichkey.lua<CR>" , "Edit whichkey"}       ,
+    k = { "<cmd>Telescope keymaps<CR>"                                                         , "Keymaps" }            ,
+    t = { "<cmd>TransparentToggle<CR>"                                                             , "Toggle transparent" } ,
   },
 
   -- t = { --> replaced lsp reference/diagnostics

@@ -136,7 +136,7 @@
 
 # Colors (Gruvbox Material Dark Medium)
 window:
-  opacity: 0.93
+  opacity: 0.85
 colors:
   primary:
     background: '0x282828'
