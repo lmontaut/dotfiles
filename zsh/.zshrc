@@ -64,5 +64,5 @@ alias ip="ipython"
 alias orga="cd ~/orga"
 alias lg="lazygit"
 # . "$HOME/.cargo/env"
- export VISUAL=lvim;
- export EDITOR=lvim;
+ export VISUAL=nvim;
+ export EDITOR=nvim;

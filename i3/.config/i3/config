@@ -33,7 +33,7 @@ bindsym $mod+Shift+x exec --no-startup-id blurlock
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 # background
-exec --no-startup-id feh --bg-fill ~/.config/wpp_gris_2.png
+exec --no-startup-id feh --bg-fill ~/.config/wpp_gris_13_cleanup_2.png
 # Stuff
 exec --no-startup-id picom -b
 # Touch pad: xinput to locate its id then xinput list-props <id>
