@@ -99,8 +99,8 @@ return packer.startup(function(use)
   -- use "vim-test/vim-test"
 
   -- Colorschemes
-  -- use "lmontaut/gruvbox.nvim"
-  use "$HOME/louis_nvim_plugins/gruvbox.nvim"
+  use "lmontaut/gruvbox.nvim"
+  -- use "$HOME/louis_nvim_plugins/gruvbox.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
