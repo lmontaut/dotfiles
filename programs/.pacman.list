@@ -1,7 +1,6 @@
 alacritty
 bluez
 bluez-utils
-cava
 docker
 feh
 firefox
@@ -9,22 +8,18 @@ fzf
 flameshot
 git
 htop
-i3
-i3-gaps
-i3-status
 lazygit
 lightdm
 lightdm-gtk-greeter-settings
 lightdm-slick-greeter
-nerd-fonts-jetbrains-mono
 vi
 vim
 neovim
 npm
 nodejs
 nvidia
-nvidia-settings
 nvtop
+opera
 pandoc
 picom
 ranger
@@ -83,4 +78,3 @@ yarn
 zathura
 zip
 zsh
-zoom
