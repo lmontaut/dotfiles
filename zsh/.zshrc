@@ -63,6 +63,7 @@ alias open="xdg-open"
 alias ip="ipython"
 alias orga="cd ~/orga"
 alias lg="lazygit"
+alias cl="clear"
 # . "$HOME/.cargo/env"
  export VISUAL=nvim;
  export EDITOR=nvim;

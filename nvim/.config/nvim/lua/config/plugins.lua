@@ -92,15 +92,30 @@ return packer.startup(function(use)
   -- use "jose-elias-alvarez/null-ls.nvim"
 
   -- TODO: look into DAP
-  -- use "mfussenegger/nvim-dap"
-  -- use "Pocco81/DAPInstall.nvim"
-  --
+  use {
+    "mfussenegger/nvim-dap",
+    opt = true,
+    event = "BufReadPre",
+    module = { "dap" },
+    wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "which-key.nvim" },
+    requires = {
+    },
+    config = function()
+      require("config.plugins_config.debugger").setup()
+    end,
+  }
+
+  use "rcarriga/nvim-dap-ui"
+  use "nvim-telescope/telescope-dap.nvim"
+  use "theHamsta/nvim-dap-virtual-text"
+  use "Pocco81/DAPInstall.nvim"
+
   -- TODO: look into vim test
   -- use "vim-test/vim-test"
 
   -- Colorschemes
-  use "lmontaut/gruvbox.nvim"
-  -- use "$HOME/louis_nvim_plugins/gruvbox.nvim"
+  -- use "lmontaut/gruvbox.nvim"
+  use "$HOME/louis_nvim_plugins/gruvbox.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
