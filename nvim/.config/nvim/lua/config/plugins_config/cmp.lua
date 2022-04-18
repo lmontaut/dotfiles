@@ -115,25 +115,30 @@ cmp.setup {
       return vim_item
     end,
   },
-  sources = {
+  sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
-  },
+  }),
+
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
   window = {
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    }
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
-  view = {
-    entries = 'native'
-  },
+  -- window = {
+  --   documentation = {
+  --     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  --   }
+  -- },
+  -- view = {
+  --   entries = 'native'
+  -- },
   experimental = {
     ghost_text = false,
   },
@@ -141,15 +146,18 @@ cmp.setup {
 
 -- Autocomplete in the "/" research
 cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = 'buffer' }
   },
 })
 -- Autocomplete in the ":" command line
 cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
     { name = 'path'  },
   }, {
     { name = 'cmdline' }
   })
 })
+
