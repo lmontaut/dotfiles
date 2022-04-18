@@ -48,7 +48,13 @@ return packer.startup(function(use)
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "folke/which-key.nvim" -- Remember keybindings
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
-  use "numToStr/Comment.nvim" -- Easily comment stuff
+  use {
+      'numToStr/Comment.nvim',
+      tag = 'v0.6',
+      config = function()
+          require('Comment').setup()
+      end
+  }
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use 'antoinemadec/FixCursorHold.nvim'
 
