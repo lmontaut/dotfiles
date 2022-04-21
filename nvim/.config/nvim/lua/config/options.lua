@@ -43,4 +43,7 @@ end
 -- :help options to see what this does
 vim.opt.shortmess:append "c" -- we can append stuff
 
-vim.cmd [[set iskeyword+=-]] -- we can also use standard vim cmd to set vim-related stuff
+vim.cmd [[set iskeyword+=-]] --vim.cmd("autocmd BufEnter * set formatoptions-=cro")
+-- For some reason, this requires to be run last in this file
+vim.cmd("autocmd BufEnter * set formatoptions-=cro")
+vim.cmd("autocmd BufEnter * setlocal formatoptions-=cro")

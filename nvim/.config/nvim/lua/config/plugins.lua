@@ -114,7 +114,10 @@ return packer.startup(function(use)
   use "rcarriga/nvim-dap-ui"
   use "nvim-telescope/telescope-dap.nvim"
   use "theHamsta/nvim-dap-virtual-text"
-  use "Pocco81/DAPInstall.nvim"
+  use {
+    "Pocco81/DAPInstall.nvim",
+    commit = "24923c3"
+  }
 
   -- TODO: look into vim test
   -- use "vim-test/vim-test"
