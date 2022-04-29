@@ -13,6 +13,20 @@ Run `pacman -S < program/.pacman.list`.
 Clone [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh): `git clone https://github.com/ohmyzsh/ohmyzsh $HOME/.oh-my-zsh`.
 
 ## NOTES / FIXES
+Switch to zsh:
+- install zsh `pacman -S zsh`
+- activate and make permanent: `zsh && chsh -s /bin/zsh`
+- better theme: oh-my-zsh: `git clone https://github.com/ohmyzsh/ohmyzsh.git  ~/.oh-my-zsh`
+  - in `.zshrc`, use the robby theme
+  - modify theme: `~/.oh-my-zsh/themes/robbyrussell.zsh-theme`
+  - show full path: replace the `c` in `PROMPT += ...%c%...` by `~`
+
+Polybar:
+`git clone https://github.com/adi1090x/polybar-themes.git`
+
+tmux plugin manager:
+`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+
 C++ `clangd`:
     - First build your project `mkdir build && cd build && cmake .. (+ other cmake flags) && make install`
     - Then `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..` will create a `compile_commands.json` which clangd will use to provide completion.
