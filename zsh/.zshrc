@@ -12,6 +12,19 @@ plugins=(git ssh-agent)
 zstyle :omz:plugins:ssh-agent lazy yes
 source $ZSH/oh-my-zsh.sh
 
+# lazygit -> shell changes directory when change repo in lazygit
+lg()
+{
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+
+    lazygit "$@"
+
+    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+    fi
+}
+
 
 # -------- PATHS ----------
 # >>> conda initialize >>>
@@ -60,9 +73,8 @@ alias lum10="xrandr --output eDP-1 --brightness 1.0"
 alias lum15="xrandr --output eDP-1 --brightness 1.5"
 alias ca="conda activate"
 alias open="xdg-open"
-alias ip="ipython"
+# alias ip="ipython"
 alias orga="cd ~/orga"
-alias lg="lazygit"
 alias cl="clear"
 # . "$HOME/.cargo/env"
  export VISUAL=nvim;
