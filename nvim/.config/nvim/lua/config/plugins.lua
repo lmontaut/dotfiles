@@ -175,7 +175,8 @@ return packer.startup(function(use)
   use { "folke/trouble.nvim", cmd = "TroubleToggle" }
 
   -- symbol outline
-  use "lmontaut/symbols-outline.nvim"
+  -- use "lmontaut/symbols-outline.nvim"
+  use 'simrat39/symbols-outline.nvim'
 
   -- lightbulb when code action is available --> handlded by saga
   -- use "kosayoda/nvim-lightbulb"
