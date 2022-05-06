@@ -9,6 +9,7 @@ plugins["LSPReferenceRead"] = nil
 vim.cmd [[
 try
   colorscheme gruvbox
+  set termguicolors
   " hi Normal guibg=NONE ctermbg=NONE
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
