@@ -1,0 +1,4 @@
+refresher:
+  refreshInterval: 1 # File/submodule refresh interval in seconds
+  fetchInterval: 10 # In seconds
+notARepository: 'skip'
