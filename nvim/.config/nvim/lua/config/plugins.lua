@@ -170,6 +170,8 @@ return packer.startup(function(use)
 
   -- Latex
   use "lervag/vimtex"
+  -- Markdown
+  use "iamcco/markdown-preview.nvim"
 
   -- Better errors/diagnostics etc.
   use { "folke/trouble.nvim", cmd = "TroubleToggle" }

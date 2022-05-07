@@ -157,6 +157,13 @@ local leader_nmappings = {
     l = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>"  , "Lazygit" }           ,
   },
 
+  m = {
+    name = "Markdown",
+    t = { "<cmd>MarkdownPreviewToggle<CR>"   , "Toggle" } ,
+    o = { "<cmd>MarkdownPreview<CR>"   , "Start" } ,
+    c = { "<cmd>MarkdownPreviewStop<CR>"   , "Stop" } ,
+  },
+
   l = {
     name = "LSP",
     -- a = { "<cmd>lua require('config.plugins_config.telescope_functions.code_actions').code_actions()<CR>" , "Code Action" },
@@ -179,7 +186,8 @@ local leader_nmappings = {
     p = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins.lua<CR>"                 , "Edit plugins" }       ,
     w = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins_config/whichkey.lua<CR>" , "Edit whichkey"}       ,
     k = { "<cmd>Telescope keymaps<CR>"                                                         , "Keymaps" }            ,
-    t = { "<cmd>TransparentToggle<CR>"                                                             , "Toggle transparent" } ,
+    t = { "<cmd>TransparentToggle<CR>"                                                         , "Toggle transparent" } ,
+    q = { "<cmd>qa!<CR>"                                                                       , "Quit vim" }           ,
   },
 
   -- t = { --> replaced lsp reference/diagnostics
@@ -206,6 +214,7 @@ local leader_nmappings = {
     S = { "<cmd>PackerStatus<cr>"                                  , "Status" }     ,
     u = { "<cmd>PackerUpdate<cr>"                                  , "Update" }     ,
   },
+
   d = {
     name = "Debug",
     u = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
