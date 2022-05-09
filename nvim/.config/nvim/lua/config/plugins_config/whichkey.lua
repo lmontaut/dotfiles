@@ -142,7 +142,7 @@ local leader_nmappings = {
     l = { "<cmd>tabnext<CR>"     , "Next tab" }     ,
     h = { "<cmd>tabprevious<CR>" , "Previous tab" } ,
     c = { "<cmd>tabclose<CR>"    , "Close tab" }    ,
-    j = { "<cmd>tabmove "        , "Jump to tab" }  ,
+    j = { ":tabmove "            , "Jump to tab" }  ,
   },
 
   c = {
