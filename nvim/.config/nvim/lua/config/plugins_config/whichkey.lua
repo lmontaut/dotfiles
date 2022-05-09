@@ -136,6 +136,15 @@ local leader_nmappings = {
     ["}"] = { "<cmd>BufferLineMoveNext<CR>"                           , "Tab move next"}               ,
   },
 
+  t = {
+    name = "Tabs",
+    n = { "<cmd>tabnew<CR>"      , "New tab" }      ,
+    l = { "<cmd>tabnext<CR>"     , "Next tab" }     ,
+    h = { "<cmd>tabprevious<CR>" , "Previous tab" } ,
+    c = { "<cmd>tabclose<CR>"    , "Close tab" }    ,
+    j = { "<cmd>tabmove "        , "Jump to tab" }  ,
+  },
+
   c = {
     name = "CMake",
     g = { ":CMakeGenerate -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX", "Generate" },
