@@ -96,12 +96,6 @@ local leader_nmappings = {
   -- vim-maximizer
   [";"] = { "<cmd>MaximizerToggle<CR>", "Zoom toggle"},
 
-  -- startify
-  ["1"] = { "<cmd>Startify<CR>"      , "Startify menu" } ,
-  ["["] = { ":SSave<CR>y"            , "Session save" }  ,
-  ["]"] = { ":SLoad<space>"          , "Session load" }  ,
-  ["'"] = { ":SSave<CR>y:SClose<CR>" , "Session quit" }  ,
-
   -- symbols-outline
   ["i"]  = { "<cmd>SymbolsOutline<CR>", "Symbols outline" },
 
@@ -196,6 +190,9 @@ local leader_nmappings = {
     k = { "<cmd>Telescope keymaps<CR>"                                                         , "Keymaps" }            ,
     t = { "<cmd>TransparentToggle<CR>"                                                         , "Toggle transparent" } ,
     q = { "<cmd>qa!<CR>"                                                                       , "Quit vim" }           ,
+    s = { ":SessionSave<CR>"                                                                   , "Session save" }       ,
+    l = { ":SessionLoad<CR>"                                                                   , "Session load" }       ,
+    d = { ":Dashboard<CR>"                                                                     , "Dashboard" }          ,
   },
 
   -- t = { --> replaced lsp reference/diagnostics
@@ -276,6 +273,7 @@ local ctrl_nmappings = {
   ["<C-c>"] = { "<cmd>q!<CR>", "Quit window" },
   ["<C-w>s"] = { "<cmd>vsplit<CR>", "Vertical split" },
   ["<C-w>a"] = { "<cmd>split<CR>", "Horizontal split" },
+  ["<C-w>o"] = { "<cmd>MaximizerToggle<CR>", "Zoom toggle"},
 }
 which_key.register(ctrl_nmappings, ctrl_nopts)
 

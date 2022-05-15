@@ -70,7 +70,8 @@ return packer.startup(function(use)
   use "szw/vim-maximizer"
 
   -- Startify
-  use 'mhinz/vim-startify'
+  -- use 'mhinz/vim-startify'
+  use 'glepnir/dashboard-nvim'
 
   -- Allows to align stuff! This is amazing.
   use "godlygeek/tabular"
