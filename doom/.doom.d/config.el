@@ -79,5 +79,6 @@
 (after! lsp
   (setq lsp-pyright-typechecking-mode "off"))
 
+;; which-key
 (after! which-key
   (map! :nv "\\" #'evilnc-comment-operator))
