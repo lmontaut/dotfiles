@@ -95,6 +95,7 @@ local leader_nmappings = {
 
   -- vim-maximizer
   [";"] = { "<cmd>MaximizerToggle<CR>", "Zoom toggle"},
+  ["="] = { "<C-w>=", "Windows equal size"},
 
   -- symbols-outline
   ["i"]  = { "<cmd>SymbolsOutline<CR>", "Symbols outline" },

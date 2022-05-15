@@ -81,4 +81,8 @@
 
 ;; which-key
 (after! which-key
-  (map! :nv "\\" #'evilnc-comment-operator))
+  (map! :nv "\\" #'evilnc-comment-operator)
+  (setq which-key-idle-delay 0.3))
+
+;; Config
+(setq display-line-numbers 'relative)
