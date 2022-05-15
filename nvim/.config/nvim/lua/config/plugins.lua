@@ -49,11 +49,11 @@ return packer.startup(function(use)
   use "folke/which-key.nvim" -- Remember keybindings
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use {
-      'numToStr/Comment.nvim',
-      tag = 'v0.6',
-      config = function()
-          require('Comment').setup()
-      end
+    'numToStr/Comment.nvim',
+    tag = 'v0.6',
+    config = function()
+      require('Comment').setup()
+    end
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use 'antoinemadec/FixCursorHold.nvim'
@@ -128,13 +128,13 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Treesitter
   use {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-    }
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  }
 
   -- Nvim tree
   use "kyazdani42/nvim-web-devicons"
@@ -145,9 +145,9 @@ return packer.startup(function(use)
 
   -- Notify
   use { "rcarriga/nvim-notify",
-      config = function()
-        vim.defer_fn(function() require('config.plugins_config.notify') end, 2000)
-      end,
+    config = function()
+      vim.defer_fn(function() require('config.plugins_config.notify') end, 2000)
+    end,
     event = "BufRead",
   }
 
@@ -156,17 +156,17 @@ return packer.startup(function(use)
 
   -- goto-preview
   use { "rmagatti/goto-preview",
-      config = function()
+    config = function()
       require('goto-preview').setup {
-            width = 120; -- Width of the floating window
-            height = 25; -- Height of the floating window
-            default_mappings = true; -- Bind default mappings
-            debug = false; -- Print debug information
-            opacity = 5; -- 0-100 opacity level of the floating window where 100 is fully transparent.
-            post_open_hook = nil -- A function taking two arguments, a buffer and a window to be ran as a hook.
-        }
-      end
-    }
+        width = 120; -- Width of the floating window
+        height = 25; -- Height of the floating window
+        default_mappings = true; -- Bind default mappings
+        debug = false; -- Print debug information
+        opacity = 5; -- 0-100 opacity level of the floating window where 100 is fully transparent.
+        post_open_hook = nil -- A function taking two arguments, a buffer and a window to be ran as a hook.
+      }
+    end
+  }
 
   -- Latex
   use "lervag/vimtex"
@@ -188,6 +188,16 @@ return packer.startup(function(use)
 
   -- Transparent
   use "xiyaowong/nvim-transparent"
+
+  -- Orgmode
+  use { 'nvim-orgmode/orgmode', config = function()
+    require('orgmode').setup {}
+  end
+  }
+
+  -- Sniprun
+  use {}
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
