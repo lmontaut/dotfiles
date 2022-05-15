@@ -195,8 +195,8 @@ return packer.startup(function(use)
   end
   }
 
-  -- Sniprun
-  use {}
+  -- Sniprun -- TODO
+  -- use {}
 
 
   -- Automatically set up your configuration after cloning packer.nvim
