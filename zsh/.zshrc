@@ -54,7 +54,6 @@ unset __conda_setup
 
 # Doom Emacs path 
 export PATH=$HOME/.emacs.d/bin:$PATH
-export PATH=$HOME/.doom.d/bin:$PATH
 
 # Zotero path
 export PATH=$HOME/libs/zotero:$PATH
@@ -70,6 +69,7 @@ alias tat="tmux attach -t"
 alias tls="tmux ls"
 alias tname="tmux rename-window -t"
 alias ipi="ipython -i"
+alias meshcat="chromium http://127.0.0.1:7000/static/"
 alias lum05="xrandr --output eDP-1 --brightness 0.5"
 alias lum10="xrandr --output eDP-1 --brightness 1.0"
 alias lum15="xrandr --output eDP-1 --brightness 1.5"
