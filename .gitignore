@@ -7,3 +7,7 @@ nvim/.config/nvim/plugin
 lvim/.config/lvim/lv-settings.lua
 vim/.vim/view/~=+dotfiles=+cheatsheat.md=
 lvim/.config/lvim/plugin/packer_compiled.lua
+
+emacs/.emacs.d/elpa
+emacs/.emacs.d/dump.txt
+emacs/.emacs.d/auto-save-list
