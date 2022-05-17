@@ -32,7 +32,23 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
+;; (setq doom-theme 'doom-opera-light)
+;; (load-theme 'modus-operandi)
+;;(load-theme 'solarized-light)
+(load-theme 'spacemacs-light t)
+(setq spacemacs-theme-org-agenda-height nil)
+(setq spacemacs-theme-org-height nil)
+
+(use-package! spaceline
+  :demand t
+  :init
+  (setq powerline-default-separator 'arrow-fade)
+  :config
+  (require 'spaceline-config)
+  (spaceline-spacemacs-theme))
+
+(use-package! good-scroll)
+(good-scroll-mode 1)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -40,7 +56,8 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/dev/org/")
+(setq org-directory "~/dev/org")
+(setq org-agenda-files (directory-files-recursively "~/dev/org/" "\\.org$"))
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -76,13 +93,49 @@
 ;; they are implemented.
 
 ;; LSPs
-(after! lsp
-  (setq lsp-pyright-typechecking-mode "off"))
+(after! lsp-pyright
+    (setq lsp-pyright-typechecking-mode "off"))
+
+(after! lsp-mode
+  (setq lsp-enable-file-watchers nil))
+
+(use-package! lsp-treemacs
+  :after! lsp)
+
+;; (after! centaur-tabs
+;;   (centaur-tabs-group-buffer-groups))
+
+
+;; (after! flycheck
+;;   (map! :leader
+;;         (:prefix-map ("l" . "LSP")
+;;          "x" flycheck-command-map)))
 
 ;; which-key
 (after! which-key
   (map! :nv "\\" #'evilnc-comment-operator)
-  (setq which-key-idle-delay 0.3))
+  (map! :nv "C-c" #'evil-window-delete)
+  ;; (map! :nv "L" #'centaur-tabs-forward)
+  ;; (map! :nv "H" #'centaur-tabs-backward)
+  (map! :leader :desc "Project explorer" "e" #'+treemacs/open)
+  ;; LSP
+  (map! :leader
+        (:prefix-map("l" . "LSP")
+        :desc "Buffer diagnostics" "d" #'consult-lsp-diagnostics
+        :desc "Restart" "R" #'lsp-restart-workspace
+        :desc "Rename" "r" #'lsp-rename
+        :desc "Project symbols" "S" #'consult-lsp-symbols
+        :desc "File symbols" "s" #'consult-lsp-file-symbols
+        :desc "References" "f" #'lsp-find-references
+        ))
+  (map! :leader
+        (:prefix-map("s" . "search")
+        :desc "Grep project" "g" #'consult-ripgrep
+        ))
+  (setq which-key-idle-delay 0.5))
 
 ;; Config
-(setq display-line-numbers 'relative)
+(setq display-line-numbers-type 'relative)
+(setq confirm-kill-emacs nil)
+(setq auto-save-default t
+      make-backup-files t)
