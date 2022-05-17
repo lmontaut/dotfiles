@@ -9,7 +9,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 #Mod key
-set $mod Mod1
+set $mod Mod4
 
 # ---- Autostart applications
 
@@ -202,6 +202,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Force i3 to put certain windows to certain workspace
+assign [class="Emacs"] $ws1
 assign [class="firefox"] $ws2
 assign [class="Mattermost"] $ws3
 assign [class="Slack"] $ws3
