@@ -195,6 +195,13 @@ return packer.startup(function(use)
     require('orgmode').setup {}
   end
   }
+  -- use {
+  --     "nvim-neorg/neorg",
+  --     config = function()
+  --         require('neorg').setup {}
+  --     end,
+  --     requires = "nvim-lua/plenary.nvim"
+  -- }
 
   -- Sniprun -- TODO
   -- use {}
