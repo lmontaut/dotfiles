@@ -14,3 +14,4 @@ emacs/.emacs.d/auto-save-list
 emacs/.config/emacs/auto-save-list
 emacs/.config/emacs/eln-cache/28.1-7c4f95c7
 emacs/.config/emacs/straight
+emacs/.config/emacs/elpa
