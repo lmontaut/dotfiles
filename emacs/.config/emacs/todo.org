@@ -1,0 +1,20 @@
+* package manager: straight.el
+    + Helpful
+    + Dashboard
+    + Helm -> replace ivy
+    + projectile
+    + orgmode
+    + magit
+      + evil bindings in magit
+    + Keys: tab, ctrl i,
+    + lsp-mode
+    + vterm
+    + google this
+    + render pdf
+    + perp mode
+    + spaceline/modeline -> display path of current file
+* ivy: keep swiper?
+* undo/redo
+* helm
+* LazyLoading
+* Scroll other window
