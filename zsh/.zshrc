@@ -77,6 +77,7 @@ alias ca="conda activate"
 alias open="xdg-open"
 alias orga="cd ~/orga"
 alias cl="clear"
+alias del_emacs="bash ~/dotfiles/emacs/.config/emacs/del_config.sh"
 # . "$HOME/.cargo/env"
  export VISUAL=nvim;
  export EDITOR=nvim;
