@@ -6,10 +6,10 @@
 (set-fringe-mode 0)        ; Border on the side
 
 ;; Set default font size
-(defvar lelou/default-font-size 100)
-(set-face-attribute 'default nil :height lelou/default-font-size)
+(defvar loumacs/default-font-size 100)
+(set-face-attribute 'default nil :height loumacs/default-font-size)
 
-;; Package manager
+;; Package manager -> Straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -31,16 +31,21 @@
 (straight-use-package 'use-package)
 
 ;; Emacs customizations -- done automatically by Emacs
-(defvar lelou/custom-file (expand-file-name "custom.el" user-emacs-directory))
-(setq custom-file                        lelou/custom-file
+(defvar loumacs/custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq custom-file                        loumacs/custom-file
       make-backup-files                  nil ;
       display-line-numbers-type          'relative
       inhibit-startup-message            t
       use-package-always-ensure          t) ; always ensure that used packages are downloaded
+;; Disable line numbers for certain modes
+;; TODO: add vterm
+(dolist (mode '(term-mode-hook
+                eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Need to load custom file to avoid being overwritten
 ;; more at https://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Customizations.html
-(if (file-exists-p lelou/custom-file)
+(if (file-exists-p loumacs/custom-file)
   (load custom-file))
 
 ;; Keep buffers automatically up to date -> when changed by another program, updates the buffer
