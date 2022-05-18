@@ -8,12 +8,11 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-#Mod key
+# Mod key
 set $mod Mod4
 
 # ---- Autostart applications
-
-exec --no-startup-id setxkbmap us altgr-intl
+exec --no-startup-id setxkbmap us altgr-intl -option caps:escape
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -96,6 +95,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec alacritty
+bindsym $mod+e exec emacs
 # bindsym $mod+Return exec terminator
 
 # kill focused window
@@ -149,7 +149,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -165,7 +165,7 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-# 
+#
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
