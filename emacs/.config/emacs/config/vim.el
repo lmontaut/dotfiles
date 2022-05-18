@@ -6,6 +6,7 @@
   (setq evil-split-window-below t)
   (setq evil-want-C-u-scroll t)
   (setq evil-want-C-i-jump nil)
+  (setq evil-want-keybinding nil)
   (setq evil-undo-system 'undo-redo)
   :config
   (evil-mode 1)
@@ -17,6 +18,14 @@
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal)
 )
+
+;; more evil -> more support for areas in emacs where evil is not well supported
+(use-package evil-collection
+  :straight t
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
 
 (use-package evil-commentary
   :straight t

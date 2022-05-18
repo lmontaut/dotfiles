@@ -33,7 +33,7 @@
 ;; Emacs customizations -- done automatically by Emacs
 (defvar loumacs/custom-file (expand-file-name "custom.el" user-emacs-directory))
 (setq custom-file                        loumacs/custom-file
-      make-backup-files                  nil ;
+      make-backup-files                  nil
       display-line-numbers-type          'relative
       inhibit-startup-message            t
       use-package-always-ensure          t) ; always ensure that used packages are downloaded
