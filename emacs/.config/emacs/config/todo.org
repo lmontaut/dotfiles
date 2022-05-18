@@ -1,0 +1,28 @@
+* package manager: straight.el
+    + keys:
+	+ tab & ctrl i
+	+ C-x b -> list-buffers / C-x C-b -> ivy-switch-buffer
+    + when finding files in counsel, remove the "." and ".."
+    + counsel fuzzy in buffer and file
+    + Packages:
+	+ Dashboard
+	+ projectile
+	+ Sessions
+	+ orgmode
+	+ Helm -> replace ivy?
+	  + make helm take less space
+	  + make it less ugly
+    + magit
+      + evil bindings in magit
+    + commenting
+    + lsp-mode
+    + vterm
+    + google this
+    + render pdf
+    + perp mode
+    + spaceline/modeline -> display path of current file
+* ivy: keep swiper?
+* undo/redo
+* helm
+* LazyLoading
+* Scroll other window
