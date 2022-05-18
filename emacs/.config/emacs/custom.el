@@ -10,6 +10,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "black"))))
+ '(font-lock-comment-face ((t (:background "misty rose" :foreground "sienna"))))
  '(isearch ((t (:background "firebrick" :foreground "white"))))
  '(ivy-current-match ((t (:extend t :background "steel blue" :foreground "white"))))
  '(ivy-minibuffer-match-face-2 ((t (:background "MistyRose1" :weight bold))))
