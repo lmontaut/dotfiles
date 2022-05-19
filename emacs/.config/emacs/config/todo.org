@@ -1,21 +1,25 @@
 * package manager: straight.el
-    + keys:
-	+ tab & ctrl i
-	+ C-x b -> list-buffers / C-x C-b -> ivy-switch-buffer
-    + when finding files in counsel, remove the "." and ".."
-    + counsel fuzzy in buffer and file
+    + tweaks:
+      + Make it so that helpful is invoked when c-h o is called
+      + Make it so helpful does NOT focus the window when opening
+      + enable shift + h for documentation (doomlike)
+      + make it so ivy remembers last command
+      + vim split do not focus other window
     + Packages:
-	+ Dashboard
-	+ projectile
-	+ Sessions
-	+ orgmode
-	+ Helm -> replace ivy?
-	  + make helm take less space
-	  + make it less ugly
-    + magit
-      + evil bindings in magit
-    + commenting
-    + lsp-mode
+      + lsp-mode
+        + show diagnostics
+        + next/prev error
+        + shift + k -> documentation
+      + projectile
+      + Sessions
+      + orgmode
+      + Helm -> replace ivy?
+        + make helm take less space & ivy take more space
+        + make it less ugly
+      + magit
+        + evil bindings in magit
+    + cmake building & setting targets / make build and run
+      + see the output of vscode -> what target do they propose?
     + vterm
     + google this
     + render pdf

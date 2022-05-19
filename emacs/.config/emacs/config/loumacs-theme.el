@@ -18,4 +18,4 @@
 ;  :ensure t
 ;  :config (spaceline-spacemacs-theme))
 
-(provide 'theme)
+(provide 'loumacs-theme)

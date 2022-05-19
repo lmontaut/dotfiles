@@ -3,3 +3,9 @@ rm -rf ~/dotfiles/emacs/.config/emacs/straight
 rm -rf ~/dotfiles/emacs/.config/emacs/eln-cache
 rm -rf ~/dotfiles/emacs/.config/emacs/elpa
 rm -rf ~/dotfiles/emacs/.config/emacs/games
+rm -rf ~/dotfiles/emacs/.config/emacs/*#
+rm -rf ~/dotfiles/emacs/.config/emacs/#*
+rm -rf ~/dotfiles/emacs/.config/emacs/.#*
+rm -rf ~/dotfiles/emacs/.config/emacs/config/*#
+rm -rf ~/dotfiles/emacs/.config/emacs/config/#*
+rm -rf ~/dotfiles/emacs/.config/emacs/config/.#*

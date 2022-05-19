@@ -43,4 +43,4 @@
   (key-chord-mode 1))
 
 
-(provide 'vim)
+(provide 'loumacs-vim)

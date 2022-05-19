@@ -2,4 +2,4 @@
 (add-to-list 'load-path (concat user-emacs-directory "config"))
 
 ;; Everything is located in config/
-(require 'config)
+(require 'loumacs-config)

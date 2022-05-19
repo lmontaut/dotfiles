@@ -34,14 +34,19 @@
 (defvar loumacs/custom-file (expand-file-name "custom.el" user-emacs-directory))
 (setq custom-file                        loumacs/custom-file
       make-backup-files                  nil
-      ;; display-line-numbers-type          'relative ;; see below
+      display-line-numbers-type          'relative ;; see below
       inhibit-startup-message            t
       use-package-always-ensure          t) ; always ensure that used packages are downloaded
+(setq create-lockfiles nil)
+
 ;; Disable line numbers for certain modes
 ;; TODO: add vterm
 (dolist (mode '(term-mode-hook
-                eshell-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+                eshell-mode-hook
+                dashboard-setup-startup-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0)))
+)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;; Need to load custom file to avoid being overwritten
 ;; more at https://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Customizations.html
@@ -52,10 +57,10 @@
 (global-auto-revert-mode t)
 
 ;; Display line number
-(setq-default display-line-numbers 'visual
-              display-line-numbers-widen nil
-              ;; this is the default
-              display-line-numbers-current-absolute t)
+;; (setq-default display-line-numbers 'visual
+;;               display-line-numbers-widen nil
+;;               ;; this is the default
+;;               display-line-numbers-current-absolute t)
 
 ;; customizing colors for current line number
 (custom-set-faces '(line-number-current-line ((t :weight bold
@@ -74,4 +79,4 @@
 (setq-default indent-tabs-mode nil
     tab-width 4)
 
-(provide 'base)
+(provide 'loumacs-base)

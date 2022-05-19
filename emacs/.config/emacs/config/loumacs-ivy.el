@@ -1,4 +1,3 @@
-;; Ivy & councel deal with completion for files, M-x
 (use-package ivy
   :straight t
   :bind (("C-s" . swiper)
@@ -12,20 +11,27 @@
 	 ("C-d" . ivy-switch-buffer-kill)
 	 )
   :config
-  (ivy-mode 1)
   (setq ivy-use-virtual-buffers nil)
   ;; by default ivy puts a "^" which means that it will find everything *starting* with
   ;; what is after "^". This setting removes that behavior
   (setq ivy-initial-inputs-alist nil)
   ;; the following prevents ivy from suggesting "." and ".." when listing dirs
-  (setq ivy-extra-directories ())
+  ;; (setq ivy-extra-directories ())
+  ;; fuzzy matching
+  (setq ivy-re-builders-alist
+        '((t . ivy--regex-fuzzy)))
 )
+;; we load ivy immediatly, otherwise it waits for a keystroke to be activated
+;; this problematic when we want to do stuff which ivy works on but has no
+;; "ivy-..." bindings attached to it
+;; (ivy-mode 1)
 
 ;; Ivy and counsel are the same package. See above.
 (use-package counsel
   :straight t
   :bind
 ;  ("M-x" . counsel-M-x)
+  ("M-x" . counsel-M-x)
   ("C-x C-m" . counsel-M-x)
   ("C-x f" . counsel-find-file)
   ("C-x c k" . counsel-yank-pop))
@@ -44,25 +50,4 @@
   ([remap describe-key] . helpful-key)
 )
 
-;; Module for completing stuff
-(use-package company
-  :straight t
-  :config
-  (add-hook 'after-init-hook 'global-company-mode))
-
-(use-package helm
-  :straight t
-  :bind (("M-x" . helm-M-x)
-	 )
-  )
-
-(use-package which-key
-  :straight t
-  :defer 0
-  ;; A diminished mode is a minor mode that has had its mode line display diminished
-  :diminish which-key-mode
-  :config
-  (which-key-mode)
-  (setq which-key-idle-delay 0.5))
-
-(provide 'completion)
+(provide 'loumacs-ivy)
