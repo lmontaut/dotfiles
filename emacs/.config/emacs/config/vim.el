@@ -5,9 +5,10 @@
   (setq evil-vsplit-window-right t)
   (setq evil-split-window-below t)
   (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump nil)
+  (setq evil-want-C-i-jump t)
   (setq evil-want-keybinding nil)
   (setq evil-undo-system 'undo-redo)
+  (setq evil-shift-width 2)
   :config
   (evil-mode 1)
   ;; Use visual line motions even outside of visual-line-mode buffers
