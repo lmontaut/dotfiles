@@ -13,7 +13,13 @@
 	 )
   :config
   (ivy-mode 1)
-  (setq ivy-use-virtual-buffers nil))
+  (setq ivy-use-virtual-buffers nil)
+  ;; by default ivy puts a "^" which means that it will find everything *starting* with
+  ;; what is after "^". This setting removes that behavior
+  (setq ivy-initial-inputs-alist nil)
+  ;; the following prevents ivy from suggesting "." and ".." when listing dirs
+  (setq ivy-extra-directories ())
+)
 
 ;; Ivy and counsel are the same package. See above.
 (use-package counsel
@@ -21,7 +27,7 @@
   :bind
 ;  ("M-x" . counsel-M-x)
   ("C-x C-m" . counsel-M-x)
-  ("C-x C-f" . counsel-find-file)
+  ("C-x f" . counsel-find-file)
   ("C-x c k" . counsel-yank-pop))
 
 ;; Better help with Helpful & counsel
