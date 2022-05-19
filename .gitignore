@@ -19,3 +19,6 @@ emacs/.config/emacs/elpa
 #*
 .#*
 emacs/.config/emacs/projects
+emacs/.config/emacs/.cache/lsp/npm/pyright
+emacs/.config/emacs/.lsp-session-v1
+emacs/.config/emacs/recentf
