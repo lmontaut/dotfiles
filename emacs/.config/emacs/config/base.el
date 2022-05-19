@@ -34,7 +34,7 @@
 (defvar loumacs/custom-file (expand-file-name "custom.el" user-emacs-directory))
 (setq custom-file                        loumacs/custom-file
       make-backup-files                  nil
-      display-line-numbers-type          'relative
+      ;; display-line-numbers-type          'relative ;; see below
       inhibit-startup-message            t
       use-package-always-ensure          t) ; always ensure that used packages are downloaded
 ;; Disable line numbers for certain modes
@@ -52,8 +52,15 @@
 (global-auto-revert-mode t)
 
 ;; Display line number
-(global-display-line-numbers-mode)
+(setq-default display-line-numbers 'visual
+              display-line-numbers-widen nil
+              ;; this is the default
+              display-line-numbers-current-absolute t)
 
+;; customizing colors for current line number
+(custom-set-faces '(line-number-current-line ((t :weight bold
+                                                 :foreground "snow"
+                                                 :background "deep pink"))))
 ;; Show matching parentheses
 (show-paren-mode 1)
 
@@ -62,5 +69,9 @@
 
 ;; Delete trailing whitespace before save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; Default indent
+(setq-default indent-tabs-mode nil
+    tab-width 4)
 
 (provide 'base)
