@@ -22,3 +22,5 @@ emacs/.config/emacs/projects
 emacs/.config/emacs/.cache/lsp/npm/pyright
 emacs/.config/emacs/.lsp-session-v1
 emacs/.config/emacs/recentf
+/emacs/.config/emacs/.cache/
+/emacs/.config/emacs/transient/
