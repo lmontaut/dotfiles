@@ -3,11 +3,12 @@
 (tool-bar-mode -1)          ; Disable the graphical toolbar (open file etc.)
 (menu-bar-mode -1)            ; Disable the menu bar
 (tooltip-mode -1)           ; Tooltips shows info at the bottom
-(set-fringe-mode 0)        ; Border on the side
+(set-fringe-mode 10)        ; Border on the side
 
 ;; Set default font size
-(defvar loumacs/default-font-size 100)
+(defvar loumacs/default-font-size 120)
 (set-face-attribute 'default nil :height loumacs/default-font-size)
+(set-face-attribute 'default nil :font "Inconsolata-13")
 
 ;; Package manager -> Straight.el
 (defvar bootstrap-version)
@@ -29,6 +30,9 @@
 ;;    ....
 ;; )
 (straight-use-package 'use-package)
+
+;; Eldoc mode -> documentation appears in minibuffer
+(eldoc-mode)
 
 ;; Emacs customizations -- done automatically by Emacs
 (defvar loumacs/custom-file (expand-file-name "custom.el" user-emacs-directory))
