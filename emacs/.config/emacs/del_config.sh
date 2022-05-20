@@ -9,3 +9,7 @@ rm -rf ~/dotfiles/emacs/.config/emacs/.#*
 rm -rf ~/dotfiles/emacs/.config/emacs/config/*#
 rm -rf ~/dotfiles/emacs/.config/emacs/config/#*
 rm -rf ~/dotfiles/emacs/.config/emacs/config/.#*
+rm -rf ~/dotfiles/emacs/.config/emacs/projects
+rm -rf ~/dotfiles/emacs/.config/emacs/recentf
+rm -rf ~/dotfiles/emacs/.config/emacs/tramp
+rm -rf ~/dotfiles/emacs/.config/emacs/transient
