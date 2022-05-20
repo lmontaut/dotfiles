@@ -33,6 +33,6 @@
 (require 'loumacs-keybindings)
 
 ;; byte compilation
-;; (byte-recompile-directory (expand-file-name "~/.config/emacs") 0)
+(byte-recompile-directory (expand-file-name "~/.config/emacs") 0)
 
 (provide 'loumacs-config)

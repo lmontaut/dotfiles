@@ -37,6 +37,12 @@
     ;; leader-i
     "i" 'lsp-ui-imenu
    )
+  ;; non-leader everywhere
+  (general-define-key
+   :keymaps '(normal insert visual emacs)
+    "M-v" 'scroll-other-window
+    "M-V" 'scroll-other-window-down
+  )
   ;; non-leader normal + visual
   (general-define-key
    :keymaps '(normal visual)
@@ -54,6 +60,8 @@
     "g r" 'lsp-find-references
     "C-x l S" 'lsp-ivy-workspace-symbol
     "C-x l s" 'helm-imenu
+    "C-w v" 'split-window-right
+    "C-w s" 'split-window-below
   )
   ;; Magit keybindings
   ;; (general-define-key
