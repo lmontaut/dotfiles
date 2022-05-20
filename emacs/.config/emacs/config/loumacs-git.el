@@ -12,9 +12,10 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-(use-package evil-magit
-  :straight t
-  :after magit)
+;; evil-magit is part of the evil collection
+;; (use-package evil-magit
+;;   :straight t
+;;   :after magit)
 
 
 (provide 'loumacs-git)
