@@ -57,10 +57,10 @@
   )
   ;; Magit keybindings
   ;; (general-define-key
-  ;;   :keymaps '(normal)
-  ;;   :hook magit-mode-hook
+  ;;   :keymaps 'magit-mode-map
   ;;   "C-n" 'magit-section-up
   ;;   "C-p" 'magit-section-down
+  ;;   "<escape>" 'keyboard-quit
   ;; )
   ;; non-leader visual
   (general-define-key

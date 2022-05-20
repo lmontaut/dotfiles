@@ -6,7 +6,6 @@
       + -- git --
         + magit
           + bind escape to C-g quit in magit-mode
-          + ssh-agent inside emacs
       + -- compilation --
         + cmake building & setting targets / make build and run
           + see the output of vscode -> what target do they propose?
@@ -19,6 +18,7 @@
         + search local vs global workspace symbols
         + local vs. global errors: OK
         + display conda env
+    + company: ctrl + space to bring up/down the completion
     + Packages:
       + orgmode
       + Sessions
