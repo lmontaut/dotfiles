@@ -7,28 +7,30 @@
 ;; Evil mode
 (require 'loumacs-vim)
 
-;; Navigation stuff -- choose ivy or helm
-;; Ivy
+;; Navigation stuff
+;; Ivy counsel
 ;; (require 'loumacs-ivy)
-;; helm
+;; helm --> preferred
 (require 'loumacs-helm)
-
-;; Completion
-(require 'loumacs-completion)
-
-;; Keybindings - needs to be loaded last probably
-(require 'loumacs-keybindings)
-
-;; TODO: Language specific settings/keybindings
-;; (require 'language_specifics)
 
 ;; LSP
 ;; inside, choose btw ivy and helm
 (require 'loumacs-lsp)
 
-;; Keybindings - needs to be loaded last probably
+;; Completion
+(require 'loumacs-completion)
+
+;; TODO: Language specific settings/keybindings
+;; (require 'language_specifics)
+
+;; Git
+(require 'loumacs-git)
+
 ;; actually I think I like immediatly having a scratch buffer
 ;; (require 'dashboard)
+
+;; Keybindings - needs to be loaded last probably
+(require 'loumacs-keybindings)
 
 ;; byte compilation
 ;; (byte-recompile-directory (expand-file-name "~/.config/emacs") 0)
