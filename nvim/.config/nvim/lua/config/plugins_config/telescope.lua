@@ -114,6 +114,11 @@ telescope.setup {
     -- builtin picker
     find_files = {
       find_command = { "fd", "--type=file", "--hidden", "--smart-case" },
+      theme = "dropdown",
+    },
+    git_files = {
+      find_command = { "fd", "--type=file", "--hidden", "--smart-case" },
+      theme = "dropdown",
     },
     live_grep = {
       --@usage don't include the filename in the search results

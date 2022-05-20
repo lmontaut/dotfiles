@@ -10,7 +10,8 @@
   :straight t
   :commands (magit-status magit-get-current-branch)
   :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+)
 
 ;; evil-magit is part of the evil collection
 ;; (use-package evil-magit

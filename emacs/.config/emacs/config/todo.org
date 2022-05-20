@@ -1,30 +1,32 @@
-* package manager: straight.el
+* package manager:
     + tweaks:
-      + Make it so that helpful is invoked when c-h o is called
-      + Make it so helpful does NOT focus the window when opening
-      + enable shift + h for documentation (doomlike)
-      + make it so ivy remembers last command
       + vim split do not focus other window
+      + helm tab vs ctrl j
+    + Core dev features:
+      + -- git --
+        + magit
+          + bind escape to C-g quit in magit-mode
+          + ssh-agent inside emacs
+      + -- compilation --
+        + cmake building & setting targets / make build and run
+          + see the output of vscode -> what target do they propose?
+      + -- LSP/Searching stuff: --
+        + go to definition: OK
+        + search references accross workspace: OK
+        + search for word accross workspace: OK
+        + search for file in project: OK
+        + create/delete/move files in project
+        + search local vs global workspace symbols
+        + local vs. global errors: OK
+        + display conda env
     + Packages:
-      + lsp-mode
-        + show diagnostics
-        + next/prev error
-        + shift + k -> documentation
-      + projectile
-      + Sessions
       + orgmode
-      + Helm -> replace ivy?
-        + make helm take less space & ivy take more space
-        + make it less ugly
-      + magit
-        + evil bindings in magit
-    + cmake building & setting targets / make build and run
-      + see the output of vscode -> what target do they propose?
+      + Sessions
+      + projectile?
     + vterm
     + google this
     + render pdf
     + perp mode
-    + spaceline/modeline -> display path of current file
 * ivy: keep swiper?
 * undo/redo
 * helm

@@ -50,6 +50,8 @@ keymap("n", "<" , "<<", opts)
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
+-- ctrl + backspace to delete word
+keymap("i", "<C-BS>", "<C-W>", opts)
 
 -- Unindent
 keymap("i", "<S-Tab>", "<C-d>", opts)

@@ -9,6 +9,10 @@
   (setq which-key-idle-delay 0.5))
 
 ;; -- Misc functions
+;; TODO: switch to helm to do that
+(use-package counsel
+  :straight t
+)
 (defun loumacs/counsel-private-config ()
   "Opens the private emacs config files"
   (interactive)
@@ -25,10 +29,13 @@
    :global-prefix "C-SPC"
     ;; leader-t
     "t"  '(:ignore t :which-key "toggles")
-    "tt" '(counsel-load-theme :which-key "choose theme")
+    ;; "tt" '(counsel-load-theme :which-key "choose theme")
+    "tt" '(load-theme :which-key "choose theme")
     ;; leader-f
     "f" '(:ignore t :which-key "files")
     "fp" '(loumacs/counsel-private-config :which-key "emacs config")
+    ;; leader-i
+    "i" 'lsp-ui-imenu
    )
   ;; non-leader normal + visual
   (general-define-key
@@ -40,7 +47,21 @@
     :keymaps '(normal)
     ">" 'evil-shift-right-line
     "<" 'evil-shift-left-line
+    "K" 'lsp-ui-doc-glance
+    "C-x l d" 'lsp-ui-flycheck-list
+    "] e" 'flycheck-next-error
+    "[ e" 'flycheck-next-error
+    "g r" 'lsp-find-references
+    "C-x l S" 'lsp-ivy-workspace-symbol
+    "C-x l s" 'helm-imenu
   )
+  ;; Magit keybindings
+  ;; (general-define-key
+  ;;   :keymaps '(normal)
+  ;;   :hook magit-mode-hook
+  ;;   "C-n" 'magit-section-up
+  ;;   "C-p" 'magit-section-down
+  ;; )
   ;; non-leader visual
   (general-define-key
     :keymaps '(visual)
