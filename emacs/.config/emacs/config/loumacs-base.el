@@ -30,6 +30,10 @@
 ;;    ....
 ;; )
 (straight-use-package 'use-package)
+(use-package bind-key
+  :ensure t
+  :config
+  (add-to-list 'same-window-buffer-names "*Personal Keybindings*"))
 
 ;; Eldoc mode -> documentation appears in minibuffer
 (eldoc-mode)

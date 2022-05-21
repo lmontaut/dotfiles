@@ -7,6 +7,9 @@
 ;; Evil mode
 (require 'loumacs-vim)
 
+;; which-key
+(require 'loumacs-which-key)
+
 ;; Navigation stuff
 ;; Ivy counsel
 ;; (require 'loumacs-ivy)

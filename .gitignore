@@ -24,3 +24,4 @@ emacs/.config/emacs/.lsp-session-v1
 emacs/.config/emacs/recentf
 /emacs/.config/emacs/.cache/
 /emacs/.config/emacs/transient/
+*.elc
