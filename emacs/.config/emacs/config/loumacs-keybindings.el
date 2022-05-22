@@ -11,12 +11,12 @@
 ;; -- General allows to easily create keybindings
 (use-package general
   :straight t
-  :ensure t
-)
+  :config
+  (general-evil-setup))
 
 ;; leader everywhere
 (general-define-key
-  :keymaps '(normal insert visual emacs)
+  :states '(normal insert visual)
   :prefix "SPC"
   :global-prefix "C-SPC"
   ;; leader-t
@@ -31,18 +31,18 @@
   )
 ;; non-leader everywhere
 (general-define-key
-  :keymaps '(normal insert visual emacs)
+  :states '(normal insert visual)
   "M-v" 'scroll-other-window
   "M-V" 'scroll-other-window-down
 )
 ;; non-leader normal + visual
 (general-define-key
-  :keymaps '(normal visual)
+  :states '(normal visual)
   "\\" 'evil-commentary
 )
 ;; non-leader normal
 (general-define-key
-  :keymaps '(normal)
+  :states 'normal
   ">" 'evil-shift-right-line
   "<" 'evil-shift-left-line
   "K" 'lsp-ui-doc-glance
@@ -56,23 +56,24 @@
   "C-w s" 'split-window-below
 )
 ;; Magit keybindings
-;; (general-define-key
-;;   :keymaps 'magit-mode-map
-;;   "C-n" 'magit-section-up
-;;   "C-p" 'magit-section-down
-;;   "<escape>" 'keyboard-quit
-;; )
+(general-define-key
+  :keymaps 'magit-mode-map
+  "C-n" 'magit-section-up
+  "C-p" 'magit-section-down
+  "<escape>" 'keyboard-quit
+)
 ;; non-leader visual
 (general-define-key
-  :keymaps '(visual)
+  :states 'visual
   ">" 'evil-shift-right
   "<" 'evil-shift-left
 )
 ;; non-leader insert
 (general-define-key
-  :keymaps '(insert)
+  :states 'insert
   "TAB" 'evil-shift-right-line
   "<backtab>" 'evil-shift-left-line
 )
 
+;; (general-setq evil-search-module 'evil-search)
 (provide 'loumacs-keybindings)

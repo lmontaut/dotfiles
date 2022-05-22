@@ -30,7 +30,12 @@
 ;;    ....
 ;; )
 (straight-use-package 'use-package)
+;; Configure use-package to use straight.el by default
+(use-package straight
+             :custom (straight-use-package-by-default t))
+
 (use-package bind-key
+  :straight t
   :ensure t
   :config
   (add-to-list 'same-window-buffer-names "*Personal Keybindings*"))

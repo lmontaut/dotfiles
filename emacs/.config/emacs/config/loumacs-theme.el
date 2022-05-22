@@ -2,7 +2,7 @@
 (use-package spacemacs-theme
   :straight t
   :defer t
-  :init
+;; :init
 ;  (load-theme 'spacemacs-light t)
 ;  (load-theme 'spacemacs-dark t)
 ); have it available if needed

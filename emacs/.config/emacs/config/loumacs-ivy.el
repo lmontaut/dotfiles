@@ -24,7 +24,7 @@
 ;; we load ivy immediatly, otherwise it waits for a keystroke to be activated
 ;; this problematic when we want to do stuff which ivy works on but has no
 ;; "ivy-..." bindings attached to it
-(ivy-mode 1)
+;; (ivy-mode 1)
 
 ;; Ivy and counsel belong to the same package. See above.
 (use-package counsel
