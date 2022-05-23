@@ -35,9 +35,10 @@
 ;; (setq doom-theme 'doom-opera-light)
 ;; (load-theme 'modus-operandi)
 ;;(load-theme 'solarized-light)
-(load-theme 'spacemacs-light t)
-(setq spacemacs-theme-org-agenda-height nil)
-(setq spacemacs-theme-org-height nil)
+;; (load-theme 'spacemacs-light t)
+(load-theme 'adwaita t)
+;; (setq spacemacs-theme-org-agenda-height nil)
+;; (setq spacemacs-theme-org-height nil)
 
 (use-package! spaceline
   :demand t
@@ -99,8 +100,8 @@
 (after! lsp-mode
   (setq lsp-enable-file-watchers nil))
 
-(use-package! lsp-treemacs
-  :after! lsp)
+;; (use-package! lsp-treemacs
+;;   :after! lsp)
 
 ;; (after! centaur-tabs
 ;;   (centaur-tabs-group-buffer-groups))
