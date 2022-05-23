@@ -23,7 +23,8 @@
 ;;
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
-;;
+(setq doom-font (font-spec :family "Inconsolata" :size 17))
+
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
@@ -115,17 +116,23 @@
 ;; which-key
 (after! which-key
   (map! :nv "\\" #'evilnc-comment-operator)
+  ;; Window thingies
   (map! :nv "C-c" #'evil-window-delete)
+  (map! :nv "C-l" #'evil-window-right)
+  (map! :nv "C-h" #'evil-window-left)
+  (map! :nv "C-j" #'evil-window-down)
+  (map! :nv "C-k" #'evil-window-up)
+  (map! :nv "zl" #'recenter-top-bottom)
   ;; (map! :nv "L" #'centaur-tabs-forward)
   ;; (map! :nv "H" #'centaur-tabs-backward)
-  (map! :leader :desc "Project explorer" "e" #'+treemacs/open)
+  (map! :leader :desc "Project explorer" "e" #'+treemacs/toggle)
   ;; LSP
   (map! :leader
         (:prefix-map("l" . "LSP")
         :desc "Buffer diagnostics" "d" #'consult-lsp-diagnostics
         :desc "Restart" "R" #'lsp-restart-workspace
         :desc "Rename" "r" #'lsp-rename
-        :desc "Project symbols" "S" #'consult-lsp-symbols
+        :desc "Project symbols" "S" #'lsp-ivy-workspace-symbol
         :desc "File symbols" "s" #'consult-lsp-file-symbols
         :desc "References" "f" #'lsp-find-references
         ))
