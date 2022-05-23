@@ -36,6 +36,6 @@
 (require 'loumacs-keybindings)
 
 ;; byte compilation
-;; (byte-recompile-directory (expand-file-name "~/dotfiles/emacs/.config/emacs") 0)
+;; (byte-recompile-directory (expand-file-name "~/dotfiles/emacs/.config/emacs/straight/build") 0)
 
 (provide 'loumacs-config)

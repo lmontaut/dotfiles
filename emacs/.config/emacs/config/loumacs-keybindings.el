@@ -73,6 +73,7 @@
   :states 'insert
   "TAB" 'evil-shift-right-line
   "<backtab>" 'evil-shift-left-line
+  "jk" 'evil-normal-state
 )
 
 ;; (general-setq evil-search-module 'evil-search)

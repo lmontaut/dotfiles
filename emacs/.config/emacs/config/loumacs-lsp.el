@@ -57,6 +57,10 @@
   :after lsp-mode
 )
 
+(use-package cmake-mode
+  :straight t
+)
+
 (use-package lsp-ui
   :straight t
   :after lsp-mode
