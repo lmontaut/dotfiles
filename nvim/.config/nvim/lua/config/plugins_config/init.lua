@@ -1,5 +1,6 @@
 require "config.plugins_config.whichkey"
 require "config.plugins_config.colorscheme"
+require "config.plugins_config.project"
 require "config.plugins_config.telescope"
 require "config.plugins_config.treesitter"
 require "config.plugins_config.nvimtree"
