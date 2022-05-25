@@ -43,5 +43,13 @@ Visit [awesome-neovim]("https://github.com/rockerBOO/awesome-neovim")
 
 Wallpapers: [wallhaven](https://wallhaven.cc/)
 
+## Firefox vim bindings
+Install `Tridactyl` extension.
+Modify following bidings:
+- `:bind <C-l> forward`
+- `:bind <C-h> back`
+- `:bind L tabnext_gt`
+- `:bind H tabprev`
+
 ## Credit
 Configuration heavily inspired from [LunarVim](https://github.com/LunarVim/LunarVim)
