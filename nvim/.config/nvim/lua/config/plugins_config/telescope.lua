@@ -9,14 +9,14 @@ local actions = require "telescope.actions"
 telescope.setup {
   defaults = {
 
-    prompt_prefix = " ",
-    selection_caret = " ",
+    -- prompt_prefix = " ",
+    -- selection_caret = " ",
     path_display = { "smart" },
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
+    -- entry_prefix = "  ",
+    -- initial_mode = "insert",
+    -- selection_strategy = "reset",
+    -- sorting_strategy = "descending",
+    -- layout_strategy = "horizontal",
     layout_config = {
       width = 0.75,
       preview_cutoff = 120,
@@ -44,6 +44,7 @@ telescope.setup {
         ["<C-k>"] = actions.move_selection_previous,
 
         ["<C-c>"] = actions.close,
+        ["<esc>"] = actions.close,
 
         ["<CR>"] = actions.select_default,
         ["<C-s>"] = actions.select_horizontal,
@@ -97,34 +98,35 @@ telescope.setup {
       },
     },
   },
-  file_ignore_patterns = {},
-  path_display = { shorten = 5 },
-  winblend = 0,
-  border = {},
-  borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-  color_devicons = true,
-  set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-  pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
+  -- file_ignore_patterns = {},
+  -- path_display = { shorten = 5 },
+  -- winblend = 0,
+  -- border = {},
+  -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+  -- color_devicons = true,
+  -- set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+    pickers = {
+        find_files = {
+          hidden = true,
+        },
+        live_grep = {
+          --@usage don't include the filename in the search results
+          only_sort_text = true,
+        },
+      },
     -- Now the picker_config_key will be applied every time you call this
     -- builtin picker
     find_files = {
-      find_command = { "fd", "--type=file", "--hidden", "--smart-case" },
-      theme = "dropdown",
+      find_command = { "fd", "--files", "--hidden", },
     },
     git_files = {
-      find_command = { "fd", "--type=file", "--hidden", "--smart-case" },
-      theme = "dropdown",
+      find_command = { "fd", "--files", "--hidden", },
     },
-    live_grep = {
-      --@usage don't include the filename in the search results
-      only_sort_text = true,
-    },
-  },
+  --   live_grep = {
+  --     --@usage don't include the filename in the search results
+  --     only_sort_text = true,
+  --   },
+  -- },
   extensions = {
     -- Your extension configuration goes here:
     -- extension_name = {
@@ -137,6 +139,6 @@ telescope.setup {
       override_file_sorter = true, -- override the file sorter
       case_mode = "smart_case", -- or "ignore_case" or "respect_case"
     },
+    conda = {home = "~/anaconda3/"}
   },
 }
-
