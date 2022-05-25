@@ -179,6 +179,8 @@ local leader_nmappings = {
     -- a = { "<cmd>lua require('config.plugins_config.telescope_functions.code_actions').code_actions()<CR>" , "Code Action" },
     a = { "<cmd>Lspsaga code_action<CR>"                     , "Code Action" }        ,
     r = { "<cmd>Lspsaga rename<CR>"                          , "Rename" }             ,
+    c = { "<cmd>CondaChangeEnv<CR>"                          , "Conda env" }          ,
+    C = { ":!which python<CR>"                               , "Which conda env" }    ,
     d = { "<cmd>Trouble document_diagnostics<CR>"            , "Buffer diagnostics" } ,
     D = { "<cmd>Trouble workspace_diagnostics<CR>"           , "All diagnostics" }    ,
     s = { "<cmd>Telescope lsp_document_symbols<CR>"          , "Document Symbols" }   ,
@@ -188,7 +190,7 @@ local leader_nmappings = {
     I = { "<cmd>LspInstallInfo<CR>"                          , "Installer Info" }     ,
     j = { "<cmd>Lspsaga diagnostic_jump_next<CR>"            , "Next Diagnostic" }    ,
     k = { "<cmd>Lspsaga diagnostic_jump_prev<CR>"            , "Prev Diagnostic" }    ,
-    L = { "<cmd>LspLog<CR>"                                  , "Lsp log" }   ,
+    L = { "<cmd>LspLog<CR>"                                  , "Lsp log" }            ,
   },
 
   v = {
