@@ -91,7 +91,7 @@ local leader_nopts = {
 }
 
 local leader_nmappings = {
-  ["e"] = { "<cmd>NvimTreeToggle<CR>", "Explorer" },
+  ["e"] = { "<cmd>RnvimrToggle<CR>", "Ranger" },
 
   -- vim-maximizer
   [";"] = { "<cmd>MaximizerToggle<CR>", "Zoom toggle"},
