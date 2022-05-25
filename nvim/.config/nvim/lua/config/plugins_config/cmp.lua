@@ -16,6 +16,38 @@ local check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
+local cmp_next = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expandable() then
+        luasnip.expand()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif check_backspace() then
+        fallback()
+      else
+        fallback()
+      end
+end
+
+local cmp_prev = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+end
+
+local cmp_toggle = function()
+      if cmp.visible() then
+        cmp.close()
+      else
+        cmp.complete()
+      end
+end
+
 --   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = "",
@@ -58,46 +90,14 @@ cmp.setup {
     ["<C-p>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-n>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     -- ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ['<C-Space>'] = cmp.mapping(function()
-      if cmp.visible() then
-        cmp.close()
-      else
-        cmp.complete()
-      end
-    end, {"i", "s", "c"}),
+    ['<C-Space>'] = cmp.mapping(cmp_toggle, {"i", "s", "c"}),
     ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
     ["<C-e>"] = cmp.config.disable,
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
     ["<CR>"] = cmp.mapping.confirm { select = true },
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expandable() then
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
+    ["<Tab>"] = cmp.mapping(cmp_next, { "i", "c" }),
+    ["<S-Tab>"] = cmp.mapping(cmp_prev, { "i", "c" }),
   }),
   formatting = {
     fields = { "kind", "abbr", "menu" },
@@ -151,13 +151,9 @@ cmp.setup.cmdline('/', {
     ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
     ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
     ["<C-t>"] = cmp.mapping(cmp.mapping.confirm(), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(function()
-      if cmp.visible() then
-        cmp.close()
-      else
-        cmp.complete()
-      end
-    end, {"i", "s", "c"}),
+    ["<TAB>"] = cmp.mapping(cmp_next, { 'i', 'c' }),
+    ["<S-TAB>"] = cmp.mapping(cmp_prev, { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp_toggle, {"i", "s", "c"}),
   },
   sources = {
     { name = 'buffer' }
@@ -169,13 +165,9 @@ cmp.setup.cmdline(':', {
     ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
     ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
     ["<C-t>"] = cmp.mapping(cmp.mapping.confirm(), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(function()
-      if cmp.visible() then
-        cmp.close()
-      else
-        cmp.complete()
-      end
-    end, {"i", "s", "c"}),
+    ["<TAB>"] = cmp.mapping(cmp_next, { 'i', 'c' }),
+    ["<S-TAB>"] = cmp.mapping(cmp_prev, { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp_toggle, {"i", "s", "c"}),
   },
   sources = cmp.config.sources({
     { name = 'path'  },
