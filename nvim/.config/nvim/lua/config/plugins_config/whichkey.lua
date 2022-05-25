@@ -100,6 +100,13 @@ local leader_nmappings = {
   -- symbols-outline
   ["i"]  = { "<cmd>SymbolsOutline<CR>", "Symbols outline" },
 
+  -- find buffer quicker
+  [","] = { "<cmd>Telescope buffers<CR>", "Find buffer" },
+  ["1"] = { "<cmd>b#<CR>", "Last buffer" },
+
+  -- find project files quicker
+  [" "] = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find file" },
+
   f = {
     name = "Find",
     f = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find file" }          ,
@@ -173,7 +180,7 @@ local leader_nmappings = {
     a = { "<cmd>Lspsaga code_action<CR>"                     , "Code Action" }        ,
     r = { "<cmd>Lspsaga rename<CR>"                          , "Rename" }             ,
     d = { "<cmd>Trouble document_diagnostics<CR>"            , "Buffer diagnostics" } ,
-    D = { "<cmd>Trouble lsp_workspace_diagnostics<CR>"       , "All diagnostics" }    ,
+    D = { "<cmd>Trouble workspace_diagnostics<CR>"           , "All diagnostics" }    ,
     s = { "<cmd>Telescope lsp_document_symbols<CR>"          , "Document Symbols" }   ,
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>" , "Workspace Symbols" }  ,
     f = { "<cmd>lua vim.lsp.buf.formatting()<CR>"            , "Format" }             ,
@@ -181,6 +188,7 @@ local leader_nmappings = {
     I = { "<cmd>LspInstallInfo<CR>"                          , "Installer Info" }     ,
     j = { "<cmd>Lspsaga diagnostic_jump_next<CR>"            , "Next Diagnostic" }    ,
     k = { "<cmd>Lspsaga diagnostic_jump_prev<CR>"            , "Prev Diagnostic" }    ,
+    L = { "<cmd>LspLog<CR>"                                  , "Lsp log" }   ,
   },
 
   v = {
@@ -211,7 +219,7 @@ local leader_nmappings = {
     i = { ":TSConfigInfo<CR>", "Info" },
   },
 
-  p = {
+  P = {
     name = "Packer",
     c = { "<cmd>PackerCompile<cr>"                                 , "Compile" }    ,
     i = { "<cmd>PackerInstall<cr>"                                 , "Install" }    ,
@@ -220,6 +228,8 @@ local leader_nmappings = {
     S = { "<cmd>PackerStatus<cr>"                                  , "Status" }     ,
     u = { "<cmd>PackerUpdate<cr>"                                  , "Update" }     ,
   },
+
+  ["p"] = { "<cmd>Telescope projects<CR>", "Projects" },
 
   d = {
     name = "Debug",
