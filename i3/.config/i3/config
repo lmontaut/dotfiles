@@ -9,7 +9,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Mod key
-set $mod Mod4
+set $mod Mod1
 
 # ---- Autostart applications
 exec --no-startup-id setxkbmap us altgr-intl -option caps:escape
