@@ -284,9 +284,7 @@ local ctrl_nopts = {
 }
 local ctrl_nmappings = {
   ["<C-c>"] = { "<cmd>q!<CR>", "Quit window" },
-  ["<C-w>s"] = { "<cmd>vsplit<CR>", "Vertical split" },
-  ["<C-w>a"] = { "<cmd>split<CR>", "Horizontal split" },
-  ["<C-w>o"] = { "<cmd>MaximizerToggle<CR>", "Zoom toggle"},
+  ["<C-w>o"] = { "<cmd>only<CR>", "Close other windows" },
 }
 which_key.register(ctrl_nmappings, ctrl_nopts)
 

@@ -27,6 +27,10 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- window split: do not focus
+keymap("n", "<C-w>v", "<C-w>v<C-w>h", opts)
+keymap("n", "<C-w>s", "<C-w>s<C-w>k", opts)
+
 -- Explorer
 -- keymap("n", "<leader>e", "<cmd>Lex 30<cr>", opts)
 
