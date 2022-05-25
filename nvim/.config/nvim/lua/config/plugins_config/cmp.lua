@@ -147,14 +147,36 @@ cmp.setup {
 
 -- Autocomplete in the "/" research
 cmp.setup.cmdline('/', {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = {
+    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+    ["<C-t>"] = cmp.mapping(cmp.mapping.confirm(), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.close()
+      else
+        cmp.complete()
+      end
+    end, {"i", "s", "c"}),
+  },
   sources = {
     { name = 'buffer' }
   },
 })
 -- Autocomplete in the ":" command line
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
+  mapping = {
+    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+    ["<C-t>"] = cmp.mapping(cmp.mapping.confirm(), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.close()
+      else
+        cmp.complete()
+      end
+    end, {"i", "s", "c"}),
+  },
   sources = cmp.config.sources({
     { name = 'path'  },
   }, {
