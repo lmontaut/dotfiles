@@ -250,6 +250,13 @@ colors:
 # FONT
 font:
   normal:
-    family: JetBrainsMono
+    family: JetBrains Mono
     # family: Inconsolata
+    style: Medium
+  bold:
+    family: JetBrains Mono
+    style: Bold
+  italic:
+    family: JetBrains Mono
+    style: MediumItalic
   size: 12
