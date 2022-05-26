@@ -7,6 +7,7 @@ local plugins = require("gruvbox.plugins.highlights")
 plugins["LSPReferenceRead"] = nil
 
 vim.o.termguicolors = true
+vim.o.background = "light"
 vim.cmd "colorscheme gruvbox"
 
 -- vim.cmd [[ colo

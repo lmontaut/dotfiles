@@ -128,6 +128,7 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use "lmontaut/gruvbox.nvim"
+  use "NLKNguyen/papercolor-theme"
   -- use "$HOME/louis_nvim_plugins/gruvbox.nvim"
 
   -- Telescope
