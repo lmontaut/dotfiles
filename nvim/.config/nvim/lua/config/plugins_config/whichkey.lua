@@ -103,6 +103,7 @@ local leader_nmappings = {
   -- find buffer quicker
   [","] = { "<cmd>Telescope buffers<CR>", "Find buffer" },
   ["1"] = { "<cmd>b#<CR>", "Last buffer" },
+  ["2"] = { "<cmd>set hlsearch!<CR>", "Clear highlight" },
 
   -- find project files quicker
   [" "] = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find file" },
