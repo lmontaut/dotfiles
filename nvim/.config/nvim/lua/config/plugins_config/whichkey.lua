@@ -162,6 +162,7 @@ local leader_nmappings = {
 
   g = {
     name = "Git",
+    g = { "<cmd>Neogit<CR>"   , "Neogit" } ,
     o = { "<cmd>Telescope git_status<CR>"   , "Open changed file" } ,
     b = { "<cmd>Telescope git_branches<CR>" , "Checkout branch" }   ,
     c = { "<cmd>Telescope git_commits<CR>"  , "Checkout commit" }   ,
