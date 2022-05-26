@@ -167,41 +167,87 @@
 # PaperColor Light 256 - alacritty color config
 # https://github.com/NLKNguyen/papercolor-theme
 # https://www.reddit.com/r/vim/comments/36xzbs/vim_paper_color_theme_inspired_by_googles/crqbfpa/
+# env:
+#   TERM: xterm-256color
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#f1f7f2'
+#     foreground: '#121113'
+#
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '#eeeeee'
+#     cursor: '#000000'
+#
+#   # Normal colors
+#   normal:
+#     black:   '#000000'
+#     red:     '#d7005f'
+#     green:   '#718c00'
+#     yellow:  '#d75f00'
+#     blue:    '#4271ae'
+#     magenta: '#8959a8'
+#     cyan:    '#3e999f'
+#     white:   '#ededed'
+#
+#   # Bright colors
+#   bright:
+#     black:   '#000000'
+#     red:     '#d7005f'
+#     green:   '#718c00'
+#     yellow:  '#d75f00'
+#     blue:    '#4271ae'
+#     magenta: '#8959a8'
+#     cyan:    '#3e999f'
+#     white:   '#949494'
+
+# Base16 Gruvbox light, hard 256 - alacritty color config
+# Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 env:
   TERM: xterm-256color
 colors:
   # Default colors
   primary:
-    background: '#f1f7f2'
-    foreground: '#121113'
+    background: '#f9f5d7'
+    foreground: '#504945'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '#eeeeee'
-    cursor: '#000000'
+    text: '#f9f5d7'
+    cursor: '#504945'
 
   # Normal colors
   normal:
-    black:   '#000000'
-    red:     '#d7005f'
-    green:   '#718c00'
-    yellow:  '#d75f00'
-    blue:    '#4271ae'
-    magenta: '#8959a8'
-    cyan:    '#3e999f'
-    white:   '#ededed'
+    white:   '#f9f5d7'
+    red:     '#9d0006'
+    green:   '#79740e'
+    yellow:  '#b57614'
+    blue:    '#076678'
+    magenta: '#8f3f71'
+    cyan:    '#427b58'
+    black:   '#504945'
 
   # Bright colors
   bright:
-    black:   '#000000'
-    red:     '#d7005f'
-    green:   '#718c00'
-    yellow:  '#d75f00'
-    blue:    '#4271ae'
-    magenta: '#8959a8'
-    cyan:    '#3e999f'
-    white:   '#949494'
+    white:   '#bdae93'
+    red:     '#9d0006'
+    green:   '#79740e'
+    yellow:  '#b57614'
+    blue:    '#076678'
+    magenta: '#8f3f71'
+    cyan:    '#427b58'
+    black:   '#282828'
 
+  indexed_colors:
+    - { index: 16, color: '#af3a03' }
+    - { index: 17, color: '#d65d0e' }
+    - { index: 18, color: '#ebdbb2' }
+    - { index: 19, color: '#d5c4a1' }
+    - { index: 20, color: '#665c54' }
+    - { index: 21, color: '#3c3836' }
+
+# FONT
 font:
   normal:
     family: JetBrainsMono
