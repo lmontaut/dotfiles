@@ -2,3 +2,24 @@ refresher:
   refreshInterval: 1 # File/submodule refresh interval in seconds
   fetchInterval: 10 # In seconds
 notARepository: 'skip'
+scrollHeight: 4 # How many lines are scrolled
+gui:
+  theme:
+    lightTheme: false
+    activeBorderColor:
+      - blue
+      - bold
+    inactiveBorderColor:
+      - "#000000"
+    optionsTextColor:
+      - blue
+    selectedLineBgColor:
+      - "#000000" # set to `default` to have no background colour
+    selectedRangeBgColor:
+      - blue
+    cherryPickedCommitBgColor:
+      - cyan
+    cherryPickedCommitFgColor:
+      - blue
+    unstagedChangesColor:
+      - red
