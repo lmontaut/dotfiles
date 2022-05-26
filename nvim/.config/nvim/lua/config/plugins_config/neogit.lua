@@ -19,7 +19,7 @@ neogit.setup {
   signs = {
     -- { CLOSED, OPENED }
     section = { ">", "v" },
-    item = { ">", "v" },
+    item = { ">>", ">v" },
     hunk = { "", "" },
   },
   integrations = {
@@ -38,29 +38,29 @@ neogit.setup {
     diffview = false
   },
   -- Setting any section to `false` will make the section not render at all
-  sections = {
-    untracked = {
-      folded = false
-    },
-    unstaged = {
-      folded = false
-    },
-    staged = {
-      folded = false
-    },
-    stashes = {
-      folded = true
-    },
-    unpulled = {
-      folded = true
-    },
-    unmerged = {
-      folded = false
-    },
-    recent = {
-      folded = true
-    },
-  },
+  -- sections = {
+  --   untracked = {
+  --     folded = false
+  --   },
+  --   unstaged = {
+  --     folded = false
+  --   },
+  --   staged = {
+  --     folded = false
+  --   },
+  --   stashes = {
+  --     folded = true
+  --   },
+  --   unpulled = {
+  --     folded = true
+  --   },
+  --   unmerged = {
+  --     folded = false
+  --   },
+  --   recent = {
+  --     folded = true
+  --   },
+  -- },
   -- override/add mappings
   -- mappings = {
   --   -- modify status buffer mappings
