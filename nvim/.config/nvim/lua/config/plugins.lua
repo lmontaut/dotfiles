@@ -223,6 +223,9 @@ return packer.startup(function(use)
   -- see colors
   use { "norcalli/nvim-colorizer.lua" }
 
+  -- sneaker, move faster
+  use { "justinmk/vim-sneak" }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
