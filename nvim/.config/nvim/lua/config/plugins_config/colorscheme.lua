@@ -6,12 +6,15 @@ end
 local plugins = require("gruvbox.plugins.highlights")
 plugins["LSPReferenceRead"] = nil
 
-vim.cmd [[
-try
-  colorscheme gruvbox
-  set termguicolors
-  " hi Normal guibg=NONE ctermbg=NONE
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-  set background=dark
-]]
+vim.o.termguicolors = true
+vim.cmd "colorscheme gruvbox"
+
+-- vim.cmd [[ colo
+-- try
+--   colorscheme gruvbox
+--   set termguicolors
+--   " hi Normal guibg=NONE ctermbg=NONE
+-- catch /^Vim\%((\a\+)\)\=:E185/
+--   colorscheme default
+--   set background=dark
+-- ]]
