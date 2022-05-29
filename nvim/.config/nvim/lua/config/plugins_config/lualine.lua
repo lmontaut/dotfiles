@@ -4,8 +4,8 @@ if not status_ok then
 end
 
 local colors = {
-  bg = "#202328",
-  fg = "#bbc2cf",
+  bg = "#EEE9DF",
+  fg = "#202328",
   yellow = "#ECBE7B",
   cyan = "#008080",
   darkblue = "#081633",
@@ -164,7 +164,7 @@ local lsp = {
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "material",
+		theme = "auto",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "startify" },

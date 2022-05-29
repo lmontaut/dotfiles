@@ -204,61 +204,100 @@
 
 # Base16 Gruvbox light, hard 256 - alacritty color config
 # Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
-env:
-  TERM: xterm-256color
+# colors:
+#   # Default colors
+#   primary:
+#     # background: '#f9f5d7'
+#     # background: '#FFFCE9'
+#     background: '#FFFFFF'
+#     foreground: '#504945'
+#
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '#f9f5d7'
+#     cursor: '#504945'
+#
+#   # Normal colors
+#   normal:
+#     white:   '#f9f5d7'
+#     red:     '#9d0006'
+#     green:   '#79740e'
+#     yellow:  '#b57614'
+#     blue:    '#076678'
+#     magenta: '#8f3f71'
+#     cyan:    '#427b58'
+#     black:   '#504945'
+#
+#   # Bright colors
+#   bright:
+#     white:   '#bdae93'
+#     red:     '#9d0006'
+#     green:   '#79740e'
+#     yellow:  '#b57614'
+#     blue:    '#076678'
+#     magenta: '#8f3f71'
+#     cyan:    '#427b58'
+#     black:   '#282828'
+#
+#   indexed_colors:
+#     - { index: 16, color: '#af3a03' }
+#     - { index: 17, color: '#d65d0e' }
+#     - { index: 18, color: '#ebdbb2' }
+#     - { index: 19, color: '#d5c4a1' }
+#     - { index: 20, color: '#665c54' }
+#     - { index: 21, color: '#3c3836' }
+
 colors:
   # Default colors
   primary:
-    # background: '#f9f5d7'
-    # background: '#FFFCE9'
-    background: '#FFFEF6'
-    foreground: '#504945'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '#f9f5d7'
-    cursor: '#504945'
+    background: '#ffffff'
+    foreground: '#0E1116'
 
   # Normal colors
   normal:
-    white:   '#f9f5d7'
-    red:     '#9d0006'
-    green:   '#79740e'
-    yellow:  '#b57614'
-    blue:    '#076678'
-    magenta: '#8f3f71'
-    cyan:    '#427b58'
-    black:   '#504945'
+    black:   '#24292f'
+    red:     '#cf222e'
+    green:   '#116329'
+    yellow:  '#E8D347'
+    blue:    '#0969da'
+    magenta: '#8250df'
+    cyan:    '#1b7c83'
+    white:   '#6e7781'
 
   # Bright colors
   bright:
-    white:   '#bdae93'
-    red:     '#9d0006'
-    green:   '#79740e'
-    yellow:  '#b57614'
-    blue:    '#076678'
-    magenta: '#8f3f71'
-    cyan:    '#427b58'
-    black:   '#282828'
+    black:   '#57606a'
+    red:     '#a40e26'
+    green:   '#1a7f37'
+    yellow:  '#633c01'
+    blue:    '#218bff'
+    magenta: '#a475f9'
+    cyan:    '#3192aa'
+    white:   '#8c959f'
 
   indexed_colors:
-    - { index: 16, color: '#af3a03' }
-    - { index: 17, color: '#d65d0e' }
-    - { index: 18, color: '#ebdbb2' }
-    - { index: 19, color: '#d5c4a1' }
-    - { index: 20, color: '#665c54' }
-    - { index: 21, color: '#3c3836' }
+    - { index: 16, color: '#d18616' }
+    - { index: 17, color: '#a40e26' }
 
 # FONT
 font:
+  # Normal (roman) font face
   normal:
     family: JetBrains Mono
-    # family: Inconsolata
-    style: Medium
+    # The `style` can be specified to pick a specific face.
+    style: Regular
+
+  # Bold font face
   bold:
     family: JetBrains Mono
+    # The `style` can be specified to pick a specific face.
     style: Bold
+
+  # Italic font face
   italic:
     family: JetBrains Mono
-    style: MediumItalic
-  size: 12
+    # The `style` can be specified to pick a specific face.
+    style: Italic
+
+env:
+  TERM: xterm-256color

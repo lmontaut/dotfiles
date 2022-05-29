@@ -128,8 +128,12 @@ return packer.startup(function(use)
 
   -- Colorschemes
   -- use "lmontaut/gruvbox.nvim"
-  use "$HOME/dev/nvim/gruvbox.nvim"
-  use "NLKNguyen/papercolor-theme"
+  -- use "$HOME/dev/nvim/gruvbox.nvim"
+  use "projekt0n/github-nvim-theme"
+  -- use "rafamadriz/neon"
+  -- use 'marko-cerovac/material.nvim'
+  -- use 'folke/tokyonight.nvim'
+  -- use "NLKNguyen/papercolor-theme"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
