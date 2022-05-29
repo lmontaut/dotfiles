@@ -127,9 +127,9 @@ return packer.startup(function(use)
   -- use "vim-test/vim-test"
 
   -- Colorschemes
-  use "lmontaut/gruvbox.nvim"
+  -- use "lmontaut/gruvbox.nvim"
+  use "$HOME/dev/nvim/gruvbox.nvim"
   use "NLKNguyen/papercolor-theme"
-  -- use "$HOME/louis_nvim_plugins/gruvbox.nvim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -143,7 +143,7 @@ return packer.startup(function(use)
 
   -- Nvim tree
   use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
+  -- use "kyazdani42/nvim-tree.lua"
 
   -- Git
   use "lewis6991/gitsigns.nvim"

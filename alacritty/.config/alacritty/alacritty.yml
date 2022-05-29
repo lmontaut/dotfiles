@@ -209,7 +209,9 @@ env:
 colors:
   # Default colors
   primary:
-    background: '#f9f5d7'
+    # background: '#f9f5d7'
+    # background: '#FFFCE9'
+    background: '#FFFEF6'
     foreground: '#504945'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
