@@ -129,7 +129,9 @@ return packer.startup(function(use)
   -- Colorschemes
   -- use "lmontaut/gruvbox.nvim"
   -- use "$HOME/dev/nvim/gruvbox.nvim"
-  use "projekt0n/github-nvim-theme"
+  -- use "lmontaut/github-nvim-theme"
+  use "$HOME/dev/nvim/github-nvim-theme"
+  -- use "projekt0n/github-nvim-theme"
   -- use "rafamadriz/neon"
   -- use 'marko-cerovac/material.nvim'
   -- use 'folke/tokyonight.nvim'
