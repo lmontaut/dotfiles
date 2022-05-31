@@ -75,7 +75,7 @@ which_key.setup(setup)
 ---------------------
 -- KEYBINDINGS
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float"})
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "tab", start_in_insert = true, })
 
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
