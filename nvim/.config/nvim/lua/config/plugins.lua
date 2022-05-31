@@ -73,9 +73,6 @@ return packer.startup(function(use)
   -- use 'mhinz/vim-startify'
   use 'glepnir/dashboard-nvim'
 
-  -- git fugitive
-  use 'tpope/vim-fugitive'
-
   -- Allows to align stuff! This is amazing.
   use "godlygeek/tabular"
 
@@ -153,7 +150,7 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
-  -- use 'tpope/vim-fugitive'
+  use 'tpope/vim-fugitive'
   use 'TimUntersberger/neogit'
 
   -- Notify
