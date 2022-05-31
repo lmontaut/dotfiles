@@ -35,10 +35,10 @@ keymap("n", "<C-w>a", "<C-w>s<C-w>k", opts)
 -- keymap("n", "<leader>e", "<cmd>Lex 30<cr>", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", "<cmd>resize +2<CR>", opts)
-keymap("n", "<C-Down>", "<cmd>resize -2<CR>", opts)
-keymap("n", "<C-Left>", "<cmd>vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", "<cmd>vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", "<cmd>resize +10<CR>", opts)
+keymap("n", "<C-Down>", "<cmd>resize -10<CR>", opts)
+keymap("n", "<C-Left>", "<cmd>vertical resize -10<CR>", opts)
+keymap("n", "<C-Right>", "<cmd>vertical resize +10<CR>", opts)
 
 -- Navigate buffers
 -- keymap("n", "<S-l>", "<cmd>bnext<CR>", opts)
