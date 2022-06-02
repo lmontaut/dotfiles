@@ -166,12 +166,24 @@ local leader_nmappings = {
     g = { "<cmd>0G<CR>"                     , "Git status" }          ,
     v = { "<cmd>vertical Git<CR>"           , "Git status vertical" } ,
     t = { "<cmd>tabnew<CR><cmd>0G<CR>"      , "Git status tab" }      ,
+    j = { "<cmd>Gitsigns next_hunk<CR>"     , "Next hunk" }           ,
+    k = { "<cmd>Gitsigns prev_hunk<CR>"     , "Previous hunk" }       ,
     h = { "<cmd>0Gclog<CR>"                 , "File history" }        ,
     l = { "<cmd>Git log --oneline<CR>"      , "Git log" }             ,
     p = { "<cmd>Git push<CR>"               , "Git push" }            ,
     o = { "<cmd>Telescope git_status<CR>"   , "Open changed file" }   ,
     b = { "<cmd>Telescope git_branches<CR>" , "Checkout branch" }     ,
-    c = { "<cmd>Telescope git_commits<CR>"  , "Checkout commit" }     ,
+    c = { "<cmd>Git commit<CR>"             , "Commit" }              ,
+    s = {
+      name = "Stage",
+      f = { '<cmd>Git add %<CR>'           , "Stage file" } ,
+      h = { "<cmd>Gitsigns stage_hunk<CR>" , "Stage hunk" } ,
+    },
+    u = {
+      name = "Unstage",
+      f = { '<cmd>Git reset %<CR>'              , "Unstage file" } ,
+      h = { "<cmd>Gitsigns undo_stage_hunk<CR>" , "Unstage hunk" } ,
+    }
   },
 
   w = {
