@@ -168,7 +168,7 @@ local leader_nmappings = {
     j = { "<cmd>Gitsigns next_hunk<CR>"     , "Next hunk" }           ,
     k = { "<cmd>Gitsigns prev_hunk<CR>"     , "Previous hunk" }       ,
     h = { "<cmd>0Gclog<CR>"                 , "File history" }        ,
-    l = { "<cmd>tabnew<CR><cmd>Gclog<CR><C-w>L"  , "Git log" }             ,
+    l = { "<cmd>tabnew<CR><cmd>Gclog<CR><C-w>L<cmd>vertical resize 120<CR>"  , "Git log" }             ,
     p = { "<cmd>Git push<CR>"               , "Git push" }            ,
     o = { "<cmd>Telescope git_status<CR>"   , "Open changed file" }   ,
     b = { "<cmd>Telescope git_branches<CR>" , "Checkout branch" }     ,
@@ -348,7 +348,9 @@ local nmappings = {
     i = { "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>"       , "Preview implementation"} ,
     r = { "<cmd>lua require('goto-preview').goto_preview_references()<CR>"           , "Preview references"}     , -- Only set if you have telescope installed
     c = { "<cmd>lua require('goto-preview').close_all_win()<CR>"                     , "Preview close"}          ,
-  }
+  },
+  ["<M-n>"] = { ":cn<CR>", "QuickFix next"},
+  ["<M-p>"] = { ":cp<CR>", "QuickFix prev"},
 }
 local nopts = {
   mode = "n", -- NORMAL mode
