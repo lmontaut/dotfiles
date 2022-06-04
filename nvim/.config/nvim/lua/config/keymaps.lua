@@ -44,6 +44,11 @@ keymap("n", "<C-Right>", "<cmd>vertical resize +10<CR>", opts)
 -- keymap("n", "<S-l>", "<cmd>bnext<CR>", opts)
 -- keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
 
+-- Navigate tabs
+keymap("n", "<S-l>", "<cmd>tabnext<CR>", opts)
+keymap("n", "<S-h>", "<cmd>tabprevious<CR>", opts)
+keymap("n", "<S-c>", "<cmd>tabclose<CR>", opts)
+
 -- Better tabbing
 keymap("n", ">" , ">>", opts)
 keymap("n", "<" , "<<", opts)
