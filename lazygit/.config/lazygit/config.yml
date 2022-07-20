@@ -5,16 +5,16 @@ notARepository: 'skip'
 scrollHeight: 6 # How many lines are scrolled
 gui:
   theme:
-    lightTheme: true
-    activeBorderColor:
-      - blue
-      - bold
-    inactiveBorderColor:
-      - "#000000"
+    lightTheme: false
+    # activeBorderColor:
+    #   - blue
+    #   - bold
+    # inactiveBorderColor:
+      # - "#000000"
     # optionsTextColor:
     #   - blue
-    selectedLineBgColor:
-      - "#E4F9F4" # set to `default` to have no background colour
+    # selectedLineBgColor:
+      # - "#E4F9F4" # set to `default` to have no background colour
     # selectedRangeBgColor:
     #   - blue
     # cherryPickedCommitBgColor:

@@ -135,34 +135,42 @@
 #     white:   '#bbc2cf'
 
 # Colors (Gruvbox Material Dark Medium)
-# window:
-#   opacity: 1.
-# env:
-#   TERM: xterm-256color
-# colors:
-#   primary:
-#     background: '#282828'
-#     foreground: '#dfbf8e'
-#
-#   normal:
-#     black:   '#665c54'
-#     red:     '#ea6962'
-#     green:   '#a9b665'
-#     yellow:  '#e78a4e'
-#     blue:    '#7daea3'
-#     magenta: '#d3869b'
-#     cyan:    '#89b482'
-#     white:   '#dfbf8e'
-#
-#   bright:
-#     black:   '#928374'
-#     red:     '#ea6962'
-#     green:   '#a9b665'
-#     yellow:  '#e3a84e'
-#     blue:    '#7daea3'
-#     magenta: '#d3869b'
-#     cyan:    '#89b482'
-#     white:   '#dfbf8e'
+window:
+  opacity: 1.
+env:
+  TERM: xterm-256color
+colors:
+  primary:
+    background: '#282828'
+    foreground: '#dfbf8e'
+
+    # foreground: '#FFFFFF'
+    # background: '#504945'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  # cursor:
+  #   text: '#f9f5d7'
+  #   cursor: '#f9f5d7'
+
+  normal:
+    black:   '#665c54'
+    red:     '#ea6962'
+    green:   '#a9b665'
+    yellow:  '#e78a4e'
+    blue:    '#7daea3'
+    magenta: '#d3869b'
+    cyan:    '#89b482'
+    white:   '#dfbf8e'
+
+  bright:
+    black:   '#928374'
+    red:     '#ea6962'
+    green:   '#a9b665'
+    yellow:  '#e3a84e'
+    blue:    '#7daea3'
+    magenta: '#d3869b'
+    cyan:    '#89b482'
+    white:   '#dfbf8e'
 
 # PaperColor Light 256 - alacritty color config
 # https://github.com/NLKNguyen/papercolor-theme
@@ -247,37 +255,37 @@
 #     - { index: 20, color: '#665c54' }
 #     - { index: 21, color: '#3c3836' }
 
-colors:
-  # Default colors
-  primary:
-    background: '#ffffff'
-    foreground: '#0E1116'
-
-  # Normal colors
-  normal:
-    black:   '#24292f'
-    red:     '#cf222e'
-    green:   '#116329'
-    yellow:  '#99841D'
-    blue:    '#0969da'
-    magenta: '#8250df'
-    cyan:    '#1b7c83'
-    white:   '#6e7781'
-
-  # Bright colors
-  bright:
-    black:   '#57606a'
-    red:     '#a40e26'
-    green:   '#1a7f37'
-    yellow:  '#633c01'
-    blue:    '#218bff'
-    magenta: '#a475f9'
-    cyan:    '#3192aa'
-    white:   '#8c959f'
-
-  indexed_colors:
-    - { index: 16, color: '#d18616' }
-    - { index: 17, color: '#a40e26' }
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#ffffff'
+#     foreground: '#0E1116'
+#
+#   # Normal colors
+#   normal:
+#     black:   '#24292f'
+#     red:     '#cf222e'
+#     green:   '#116329'
+#     yellow:  '#99841D'
+#     blue:    '#0969da'
+#     magenta: '#8250df'
+#     cyan:    '#1b7c83'
+#     white:   '#6e7781'
+#
+#   # Bright colors
+#   bright:
+#     black:   '#57606a'
+#     red:     '#a40e26'
+#     green:   '#1a7f37'
+#     yellow:  '#633c01'
+#     blue:    '#218bff'
+#     magenta: '#a475f9'
+#     cyan:    '#3192aa'
+#     white:   '#8c959f'
+#
+#   indexed_colors:
+#     - { index: 16, color: '#d18616' }
+#     - { index: 17, color: '#a40e26' }
 
 # FONT
 font:
