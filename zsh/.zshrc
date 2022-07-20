@@ -58,6 +58,7 @@ export PATH=$HOME/.emacs.d/bin:$PATH
 # Zotero path
 export PATH=$HOME/libs/zotero:$PATH
 export PATH=$HOME/.local/share/applications:$PATH
+export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 
 # -------- Aliases --------
 alias audio="alsamixer"

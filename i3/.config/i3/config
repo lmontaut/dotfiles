@@ -211,6 +211,7 @@ assign [class="Mendeley Desktop"] $ws4
 assign [class="Zotero"] $ws4
 assign [class="Pcmanfm"] $ws5
 assign [class="matplotlib"] $ws10
+assign [class="pygame window"] $ws8
 # assign [class="Gnome-control-center"] $ws4
 # assign [class="Org.gnome.Nautilus"] $ws4
 
