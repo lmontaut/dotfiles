@@ -234,6 +234,25 @@ return packer.startup(function(use)
   -- sneaker, move faster
   use { "justinmk/vim-sneak" }
 
+  -- Octo = github in nvim
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'kyazdani42/nvim-web-devicons',
+    }
+    -- ,
+    -- config = function ()
+    --   require"octo".setup()
+    -- end
+  }
+  -- Like Octo but commit-wise
+  use {
+      'ldelossa/gh.nvim',
+      requires = { { 'ldelossa/litee.nvim' } }
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
