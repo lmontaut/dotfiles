@@ -109,7 +109,7 @@ local leader_nmappings = {
   [" "] = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find file" },
 
   f = {
-    name = "Find",
+    name = "+Find",
     f = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find file" }          ,
     b = { "<cmd>Telescope buffers<CR>"                                                             , "Find buffer" }        ,
     d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<CR>"                                   , "Buffer Diagnostics" } ,
@@ -124,7 +124,7 @@ local leader_nmappings = {
   },
 
   b = {
-    name = "Buffers",
+    name = "+Buffers",
     b = { "<cmd>Telescope buffers<CR>"                                , "Opened buffers" }             ,
     c = { "<cmd>Bdelete!<CR>"                                         , "Close buffer" }               ,
     j = { "<cmd>BufferLinePick<cr>"                                   , "Jump" }                       ,
@@ -140,7 +140,7 @@ local leader_nmappings = {
   },
 
   t = {
-    name = "Tabs",
+    name = "+Tabs",
     n = { "<cmd>tabnew<CR>"      , "New tab" }      ,
     l = { "<cmd>tabnext<CR>"     , "Next tab" }     ,
     h = { "<cmd>tabprevious<CR>" , "Previous tab" } ,
@@ -148,7 +148,7 @@ local leader_nmappings = {
   },
 
   c = {
-    name = "CMake",
+    name = "+CMake",
     g = { ":CMakeGenerate -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX"                                    , "Generate" }         ,
     r = { ":CMakeGenerate Release -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX" , "Generate release" } ,
     d = { ":CMakeGenerate Debug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX"     , "Generate debug" }   ,
@@ -161,25 +161,70 @@ local leader_nmappings = {
   },
 
   g = {
-    name = "Git",
+    name = "+Git",
     n = { "<cmd>Neogit<CR>"                 , "Neogit" }              ,
     g = { "<cmd>vertical Git<CR>"           , "Git status" }          ,
     t = { "<cmd>tabnew<CR><cmd>0G<CR>"      , "Git status tab" }      ,
     j = { "<cmd>Gitsigns next_hunk<CR>"     , "Next hunk" }           ,
     k = { "<cmd>Gitsigns prev_hunk<CR>"     , "Previous hunk" }       ,
-    h = { "<cmd>0Gclog<CR>"                 , "File history" }        ,
+    f = { "<cmd>0Gclog<CR>"                 , "File history" }        ,
+    h = {
+        name = "+Github",
+        c = {
+            name = "+Commits",
+            c = { "<cmd>GHCloseCommit<cr>", "Close" },
+            e = { "<cmd>GHExpandCommit<cr>", "Expand" },
+            o = { "<cmd>GHOpenToCommit<cr>", "Open To" },
+            p = { "<cmd>GHPopOutCommit<cr>", "Pop Out" },
+            z = { "<cmd>GHCollapseCommit<cr>", "Collapse" },
+        },
+        i = {
+            name = "+Issues",
+            p = { "<cmd>GHPreviewIssue<cr>", "Preview" },
+        },
+        l = {
+            name = "+Litee",
+            t = { "<cmd>LTPanel<cr>", "Toggle Panel" },
+        },
+        r = {
+            name = "+Review",
+            b = { "<cmd>GHStartReview<cr>", "Begin" },
+            c = { "<cmd>GHCloseReview<cr>", "Close" },
+            d = { "<cmd>GHDeleteReview<cr>", "Delete" },
+            e = { "<cmd>GHExpandReview<cr>", "Expand" },
+            s = { "<cmd>GHSubmitReview<cr>", "Submit" },
+            z = { "<cmd>GHCollapseReview<cr>", "Collapse" },
+        },
+        p = {
+            name = "+Pull Request",
+            c = { "<cmd>GHClosePR<cr>", "Close" },
+            d = { "<cmd>GHPRDetails<cr>", "Details" },
+            e = { "<cmd>GHExpandPR<cr>", "Expand" },
+            o = { "<cmd>GHOpenPR<cr>", "Open" },
+            p = { "<cmd>GHPopOutPR<cr>", "PopOut" },
+            r = { "<cmd>GHRefreshPR<cr>", "Refresh" },
+            t = { "<cmd>GHOpenToPR<cr>", "Open To" },
+            z = { "<cmd>GHCollapsePR<cr>", "Collapse" },
+        },
+        t = {
+            name = "+Threads",
+            c = { "<cmd>GHCreateThread<cr>", "Create" },
+            n = { "<cmd>GHNextThread<cr>", "Next" },
+            t = { "<cmd>GHToggleThread<cr>", "Toggle" },
+        },
+    },
     l = { "<cmd>tabnew<CR><cmd>Gclog<CR><C-w>L<cmd>vertical resize 120<CR>"  , "Git log" }             ,
     p = { "<cmd>Git push<CR>"               , "Git push" }            ,
     o = { "<cmd>Telescope git_status<CR>"   , "Open changed file" }   ,
     b = { "<cmd>Telescope git_branches<CR>" , "Checkout branch" }     ,
     c = { "<cmd>vertical Git commit -v -q<CR>"       , "Commit" }              ,
     s = {
-      name = "Stage",
+      name = "+Stage",
       f = { '<cmd>Git add %<CR>'           , "Stage file" } ,
       h = { "<cmd>Gitsigns stage_hunk<CR>" , "Stage hunk" } ,
     },
     u = {
-      name = "Unstage",
+      name = "+Unstage",
       f = { '<cmd>Git reset %<CR>'              , "Unstage file" } ,
       h = { "<cmd>Gitsigns undo_stage_hunk<CR>" , "Unstage hunk" } ,
     }
@@ -192,14 +237,14 @@ local leader_nmappings = {
   },
 
   m = {
-    name = "Markdown",
+    name = "+Markdown",
     t = { "<cmd>MarkdownPreviewToggle<CR>" , "Toggle" } ,
     o = { "<cmd>MarkdownPreview<CR>"       , "Start" }  ,
     c = { "<cmd>MarkdownPreviewStop<CR>"   , "Stop" }   ,
   },
 
   l = {
-    name = "LSP",
+    name = "+LSP",
     -- a = { "<cmd>lua require('config.plugins_config.telescope_functions.code_actions').code_actions()<CR>" , "Code Action" },
     a = { "<cmd>Lspsaga code_action<CR>"                     , "Code Action" }        ,
     r = { "<cmd>Lspsaga rename<CR>"                          , "Rename" }             ,
@@ -218,7 +263,7 @@ local leader_nmappings = {
   },
 
   v = {
-    name = "Nvim",
+    name = "+Nvim",
     r = { "<cmd>lua require('config.plugins_config.reload_config').reload()<CR>"               , "Reload config" }      ,
     p = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins.lua<CR>"                 , "Edit plugins" }       ,
     w = { "<cmd>e $HOME/dotfiles/nvim/.config/nvim/lua/config/plugins_config/whichkey.lua<CR>" , "Edit whichkey"}       ,
@@ -241,12 +286,12 @@ local leader_nmappings = {
   -- },
 
   T = {
-    name = "Treesitter",
+    name = "+Treesitter",
     i = { ":TSConfigInfo<CR>", "Info" },
   },
 
   P = {
-    name = "Packer",
+    name = "+Packer",
     c = { "<cmd>PackerCompile<cr>"                                 , "Compile" }    ,
     i = { "<cmd>PackerInstall<cr>"                                 , "Install" }    ,
     r = { "<cmd>lua require('lvim.plugin-loader').recompile()<cr>" , "Re-compile" } ,
@@ -258,7 +303,7 @@ local leader_nmappings = {
   ["p"] = { "<cmd>Telescope projects<CR>", "Projects" },
 
   d = {
-    name = "Debug",
+    name = "+Debug",
     u = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
     t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
     s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
@@ -351,6 +396,9 @@ local nmappings = {
   },
   ["<M-n>"] = { ":cn<CR>", "QuickFix next"},
   ["<M-p>"] = { ":cp<CR>", "QuickFix prev"},
+  ["gj"] = { "<cmd>Gitsigns next_hunk<CR>", "Next hunk" },
+  ["gk"] = { "<cmd>Gitsigns prev_hunk<CR>", "Previous hunk" },
+  ["gh"] = { "<cmd>Gitsigns preview_hunk<CR>", "Preview hunk" },
 }
 local nopts = {
   mode = "n", -- NORMAL mode
