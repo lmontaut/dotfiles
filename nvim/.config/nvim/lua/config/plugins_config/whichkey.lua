@@ -151,15 +151,15 @@ local leader_nmappings = {
 
   c = {
     name = "+CMake",
-    g = { ":CMakeGenerate -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX"                                    , "Generate" }         ,
-    r = { ":CMakeGenerate Release -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX" , "Generate release" } ,
-    d = { ":CMakeGenerate Debug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX"     , "Generate debug" }   ,
+    g = { ":CMakeGenerate build -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX  -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DGENERATE_PYTHON_STUBS=ON .."                                    , "Generate" }         ,
+    r = { ":CMakeGenerate release -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX  -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DGENERATE_PYTHON_STUBS=ON .." , "Generate release" } ,
+    d = { ":CMakeGenerate debug -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX  -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DGENERATE_PYTHON_STUBS=ON .."     , "Generate debug" }   ,
     i = { "<cmd>CMakeInstall<CR>"                                                                  , "Install" }          ,
-    s = { ":CMakeSwitch<space>"                                                                    , "Switch" }           ,
-    b = { ":CMakeBuild<space>"                                                                     , "Build" }            ,
+    s = { ":CMakeSwitch"                                                                    , "Switch" }           ,
+    b = { ":CMakeBuild -j10"                                                                     , "Build" }            ,
     o = { "<cmd>CMakeOpen<CR>"                                                                     , "Open" }             ,
     c = { "<cmd>CMakeClose<CR>"                                                                    , "Close" }            ,
-    w = { "<cmd>CMakeClean<CR>"                                                                    , "Wipe/clean" }       ,
+    w = { ":CMakeClean"                                                                    , "Wipe/clean" }       ,
   },
 
   g = {
