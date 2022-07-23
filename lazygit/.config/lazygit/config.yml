@@ -1,6 +1,6 @@
 refresher:
   refreshInterval: 1 # File/submodule refresh interval in seconds
-  fetchInterval: 10 # In seconds
+  fetchInterval: 180 # In seconds
 notARepository: 'skip'
 scrollHeight: 6 # How many lines are scrolled
 gui:
