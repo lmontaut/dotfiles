@@ -92,6 +92,7 @@ local leader_nopts = {
 
 local leader_nmappings = {
   ["e"] = { "<cmd>RnvimrToggle<CR>", "Ranger" },
+  ["r"] = { "<cmd>Telescope resume<CR>", "Telescope resume" },
 
   -- vim-maximizer
   [";"] = { "<cmd>MaximizerToggle<CR>", "Zoom toggle"},
@@ -145,6 +146,7 @@ local leader_nmappings = {
     l = { "<cmd>tabnext<CR>"     , "Next tab" }     ,
     h = { "<cmd>tabprevious<CR>" , "Previous tab" } ,
     c = { "<cmd>tabclose<CR>"    , "Close tab" }    ,
+    g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>" , "Lazygit" } ,
   },
 
   c = {
@@ -378,8 +380,6 @@ end
 local nmappings = {
   -- Comment
   ["\\"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>" , "Comment" }         ,
-  -- Terminal
-  ["<C-]>"] = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>" , "Lazygit" } ,
   -- ["<C-p>"] = { "<cmd>lua _PYTHON_TOGGLE()<CR>"  , "IPython" } ,
   ["<C-x>"] = { "<cmd>lua _HTOP_TOGGLE()<CR>"    , "Htop" }    ,
   ["<C-q>"] = { "<cmd>lua _RANGER_TOGGLE()<CR>"  , "Ranger" }  ,
