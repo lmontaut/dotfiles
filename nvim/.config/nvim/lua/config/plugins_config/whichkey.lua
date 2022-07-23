@@ -355,6 +355,7 @@ local ctrl_nopts = {
 local ctrl_nmappings = {
   ["<C-c>"] = { "<cmd>q!<CR>", "Quit window" },
   ["<C-w>o"] = { "<cmd>only<CR>", "Close other windows" },
+  ["<C-f>"] = { ":<C-f>", "Command history" },
 }
 which_key.register(ctrl_nmappings, ctrl_nopts)
 
