@@ -187,8 +187,8 @@ return packer.startup(function(use)
   -- Markdown
   use "iamcco/markdown-preview.nvim"
 
-  -- Better errors/diagnostics etc.
-  use { "folke/trouble.nvim", cmd = "TroubleToggle" }
+  -- Better errors/diagnostics etc. Amazing.
+  use { "folke/trouble.nvim" }
 
   -- symbol outline
   -- use "lmontaut/symbols-outline.nvim"
@@ -235,23 +235,19 @@ return packer.startup(function(use)
   use { "justinmk/vim-sneak" }
 
   -- Octo = github in nvim
-  use {
-    'pwntester/octo.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'kyazdani42/nvim-web-devicons',
-    }
-    -- ,
-    -- config = function ()
-    --   require"octo".setup()
-    -- end
-  }
+  -- use {
+  --   'pwntester/octo.nvim',
+  --   requires = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-telescope/telescope.nvim',
+  --     'kyazdani42/nvim-web-devicons',
+  --   }
+  -- }
   -- Like Octo but commit-wise
-  use {
-      'ldelossa/gh.nvim',
-      requires = { { 'ldelossa/litee.nvim' } }
-  }
+  -- use {
+      -- 'ldelossa/gh.nvim',
+      -- requires = { { 'ldelossa/litee.nvim' } }
+  -- }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
