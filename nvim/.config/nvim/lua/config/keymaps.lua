@@ -74,6 +74,12 @@ keymap("v", ">", ">gv", opts)
 -- keymap("v", "K", "<cmd>m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
 
+vim.cmd[[
+autocmd FileType fugitive nnoremap <buffer> q :q<CR>
+autocmd FileType qf nnoremap <buffer> q :q<CR>
+autocmd FileType git nnoremap <buffer> q :q<CR>
+]]
+
 -- Visual Block -> Does not work
 -- Move text up and down
 -- keymap("x", "J", "<cmd>move '>+1<CR>gv-gv", opts)
