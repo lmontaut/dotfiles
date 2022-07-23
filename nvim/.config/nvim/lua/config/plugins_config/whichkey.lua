@@ -277,19 +277,18 @@ local leader_nmappings = {
     d = { ":Dashboard<CR>"                                                                     , "Dashboard" }          ,
   },
 
-  -- t = { --> replaced lsp reference/diagnostics
-  --   name = "Trouble",
-  --   r = { "<cmd>Trouble lsp_references<cr>"            , "References" }         ,
-  --   f = { "<cmd>Trouble lsp_definitions<cr>"           , "Definitions" }        ,
-  --   d = { "<cmd>Trouble document_diagnostics<cr>"      , "Buffer diagnostics" } ,
-  --   q = { "<cmd>Trouble quickfix<cr>"                  , "QuickFix" }           ,
-  --   l = { "<cmd>Trouble loclist<cr>"                   , "LocationList" }       ,
-  --   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>" , "All diagnostics" }    ,
-  -- },
-
   T = {
     name = "+Treesitter",
     i = { ":TSConfigInfo<CR>", "Info" },
+  },
+
+  o = {
+    name = "+Trouble",
+    q = { "<cmd>Trouble quickfix<CR>", "QuickFix" },
+    l = { "<cmd>Trouble loclist<CR>", "LocList" },
+    w = { "<cmd>Trouble workspace_diagnostics<CR>", "Workspace diagnostics" },
+    d = { "<cmd>Trouble document_diagnostics<CR>", "File diagnostics" },
+    t = { "<cmd>TroubleToggle<CR>", "Toggle" },
   },
 
   P = {

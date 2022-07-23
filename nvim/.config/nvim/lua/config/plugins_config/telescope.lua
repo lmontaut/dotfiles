@@ -5,6 +5,7 @@ if not status_ok then
 end
 
 local actions = require "telescope.actions"
+local trouble = require "trouble.providers.telescope"
 
 telescope.setup {
   defaults = {
@@ -47,7 +48,7 @@ telescope.setup {
         ["<esc>"] = actions.close,
 
         ["<CR>"] = actions.select_default,
-        ["<C-s>"] = actions.select_horizontal,
+        ["<C-a>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
         ["<C-t>"] = actions.select_tab,
 
@@ -60,7 +61,8 @@ telescope.setup {
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
         ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
         ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-        ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        -- ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        ["<M-q>"] = trouble.open_with_trouble,
         ["<C-l>"] = actions.complete_tag,
         ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
       },
