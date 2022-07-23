@@ -237,7 +237,10 @@ return packer.startup(function(use)
   use { "justinmk/vim-sneak" }
 
   -- scrollbar
-  use("petertriho/nvim-scrollbar")
+  use {"petertriho/nvim-scrollbar"}
+
+  -- Dispatch: asynchronous stuff
+  use {"tpope/vim-dispatch"}
 
   -- Octo = github in nvim
   -- use {
