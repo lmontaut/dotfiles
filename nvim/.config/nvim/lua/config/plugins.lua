@@ -151,6 +151,8 @@ return packer.startup(function(use)
   -- Nvim tree
   use "kyazdani42/nvim-web-devicons"
   -- use "kyazdani42/nvim-tree.lua"
+  use {"ms-jpq/chadtree",
+      branch = "chad", run = "python3 -m chadtree deps"}
 
   -- Git
   use "lewis6991/gitsigns.nvim"
@@ -233,6 +235,9 @@ return packer.startup(function(use)
 
   -- sneaker, move faster
   use { "justinmk/vim-sneak" }
+
+  -- scrollbar
+  use("petertriho/nvim-scrollbar")
 
   -- Octo = github in nvim
   -- use {
