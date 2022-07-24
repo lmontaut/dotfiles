@@ -80,6 +80,7 @@ autocmd FileType qf nnoremap <buffer> q :q<CR>
 autocmd FileType git nnoremap <buffer> q :q<CR>
 autocmd FileType vim nnoremap <buffer> q :q<CR>
 autocmd FileType vimcmake nnoremap <buffer> q :q<CR>
+autocmd FileType lspinfo nnoremap <buffer> q :q<CR>
 ]]
 
 -- Visual Block -> Does not work
