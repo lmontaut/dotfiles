@@ -151,15 +151,15 @@ local leader_nmappings = {
 
   c = {
     name = "+CMake",
-    g = { ":CMakeGenerate build -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX  -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DGENERATE_PYTHON_STUBS=ON .."                                    , "Generate" }         ,
-    r = { ":CMakeGenerate release -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX  -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DGENERATE_PYTHON_STUBS=ON .." , "Generate release" } ,
-    d = { ":CMakeGenerate debug -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX  -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DGENERATE_PYTHON_STUBS=ON .."     , "Generate debug" }   ,
+    g = { ":CMakeGenerate build -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX  -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DGENERATE_PYTHON_STUBS=ON .. <C-Down>"                                    , "Generate" }         ,
+    r = { ":CMakeGenerate release -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX  -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DGENERATE_PYTHON_STUBS=ON .. <C-Down>" , "Generate release" } ,
+    d = { ":CMakeGenerate debug -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX  -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DGENERATE_PYTHON_STUBS=ON .. <C-Down>"     , "Generate debug" }   ,
     i = { "<cmd>CMakeInstall<CR>"                                                                  , "Install" }          ,
-    s = { ":CMakeSwitch"                                                                    , "Switch" }           ,
-    b = { ":CMakeBuild -j10"                                                                     , "Build" }            ,
+    s = { ":CMakeSwitch <C-Down>"                                                                    , "Switch" }           ,
+    b = { ":CMakeBuild -j10 <C-Down>"                                                                     , "Build" }            ,
     o = { "<cmd>CMakeOpen<CR>"                                                                     , "Open" }             ,
     c = { "<cmd>CMakeClose<CR>"                                                                    , "Close" }            ,
-    w = { ":CMakeClean"                                                                    , "Wipe/clean" }       ,
+    w = { ":CMakeClean <C-Down>"                                                                    , "Wipe/clean" }       ,
   },
 
   g = {
