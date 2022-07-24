@@ -4,6 +4,7 @@ require "config.plugins_config.project"
 require "config.plugins_config.trouble" -- Amazing
 require "config.plugins_config.telescope" -- Amazing
 require "config.plugins_config.treesitter" -- Amazing
+require "config.plugins_config.vim-test" -- Amazing
 -- require "config.plugins_config.nvimtree"
 require "config.plugins_config.utils"
 require "config.plugins_config.gitsigns" -- Nice

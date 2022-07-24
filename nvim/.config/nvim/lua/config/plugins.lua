@@ -120,8 +120,8 @@ return packer.startup(function(use)
     commit = "24923c3"
   }
 
-  -- TODO: look into vim test
-  -- use "vim-test/vim-test"
+  -- Tests
+  use "vim-test/vim-test"
 
   -- Colorschemes
   use "lmontaut/gruvbox.nvim"

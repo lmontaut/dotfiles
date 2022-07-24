@@ -141,12 +141,26 @@ local leader_nmappings = {
   },
 
   t = {
-    name = "+Tabs",
+    name = "+Tabs/Tests",
     n = { "<cmd>tabnew<CR>"      , "New tab" }      ,
     l = { "<cmd>tabnext<CR>"     , "Next tab" }     ,
     h = { "<cmd>tabprevious<CR>" , "Previous tab" } ,
     c = { "<cmd>tabclose<CR>"    , "Close tab" }    ,
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>" , "Lazygit" } ,
+    f = { "<cmd>TestFile<CR><C-t>" , "Test file" } ,
+    t = { "<cmd>TestNearest<CR><C-t>" , "Test nearest" } ,
+    p = { "<cmd>:vs | :te make -C build test<CR><cmd>norm <C-w>h<CR><C-t>" , "Test project" } ,
+  },
+
+  q = {
+    name = "+QuickFix",
+    c = { "<cmd>cclose<CR>"    , "Close" }    ,
+    q = { "<cmd>cclose<CR>"    , "Close" }    ,
+    o = { "<cmd>copen<CR>"    , "Open" }    ,
+    n = { "<cmd>cn<CR>"    , "Next" }    ,
+    N = { "<cmd>clast<CR>"    , "End" }    ,
+    p = { "<cmd>cp<CR>"    , "Previous" }    ,
+    P = { "<cmd>cfirst<CR>"    , "Beginning" }    ,
   },
 
   c = {
