@@ -91,7 +91,7 @@ local leader_nopts = {
 }
 
 local leader_nmappings = {
-  ["e"] = { "<cmd>CHADopen<CR>", "Ranger" },
+  ["e"] = { "<cmd>CHADopen<CR>", "Explorer" },
   ["r"] = { "<cmd>Telescope resume<CR>", "Telescope resume" },
 
   -- vim-maximizer
