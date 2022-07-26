@@ -149,6 +149,7 @@ local leader_nmappings = {
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>" , "Lazygit" } ,
     f = { "<cmd>TestFile<CR><C-t>" , "Test file" } ,
     t = { "<cmd>TestNearest<CR><C-t>" , "Test nearest" } ,
+    r = { "<cmd>TestNearest<CR><C-t>" , "Test last" } ,
     p = { "<cmd>:vs | :te make -C build test<CR><cmd>norm <C-w>h<CR><C-t>" , "Test project" } ,
   },
 
@@ -158,9 +159,9 @@ local leader_nmappings = {
     q = { "<cmd>cclose<CR>"    , "Close" }    ,
     o = { "<cmd>copen<CR>"    , "Open" }    ,
     n = { "<cmd>cn<CR>"    , "Next" }    ,
-    N = { "<cmd>clast<CR>"    , "End" }    ,
+    e = { "<cmd>clast<CR>"    , "End" }    ,
     p = { "<cmd>cp<CR>"    , "Previous" }    ,
-    P = { "<cmd>cfirst<CR>"    , "Beginning" }    ,
+    b = { "<cmd>cfirst<CR>"    , "Beginning" }    ,
   },
 
   c = {
