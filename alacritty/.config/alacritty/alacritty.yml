@@ -309,3 +309,26 @@ font:
 
 env:
   TERM: xterm-256color
+
+# FOR MACOS
+key_bindings:
+  # Create a new tmux window
+  - { key: N, mods: Command|Shift, chars: "\x01\x63" }
+  # Split the current pane into two, left and right
+  - { key: V, mods: Command|Shift, chars: "\x01\x25" }
+  # Split the current pane into two, top and bottom.
+  - { key: A, mods: Command|Shift, chars: "\x01\x22" }
+  # Change to the next tmux window
+  - { key: P, mods: Command|Shift, chars: "\x01\x6e" }
+  # Change to the previous tmux window
+  - { key: O, mods: Command|Shift, chars: "\x01\x70" }
+  # Change to the previous tmux window
+  - { key: Semicolon, mods: Command|Shift, chars: "\x01\x7a" }
+  # Focus right pane
+  - { key: L, mods: Command|Shift, chars: "\x01\x1b\x5b\x43" }
+  # Focus ledt pane
+  - { key: H, mods: Command|Shift, chars: "\x01\x1b\x5b\x44" }
+  # Focus up pane
+  - { key: K, mods: Command|Shift, chars: "\x01\x1b\x5b\x41" }
+  # Focus down pane
+  - { key: J, mods: Command|Shift, chars: "\x01\x1b\x5b\x42" }
