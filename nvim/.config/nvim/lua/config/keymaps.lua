@@ -40,6 +40,10 @@ keymap("n", "<C-Down>", "<cmd>resize -10<CR>", opts)
 keymap("n", "<C-Left>", "<cmd>vertical resize -10<CR>", opts)
 keymap("n", "<C-Right>", "<cmd>vertical resize +10<CR>", opts)
 
+-- Scrolling left/right
+keymap("n", "zl", "20zl", opts)
+keymap("n", "zh", "20zh", opts)
+
 -- Navigate buffers
 -- keymap("n", "<S-l>", "<cmd>bnext<CR>", opts)
 -- keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
