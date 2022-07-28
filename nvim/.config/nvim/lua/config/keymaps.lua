@@ -49,8 +49,8 @@ keymap("n", "zh", "20zh", opts)
 -- keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
 
 -- Navigate tabs
-keymap("n", "<S-l>", "<cmd>tabnext<CR>", opts)
-keymap("n", "<S-h>", "<cmd>tabprevious<CR>", opts)
+keymap("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", opts)
+keymap("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", opts)
 
 -- Better tabbing
 keymap("n", ">" , ">>", opts)
