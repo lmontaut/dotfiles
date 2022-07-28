@@ -8,9 +8,12 @@ export ZSH=$HOME/.oh-my-zsh
 # Theme
 ZSH_THEME="robbyrussell"
 
-plugins=(git ssh-agent)
+plugins=(git ssh-agent zsh-vi-mode)
 zstyle :omz:plugins:ssh-agent lazy yes
 source $ZSH/oh-my-zsh.sh
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+# bindkey -v -- does the same as zsh-vi-mode but with less functionalities
+zvm_after_init_commands+=("bindkey '^[[A' up-line-or-search" "bindkey '^[[B' down-line-or-search")
 
 # lazygit -> shell changes directory when change repo in lazygit
 lg()
@@ -29,14 +32,14 @@ lg()
 # -------- PATHS ----------
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lou/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/louis/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/lou/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lou/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/louis/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/louis/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/lou/anaconda3/bin:$PATH"
+        export PATH="/Users/louis/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -53,17 +56,16 @@ unset __conda_setup
 # export PATH=$HOME/pkgs_source/picom/build/src:$PATH
 
 # Doom Emacs path 
-export PATH=$HOME/.emacs.d/bin:$PATH
+# export PATH=$HOME/.emacs.d/bin:$PATH
 
 # Zotero path
-export PATH=$HOME/libs/zotero:$PATH
-export PATH=$HOME/.local/share/applications:$PATH
-export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
+# export PATH=$HOME/libs/zotero:$PATH
+# export PATH=$HOME/.local/share/applications:$PATH
+# export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 
 # -------- Aliases --------
 alias audio="alsamixer"
 alias vi="vim"
-# alias vim="nvim"
 alias vim="nvim"
 alias picom="picom --config ~/.config/picom.conf -b"
 alias tat="tmux attach -t"
@@ -80,5 +82,5 @@ alias orga="cd ~/orga"
 alias cl="clear"
 alias del_emacs="bash ~/dotfiles/emacs/.config/emacs/del_config.sh"
 # . "$HOME/.cargo/env"
- export VISUAL=nvim;
- export EDITOR=nvim;
+export VISUAL=nvim;
+export EDITOR=nvim;
