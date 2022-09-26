@@ -9,10 +9,11 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 plugins=(git ssh-agent zsh-vi-mode)
+# plugins=(git ssh-agent)
 zstyle :omz:plugins:ssh-agent lazy yes
 source $ZSH/oh-my-zsh.sh
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
-# bindkey -v -- does the same as zsh-vi-mode but with less functionalities
+# bindkey -v # does the same as zsh-vi-mode but with less functionalities
 zvm_after_init_commands+=("bindkey '^[[A' up-line-or-search" "bindkey '^[[B' down-line-or-search")
 
 # lazygit -> shell changes directory when change repo in lazygit
@@ -77,10 +78,14 @@ alias lum05="xrandr --output eDP-1 --brightness 0.5"
 alias lum10="xrandr --output eDP-1 --brightness 1.0"
 alias lum15="xrandr --output eDP-1 --brightness 1.5"
 alias ca="conda activate"
-alias open="xdg-open"
+alias ma="mamba activate"
+# alias open="xdg-open"
 alias orga="cd ~/orga"
 alias cl="clear"
 alias del_emacs="bash ~/dotfiles/emacs/.config/emacs/del_config.sh"
+alias gfix='git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"'
 # . "$HOME/.cargo/env"
 export VISUAL=nvim;
 export EDITOR=nvim;
+export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
+
