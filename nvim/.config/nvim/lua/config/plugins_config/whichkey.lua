@@ -92,7 +92,8 @@ local leader_nopts = {
 
 local leader_nmappings = {
   ["e"] = { "<cmd>CHADopen<CR>", "Explorer" },
-  ["r"] = { "<cmd>Telescope resume<CR>", "Telescope resume" },
+  ["R"] = { "<cmd>Telescope resume<CR>", "Telescope resume" },
+  ["r"] = { ":split | terminal <C-Down>", "Launch command" },
 
   -- vim-maximizer
   [";"] = { "<cmd>MaximizerToggle<CR>", "Zoom toggle"},
@@ -324,7 +325,7 @@ local leader_nmappings = {
     t = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
     s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
     p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
-    x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
+    x = { "<cmd>lua require'dap'.terminate()<cr><cmd>bd! \\[dap-repl\\]<cr>", "Terminate" },
     r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
     i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
     o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },

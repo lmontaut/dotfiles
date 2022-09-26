@@ -28,8 +28,8 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- window split: do not focus
-keymap("n", "<C-w>v", "<C-w>v<C-w>h", opts)
-keymap("n", "<C-w>a", "<C-w>s<C-w>k", opts)
+-- keymap("n", "<C-w>v", "<C-w>v<C-w>h", opts)
+-- keymap("n", "<C-w>a", "<C-w>s<C-w>k", opts)
 
 -- Explorer
 -- keymap("n", "<leader>e", "<cmd>Lex 30<cr>", opts)
@@ -79,13 +79,14 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "p", '"_dP', opts)
 
 vim.cmd[[
-autocmd FileType fugitive nnoremap <buffer> q :q<CR>
-autocmd FileType qf nnoremap <buffer> q :q<CR>
-autocmd FileType git nnoremap <buffer> q :q<CR>
-autocmd FileType vim nnoremap <buffer> q :q<CR>
-autocmd FileType vimcmake nnoremap <buffer> q :q<CR>
-autocmd FileType lspinfo nnoremap <buffer> q :q<CR>
-autocmd FileType help nnoremap <buffer> q :q<CR>
+autocmd FileType fugitive nnoremap <buffer> q :bd<CR>
+autocmd FileType qf nnoremap <buffer> q :bd<CR>
+autocmd FileType git nnoremap <buffer> q :bd<CR>
+autocmd FileType vim nnoremap <buffer> q :bd<CR>
+autocmd FileType vimcmake nnoremap <buffer> q :bd<CR>
+autocmd FileType lspinfo nnoremap <buffer> q :bd<CR>
+autocmd FileType help nnoremap <buffer> q :bd<CR>
+autocmd FileType dap-float nnoremap <buffer> q :bd<CR>
 ]]
 
 -- Visual Block -> Does not work
