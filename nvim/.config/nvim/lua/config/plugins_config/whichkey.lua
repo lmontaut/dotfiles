@@ -181,7 +181,8 @@ local leader_nmappings = {
   g = {
     name = "+Git",
     n = { "<cmd>Neogit<CR>"                 , "Neogit" }              ,
-    g = { "<cmd>vertical Git<CR><cmd>norm gUk>gsk>gg<CR>"           , "Git status" }          ,
+    -- g = { "<cmd>vertical Git<CR><cmd>norm gUk>gsk>gg<CR>"           , "Git status" }          ,
+    g = { "<cmd>vertical Git<CR>"           , "Git status" }          ,
     t = { "<cmd>tabnew<CR><cmd>0G<CR><cmd>norm gUk>gsk>gg<CR>"      , "Git status tab" }      ,
     j = { "<cmd>Gitsigns next_hunk<CR>"     , "Next hunk" }           ,
     k = { "<cmd>Gitsigns prev_hunk<CR>"     , "Previous hunk" }       ,
@@ -428,6 +429,14 @@ which_key.register(nmappings, nopts)
 local vmappings = {
   -- Comment
   ["\\"] = { "<ESC><CMD>lua require(\"Comment.api\").toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+
+  -- Git
+  g = {
+    name = "+Git",
+    s = {":'<,'>Gitsigns stage_hunk<CR>", "Stage"},
+    u = {":'<,'>Gitsigns undo_stage_hunk<CR>", "Unstage"}
+  }
+
 }
 local vopts = {
   mode = "v", -- VISUAL mode
