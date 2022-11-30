@@ -233,7 +233,7 @@ local leader_nmappings = {
         },
     },
     l = { "<cmd>tabnew<CR><cmd>Gclog<CR><C-w>L<cmd>vertical resize 120<CR>"  , "Git log" }             ,
-    p = { "<cmd>Git push<CR>"               , "Git push" }            ,
+    P = { "<cmd>Git push<CR>"               , "Git push" }            ,
     o = { "<cmd>Telescope git_status<CR>"   , "Open changed file" }   ,
     b = { "<cmd>Telescope git_branches<CR>" , "Checkout branch" }     ,
     c = { "<cmd>vertical Git commit -v -q<CR>"       , "Commit" }              ,

@@ -91,9 +91,24 @@ return packer.startup(function(use)
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
+  local lspconfig = require'lspconfig'
+  lspconfig.ccls.setup {
+    init_options = {
+      compilationDatabaseDirectory = "build";
+      index = {
+        threads = 0;
+      };
+      clang = {
+        excludeArgs = { "-frounding-math"} ;
+      };
+    }
+  }
+
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   use "b0o/schemastore.nvim" -- more json files settings support
+  -- use {"neoclide/coc.nvim", run="yarn install --frozen-lockfile"}
+  use "m-pilia/vim-ccls"
 
   -- TODO: look into null-ls --> format/lint/code actions from other sources than LSPs
   -- use "jose-elias-alvarez/null-ls.nvim"

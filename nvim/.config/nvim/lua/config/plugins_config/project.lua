@@ -39,7 +39,7 @@ require("project_nvim").setup {
 
   -- When set to false, you will get a message when project.nvim changes your
   -- directory.
-  silent_chdir = false,
+  silent_chdir = true,
 }
 
 -- Telescope integration

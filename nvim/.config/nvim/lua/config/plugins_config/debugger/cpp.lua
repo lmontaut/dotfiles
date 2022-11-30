@@ -19,7 +19,7 @@ function M.setup()
   dap.adapters.lldb = {
     type = 'executable',
     id = "lldb",
-    command = "/opt/homebrew/Cellar/llvm/14.0.6_1/bin/lldb-vscode",
+    command = "/opt/homebrew/Cellar/llvm/15.0.5/bin/lldb-vscode"
   }
 
   dap.configurations.cpp = {
