@@ -108,11 +108,12 @@ local leader_nmappings = {
   ["2"] = { "<cmd>set hlsearch!<CR>", "Clear highlight" },
 
   -- find project files quicker
-  [" "] = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find file" },
+  [" "] = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find git file" },
 
   f = {
     name = "+Find",
-    f = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find file" }          ,
+    f = { require("config.plugins_config.telescope_functions.telescope_finder").find_project_files , "Find git file" }          ,
+    F = { "<cmd>Telescope find_files<CR>"                                                          , "Find file" }          ,
     b = { "<cmd>Telescope buffers<CR>"                                                             , "Find buffer" }        ,
     d = { "<cmd>Telescope diagnostics bufnr=0 theme=get_ivy<CR>"                                   , "Buffer Diagnostics" } ,
     D = { "<cmd>Telescope diagnostics<CR>"                                                         , "All diagnostics" }    ,
