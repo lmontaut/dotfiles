@@ -17,34 +17,17 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 zvm_after_init_commands+=("bindkey '^[[A' up-line-or-search" "bindkey '^[[B' down-line-or-search")
 
 # lazygit -> shell changes directory when change repo in lazygit
-lg()
-{
-    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
-
-    lazygit "$@"
-
-    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
-    fi
-}
-
-
-# -------- PATHS ----------
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/louis/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/louis/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/louis/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/louis/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# lg()
+# {
+#     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+#
+#     lazygit "$@"
+#
+#     if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+#             cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+#             rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+#     fi
+# }
 
 # I guess this is usefull ? Can't remember
 # export PATH=/usr/local/bin:$PATH
@@ -56,7 +39,7 @@ unset __conda_setup
 # Picom path
 # export PATH=$HOME/pkgs_source/picom/build/src:$PATH
 
-# Doom Emacs path 
+# Doom Emacs path
 # export PATH=$HOME/.emacs.d/bin:$PATH
 
 # Zotero path
@@ -84,8 +67,34 @@ alias orga="cd ~/orga"
 alias cl="clear"
 alias del_emacs="bash ~/dotfiles/emacs/.config/emacs/del_config.sh"
 alias gfix='git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"'
+alias lg="lazygit"
 # . "$HOME/.cargo/env"
+alias cmaker='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
+alias cmaked='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
+alias jupytervim="pip install jupyterlab-vim jupyterlab-vimrc"
 export VISUAL=nvim;
 export EDITOR=nvim;
 export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/louis/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/louis/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/louis/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/louis/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/louis/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/Users/louis/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+export CMAKE_COLOR_DIAGNOSTICS=0
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+# export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
