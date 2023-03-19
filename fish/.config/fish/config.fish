@@ -1,3 +1,6 @@
+# No greetings
+set fish_greeting
+
 # Find brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
