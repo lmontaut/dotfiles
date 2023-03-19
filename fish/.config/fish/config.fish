@@ -49,6 +49,9 @@ alias cmaked="cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debu
 alias buildd="echo rm -rf build_debug && rm -rf build_debug && echo mkdir build_debug && mkdir build_debug && echo cd build_debug && cd build_debug && echo cmaked .. && cmaked ..  && echo cd .. && cd .."
 alias make="make -j8"
 
+# -- Rapid access to dotfiles
+alias cdd="cd ~/dotfiles"
+
 # -- Exports
 export VISUAL=nvim;
 export EDITOR=nvim;
