@@ -1,0 +1,4 @@
+# To activate:
+# git config --global core.excludesfile $HOME/.gitignore
+compile_commands.json
+*.DS_Store
