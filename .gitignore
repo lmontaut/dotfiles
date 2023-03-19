@@ -25,3 +25,4 @@ emacs/.config/emacs/recentf
 /emacs/.config/emacs/.cache/
 /emacs/.config/emacs/transient/
 *.elc
+nvim_old/.config/nvim/plugin/packer_compiled.lua
