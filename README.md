@@ -34,7 +34,9 @@ For i3, [Polybar](https://github.com/polybar/polybar) probably needs to be insta
 `git clone https://github.com/adi1090x/polybar-themes.git`
 
 [ ] tmux plugin manager:
-`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+- First, stow tmux
+- Then: `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+- Launch a new tmux server, then prefix + I (C-a + I) -> automatic install
 
 [ ] C++ `clangd`:
     - First build your project `mkdir build && cd build && cmake .. (+ other cmake flags) && make install`
