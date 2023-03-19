@@ -11,7 +11,12 @@ Run `pacman -S < program/.pacman.list`.
 For i3, [Polybar](https://github.com/polybar/polybar) probably needs to be installed (at least the themes).
 
 ## Very good set of tools
-[Modern unix](https://github.com/ibraheemdev/modern-unix)
+[Modern unix](https://github.com/ibraheemdev/modern-unix).
+- rg (ripgrep)
+- bat (cat replacement)
+- duf (du replacement)
+- exa (ls replacement)
+- gtop (top replacement)
 
 ## NOTES / FIXES
 [ ] Switch to zsh:
