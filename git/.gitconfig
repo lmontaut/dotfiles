@@ -1,19 +1,35 @@
 [user]
 	email = louismontaut@gmail.com
 	name = Louis Montaut
-[color]
-	ui = true
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-[color "diff"]
-	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+
 [core]
+	pager = delta
 	excludesfile = ~/dotfiles/git/.gitignore
+
+[interactive]
+	diffFilter = delta --color-only --features=interactive
+
+[delta]
+	navigate = true    # use n and N to move between diff sections
+	light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+	features = decorations
+	line-numbers = true
+	side-by-side = true
+
+[delta "interactive"]
+	keep-plus-minus-markers = false
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+[delta "decorations"]
+	commit-decoration-style = blue ol
+	commit-style = raw
+	file-style = omit
+	hunk-header-decoration-style = blue box
+	hunk-header-file-style = red
+	hunk-header-line-number-style = "#067a00"
+	hunk-header-style = file line-number syntax

@@ -30,7 +30,7 @@ alias reload="exec fish"
 alias audio="alsamixer"
 alias picom="picom --config ~/.config/picom.conf -b"
 alias cl="clear"
-# alias gfix='git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"'
+alias gfix='git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"'
 alias ll='ls -la'
 
 # -- Python

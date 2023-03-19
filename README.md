@@ -17,6 +17,8 @@ For i3, [Polybar](https://github.com/polybar/polybar) probably needs to be insta
 - duf (du replacement)
 - exa (ls replacement)
 - gtop (top replacement)
+- delta (git viewer)
+- ag (code searcher)
 
 ## NOTES / FIXES
 [ ] Switch to zsh:
