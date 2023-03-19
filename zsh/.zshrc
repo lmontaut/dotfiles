@@ -95,6 +95,12 @@ if [ -f "/Users/louis/mambaforge/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
-export CMAKE_COLOR_DIAGNOSTICS=0
+export CMAKE_COLOR_DIAGNOSTICS=1
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 # export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# Safe rm
+alias rm="rm -i"
+
+# make always parallel
+alias make="make -s"
