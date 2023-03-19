@@ -4,9 +4,8 @@ vim/.vim/autoload
 vim/.vim/sessions
 nvim/.config/nvim/sessions
 nvim/.config/nvim/plugin
-lvim/.config/lvim/lv-settings.lua
+nvim_old/.config/nvim/plugin/packer_compiled.lua
 vim/.vim/view/~=+dotfiles=+cheatsheat.md=
-lvim/.config/lvim/plugin/packer_compiled.lua
 
 emacs/.emacs.d/elpa
 emacs/.emacs.d/dump.txt
@@ -16,7 +15,7 @@ emacs/.config/emacs/eln-cache/28.1-7c4f95c7
 emacs/.config/emacs/straight
 emacs/.config/emacs/elpa
 *#
-#*
+
 .#*
 emacs/.config/emacs/projects
 emacs/.config/emacs/.cache/lsp/npm/pyright
@@ -25,6 +24,7 @@ emacs/.config/emacs/recentf
 /emacs/.config/emacs/.cache/
 /emacs/.config/emacs/transient/
 *.elc
-nvim_old/.config/nvim/plugin/packer_compiled.lua
 
 tmux/.config/tmux/plugins
+
+fish/.config/fish/fish_variables

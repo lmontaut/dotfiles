@@ -1,5 +1,5 @@
 # Find brew
-eval "$(/opt/homebrew/bin/brew shellenv)" 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Find cargo and other cargo utilities
 set -gx PATH "$HOME/.cargo/bin" $PATH;
@@ -12,17 +12,22 @@ alias ca="conda activate"
 alias ma="mamba activate"
 
 # -- Better cli tooling
-alias grep="rg"
-alias top="gtop"
-alias ls="exa"
-alias du="duf"
-alias cat="bat"
+if type -q exa
+  alias grep="rg"
+  alias top="gtop"
+  alias ls="exa"
+  alias du="duf"
+  alias cat="bat"
+end
+
+# reload current shell
+alias reload="exec fish"
 
 # -------- Aliases --------
 alias audio="alsamixer"
 alias picom="picom --config ~/.config/picom.conf -b"
 alias cl="clear"
-alias gfix='git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"'
+# alias gfix='git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"'
 alias ll='ls -la'
 
 # -- Python
@@ -49,7 +54,7 @@ alias cmaked="cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debu
 alias buildd="echo rm -rf build_debug && rm -rf build_debug && echo mkdir build_debug && mkdir build_debug && echo cd build_debug && cd build_debug && echo cmaked .. && cmaked ..  && echo cd .. && cd .."
 alias make="make -j8"
 
-# -- Rapid access to dotfiles
+# -- Rapid access to things
 alias cdd="cd ~/dotfiles"
 
 # -- Exports
