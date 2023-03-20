@@ -22,6 +22,7 @@ if type -q exa
   alias du="dust"
   alias df="duf"
   alias cat="bat"
+  alias find="fd"
 end
 
 # reload current shell
