@@ -52,11 +52,11 @@ alias vi="vim"
 alias vim="nvim"
 
 # -- CMake/Make
-alias cmaker="cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
-alias buildr="echo rm -rf build_release && rm -rf build_release && echo mkdir build_release && mkdir build_release && echo cd build_release && cd build_release && echo cmaker .. && cmaker ..  && echo cp compile_commands.json ../ && cp compile_commands.json ../ && echo cd .. && cd .."
-alias cmaked="cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
-alias buildd="echo rm -rf build_debug && rm -rf build_debug && echo mkdir build_debug && mkdir build_debug && echo cd build_debug && cd build_debug && echo cmaked .. && cmaked ..  && echo cd .. && cd .."
-alias make="make -j8"
+abbr cmaker "cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
+abbr buildr "echo rm -rf build_release && rm -rf build_release && echo mkdir build_release && mkdir build_release && echo cd build_release && cd build_release && echo cmaker .. && cmaker ..  && echo cp compile_commands.json ../ && cp compile_commands.json ../ && echo cd .. && cd .."
+abbr cmaked "cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
+abbr buildd "echo rm -rf build_debug && rm -rf build_debug && echo mkdir build_debug && mkdir build_debug && echo cd build_debug && cd build_debug && echo cmaked .. && cmaked ..  && echo cd .. && cd .."
+abbr make "make -j8"
 
 # -- Rapid access to things
 alias cdd="cd ~/dotfiles"
@@ -72,3 +72,18 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 # Safe rm
 alias rm="rm -i"
+
+# Git
+abbr ga "git add -p"
+abbr gc "git commit -v -p"
+abbr gl "git log -p"
+abbr gl1 "git log --oneline"
+abbr gp "git push"
+abbr gupstream "git branch --set-upstream-to"
+abbr gr "git reflog -p"
+abbr gr1 "git reflog"
+abbr gs "git stash push --keep-index --message"
+abbr gp "git stash pop --index"
+abbr gd "git diff"
+abbr gr "git rebase -i"
+abbr gb "git branch -vv"
