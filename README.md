@@ -12,13 +12,20 @@ For i3, [Polybar](https://github.com/polybar/polybar) probably needs to be insta
 
 ## Very good set of tools
 [Modern unix](https://github.com/ibraheemdev/modern-unix).
-- rg (ripgrep)
-- bat (cat replacement)
-- duf (du replacement)
-- exa (ls replacement)
-- gtop (top replacement)
-- delta (git viewer)
-- ag (code searcher)
+-  rg (ripgrep)
+-  bat (cat replacement)
+-  duf (du replacement)
+-  exa (ls replacement)
+-  gtop (top replacement)
+-  delta (git viewer)
+-  ag (code searcher)
+- cheat (i.e cheat ls)
+- tldr (resuming man pages) -> INSANE
+- fzf
+    - vim $(fzf)
+    - find * -type f | fzf > selected
+- procs (see pids)
+- hyperfine (benchmarking from cli)
 
 ## NOTES / FIXES
 [ ] Switch to zsh:

@@ -19,7 +19,8 @@ if type -q exa
   alias grep="rg"
   alias top="gtop"
   alias ls="exa"
-  alias du="duf"
+  alias du="dust"
+  alias df="duf"
   alias cat="bat"
 end
 

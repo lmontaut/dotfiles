@@ -20,6 +20,7 @@
 	keep-plus-minus-markers = false
 
 [merge]
+	tool = fugitive
 	conflictstyle = diff3
 
 [diff]
@@ -33,3 +34,6 @@
 	hunk-header-file-style = red
 	hunk-header-line-number-style = "#067a00"
 	hunk-header-style = file line-number syntax
+
+[mergetool "fugitive"]
+	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
