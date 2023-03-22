@@ -54,10 +54,15 @@ alias vi="vim"
 alias vim="nvim"
 
 # -- CMake/Make
+export CXX="ccache /usr/bin/clang++"
+export CC="/usr/bin/clang"
 alias cmaker="cmake -DCMAKE_INSTALL_PREFIX=\$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_PREFIX_PATH=\$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
 abbr buildr "echo rm -rf build_release && rm -rf build_release && echo mkdir build_release && mkdir build_release && echo cd build_release && cd build_release && echo cmaker .. && cmaker ..  && echo cp compile_commands.json ../ && cp compile_commands.json ../ && echo cd .. && cd .."
 alias cmaked="cmake -DCMAKE_INSTALL_PREFIX=\$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=\$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
 abbr buildd "echo rm -rf build_debug && rm -rf build_debug && echo mkdir build_debug && mkdir build_debug && echo cd build_debug && cd build_debug && echo cmaked .. && cmaked ..  && echo cp compile_commands.json ../ && cp compile_commands.json ../ && echo cd .. && cd .."
+
+# -- Fix clang format
+abbr fix-clang-format "sudo ln -s /opt/homebrew/bin/clang-format \$HOME/.cache/pre-commit/<REPO_ID>/py_env-python3.11/lib/python3.11/site-packages/clang_format/data/bin/clang-format"
 
 # -- Rapid access to things
 alias cdd="cd ~/dotfiles"
