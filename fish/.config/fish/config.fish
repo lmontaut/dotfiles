@@ -11,6 +11,7 @@ set -gx PATH "$HOME/.cargo/bin" $PATH;
 # !! Contents within this block are managed by 'conda init' !!
 eval /Users/louis/mambaforge/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
+source /Users/louis/mambaforge/etc/fish/conf.d/conda.fish
 alias ca="conda activate"
 alias ma="mamba activate"
 
@@ -53,10 +54,9 @@ alias vi="vim"
 alias vim="nvim"
 
 # -- CMake/Make
-alias make="make -j8"
-alias cmaker="cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
+alias cmaker="cmake -DCMAKE_INSTALL_PREFIX=\$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_PREFIX_PATH=\$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
 abbr buildr "echo rm -rf build_release && rm -rf build_release && echo mkdir build_release && mkdir build_release && echo cd build_release && cd build_release && echo cmaker .. && cmaker ..  && echo cp compile_commands.json ../ && cp compile_commands.json ../ && echo cd .. && cd .."
-alias cmaked="cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
+alias cmaked="cmake -DCMAKE_INSTALL_PREFIX=\$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=\$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
 abbr buildd "echo rm -rf build_debug && rm -rf build_debug && echo mkdir build_debug && mkdir build_debug && echo cd build_debug && cd build_debug && echo cmaked .. && cmaked ..  && echo cp compile_commands.json ../ && cp compile_commands.json ../ && echo cd .. && cd .."
 
 # -- Rapid access to things
