@@ -2,24 +2,29 @@ refresher:
   refreshInterval: 1 # File/submodule refresh interval in seconds
   fetchInterval: 180 # In seconds
 notARepository: 'skip'
-scrollHeight: 6 # How many lines are scrolled
 gui:
+  scrollHeight: 15 # How many lines are scrolled
+  mainPanelSplitMode: 'vertical'
+  showFileTree: false
+  showIcons: false
+  windowSize: 'half'
   theme:
-    lightTheme: false
-    # activeBorderColor:
-    #   - blue
-    #   - bold
-    # inactiveBorderColor:
-      # - "#000000"
-    # optionsTextColor:
-    #   - blue
-    # selectedLineBgColor:
-      # - "#E4F9F4" # set to `default` to have no background colour
-    # selectedRangeBgColor:
-    #   - blue
-    # cherryPickedCommitBgColor:
-    #   - cyan
-    # cherryPickedCommitFgColor:
-    #   - blue
-    # unstagedChangesColor:
-    #   - red
+    activeBorderColor:
+      - green
+      - bold
+    inactiveBorderColor:
+      - white
+    optionsTextColor:
+      - blue
+    selectedLineBgColor:
+      - blue # set to `default` to have no background colour
+    selectedRangeBgColor:
+      - magenta
+    cherryPickedCommitBgColor:
+      - cyan
+    cherryPickedCommitFgColor:
+      - blue
+    unstagedChangesColor:
+      - red
+    defaultFgColor:
+      - default
