@@ -3,13 +3,15 @@ ZSH_DISABLE_COMPFIX=true
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # . "$HOME/.cargo/env"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 # Theme
 ZSH_THEME="robbyrussell"
 
-plugins=(git ssh-agent)
+plugins=(git ssh-agent zsh-autosuggestions)
 zstyle :omz:plugins:ssh-agent lazy yes
 source $ZSH/oh-my-zsh.sh
 
