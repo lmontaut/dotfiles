@@ -7,7 +7,6 @@ gui:
   mainPanelSplitMode: 'vertical'
   showFileTree: false
   showIcons: false
-  windowSize: 'half'
   theme:
     activeBorderColor:
       - green
