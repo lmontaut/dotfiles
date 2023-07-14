@@ -70,6 +70,7 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 # Git
 alias lg="lazygit"
 alias gfix='git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"'
+alias gfa="git fetch --all"
 alias gs="git status"
 alias ga="git add -p"
 alias gc="git commit -v -p"
