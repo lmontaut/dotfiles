@@ -28,3 +28,4 @@ emacs/.config/emacs/recentf
 tmux/.config/tmux/plugins
 
 fish/.config/fish/fish_variables
+lazygit/.config/lazygit/state.yml
