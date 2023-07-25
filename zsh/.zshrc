@@ -99,3 +99,8 @@ if ! type "$exa" > /dev/null; then
   alias cat="bat"
   alias find="fd"
 fi
+
+# export PATH="$PATH:/Users/louis/.dotnet/tools"
+# export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono
+eval "$(/opt/homebrew/bin/brew shellenv)"
+alias nvim-server="nvim --listen /tmp/nvimsocket"
