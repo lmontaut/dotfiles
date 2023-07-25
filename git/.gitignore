@@ -1,4 +1,5 @@
 # To activate:
 # git config --global core.excludesfile $HOME/.gitignore
+*.cache/clangd/index
 compile_commands.json
 *.DS_Store
