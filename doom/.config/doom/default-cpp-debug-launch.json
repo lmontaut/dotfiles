@@ -1,0 +1,12 @@
+{
+    "configurations": [
+	{
+	    "type": "lldb-vscode",
+	    "request": "launch",
+	    "name": " ---- C++ LLDB json ----",
+	    "program": "${workspaceFolder}/builds/build-debug-$(echo $CONDA_DEFAULT_ENV)/test/${fileBasenameNoExtension}",
+	    "cwd": "${workspaceFolder}",
+	    "args": [],
+	}
+    ]
+}
