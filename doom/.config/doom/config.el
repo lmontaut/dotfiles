@@ -34,12 +34,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
-;; (after! doom-themes
-;;   (setq doom-themes-enable-bold
-;;         doom-themes-enable-italic))
 (custom-set-faces!
-  `(font-lock-comment-face :foreground ,(doom-color 'green)))
-  ;; `(font-lock-comment-face :slant italic))
+  `(font-lock-comment-face :foreground "#289c81"))
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -141,6 +137,20 @@
 ;; -------------------------------------------
 (setq-default company-idle-delay nil)
 
+;; ------------------------------------
+;; -------------- LSP -----------------
+;; ------------------------------------
+;; Clangd
+(after! lsp-clangd
+  (setq lsp-clients-clangd-args
+        '("-j=4"
+          "--background-index"
+          "--clang-tidy"
+          "--completion-style=detailed"
+          "--header-insertion=never"
+          "--header-insertion-decorators=0"))
+  (set-lsp-priority! 'clangd 2))
+
 ;; --------------------------------------------------------
 ;; -------------- WHICH KEY / KEYBINDINGS -----------------
 ;; --------------------------------------------------------
@@ -166,24 +176,6 @@
   (map! :nv "C-<left>" #'evil-window-decrease-width)
   (map! :nv "C-<up>" #'evil-window-increase-height)
   (map! :nv "C-<down>" #'evil-window-decrease-height)
-
-  ;; Manipulate font size
-  (map! :nv "M-=" #'doom/increase-font-size(1 1))
-  (map! :nv "M--" #'doom/decrease-font-size(1 1))
-
-  ;;
-  ;; LSP-related
-  ;;
-  ;; Clangd
-  (after! lsp-clangd
-    (setq lsp-clients-clangd-args
-          '("-j=4"
-            "--background-index"
-            "--clang-tidy"
-            "--completion-style=detailed"
-            "--header-insertion=never"
-            "--header-insertion-decorators=0"))
-    (set-lsp-priority! 'clangd 2))
 
   ;; Compilation
   (map! :leader
