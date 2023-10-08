@@ -2,6 +2,7 @@
 ZSH_DISABLE_COMPFIX=true
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # . "$HOME/.cargo/env"
+export PATH=$HOME/.config/emacs/bin:$PATH
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -47,6 +48,10 @@ alias cl="clear"
 alias del_emacs="bash ~/dotfiles/emacs/.config/emacs/del_config.sh"
 alias jupytervim="pip install jupyterlab-vim jupyterlab-vimrc"
 # Make/CMake
+alias mkdirr='mkdir builds/build-release-$(echo $CONDA_DEFAULT_ENV)'
+alias mkdird='mkdir builds/build-debug-$(echo $CONDA_DEFAULT_ENV)'
+alias lcompr='ln -sf builds/build-release-$(echo $CONDA_DEFAULT_ENV)/compile_commands.json ./'
+alias lcompd='ln -sf builds/build-debug-$(echo $CONDA_DEFAULT_ENV)/compile_commands.json ./'
 alias cmaker='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
 alias cmaked='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
 alias make="make -j10"
@@ -90,6 +95,8 @@ alias gb="git branch -vv"
 # Safe rm
 alias rm="rm -i"
 
+# alias for ldd
+alias ldd="otool"
 
 if ! type "$exa" > /dev/null; then
   alias grep="rg"
@@ -105,3 +112,5 @@ fi
 # export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono
 eval "$(/opt/homebrew/bin/brew shellenv)"
 alias nvim-server="nvim --listen /tmp/nvimsocket"
+
+export SDKROOT=$(xcrun --show-sdk-path)
