@@ -210,4 +210,16 @@
                     :desc "org-move-item-up"   "K" #'org-move-item-up
                     :desc "org-move-item-down" "J" #'org-move-item-down
                     ))
-)
+
+  ;; Indentation
+  (map! :ni "C-l" #'evil-shift-right-line
+        :ni ">" #'evil-shift-right-line
+        :ni "C-h" #'evil-shift-left-line
+        :ni "<" #'evil-shift-left-line
+        ;; Visual mode
+        :v "C-l" #'+evil/shift-right
+        :v ">" #'+evil/shift-right
+        :v "C-h" #'+evil/shift-left
+        :v "<" #'+evil/shift-left
+        )
+  )
