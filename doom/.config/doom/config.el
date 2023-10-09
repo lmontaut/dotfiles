@@ -33,14 +33,15 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-oksolar-light)
+;; (setq doom-theme 'doom-oksolar-dark)
 (custom-set-faces!
   `(font-lock-comment-face :foreground "#289c81"))
 
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type `relative)
+(setq display-line-numbers-type nil)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -89,6 +90,16 @@
 ;;
 ;; For some reason lsp-lens is mega slow in c-mode
 (setq lsp-lens-enable nil)
+;; Disable invasive lsp-mode features
+(after! lsp-mode
+  (setq lsp-enable-symbol-highlighting nil
+        ;; If an LSP server isn't present when I start a prog-mode buffer, you
+        ;; don't need to tell me. I know. On some machines I don't care to have
+        ;; a whole development environment for some ecosystems.
+        lsp-enable-suggest-server-download nil))
+(after! lsp-ui
+  (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
+        lsp-ui-doc-enable nil))     ; redundant with K
 
 ;;
 ;; Python
@@ -166,10 +177,24 @@
 (after! imenu-list
   (setq imenu-list-size 0.3))
 
+;; -------------------------------------------
+;; -------------- EVIL SETUP -----------------
+;; -------------------------------------------
+;; Utility function to jump back/forth and recenter
+(defun mm/evil-jump-forward-and-recenter()
+  (evil-jump-forward)
+  (recenter))
+(defun mm/evil-jump-backward-and-recenter()
+  (evil-jump-backward)
+  (recenter))
+(setq +evil-want-o/O-to-continue-comments nil)
+
 ;; --------------------------------------------------------
 ;; -------------- WHICH KEY / KEYBINDINGS -----------------
 ;; --------------------------------------------------------
+;;
 ;; Utility function to record compilation commands in a buffer
+;;
 (defun mm/compile-and-record-command(cmd)
   (interactive
    (list (completing-read "Compile command: " compile-history)))
@@ -192,10 +217,11 @@
   (map! :nv "C-<up>" #'evil-window-increase-height)
   (map! :nv "C-<down>" #'evil-window-decrease-height)
 
-  ;; Compilation
+  ;; Code/LSP/Compilation
   (map! :leader
         (:prefix-map("c" . "code")
                     :desc "Compile" "c" #'mm/compile-and-record-command
+                    :desc "lsp-ui-imenu" "I" #'lsp-ui-imenu
                     :desc "Reset compile commands" "R" #'mm/reset-compile-history
                     :desc "compilation-goto-in-progress-buffer" "p" #'compilation-goto-in-progress-buffer
                     :desc "compilation-goto-in-progress-buffer" "k" #'kill-compilation))
@@ -212,14 +238,8 @@
                     ))
 
   ;; Indentation
-  (map! :ni "C-l" #'evil-shift-right-line
-        :ni ">" #'evil-shift-right-line
-        :ni "C-h" #'evil-shift-left-line
-        :ni "<" #'evil-shift-left-line
-        ;; Visual mode
-        :v "C-l" #'+evil/shift-right
-        :v ">" #'+evil/shift-right
-        :v "C-h" #'+evil/shift-left
-        :v "<" #'+evil/shift-left
-        )
+  (map! :v "C-." #'+evil/shift-right
+        :v "C-," #'+evil/shift-left
+        :ni "C-." #'evil-shift-right-line
+        :ni "C-," #'evil-shift-left-line)
   )
