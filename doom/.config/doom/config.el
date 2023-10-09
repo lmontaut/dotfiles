@@ -21,8 +21,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Fira Code" :size 17 :weight 'normal)
-     doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14 :weight 'normal))
+     ;; doom-variable-pitch-font (font-spec :family "Fira Sans" :size 12))
 
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -135,7 +135,16 @@
 ;; -------------------------------------------
 ;; -------------- COMPLETION -----------------
 ;; -------------------------------------------
-(setq-default company-idle-delay nil)
+(setq-default company-idle-delay nil) ;; remove auto completion-search
+;; Toggle completion-search with tab/S-tab
+(after! company
+  (define-key company-mode-map (kbd "<tab>") 'company-complete)
+  )
+(after! company
+  (map! :i "S-<tab>" #'company-abort))
+;; How to add a keybind for a specific mode:
+;; (add-hook 'LaTeX-mode-hook
+;;         (lambda () (local-set-key (kbd "C-0") #'run-latexmk)))
 
 ;; ------------------------------------
 ;; -------------- LSP -----------------
