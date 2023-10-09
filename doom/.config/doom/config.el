@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14 :weight 'normal))
-     ;; doom-variable-pitch-font (font-spec :family "Fira Sans" :size 12))
+;; doom-variable-pitch-font (font-spec :family "Fira Sans" :size 12))
 
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -114,7 +114,7 @@
 (after! dap-mode
   (setq dap-auto-configure-mode t) ;; "Automatically configure dap."
   (setq dap-auto-configure-features
-   '(sessions locals breakpoints expressions tooltip)) ;; "Remove the button panel in the top."
+        '(sessions locals breakpoints expressions tooltip)) ;; "Remove the button panel in the top."
 
   ;; dap for c++
   (require 'dap-lldb)
@@ -220,26 +220,35 @@
   ;; Code/LSP/Compilation
   (map! :leader
         (:prefix-map("c" . "code")
-                    :desc "Compile" "c" #'mm/compile-and-record-command
-                    :desc "lsp-ui-imenu" "I" #'lsp-ui-imenu
-                    :desc "Reset compile commands" "R" #'mm/reset-compile-history
-                    :desc "compilation-goto-in-progress-buffer" "p" #'compilation-goto-in-progress-buffer
-                    :desc "compilation-goto-in-progress-buffer" "k" #'kill-compilation))
+         :desc "Compile" "c" #'mm/compile-and-record-command
+         :desc "lsp-ui-imenu" "I" #'lsp-ui-imenu
+         :desc "Reset compile commands" "R" #'mm/reset-compile-history
+         :desc "compilation-goto-in-progress-buffer" "p" #'compilation-goto-in-progress-buffer
+         :desc "compilation-goto-in-progress-buffer" "k" #'kill-compilation))
 
   ;; Search
   (map! :leader
         (:prefix-map("s" . "search")
-                    :desc "consult-ripgrep" "g" #'consult-ripgrep))
+         :desc "consult-ripgrep" "g" #'consult-ripgrep))
   ;; Org mode
   (map! :leader
         (:prefix-map("ms")
-                    :desc "org-move-item-up"   "K" #'org-move-item-up
-                    :desc "org-move-item-down" "J" #'org-move-item-down
-                    ))
+         :desc "org-move-item-up"   "K" #'org-move-item-up
+         :desc "org-move-item-down" "J" #'org-move-item-down
+         ))
 
   ;; Indentation
   (map! :v "C-." #'+evil/shift-right
         :v "C-," #'+evil/shift-left
         :ni "C-." #'evil-shift-right-line
         :ni "C-," #'evil-shift-left-line)
+  )
+
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(after! highlight-indent-guides
+  (setq-default highlight-indent-guides-method 'bitmap)
+  (setq-default highlight-indent-guides-auto-enabled nil)
+  (set-face-background 'highlight-indent-guides-odd-face "lightgray")
+  (set-face-background 'highlight-indent-guides-even-face "lightgray")
+  (set-face-foreground 'highlight-indent-guides-character-face "lightgray")
   )
