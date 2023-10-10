@@ -1,30 +1,15 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 (setq user-full-name "Louis Montaut"
       user-mail-address "louismontaut@gmail.com")
 
-;; Doom exposes five (optional) variables for controlling fonts in Doom:
-;;
-;; - `doom-font' -- the primary font to use
-;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
-;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;; - `doom-unicode-font' -- for unicode glyphs
-;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept. For example:
-;;
+;; accept.
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14 :weight 'normal))
 ;; doom-variable-pitch-font (font-spec :family "Fira Sans" :size 12))
 
-;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
@@ -37,11 +22,31 @@
 ;; (setq doom-theme 'doom-oksolar-dark)
 (custom-set-faces!
   `(font-lock-comment-face :foreground "#289c81"))
+(after! evil-snipe
+  (set-face-foreground 'evil-snipe-matches-face "white")
+  (set-face-foreground 'evil-snipe-first-match-face "white")
+  (set-face-background 'evil-snipe-matches-face "magenta")
+  (set-face-background 'evil-snipe-first-match-face "orange")
+  )
 
+(setq evil-normal-state-cursor '(box "orange")
+      evil-insert-state-cursor '(bar "orange")
+      evil-visual-state-cursor '(hollow "orange"))
+
+;; Show indentation lines
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(after! highlight-indent-guides
+  (setq-default highlight-indent-guides-method 'bitmap)
+  (setq-default highlight-indent-guides-auto-enabled nil)
+  (set-face-background 'highlight-indent-guides-odd-face "lightgray")
+  (set-face-background 'highlight-indent-guides-even-face "lightgray")
+  (set-face-foreground 'highlight-indent-guides-character-face "lightgray")
+  )
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type nil)
+;; Disable if performance if bad.
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -84,7 +89,6 @@
 ;; -------------------------------------
 ;; -------------- LSP ------------------
 ;; -------------------------------------
-
 ;;
 ;; C / C++
 ;;
@@ -242,13 +246,13 @@
         :v "C-," #'+evil/shift-left
         :ni "C-." #'evil-shift-right-line
         :ni "C-," #'evil-shift-left-line)
+
+  (map! :i "C-d" #'kill-word)
   )
 
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-(after! highlight-indent-guides
-  (setq-default highlight-indent-guides-method 'bitmap)
-  (setq-default highlight-indent-guides-auto-enabled nil)
-  (set-face-background 'highlight-indent-guides-odd-face "lightgray")
-  (set-face-background 'highlight-indent-guides-even-face "lightgray")
-  (set-face-foreground 'highlight-indent-guides-character-face "lightgray")
-  )
+;; Don't omit hidden files in dired & show r/w rights
+;; (defun louis-configure-dired-mode ()
+;;   (dired-omit-mode nil))
+;; (add-hook 'dired-mode-hook 'louis-configure-dired-mode)
+
+(add-hook 'dired-mode-hook (lambda () (dired-omit-mode nil)))
