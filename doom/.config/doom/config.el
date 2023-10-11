@@ -29,19 +29,33 @@
   (set-face-background 'evil-snipe-first-match-face "orange")
   )
 
+;; Show indentation lines
+;; -- Cheap version --
+;; (defun lm/set-up-whitespace-handling ()
+;;   (interactive)
+;;   (setq whitespace-style '(face tabs spaces trailing indentation empty newline space-mark tab-mark))
+;;   (whitespace-mode 1))
+;; (add-hook 'prog-mode-hook 'lm/set-up-whitespace-handling)
+;; -- More expensive version --
+;; (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+;; (after! highlight-indent-guides
+;;   (setq-default highlight-indent-guides-method 'character)
+;;   (setq-default highlight-indent-guides-auto-enabled nil)
+;;   (set-face-background 'highlight-indent-guides-odd-face "lightgray")
+;;   (set-face-background 'highlight-indent-guides-even-face "lightgray")
+;;   (set-face-foreground 'highlight-indent-guides-character-face "lightgray")
+;;   )
+;; Alternative
+;; (add-hook 'prog-mode-hook 'highlight-indentation-mode)
+;; (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
+;; (after! highlight-indentation
+;;   (set-face-background 'highlight-indentation-face "old lace")
+;;   (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+;;   )
+
 (setq evil-normal-state-cursor '(box "orange")
       evil-insert-state-cursor '(bar "orange")
       evil-visual-state-cursor '(hollow "orange"))
-
-;; Show indentation lines
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-(after! highlight-indent-guides
-  (setq-default highlight-indent-guides-method 'bitmap)
-  (setq-default highlight-indent-guides-auto-enabled nil)
-  (set-face-background 'highlight-indent-guides-odd-face "lightgray")
-  (set-face-background 'highlight-indent-guides-even-face "lightgray")
-  (set-face-foreground 'highlight-indent-guides-character-face "lightgray")
-  )
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -100,7 +114,9 @@
         ;; If an LSP server isn't present when I start a prog-mode buffer, you
         ;; don't need to tell me. I know. On some machines I don't care to have
         ;; a whole development environment for some ecosystems.
-        lsp-enable-suggest-server-download nil))
+        lsp-enable-suggest-server-download nil)
+  (setq lsp-idle-delay 1.0) ;; don't refresh the lsp too often, annoying
+  )
 (after! lsp-ui
   (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
         lsp-ui-doc-enable nil))     ; redundant with K
@@ -185,13 +201,19 @@
 ;; -------------- EVIL SETUP -----------------
 ;; -------------------------------------------
 ;; Utility function to jump back/forth and recenter
-(defun mm/evil-jump-forward-and-recenter()
+(defun lm/evil-jump-forward-and-recenter()
   (evil-jump-forward)
   (recenter))
-(defun mm/evil-jump-backward-and-recenter()
+(defun lm/evil-jump-backward-and-recenter()
   (evil-jump-backward)
   (recenter))
 (setq +evil-want-o/O-to-continue-comments nil)
+;; (use-package evil
+;;   :hook (after-init . evil-mode)
+;;   :custom
+;;   ;; use emacs bindings in insert-mode
+;;   (evil-disable-insert-state-bindings t)
+;;   (evil-want-keybinding nil))
 
 ;; --------------------------------------------------------
 ;; -------------- WHICH KEY / KEYBINDINGS -----------------
@@ -199,13 +221,13 @@
 ;;
 ;; Utility function to record compilation commands in a buffer
 ;;
-(defun mm/compile-and-record-command(cmd)
+(defun lm/compile-and-record-command(cmd)
   (interactive
    (list (completing-read "Compile command: " compile-history)))
   (compile cmd)
   (push cmd compile-history))
 ;; Reset compile history
-(defun mm/reset-compile-history()
+(defun lm/reset-compile-history()
   (interactive
    (setq-default compile-history nil))
   (message "Reset compilation history."))
@@ -224,9 +246,9 @@
   ;; Code/LSP/Compilation
   (map! :leader
         (:prefix-map("c" . "code")
-         :desc "Compile" "c" #'mm/compile-and-record-command
+         :desc "Compile" "c" #'lm/compile-and-record-command
          :desc "lsp-ui-imenu" "I" #'lsp-ui-imenu
-         :desc "Reset compile commands" "R" #'mm/reset-compile-history
+         :desc "Reset compile commands" "R" #'lm/reset-compile-history
          :desc "compilation-goto-in-progress-buffer" "p" #'compilation-goto-in-progress-buffer
          :desc "compilation-goto-in-progress-buffer" "k" #'kill-compilation))
 
