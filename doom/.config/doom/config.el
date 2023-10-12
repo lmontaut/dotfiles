@@ -218,19 +218,6 @@
 ;; --------------------------------------------------------
 ;; -------------- WHICH KEY / KEYBINDINGS -----------------
 ;; --------------------------------------------------------
-;;
-;; Utility function to record compilation commands in a buffer
-;;
-(defun lm/compile-and-record-command(cmd)
-  (interactive
-   (list (completing-read "Compile command: " compile-history)))
-  (compile cmd)
-  (push cmd compile-history))
-;; Reset compile history
-(defun lm/reset-compile-history()
-  (interactive
-   (setq-default compile-history nil))
-  (message "Reset compilation history."))
 
 (setq which-key-idle-delay 0.3)
 (after! which-key
@@ -246,9 +233,7 @@
   ;; Code/LSP/Compilation
   (map! :leader
         (:prefix-map("c" . "code")
-         :desc "Compile" "c" #'lm/compile-and-record-command
          :desc "lsp-ui-imenu" "I" #'lsp-ui-imenu
-         :desc "Reset compile commands" "R" #'lm/reset-compile-history
          :desc "compilation-goto-in-progress-buffer" "p" #'compilation-goto-in-progress-buffer
          :desc "compilation-goto-in-progress-buffer" "k" #'kill-compilation))
 
