@@ -29,6 +29,13 @@
   (set-face-background 'evil-snipe-first-match-face "orange")
   )
 
+(setq evil-normal-state-cursor '(box "orange")
+      evil-insert-state-cursor '(bar "orange")
+      evil-visual-state-cursor '(hollow "orange"))
+
+;; Turn on tree sitter highlighting
+(add-hook 'prog-mode-hook 'tree-sitter-hl-mode)
+
 ;; Show indentation lines
 ;; -- Cheap version --
 ;; (defun lm/set-up-whitespace-handling ()
@@ -52,10 +59,6 @@
 ;;   (set-face-background 'highlight-indentation-face "old lace")
 ;;   (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
 ;;   )
-
-(setq evil-normal-state-cursor '(box "orange")
-      evil-insert-state-cursor '(bar "orange")
-      evil-visual-state-cursor '(hollow "orange"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -169,10 +172,9 @@
 (setq-default company-idle-delay nil) ;; remove auto completion-search
 ;; Toggle completion-search with tab/S-tab
 (after! company
-  (define-key company-mode-map (kbd "<tab>") 'company-complete)
-  )
+  (define-key company-mode-map (kbd "<tab>") 'company-complete))
 (after! company
-  (map! :i "S-<tab>" #'company-abort))
+  (map! :i "S-<tab>" #'company-abort)
 ;; How to add a keybind for a specific mode:
 ;; (add-hook 'LaTeX-mode-hook
 ;;         (lambda () (local-set-key (kbd "C-0") #'run-latexmk)))
@@ -208,12 +210,21 @@
   (evil-jump-backward)
   (recenter))
 (setq +evil-want-o/O-to-continue-comments nil)
+
+;; Use emacs keybindings in insert mode
 ;; (use-package evil
 ;;   :hook (after-init . evil-mode)
 ;;   :custom
 ;;   ;; use emacs bindings in insert-mode
 ;;   (evil-disable-insert-state-bindings t)
 ;;   (evil-want-keybinding nil))
+
+;; Set tab-width
+(setq tab-width 4)
+(after! evil
+  ;; TODO: change that for python, use a hook to detect prog mode type
+  (setq  evil-shift-width 2)
+  )
 
 ;; --------------------------------------------------------
 ;; -------------- WHICH KEY / KEYBINDINGS -----------------
@@ -254,12 +265,28 @@
         :ni "C-." #'evil-shift-right-line
         :ni "C-," #'evil-shift-left-line)
 
+  ;; Recenter window on cursor
+  (map! :n "L" #'evil-scroll-line-to-center)
+
+  ;; Delete word forward
   (map! :i "C-d" #'kill-word)
+
+  ;; Select/expand text
+  (map! :n "C-SPC" #'er/mark-word
+        :v "C-SPC" #'er/expand-region
+        :v "S-<tab>" #'er/contract-region
+        )
   )
 
 ;; Don't omit hidden files in dired & show r/w rights
-;; (defun louis-configure-dired-mode ()
-;;   (dired-omit-mode nil))
-;; (add-hook 'dired-mode-hook 'louis-configure-dired-mode)
-
+;; TODO this currently doesn't work
 (add-hook 'dired-mode-hook (lambda () (dired-omit-mode nil)))
+
+;; I had this warning message, which told me to add these lines, seems reasonable:
+;; !Your $HOME is recognized as a project root
+;; Emacs will assume $HOME is the root of any project living under $HOME. If this
+;; isn't desired, you will need to remove ".git" from
+;; `projectile-project-root-files-bottom-up' (a variable), e.g.
+;; (after! projectile
+;;   (setq projectile-project-root-files-bottom-up (remove ".git"
+;;         projectile-project-root-files-bottom-up)))
