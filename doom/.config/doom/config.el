@@ -175,6 +175,12 @@
   (define-key company-mode-map (kbd "<tab>") 'company-complete))
 (after! company
   (map! :i "S-<tab>" #'company-abort)
+  ;; Adding company fuzzy
+  ;; (add-hook 'company-mode-hook 'company-fuzzy-mode)
+  ;; (setq company-fuzzy-sorting-backend 'flx
+  ;;       company-fuzzy-prefix-on-top nil
+  ;;       company-fuzzy-trigger-symbols '("." "->" "<" "\"" "'" "@"))
+)
 ;; How to add a keybind for a specific mode:
 ;; (add-hook 'LaTeX-mode-hook
 ;;         (lambda () (local-set-key (kbd "C-0") #'run-latexmk)))
@@ -203,10 +209,12 @@
 ;; -------------- EVIL SETUP -----------------
 ;; -------------------------------------------
 ;; Utility function to jump back/forth and recenter
-(defun lm/evil-jump-forward-and-recenter()
+(defun evil-jump-forward-and-recenter()
+  (interactive)
   (evil-jump-forward)
   (recenter))
-(defun lm/evil-jump-backward-and-recenter()
+(defun evil-jump-backward-and-recenter()
+  (interactive)
   (evil-jump-backward)
   (recenter))
 (setq +evil-want-o/O-to-continue-comments nil)
@@ -219,18 +227,23 @@
 ;;   (evil-disable-insert-state-bindings t)
 ;;   (evil-want-keybinding nil))
 
-;; Set tab-width
-(setq tab-width 4)
-(after! evil
+(after! evil-mode
   ;; TODO: change that for python, use a hook to detect prog mode type
+  (setq tab-width 4)
   (setq  evil-shift-width 2)
   )
 
 ;; --------------------------------------------------------
 ;; -------------- WHICH KEY / KEYBINDINGS -----------------
 ;; --------------------------------------------------------
+;; For navigation in insert mode
+(defun evil-insert-to-end-of-word()
+  (interactive)
+  (evil-forward-word-end 1)
+  (evil-forward-char 1))
 
 (setq which-key-idle-delay 0.3)
+
 (after! which-key
   ;; Comments
   (map! :nv "\\" #'evilnc-comment-operator)
@@ -276,11 +289,24 @@
         :v "C-SPC" #'er/expand-region
         :v "S-<tab>" #'er/contract-region
         )
+
+  ;; Navigation in insert mode
+  (map! :i "C-h" #'evil-backward-word-begin
+        :i "C-l" #'evil-insert-to-end-of-word
+        :i "C-j" #'evil-next-line
+        :i "C-k" #'evil-previous-line
+        )
+
+  ;; Projectile dired
+  (map! :leader
+        (:prefix-map("o" . "open")
+         :desc "Projectile dired" "_" #'projectile-dired))
   )
 
 ;; Don't omit hidden files in dired & show r/w rights
 ;; TODO this currently doesn't work
-(add-hook 'dired-mode-hook (lambda () (dired-omit-mode nil)))
+;; (dired-omit-mode nil)
+(add-hook 'dired-mode-hook (lambda () (dired-omit-mode -1)))
 
 ;; I had this warning message, which told me to add these lines, seems reasonable:
 ;; !Your $HOME is recognized as a project root
@@ -290,3 +316,5 @@
 ;; (after! projectile
 ;;   (setq projectile-project-root-files-bottom-up (remove ".git"
 ;;         projectile-project-root-files-bottom-up)))
+
+(setq scroll-margin 8)
