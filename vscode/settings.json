@@ -1,0 +1,53 @@
+{
+    //
+    // EDITOR CONFIG
+    //
+    "glassit.alpha": 250,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "editor.guides.indentation": false,
+    "vim.neovimPath": "/opt/homebrew/bin/nvim",
+    "vim.neovimUseConfigFile": true,
+    "C_Cpp.intelliSenseEngine": "disabled",
+    "clangd.path": "/usr/bin/clangd",
+    "cmake.configureOnOpen": false,
+    "editor.codeLens": false,
+    "editor.fontFamily": "JetBrainsMono Nerd,Menlo, Monaco, 'Courier New', monospace",
+    "editor.renderWhitespace": "trailing",
+    "editor.lineNumbers": "off",
+    "editor.tokenColorCustomizations": {
+        "comments": "#37a371"
+    },
+
+    // VIM KEYBINDINGS
+    "vim.leader": "<space>",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        },
+        {
+            "before": ["<leader>", "m"],
+            "commands": [
+                "bookmarks.toggle"
+            ]
+        },
+        {
+            "before": ["<leader>", "b"],
+            "commands": [
+                "bookmarks.list"
+            ]
+        },
+    ],
+    //
+    // More editor settings
+    //
+    "editor.minimap.enabled": false,
+    "zenMode.centerLayout": false,
+    "window.zoomLevel": 1,
+    // "workbench.colorTheme": "Ayu Light",
+    "workbench.colorTheme": "Solarized Light",
+    "editor.cursorBlinking": "solid",
+    "gitlens.currentLine.enabled": false,
+    "workbench.iconTheme": "vscode-icons",
+}

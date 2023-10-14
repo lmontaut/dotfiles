@@ -1,0 +1,12 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "cmd+backspace",
+        "command": "-notification.clear",
+        "when": "notificationFocus"
+    },
+    {
+        "key": "cmd+k backspace",
+        "command": "notifications.clearAll"
+    }
+]
