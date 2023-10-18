@@ -7,7 +7,7 @@
 
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept.
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14 :weight 'normal))
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 13 :weight 'normal))
 ;; doom-variable-pitch-font (font-spec :family "Fira Sans" :size 12))
 
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -18,23 +18,34 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-oksolar-light)
+;; (setq doom-theme 'doom-oksolar-light)
 ;; (setq doom-theme 'doom-oksolar-dark)
+;; (setq doom-theme 'doom-monokai-octagon)
+;; (setq doom-theme 'doom-tomorrow-day)
+(setq doom-theme 'spacemacs-light)
 (custom-set-faces!
-  `(font-lock-comment-face :foreground "#289c81"))
+  '(doom-dashboard-banner :inherit default)
+  '(doom-dashboard-loaded :inherit default))
+(set-face-bold 'bold nil)
+;; (setq doom-theme 'doom-bluloco-light)
+;; (setq doom-theme 'doom-one-light)
+;; (setq doom-theme 'doom-feather-light)
+;; (custom-set-faces!
+  ;; `(font-lock-comment-face :background "#d5e8db" :foreground "#69786e"))
+  ;; `(hl-line :background "#e8e2cc"))
 (after! evil-snipe
   (set-face-foreground 'evil-snipe-matches-face "white")
-  (set-face-foreground 'evil-snipe-first-match-face "white")
-  (set-face-background 'evil-snipe-matches-face "magenta")
-  (set-face-background 'evil-snipe-first-match-face "orange")
+  (set-face-foreground 'evil-snipe-first-match-face "orange")
+  (set-face-background 'evil-snipe-matches-face "gray")
+  (set-face-background 'evil-snipe-first-match-face "white")
   )
 
 (setq evil-normal-state-cursor '(box "orange")
       evil-insert-state-cursor '(bar "orange")
       evil-visual-state-cursor '(hollow "orange"))
 
-;; Turn on tree sitter highlighting
-(add-hook 'prog-mode-hook 'tree-sitter-hl-mode)
+;; Turn on tree sitter highlighting -> a bit distracting actually
+;; (add-hook 'prog-mode-hook 'tree-sitter-hl-mode)
 
 ;; Show indentation lines
 ;; -- Cheap version --
@@ -161,9 +172,9 @@
     "Edit the C++ debugging configuration or create + edit if none exists yet."
     (interactive)
     (let ((filename (concat (lsp-workspace-root) "/launch.json"))
-	  (default "~/.config/doom/default-cpp-debug-launch.json"))
+          (default "~/.config/doom/default-cpp-debug-launch.json"))
       (unless (file-exists-p filename)
-	(copy-file default filename))
+        (copy-file default filename))
       (find-file-existing filename))))
 
 ;; -------------------------------------------
@@ -236,28 +247,88 @@
 ;; --------------------------------------------------------
 ;; -------------- WHICH KEY / KEYBINDINGS -----------------
 ;; --------------------------------------------------------
-;; For navigation in insert mode
-(defun evil-insert-to-end-of-word()
+;;
+;; General keybindings
+;;
+(defun insert-line-below ()
+  "Insert an empty line below the current line."
   (interactive)
-  (evil-forward-word-end 1)
-  (evil-forward-char 1))
+  (save-excursion
+    (end-of-line)
+    (open-line 1)))
+(defun insert-line-above ()
+  "Insert an empty line above the current line."
+  (interactive)
+  (save-excursion
+    (end-of-line 0)
+    (open-line 1)))
+;; Navigation in insert mode
+(map! :map general-override-mode-map
+      :i "C-d" #'kill-word ;; delete word forward
+
+      ;; Navigation
+      :vi "C-f" #'forward-char
+      :vi "C-b" #'backward-char
+      :nvi "C-h" #'backward-word
+      :nvi "C-l" #'forward-word
+      :nvi "C-j" #'evil-next-line
+      :nvi "C-k" #'evil-previous-line
+      :vi "C-e" #'end-of-line
+      :vi "C-a" #'evil-next-line-1-first-non-blank
+
+      ;; Insert line above/below
+      :ni "C-0" #'insert-line-above
+      :ni "C-9" #'insert-line-below
+
+      ;; Horizontal scroll
+      :vni "M-l" #'evil-scroll-right
+      :vni "M-h" #'evil-scroll-left
+      )
+
+;; To train to use caps lock to escape insert mode
+;; (setq evil-escape-key-sequence nil)
 
 (setq which-key-idle-delay 0.3)
+
+;;
+;; Faster window manipulation
+(defun louis-evil-window-increase-width ()
+  (interactive)
+  (evil-window-increase-width 5))
+(defun louis-evil-window-increase-height ()
+  (interactive)
+  (evil-window-increase-height 5))
+(defun louis-evil-window-decrease-width ()
+  (interactive)
+  (evil-window-decrease-width 5))
+(defun louis-evil-window-decrease-height ()
+  (interactive)
+  (evil-window-decrease-height 5))
+
+;;
+;; Increase font size - finer control
+(defun louis-increase-font-size ()
+  (interactive)
+  (doom/increase-font-size 1 1))
+(defun louis-decrease-font-size ()
+  (interactive)
+  (doom/decrease-font-size 1 1))
 
 (after! which-key
   ;; Comments
   (map! :nv "\\" #'evilnc-comment-operator)
 
   ;; Window manipulation
-  (map! :nv "C-<right>" #'evil-window-increase-width)
-  (map! :nv "C-<left>" #'evil-window-decrease-width)
-  (map! :nv "C-<up>" #'evil-window-increase-height)
-  (map! :nv "C-<down>" #'evil-window-decrease-height)
+  (map! :nv "C-<right>" #'louis-evil-window-increase-width)
+  (map! :nv "C-<left>" #'louis-evil-window-decrease-width)
+  (map! :nv "C-<up>" #'louis-evil-window-increase-height)
+  (map! :nv "C-<down>" #'louis-evil-window-decrease-height)
 
   ;; Code/LSP/Compilation
   (map! :leader
         (:prefix-map("c" . "code")
-         :desc "lsp-ui-imenu" "I" #'lsp-ui-imenu
+         :desc "lsp-treemacs-type-hierarchy" "T" #'lsp-treemacs-type-hierarchy
+         :desc "lsp-treemacs-symbols" "I" #'lsp-treemacs-symbols
          :desc "compilation-goto-in-progress-buffer" "p" #'compilation-goto-in-progress-buffer
          :desc "compilation-goto-in-progress-buffer" "k" #'kill-compilation))
 
@@ -281,26 +352,22 @@
   ;; Recenter window on cursor
   (map! :n "L" #'evil-scroll-line-to-center)
 
-  ;; Delete word forward
-  (map! :i "C-d" #'kill-word)
-
   ;; Select/expand text
   (map! :n "C-SPC" #'er/mark-word
         :v "C-SPC" #'er/expand-region
         :v "S-<tab>" #'er/contract-region
         )
 
-  ;; Navigation in insert mode
-  (map! :i "C-h" #'evil-backward-word-begin
-        :i "C-l" #'evil-insert-to-end-of-word
-        :i "C-j" #'evil-next-line
-        :i "C-k" #'evil-previous-line
-        )
-
   ;; Projectile dired
   (map! :leader
         (:prefix-map("o" . "open")
          :desc "Projectile dired" "_" #'projectile-dired))
+
+  ;; Multiple cursors made easier
+  (map! :leader
+        :desc "Multicursor start" "2" #'+multiple-cursors/evil-mc-toggle-cursor-here)
+
+  (map! :i "C-<backspace>" #'delete-forward-char)
   )
 
 ;; Don't omit hidden files in dired & show r/w rights
@@ -317,4 +384,82 @@
 ;;   (setq projectile-project-root-files-bottom-up (remove ".git"
 ;;         projectile-project-root-files-bottom-up)))
 
-(setq scroll-margin 8)
+;; Give some room to the cursor when scrolling up/down
+(setq scroll-margin 4)
+
+;; Change compilation window height/width
+(setq compilation-window-height 20)
+(defun louis-compilation-window-change-size ()
+  "Change the value of `compilation-window-height`."
+  (interactive)
+  (message "Current value of `compilation-window-height`: %s" compilation-window-height)
+  (setq compilation-window-height (string-to-number (read-from-minibuffer "Enter a new value for `compilation-window-height`: " (number-to-string compilation-window-height))))
+  (message "New value of `compilation-window-height`: %s" compilation-window-height))
+;;
+;; Change compilation window orientation
+(setq louis-compilation-window-is-vertical nil)
+(defun louis-compilation-window-cycle-orientation ()
+  (interactive)
+  (if louis-compilation-window-is-vertical
+      (progn
+        (setq louis-compilation-window-is-vertical nil)
+        (message "Compilation mode set to horizontal"))
+    (progn
+      (setq louis-compilation-window-is-vertical t)
+      (message "Compilation mode set to vertical"))
+    )
+  )
+;;
+;; Open compilation buffer in window
+(defun louis-compilation-hook ()
+  (when (not (get-buffer-window "*compilation*"))
+    (if (one-window-p)
+        (save-selected-window
+          (save-excursion
+            (if louis-compilation-window-is-vertical
+                (let* ((w (split-window-horizontally))
+                       (h (window-height w)))
+                  (select-window w)
+                  (switch-to-buffer "*compilation*")
+                  (shrink-window (- h compilation-window-height))
+                  )
+              (let* ((w (split-window-vertically)))
+                (select-window w)
+                (switch-to-buffer "*compilation*")
+                )
+              )))
+      (save-selected-window
+        (save-excursion
+          (ace-window 1)
+          (switch-to-buffer "*compilation*")
+          ))
+      )))
+(add-hook 'compilation-mode-hook 'louis-compilation-hook)
+;;
+;; Kill compilation window
+(defun louis-kill-compilation-window ()
+  (interactive)
+  (let* ((w (get-buffer-window "*compilation*" t)))
+    (if w
+        (save-selected-window
+          (save-excursion
+            (select-window w)
+            (evil-window-delete)))
+      (message "No compilation window.")))
+  )
+(after! which-key
+(map! :leader
+      (:prefix-map("p" . "project")
+       :desc "kill-compilation-window" "q" #'louis-kill-compilation-window)))
+
+;;
+;; Enable ifdef auto commenting based on lsp
+(setq lsp-semantic-tokens-enable t)
+
+;;
+;; Make underscore as part of word
+(defun louis-set-underscore-as-part-of-word ()
+  (modify-syntax-entry ?_ "w")
+  (modify-syntax-entry ?- "w")
+  )
+(add-hook 'prog-mode-hook 'louis-set-underscore-as-part-of-word)

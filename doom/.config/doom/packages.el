@@ -9,8 +9,11 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 ;; (package! some-package)
+(package! company-fuzzy)
 (package! imenu-list)
 (package! just-mode)
+(package! spacemacs-theme)
+;; (package! lsp-symbol-outline)
 ;; (package! highlight-indent-guides)
 ;; (package! highlight-indentation)
 
