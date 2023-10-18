@@ -1,12 +1,71 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
+        "key": "cmd+k cmd+enter",
+        "command": "notifications.clearAll"
+    },
+    {
+        "key": "cmd+k cmd+e",
+        "command": "-keybindings.editor.defineWhenExpression",
+        "when": "inKeybindings && keybindingFocus"
+    },
+    {
+        "key": "cmd+k cmd+e",
+        "command": "workbench.action.focusActiveEditorGroup"
+    },
+    {
+        "key": "cmd+k cmd+o",
+        "command": "outline.focus"
+    },
+    {
+        "key": "cmd+k cmd+t",
+        "command": "-workbench.action.selectTheme"
+    },
+    {
+        "key": "cmd+k cmd+t",
+        "command": "terminal.focus"
+    },
+    {
         "key": "cmd+backspace",
         "command": "-notification.clear",
         "when": "notificationFocus"
     },
     {
-        "key": "cmd+k backspace",
-        "command": "notifications.clearAll"
+        "key": "cmd+k cmd+h",
+        "command": "clangd.typeHierarchyView.focus"
+    },
+    {
+        "key": "cmd+k cmd+p",
+        "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.switchWindow"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-deleteRight",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "deleteWordRight",
+        "when": "textInputFocus && !editorReadonly && vim.mode == 'Insert'"
+    },
+    {
+        "key": "ctrl+backspace",
+        "command": "-extension.vim_ctrl+backspace",
+        "when": "editorTextFocus && vim.active && vim.use<C-BS> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+backspace",
+        "command": "-deleteLeft",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+backspace",
+        "command": "deleteRight",
+        "when": "textInputFocus"
     }
 ]

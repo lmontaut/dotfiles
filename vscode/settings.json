@@ -12,32 +12,35 @@
     "clangd.path": "/usr/bin/clangd",
     "cmake.configureOnOpen": false,
     "editor.codeLens": false,
-    "editor.fontFamily": "JetBrainsMono Nerd,Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "FiraCode Nerd Font,Menlo, Monaco, 'Courier New', monospace",
     "editor.renderWhitespace": "trailing",
     "editor.lineNumbers": "off",
-    "editor.tokenColorCustomizations": {
-        "comments": "#37a371"
-    },
+    // "editor.tokenColorCustomizations": {
+    //     "comments": "#37a371",
+    // },
 
     // VIM KEYBINDINGS
-    "vim.leader": "<space>",
+    // Leader key does weird stuff in vscode. Use chords instead.
+    // "vim.leader": "<space>",
     "vim.insertModeKeyBindings": [
         {
             "before": ["j", "k"],
-            "after": ["<Esc>"]
-        },
-        {
-            "before": ["<leader>", "m"],
-            "commands": [
-                "bookmarks.toggle"
+            "after": [
+                "<ESC>"
             ]
         },
-        {
-            "before": ["<leader>", "b"],
-            "commands": [
-                "bookmarks.list"
-            ]
-        },
+        // {
+        //     "before": ["<leader>", "m"],
+        //     "commands": [
+        //         "bookmarks.toggle"
+        //     ]
+        // },
+        // {
+        //     "before": ["<leader>", "b"],
+        //     "commands": [
+        //         "bookmarks.list"
+        //     ]
+        // },
     ],
     //
     // More editor settings
@@ -45,9 +48,18 @@
     "editor.minimap.enabled": false,
     "zenMode.centerLayout": false,
     "window.zoomLevel": 1,
-    // "workbench.colorTheme": "Ayu Light",
-    "workbench.colorTheme": "Solarized Light",
     "editor.cursorBlinking": "solid",
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#fc7f03",
+        "editorCursor.background": "#ffffff",
+    },
     "gitlens.currentLine.enabled": false,
     "workbench.iconTheme": "vscode-icons",
+    "editor.occurrencesHighlight": false,
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "workbench.colorTheme": "Spacemacs - light",
+    "editor.scrollbar.verticalScrollbarSize": 2,
+    "editor.cursorSurroundingLines": 4,
+    "workbench.editor.showTabs": false,
+    "workbench.activityBar.visible": false,
 }
