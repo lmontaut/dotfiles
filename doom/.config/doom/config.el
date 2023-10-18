@@ -277,8 +277,8 @@
       :vi "C-a" #'evil-next-line-1-first-non-blank
 
       ;; Insert line above/below
-      :ni "C-0" #'insert-line-above
-      :ni "C-9" #'insert-line-below
+      :ni "C-S-k" #'insert-line-above
+      :ni "C-S-j" #'insert-line-below
 
       ;; Horizontal scroll
       :vni "M-l" #'evil-scroll-right
@@ -388,16 +388,16 @@
 (setq scroll-margin 4)
 
 ;; Change compilation window height/width
-(setq compilation-window-height 20)
+(setq louis-compilation-window-size 50)
 (defun louis-compilation-window-change-size ()
-  "Change the value of `compilation-window-height`."
+  "Change the value of `louis-compilation-window-size`."
   (interactive)
-  (message "Current value of `compilation-window-height`: %s" compilation-window-height)
-  (setq compilation-window-height (string-to-number (read-from-minibuffer "Enter a new value for `compilation-window-height`: " (number-to-string compilation-window-height))))
-  (message "New value of `compilation-window-height`: %s" compilation-window-height))
+  (message "Current value of `louis-compilation-window-size`: %s" louis-compilation-window-size)
+  (setq louis-compilation-window-size (string-to-number (read-from-minibuffer "Enter a new value for `louis-compilation-window-size`: " (number-to-string louis-compilation-window-size))))
+  (message "New value of `louis-compilation-window-size`: %s" louis-compilation-window-size))
 ;;
 ;; Change compilation window orientation
-(setq louis-compilation-window-is-vertical nil)
+(setq louis-compilation-window-is-vertical t)
 (defun louis-compilation-window-cycle-orientation ()
   (interactive)
   (if louis-compilation-window-is-vertical
@@ -409,9 +409,23 @@
       (message "Compilation mode set to vertical"))
     )
   )
+(setq louis-compilation-mode--is-active nil)
+(defun louis-compilation-mode ()
+  "Toggle louis-compilation-mode"
+  (interactive)
+  (if louis-compilation-mode--is-active
+      (progn
+        (setq louis-compilation-mode--is-active nil)
+        (message "Louis' compilation mode deactivated. Falling back to doom's")
+        )
+    (progn
+      (setq louis-compilation-mode--is-active t)
+      (message "Louis' compilation mode activated.")
+      )))
 ;;
 ;; Open compilation buffer in window
 (defun louis-compilation-hook ()
+  (if louis-compilation-mode--is-active
   (when (not (get-buffer-window "*compilation*"))
     (if (one-window-p)
         (save-selected-window
@@ -421,7 +435,7 @@
                        (h (window-height w)))
                   (select-window w)
                   (switch-to-buffer "*compilation*")
-                  (shrink-window (- h compilation-window-height))
+                  (shrink-window (- h louis-compilation-window-size))
                   )
               (let* ((w (split-window-vertically)))
                 (select-window w)
@@ -433,7 +447,8 @@
           (ace-window 1)
           (switch-to-buffer "*compilation*")
           ))
-      )))
+      ))
+  ))
 (add-hook 'compilation-mode-hook 'louis-compilation-hook)
 ;;
 ;; Kill compilation window
@@ -463,3 +478,9 @@
   (modify-syntax-entry ?- "w")
   )
 (add-hook 'prog-mode-hook 'louis-set-underscore-as-part-of-word)
+
+;;
+;; Just files
+(use-package! justl
+  :config
+  (map! :n "e" 'justl-exec-recipe))

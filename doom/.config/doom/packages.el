@@ -12,6 +12,7 @@
 (package! company-fuzzy)
 (package! imenu-list)
 (package! just-mode)
+(package! justl)
 (package! spacemacs-theme)
 ;; (package! lsp-symbol-outline)
 ;; (package! highlight-indent-guides)
