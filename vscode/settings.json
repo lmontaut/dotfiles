@@ -57,9 +57,7 @@
     "workbench.iconTheme": "vscode-icons",
     "editor.occurrencesHighlight": false,
     "editor.inlayHints.enabled": "offUnlessPressed",
-    "workbench.colorTheme": "Spacemacs - light",
     "editor.scrollbar.verticalScrollbarSize": 2,
     "editor.cursorSurroundingLines": 4,
     "workbench.editor.showTabs": false,
-    "workbench.activityBar.visible": false,
 }
