@@ -22,17 +22,20 @@
 ;; (setq doom-theme 'doom-oksolar-dark)
 ;; (setq doom-theme 'doom-monokai-octagon)
 ;; (setq doom-theme 'doom-tomorrow-day)
-(setq doom-theme 'spacemacs-light)
+(setq doom-theme 'doom-one)
 (custom-set-faces!
-  '(doom-dashboard-banner :inherit default)
-  '(doom-dashboard-loaded :inherit default))
+  `(font-lock-comment-face :foreground "#6572eb"))
+;; (setq doom-theme 'spacemacs-light)
+;; (custom-set-faces!
+;;   '(doom-dashboard-banner :inherit default)
+;;   '(doom-dashboard-loaded :inherit default))
 (set-face-bold 'bold nil)
 ;; (setq doom-theme 'doom-bluloco-light)
 ;; (setq doom-theme 'doom-one-light)
 ;; (setq doom-theme 'doom-feather-light)
 ;; (custom-set-faces!
-  ;; `(font-lock-comment-face :background "#d5e8db" :foreground "#69786e"))
-  ;; `(hl-line :background "#e8e2cc"))
+;;   `(font-lock-comment-face :background "#d5e8db" :foreground "#69786e"))
+;;   `(hl-line :background "#e8e2cc"))
 (after! evil-snipe
   (set-face-foreground 'evil-snipe-matches-face "white")
   (set-face-foreground 'evil-snipe-first-match-face "orange")
@@ -129,7 +132,7 @@
         ;; don't need to tell me. I know. On some machines I don't care to have
         ;; a whole development environment for some ecosystems.
         lsp-enable-suggest-server-download nil)
-  (setq lsp-idle-delay 1.0) ;; don't refresh the lsp too often, annoying
+  (setq lsp-idle-delay 0.1)
   )
 (after! lsp-ui
   (setq lsp-ui-sideline-enable nil  ; no more useful than flycheck
@@ -479,8 +482,5 @@
   )
 (add-hook 'prog-mode-hook 'louis-set-underscore-as-part-of-word)
 
-;;
-;; Just files
-(use-package! justl
-  :config
-  (map! :n "e" 'justl-exec-recipe))
+;; Default C/C++ indentation offset
+(setq-default c-basic-offset 2)
