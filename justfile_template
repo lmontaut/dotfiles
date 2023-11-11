@@ -1,0 +1,41 @@
+# Set build folder - here using conda
+CMAKE_PREFIX := "-DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache"
+BUILD_FOLDER := "build/$(echo $CONDA_DEFAULT_ENV)" # build header
+
+# ------
+# Testing
+# ------
+# Test single; params: TEST MODE
+test TEST MODE: (compile "install" MODE)
+  ./{{BUILD_FOLDER}}/{{MODE}}/tests/{{TEST}}
+
+# Test all; params: MODE
+tests MODE: (compile "install" MODE)
+  ctest --output-on-failure -j10 --test-dir {{BUILD_FOLDER}}/{{MODE}}
+
+
+# ---------
+# Compiling
+# ---------
+# Compile target; params: TARGET MODE
+compile TARGET MODE:
+  cmake --build {{BUILD_FOLDER}}/{{MODE}} --target {{TARGET}} -j10
+
+
+# --------
+# BUILDING
+# --------
+# Build with cmake; params: MODE +FLAGS
+build MODE +FLAGS="": mkdir_build
+  rm -rf {{BUILD_FOLDER}}/{{MODE}}/*
+  cmake -S . -B {{BUILD_FOLDER}}/{{MODE}} -G Ninja {{CMAKE_PREFIX}} -DCMAKE_BUILD_TYPE={{MODE}} {{FLAGS}} # Add additionnal flags if needed
+
+# Note: "-" in order to continue if it fails
+# Mdkdir build folder
+mkdir_build:
+  -mkdir build
+  -mkdir {{BUILD_FOLDER}}
+
+# Link compile_commands.json; params: MODE
+link_compile_commands MODE:
+  ln -sf {{BUILD_FOLDER}}/{{MODE}}/compile_commands.json ./
