@@ -44,3 +44,5 @@
 	clean = git-lfs clean -- %f
 [alias]
 	root = rev-parse --show-toplevel
+[commit]
+	verbose = true
