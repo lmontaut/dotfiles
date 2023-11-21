@@ -36,7 +36,7 @@ env:
 # FONT
 font:
   size:
-    16
+    12
 #   # Normal (roman) font face
 #   normal:
 #     family: JetBrainsMono Nerd Font
