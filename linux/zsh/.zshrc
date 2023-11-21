@@ -1,9 +1,10 @@
 # If you come from bash you might have to change your $PATH.
 ZSH_DISABLE_COMPFIX=true
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+# just executable on linux
 export PATH=$HOME/software/misc/just/bin:$PATH
+# Cargo
 . "$HOME/.cargo/env"
-# export PATH=$HOME/.config/emacs/bin:$PATH
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -18,17 +19,8 @@ zstyle :omz:plugins:ssh-agent lazy yes
 source $ZSH/oh-my-zsh.sh
 
 # -------- Aliases --------
-alias audio="alsamixer"
-alias picom="picom --config ~/.config/picom.conf -b"
-alias ipi="ipython -i"
-alias meshcat="chromium http://127.0.0.1:7000/static/"
-alias lum05="xrandr --output eDP-1 --brightness 0.5"
-alias lum10="xrandr --output eDP-1 --brightness 1.0"
-alias lum15="xrandr --output eDP-1 --brightness 1.5"
-alias cl="clear"
-# alias open="xdg-open"
-alias del_emacs="bash ~/dotfiles/emacs/.config/emacs/del_config.sh"
-alias jupytervim="pip install jupyterlab-vim jupyterlab-vimrc"
+alias open="xdg-open"
+
 # Make/CMake
 alias mkdirr='mkdir builds/build-release-$(echo $CONDA_DEFAULT_ENV)'
 alias mkdird='mkdir builds/build-debug-$(echo $CONDA_DEFAULT_ENV)'
@@ -36,8 +28,6 @@ alias lcompr='ln -sf builds/build-release-$(echo $CONDA_DEFAULT_ENV)/compile_com
 alias lcompd='ln -sf builds/build-debug-$(echo $CONDA_DEFAULT_ENV)/compile_commands.json ./'
 alias cmaker='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
 alias cmaked='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
-alias make="make -j10"
-alias code="/Applications/Visual\\ Studio\ Code.app/Contents/MacOS/Electron"
 # Conda
 alias ca="conda activate"
 alias ma="mamba activate"
@@ -52,7 +42,6 @@ alias tname="tmux rename-window -t"
 # Exports
 export VISUAL=nvim;
 export EDITOR=nvim;
-export DBUS_SESSION_BUS_ADDRESS="unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 export CMAKE_COLOR_DIAGNOSTICS=1
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
