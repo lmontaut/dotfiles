@@ -2,7 +2,7 @@
 ZSH_DISABLE_COMPFIX=true
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # just executable on linux
-export PATH=$HOME/software/misc/just/bin:$PATH
+export PATH=$HOME/software/bin:$PATH
 # Cargo
 . "$HOME/.cargo/env"
 
@@ -37,7 +37,7 @@ alias tls="tmux ls"
 alias tname="tmux rename-window -t"
 # Vim
 #alias vi="vim"
-#alias vim="nvim"
+alias vim="nvim"
 
 # Exports
 export VISUAL=nvim;
@@ -80,3 +80,20 @@ alias rm="rm -i"
 # export PATH="$PATH:/Users/louis/.dotnet/tools"
 # export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono
 alias nvim-server="nvim --listen /tmp/nvimsocket"
+xset r rate 300 50
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/lou/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/lou/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/lou/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/lou/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
