@@ -3,6 +3,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+exec --no-startup-id setxkbmap us altgr-intl -option caps:escape
 exec set r rate 300 50
 #for_window [class="^.*"] border pixel 3
 #gaps inner 5

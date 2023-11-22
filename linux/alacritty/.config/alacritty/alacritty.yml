@@ -34,26 +34,26 @@ env:
   TERM: xterm-256color
 
 # FONT
-font:
-  size:
-    12
-#   # Normal (roman) font face
-#   normal:
-#     family: JetBrainsMono Nerd Font
-#     # The `style` can be specified to pick a specific face.
-#     style: Regular
-# 
-#   # Bold font face
-#   bold:
-#     family: JetBrainsMono Nerd Font
-#     # The `style` can be specified to pick a specific face.
-#     style: Bold
-# 
-#   # Italic font face
-#   italic:
-#     family: JetBrainsMono Nerd Font
-#     # The `style` can be specified to pick a specific face.
-#     style: Italic
+# font:
+  # size:
+  #   12
+  # # Normal (roman) font face
+  # normal:
+  #   family: JetBrainsMonoNerdFontMono
+  #   # The `style` can be specified to pick a specific face.
+  #   style: Regular
+
+  # # Bold font face
+  # bold:
+  #   family: JetBrainsMono Nerd Font
+  #   # The `style` can be specified to pick a specific face.
+  #   style: Bold
+  #
+  # # Italic font face
+  # italic:
+  #   family: JetBrainsMono Nerd Font
+  #   # The `style` can be specified to pick a specific face.
+  #   style: Italic
 
 # Shell
 #
