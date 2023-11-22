@@ -33,8 +33,7 @@ build MODE +FLAGS="": mkdir_build
 # Note: "-" in order to continue if it fails
 # Mdkdir build folder
 mkdir_build:
-  -mkdir build
-  -mkdir {{BUILD_FOLDER}}
+  -mkdir -p build/{{BUILD_FOLDER}}
 
 # Link compile_commands.json; params: MODE
 link_compile_commands MODE:
