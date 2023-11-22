@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 ZSH_DISABLE_COMPFIX=true
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:usr/bin:$PATH
 # . "$HOME/.cargo/env"
 export PATH=$HOME/.config/emacs/bin:$PATH
+export PATH=$HOME/mambaforge/bin:$PATH
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -18,21 +19,21 @@ source $ZSH/oh-my-zsh.sh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/louis/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/louis/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/Users/louis/mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/louis/mambaforge/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+ __conda_setup="$('/Users/louis/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+ if [ $? -eq 0 ]; then
+     eval "$__conda_setup"
+ else
+     if [ -f "/Users/louis/mambaforge/etc/profile.d/conda.sh" ]; then
+         . "/Users/louis/mambaforge/etc/profile.d/conda.sh"
+     else
+         export PATH="/Users/louis/mambaforge/bin:$PATH"
+     fi
+ fi
+ unset __conda_setup
 
-if [ -f "/Users/louis/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/Users/louis/mambaforge/etc/profile.d/mamba.sh"
-fi
+ if [ -f "/Users/louis/mambaforge/etc/profile.d/mamba.sh" ]; then
+     . "/Users/louis/mambaforge/etc/profile.d/mamba.sh"
+ fi
 # <<< conda initialize <<<
 
 # -------- Aliases --------
@@ -54,7 +55,6 @@ alias lcompr='ln -sf builds/build-release-$(echo $CONDA_DEFAULT_ENV)/compile_com
 alias lcompd='ln -sf builds/build-debug-$(echo $CONDA_DEFAULT_ENV)/compile_commands.json ./'
 alias cmaker='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
 alias cmaked='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
-alias make="make -j10"
 alias code="/Applications/Visual\\ Studio\ Code.app/Contents/MacOS/Electron"
 # Conda
 alias ca="conda activate"
@@ -101,7 +101,8 @@ alias ldd="otool"
 
 if ! type "$exa" > /dev/null; then
   alias grep="rg"
-  alias top="gtop"
+  # alias top="gtop"
+  alias top="btop"
   alias ls="exa"
   alias du="dust"
   alias df="duf"
@@ -114,4 +115,4 @@ fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 alias nvim-server="nvim --listen /tmp/nvimsocket"
 
-export SDKROOT=$(xcrun --show-sdk-path)
+alias llvm-clang="/opt/homebrew/opt/llvm/bin/clang"
