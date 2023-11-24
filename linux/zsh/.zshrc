@@ -20,6 +20,10 @@ source $ZSH/oh-my-zsh.sh
 
 # -------- Aliases --------
 alias open="xdg-open"
+alias lum05="xrandr --output eDP --brightness 0.5"
+alias lum10="xrandr --output eDP --brightness 1.0"
+alias lum15="xrandr --output eDP --brightness 1.5"
+alias lum="xrandr --output eDP --brightness"
 
 # Make/CMake
 alias mkdirr='mkdir builds/build-release-$(echo $CONDA_DEFAULT_ENV)'
