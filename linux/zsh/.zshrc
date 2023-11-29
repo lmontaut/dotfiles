@@ -3,6 +3,7 @@ ZSH_DISABLE_COMPFIX=true
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # just executable on linux
 export PATH=$HOME/software/bin:$PATH
+export PATH=$HOME/.local/scripts:$PATH
 # Cargo
 . "$HOME/.cargo/env"
 

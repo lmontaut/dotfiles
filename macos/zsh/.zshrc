@@ -4,6 +4,7 @@ export PATH=$HOME/bin:/usr/local/bin:usr/bin:$PATH
 # . "$HOME/.cargo/env"
 export PATH=$HOME/.config/emacs/bin:$PATH
 export PATH=$HOME/mambaforge/bin:$PATH
+export PATH=$HOME/.local/scripts:$PATH
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
