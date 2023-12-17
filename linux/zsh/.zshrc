@@ -36,6 +36,7 @@ alias cmaked='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debu
 # Conda
 alias ca="conda activate"
 alias ma="mamba activate"
+alias mi="mamba install"
 # Tmux
 alias tat="tmux attach -t"
 alias tls="tmux ls"
