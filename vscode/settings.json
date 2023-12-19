@@ -55,7 +55,7 @@
     },
     "gitlens.currentLine.enabled": false,
     "workbench.iconTheme": "vscode-icons",
-    "editor.occurrencesHighlight": false,
+    "editor.occurrencesHighlight": "off",
     "editor.inlayHints.enabled": "offUnlessPressed",
     "editor.scrollbar.verticalScrollbarSize": 2,
     "editor.cursorSurroundingLines": 4,

@@ -9,7 +9,9 @@ set -gx PATH "$HOME/.cargo/bin" $PATH;
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /Users/louis/mambaforge/bin/conda "shell.fish" "hook" $argv | source
+if test -f /Users/louis/anaconda3/bin/conda
+    eval /Users/louis/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+end
 # <<< conda initialize <<<
 source /Users/louis/mambaforge/etc/fish/conf.d/conda.fish
 alias ca="conda activate"
