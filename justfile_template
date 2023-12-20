@@ -21,6 +21,10 @@ tests MODE: (compile "install" MODE)
 compile TARGET MODE:
   cmake --build {{BUILD_FOLDER}}/{{MODE}} --target {{TARGET}} -j10
 
+# Compile (no target); params: MODE
+_compile MODE:
+  cmake --build {{BUILD_FOLDER}}/{{MODE}} -j10
+
 
 # --------
 # BUILDING
