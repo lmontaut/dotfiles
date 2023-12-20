@@ -28,7 +28,7 @@ compile TARGET MODE:
 # Build with cmake; params: MODE +FLAGS
 build MODE +FLAGS="": mkdir_build
   rm -rf {{BUILD_FOLDER}}/{{MODE}}/*
-  cmake -S . -B {{BUILD_FOLDER}}/{{MODE}} -G Ninja {{CMAKE_PREFIX}} -DCMAKE_BUILD_TYPE={{MODE}} {{FLAGS}} # Add additionnal flags if needed
+  cmake -S . -B {{BUILD_FOLDER}}/{{MODE}} {{CMAKE_PREFIX}} -DCMAKE_BUILD_TYPE={{MODE}} {{FLAGS}} # Add additionnal flags if needed
 
 # Note: "-" in order to continue if it fails
 # Mdkdir build folder
