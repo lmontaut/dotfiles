@@ -1,0 +1,67 @@
+general {
+	colors = true
+    output_format = "i3bar"
+	interval = 1
+	color_good = "#50fa7b"
+	color_degraded  = "#ffb86c"
+    color_bad = "#ff5555"
+}
+
+order += "volume master"
+order += "cpu_usage"
+order += "disk /"
+order += "battery all"
+order += "memory"
+order += "tztime local"
+
+volume master {
+        format = "VOLUME: %volume"
+        format_muted = "VOLUME muted"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+cpu_usage {
+        format= "CPU: %usage"
+        max_threshold= 75
+}
+
+wireless _first_ {
+        format_up = "W (%quality at %essid, %bitrate) %ip"
+        format_down = ""
+}
+
+ethernet _first_ {
+        format_up = "E %ip (%speed)"
+        format_down = ""
+}
+
+battery all {
+        format = "%status: %percentage %remaining %emptytime"
+        format_down = ""
+        status_chr = "CHARGING"
+        status_bat = "BATTERY"
+        status_unk = "UNK"
+        status_full = "FULL"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+tztime local {
+        format = "%D - %H:%M"
+}
+
+load {
+        format = "%1min %5min %15min"
+}
+
+memory {
+        format = "RAM: %used used / %available available"
+        threshold_degraded = "1G"
+        format_degraded = "RAM < %available"
+}
+
+disk "/" {
+        format = "DISK USAGE: %percentage_used"
+}
