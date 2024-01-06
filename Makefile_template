@@ -1,3 +1,5 @@
+# Checkout https://www.youtube.com/watch?v=DtGrdB8wQ_8&t=1712
+# and https://github.com/gwu-cs-os/evening_os_hour/tree/master/f19/10.2-makefiles 
 # Default variables, modifiable by `make VAR=...`
 TARGET = install
 MODE   = Release
