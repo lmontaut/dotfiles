@@ -1,0 +1,27 @@
+# Checkout https://clangd.llvm.org/config
+# Basically you can put any compiler flag.
+CompileFlags:
+    Add: [-xc, # -xc++
+        -Wall,
+        -Wextra,
+        -std=c99, # -std=c++11
+        -march=native, # for intrinsics
+        -I/path/to/some/include/folder] # can be system, user, conda... whatever
+                                        # can have multiple -I of course
+    Remove: [-W*] # strip all other warning-related flags
+    Compiler: clang
+---
+If:
+    PathMatch: path/relative/to/the/-I/flags
+CompileFlags:
+    Add: [-DSOME_FLAG,
+          -include=path/relative/to/the/-I/flags] # This include file will be copied before parsing
+                                                  # the PathMatch file !!! Super important for
+                                                  # projects like Eigen where headers are meant to be
+                                                  # included in a certain order (i.e <Eigen/Core> needs
+                                                  # to be included if you want to use blabla.h from
+                                                  # eigen).
+---
+If:                               # Apply this config conditionally
+  PathMatch: .*\.h                # to all headers...
+  PathExclude: include/llvm-c/.*  # except those under include/llvm-c/
