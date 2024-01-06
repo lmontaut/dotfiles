@@ -1,0 +1,63 @@
+# Default variables, modifiable by `make VAR=...`
+TARGET = install
+MODE   = Release
+FLAGS  =
+
+MY_CMAKE_FLAGS = -DCMAKE_INSTALL_PREFIX=$(CONDA_PREFIX) -DCMAKE_SYSTEM_PREFIX_PATH=$(CONDA_PREFIX) -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache
+# Set build folder - here using conda
+BUILD_FOLDER = ./build/$(CONDA_DEFAULT_ENV)/$(MODE) # build header
+
+.PHONY: all test tests compile
+
+AV_RULES = "test"
+AV_RULES += "tests"
+AV_RULES += "compile"
+AV_RULES += "compile_"
+AV_RULES += "build"
+AV_RULES += "mkdir_build"
+AV_RULES += "clean_build"
+AV_RULES += "link_compile_commands"
+
+AV_FLAGS = "TARGET"
+AV_FLAGS += "MODE"
+AV_FLAGS += "FLAGS"
+
+all:
+	@echo "Available rules:"
+	@printf "     -- %s\n" $(AV_RULES)
+	@echo "Available flags:"
+	@printf "     -- %s\n" $(AV_FLAGS)
+
+# ------
+# Testing
+# ------
+test: compile
+	./$(BUILD_FOLDER)/tests/$(TEST)
+
+tests: compile
+	ctest --output-on-failure -j10 --test-dir $(BUILD_FOLDER)
+
+
+# ---------
+# Compiling
+# ---------
+compile:
+	cmake --build $(BUILD_FOLDER) --target $(TARGET) $(FLAGS) -j10
+
+compile_:
+	cmake --build $(BUILD_FOLDER) $(FLAGS) -j10 
+
+# --------
+# BUILDING
+# --------
+build: mkdir_build
+	cmake -S . -B $(BUILD_FOLDER) $(MY_CMAKE_FLAGS) -DCMAKE_BUILD_TYPE=$(MODE) $(FLAGS) # Add additionnal flags if needed
+
+mkdir_build: clean_build
+	mkdir -p $(BUILD_FOLDER)
+
+clean_build:
+	rm -rf $(BUILD_FOLDER)
+
+link_compile_commands:
+	ln -sf $(BUILD_FOLDER)/compile_commands.json ./
