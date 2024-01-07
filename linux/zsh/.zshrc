@@ -44,6 +44,8 @@ alias tname="tmux rename-window -t"
 # Vim
 #alias vi="vim"
 alias vim="nvim"
+# Make
+alias makee="make --always-make"
 
 # Exports
 export VISUAL=nvim;
