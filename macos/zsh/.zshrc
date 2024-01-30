@@ -92,7 +92,7 @@ if ! type "$exa" > /dev/null; then
   alias du="dust"
   alias df="duf"
   alias cat="bat"
-  alias find="fd"
+  # alias find="fd"
 fi
 
 # export PATH="$PATH:/Users/louis/.dotnet/tools"
