@@ -20,6 +20,9 @@ plugins=(git ssh-agent gpg-agent zsh-autosuggestions)
 zstyle :omz:plugins:ssh-agent lazy yes
 source $ZSH/oh-my-zsh.sh
 
+# Kill gpg-agent
+alias gpg-kill="gpgconf --kill gpg-agent"
+
 # -------- Aliases --------
 alias audio="alsamixer"
 alias picom="picom --config ~/.config/picom.conf -b"
