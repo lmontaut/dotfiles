@@ -76,11 +76,31 @@
     {
         "key": "ctrl+o",
         "command": "editor.action.triggerSuggest",
-        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+        "when": "editorHasCompletionItemProvider && textInputFocus && vim.mode == 'Insert' && !editorReadonly && !suggestWidgetVisible"
     },
     {
         "key": "ctrl+f",
         "command": "hideSuggestWidget",
-        "when": "suggestWidgetVisible && textInputFocus"
+        "when": "suggestWidgetVisible && textInputFocus && vim.mode == 'Insert'"
+    },
+    {
+        "key": "cmd+k cmd+k",
+        "command": "editor.debug.action.showDebugHover",
+        "when": "editorTextFocus && inDebugMode"
+    },
+    {
+        "key": "cmd+k cmd+k",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "g r",
+        "command": "editor.action.goToReferences",
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+    {
+        "key": "g d",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     }
 ]
