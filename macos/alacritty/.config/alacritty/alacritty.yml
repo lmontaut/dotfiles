@@ -175,7 +175,7 @@ key_bindings:
   # - { key: K,          mods: Command,       chars: "\x1bk"                       }
   - { key: L,          mods: Command,       chars: "\x1bl"                       }
   # - { key: M,          mods: Command,       chars: "\x1bm"                       }
-  - { key: N,          mods: Command,       chars: "\x1bn"                       }
+  # - { key: N,          mods: Command,       chars: "\x1bn"                       }
   - { key: O,          mods: Command,       chars: "\x1bo"                       }
   - { key: P,          mods: Command,       chars: "\x1bp"                       }
   # - { key: Q,          mods: Command,       chars: "\x1bq"                       }
