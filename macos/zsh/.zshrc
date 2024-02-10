@@ -16,7 +16,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Theme
 ZSH_THEME="robbyrussell"
 
-plugins=(git ssh-agent zsh-autosuggestions)
+plugins=(git ssh-agent gpg-agent zsh-autosuggestions)
 zstyle :omz:plugins:ssh-agent lazy yes
 source $ZSH/oh-my-zsh.sh
 
