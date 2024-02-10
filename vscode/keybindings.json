@@ -67,5 +67,20 @@
         "key": "ctrl+backspace",
         "command": "deleteRight",
         "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "-lineBreakInsert",
+        "when": "textInputFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "hideSuggestWidget",
+        "when": "suggestWidgetVisible && textInputFocus"
     }
 ]
