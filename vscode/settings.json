@@ -63,4 +63,6 @@
     "workbench.editorAssociations": {
         "*.pdf": "latex-workshop-pdf-hook"
     },
+    "notebook.output.textLineLimit": 100,
+    "workbench.colorTheme": "Catppuccin Frappé",
 }
