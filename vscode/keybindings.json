@@ -96,11 +96,16 @@
     {
         "key": "g r",
         "command": "editor.action.goToReferences",
-        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor && vim.mode == 'Normal'"
     },
     {
         "key": "g d",
         "command": "editor.action.revealDefinition",
-        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor && vim.mode != 'Insert' && vim.mode == 'Normal'"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-github.copilot.generate",
+        "when": "editorTextFocus && github.copilot.activated && !inInteractiveInput && !interactiveEditorFocused"
     }
 ]
