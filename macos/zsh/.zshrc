@@ -105,8 +105,10 @@ alias nvim-server="nvim --listen /tmp/nvimsocket"
 alias llvm-clang="/opt/homebrew/opt/llvm/bin/clang"
 
 # Export C/C++ compiler
-export CXX="ccache /usr/bin/clang++"
-export CC="ccache /usr/bin/clang"
+# Bad idea with apple because ccache comes from brew and introduces weird bugs due
+# to it not using the right stdlib...
+# export CXX="ccache /usr/bin/clang++"
+# export CC="ccache /usr/bin/clang"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
