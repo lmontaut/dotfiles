@@ -229,7 +229,7 @@ key_bindings:
   - { key: Apostrophe, mods: Command,          chars : "\x1b\'"   }
     # Following are to work with tmux on macos
   - { key: Backslash,  mods: Command,          chars : "\x1b\e\\" }
-  - { key: Semicolon,  mods: Command,          chars : "\x1b:"    }
+  - { key: Semicolon,  mods: Command|Shift,    chars : "\x1b:"    }
   - { key: Period,     mods: Command|Shift,    chars : "\x1b>"    }
   - { key: Comma,      mods: Command|Shift,    chars : "\x1b<"    }
   - { key: Apostrophe, mods: Command|Shift,    chars : "\x1b\""   }
