@@ -1,0 +1,4 @@
+# gitignore filter will apply to any file
+* filter=gitignore
+# Then in my global gitconfig file, I will set a sed command to ignore any
+# line that contains a `#gitignore` at the end of it.

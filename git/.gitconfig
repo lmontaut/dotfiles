@@ -1,6 +1,7 @@
 [user]
 	email = louismontaut@gmail.com
 	name = Louis Montaut
+	# siningkey = /path/to/ssh/key
 
 [core]
 	pager = delta
@@ -46,3 +47,8 @@
 	root = rev-parse --show-toplevel
 [commit]
 	verbose = true
+	gpgsign = true
+[gpg]
+	format = ssh
+[filter "gitignore"]
+	clean = "sed '/#gitignore$/d'"
