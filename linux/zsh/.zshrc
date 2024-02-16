@@ -91,8 +91,8 @@ alias nvim-server="nvim --listen /tmp/nvimsocket"
 xset r rate 300 50
 
 # Clang compiler
-export CXX="/usr/bin/ccache /usr/bin/clang++"
-export CC="/usr/bin/ccache /usr/bin/clang"
+# export CXX="/usr/bin/ccache /usr/bin/clang++"
+# export CC="/usr/bin/ccache /usr/bin/clang"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
