@@ -52,3 +52,7 @@
 	format = ssh
 [filter "gitignore"]
 	clean = "sed '/#gitignore$/d'"
+[gpg "ssh"]
+	# allowedSignersFile = $HOME/.config/git/allowed_signers
+[tag]
+	gpgsign = true
