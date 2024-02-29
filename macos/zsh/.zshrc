@@ -129,3 +129,6 @@ if [ -f "/Users/louis/miniforge3/etc/profile.d/mamba.sh" ]; then
 fi
 # <<< conda initialize <<<
 
+# Add Tracy to path
+export PATH=$HOME/software/misc/tracy/profiler/build/unix:$PATH
+alias tracy="Tracy-release"
