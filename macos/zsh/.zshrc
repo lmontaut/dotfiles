@@ -46,6 +46,10 @@ alias code="/Applications/Visual\\ Studio\ Code.app/Contents/MacOS/Electron"
 # Mamba
 alias ma="mamba activate"
 alias mi="mamba install"
+# Conda
+alias ca="conda activate"
+alias ci="conda install"
+alias cic="conda install -c conda-forge"
 # Tmux
 alias tat="tmux attach -t"
 alias tls="tmux ls"
@@ -101,8 +105,8 @@ fi
 # export PATH="$PATH:/Users/louis/.dotnet/tools"
 # export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono
 eval "$(/opt/homebrew/bin/brew shellenv)"
-alias nvim-server="nvim --listen /tmp/nvimsocket"
-alias llvm-clang="/opt/homebrew/opt/llvm/bin/clang"
+# alias nvim-server="nvim --listen /tmp/nvimsocket"
+# alias llvm-clang="/opt/homebrew/opt/llvm/bin/clang"
 
 # Export C/C++ compiler
 # Bad idea with apple because ccache comes from brew and introduces weird bugs due
@@ -110,25 +114,22 @@ alias llvm-clang="/opt/homebrew/opt/llvm/bin/clang"
 # export CXX="ccache /usr/bin/clang++"
 # export CC="ccache /usr/bin/clang"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/louis/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/louis/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/louis/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/louis/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/Users/louis/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/Users/louis/miniforge3/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
 # Add Tracy to path
 export PATH=$HOME/software/misc/tracy/profiler/build/unix:$PATH
 alias tracy="Tracy-release"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/louis/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/louis/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/louis/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/louis/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
