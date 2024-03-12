@@ -44,8 +44,8 @@ alias cmaker='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Rele
 alias cmaked='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
 alias code="/Applications/Visual\\ Studio\ Code.app/Contents/MacOS/Electron"
 # Mamba
-alias ma="mamba activate"
-alias mi="mamba install"
+# alias ma="mamba activate"
+# alias mi="mamba install"
 # Conda
 alias ca="conda activate"
 alias ci="conda install"
