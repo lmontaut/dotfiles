@@ -15,7 +15,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Theme
 ZSH_THEME="robbyrussell"
 
-plugins=(git ssh-agent zsh-autosuggestions)
+plugins=(git ssh-agent gpg-agent zsh-autosuggestions)
 zstyle :omz:plugins:ssh-agent lazy yes
 source $ZSH/oh-my-zsh.sh
 
@@ -35,8 +35,7 @@ alias cmaker='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Rele
 alias cmaked='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
 # Conda
 alias ca="conda activate"
-alias ma="mamba activate"
-alias mi="mamba install"
+alias ci="conda install"
 # Tmux
 alias tat="tmux attach -t"
 alias tls="tmux ls"
@@ -96,20 +95,16 @@ xset r rate 300 50
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lou/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/lou/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/lou/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/home/lou/miniforge3/etc/profile.d/conda.sh"
+    if [ -f "/home/lou/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/lou/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/lou/miniforge3/bin:$PATH"
+        export PATH="/home/lou/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
-
-if [ -f "/home/lou/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/home/lou/miniforge3/etc/profile.d/mamba.sh"
-fi
 # <<< conda initialize <<<
 
