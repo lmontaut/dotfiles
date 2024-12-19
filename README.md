@@ -31,6 +31,17 @@ Then `stow --target=${HOME} [...]` (will target home dir).
   - Just do: `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
   - Or visit [zsh-autosuggestions INSTALL.md](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md)
 
+** Zsh theme**
+```
+PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+PROMPT+=$'minilou %{$fg[cyan]%}%~%{$reset_color%} $(git_prompt_info)\n╰λ '
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}%1{✗%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+```
+
 **Rust/cargo install (needed for tmux-sessionizer):**
 - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
