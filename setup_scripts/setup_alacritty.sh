@@ -27,7 +27,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     ln -sf $ALACRITTY_PATH $HOME/Applications/Alacritty.app/Contents/MacOS
     ADK_PATH="$HOME/Applications/Alacritty.app/Contents/Info.plist"
     touch $ADK_PATH
-    echo "<?xml version="1.0" encoding="UTF-8"?>" >> $ADK_PATH
+    echo "<?xml version="1.0" encoding="UTF-8"?>" > $ADK_PATH # no >> to overide existing
     echo "<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">" >> $ADK_PATH
     echo "<plist version="1.0">" >> $ADK_PATH
     echo "<dict>" >> $ADK_PATH
@@ -46,7 +46,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
 elif [[ "$(uname)" == "Linux" ]]; then
     ADK_PATH="$HOME/.local/share/applications/alacritty.desktop"
     touch $ADK_PATH
-    echo "[Desktop Entry]" >> $ADK_PATH
+    echo "[Desktop Entry]" > $ADK_PATH # no >> to overide existing
     echo "Type=Application" >> $ADK_PATH
     echo "Name=Alacritty" >> $ADK_PATH
     echo "Comment=A fast, cross-platform, OpenGL terminal emulator" >> $ADK_PATH

@@ -5,13 +5,11 @@ echo "----------------- LOU CONFIG SCRIPT -----------------"
 echo "-----------------------------------------------------"
 echo
 
-source $PWD/setup_scripts/utils.sh
-detect_os
-
-exit 0
-
 # Global var dotfile dir so that downstream scripts can work w.r.t this root
 export DOTFILES_DIR=$PWD
+
+source $DOTFILES_DIR/setup_scripts/utils.sh
+detect_os
 
 # First, setup OS
 source $DOTFILES_DIR/setup_scripts/setup_os.sh
@@ -49,12 +47,12 @@ source $DOTFILES_DIR/setup_scripts/setup_cargo.sh
 
 # Alacritty
 source $DOTFILES_DIR/setup_scripts/setup_alacritty.sh
-source $DOTFILES_DIR/setup_scripts/setup_alacritty_config.sh
+source $DOTFILES_DIR/setup_scripts/link_alacritty_config.sh
 
 # Lazygit
 
 # Tmux sesionnizer
-source $DOTFILES_DIR/setup_scripts/setup_tms.sh
+# source $DOTFILES_DIR/setup_scripts/setup_tms.sh
 
 # Nvim
 # source $DOTFILES_DIR/setup_scripts/setup_nvim.sh

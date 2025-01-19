@@ -12,11 +12,11 @@ done
 
 # Linking config file to home
 if [[ "$(uname)" == "Darwin" ]]; then
-    echo "  --> Linking config files $DOTFILES_DIR/macos/zsh/* to $HOME"
-    ln -sf $DOTFILES_DIR/macos/zsh/* $HOME
+    echo "  --> Linking config files $DOTFILES_DIR/macos/alacritty/.config/alacritty to $HOME/.config"
+    ln -sf $DOTFILES_DIR/macos/alacritty/.config/alacritty $HOME/.config
 elif [[ "$(uname)" == "Linux" ]]; then
-    echo "  --> Linking config files $DOTFILES_DIR/linux/zsh/* to $HOME"
-    ln -sf $DOTFILES_DIR/linux/zsh/* $HOME
+    echo "  --> Linking config files $DOTFILES_DIR/linux/alacritty/.config/alacritty to $HOME/.config"
+    ln -sf $DOTFILES_DIR/linux/alacritty/.config/alacritty $HOME/.config
 else
     echo "Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
