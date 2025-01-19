@@ -2,7 +2,7 @@
     //
     // EDITOR CONFIG
     //
-    "glassit.alpha": 250,
+    "glassit.alpha": 255,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.guides.indentation": false,
@@ -38,10 +38,6 @@
         //     ]
         // },
     ],
-    //
-    // More editor settings
-    //
-    "editor.minimap.enabled": false,
     "zenMode.centerLayout": false,
     "window.zoomLevel": 1,
     "editor.cursorBlinking": "solid",
@@ -179,5 +175,12 @@
     "editor.quickSuggestions": {
         "other": "off"
     },
-    "editor.suggestOnTriggerCharacters": false
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.minimap.enabled": false,
+    "settingsSync.ignoredSettings": [
+
+    ],
+    "editor.codeLens": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "files.useExperimentalFileWatcher" : true
 }
