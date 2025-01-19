@@ -1,7 +1,8 @@
 #!/bin/bash
 
+echo
 while true; do
-    read -p "--> Link the dofiles nvim config files? (y/n) " -n 1 -r
+    read -p "--> Link the dofiles' nvim config files? (y/n) " -n 1 -r
     echo    # Move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         break

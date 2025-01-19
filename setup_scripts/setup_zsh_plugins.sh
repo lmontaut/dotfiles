@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo
+if [ -d "$HOME/.oh-my-zsh" ]; then
+    echo "--> Found oh-my-zsh at: $HOME/.oh-my-zsh"
+fi
+
 # Prompt for confirmation
 while true; do
     read -p "--> Install zsh plugins? (y/n) " -n 1 -r

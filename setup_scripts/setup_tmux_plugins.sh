@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo
+if [ -d "$HOME/.tmux/plugins/tpm" ]; then
+    echo "--> Found tmux plugins manager at: $HOME/.tmux/plugins/tpm"
+fi
+
 # Prompt for confirmation
 while true; do
     read -p "--> Install tmux plugins? (y/n) " -n 1 -r

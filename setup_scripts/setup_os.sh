@@ -14,7 +14,10 @@ if [[ "$(uname)" == "Darwin" ]]; then
             fi
         done
     fi
-    brew install wget
+    brew update
+    if ! command -v wget > /dev/null 2>&1; then
+        brew install wget
+    fi
 elif [[ "$(uname)" == "Linux" ]]; then
     if ! command -v apt > /dev/null 2>&1; then
         echo "--> Could not find apt package manager. This installer needs it."

@@ -34,6 +34,9 @@ else
   exit 1
 fi
 
+# Git config
+source $DOTFILES_DIR/setup_scripts/setup_gitconfig.sh
+
 # Tmux
 source $DOTFILES_DIR/setup_scripts/setup_tmux.sh
 source $DOTFILES_DIR/setup_scripts/link_tmux_config.sh
@@ -50,10 +53,24 @@ source $DOTFILES_DIR/setup_scripts/setup_alacritty.sh
 source $DOTFILES_DIR/setup_scripts/link_alacritty_config.sh
 
 # Lazygit
+source $DOTFILES_DIR/setup_scripts/setup_lazygit.sh
+source $DOTFILES_DIR/setup_scripts/link_lazygit_config.sh
 
 # Tmux sesionnizer
-# source $DOTFILES_DIR/setup_scripts/setup_tms.sh
+source $DOTFILES_DIR/setup_scripts/setup_tms.sh
+
+# Nerd fonts
+source $DOTFILES_DIR/setup_scripts/setup_nerd_fonts.sh
+
+# CLI tools
+source $DOTFILES_DIR/setup_scripts/setup_cli_tools.sh
+
+# Ranger
+source $DOTFILES_DIR/setup_scripts/setup_ranger.sh
 
 # Nvim
-# source $DOTFILES_DIR/setup_scripts/setup_nvim.sh
-# source $DOTFILES_DIR/setup_scripts/link_nvim_config.sh
+source $DOTFILES_DIR/setup_scripts/setup_nvim.sh
+source $DOTFILES_DIR/setup_scripts/link_nvim_config.sh
+
+# Conda
+source $DOTFILES_DIR/setup_scripts/setup_conda.sh

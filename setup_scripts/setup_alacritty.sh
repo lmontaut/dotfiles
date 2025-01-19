@@ -3,6 +3,12 @@
 echo
 echo "----------------- ALACRITTY INSTALL -----------------"
 
+if command -v alacritty &> /dev/null; then
+    echo "--> Found alacritty at: $(which alacritty)"
+    current_version=$(alacritty --version)
+    echo "--> alacritty version: ($current_version)"
+fi
+
 while true; do
     read -p "--> Install alacritty? (y/n) " -n 1 -r
     echo
@@ -14,10 +20,10 @@ while true; do
     fi
 done
 
-# Linking config file to home
 echo "  --> Installing alacritty using cargo..."
 cargo install alacritty
 echo "  --> Adding desktop shortcut to alacritty..."
+# Linking config file to home
 ALACRITTY_PATH=$(which alacritty)
 if [[ "$(uname)" == "Darwin" ]]; then
     mkdir -p $HOME/Applications
@@ -60,4 +66,4 @@ else
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
-echo "  --> Alacritty installation complete."
+echo "  --> Alacritty installation complete"

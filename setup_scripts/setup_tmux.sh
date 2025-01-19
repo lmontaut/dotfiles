@@ -5,7 +5,7 @@ echo "----------------- TMUX INSTALL -----------------"
 
 # Detect if already exists, we won't reinstall if already there as tmux is system-wide
 if command -v tmux &> /dev/null; then
-    echo "  --> Found $(which tmux)."
+    echo "--> Found tmux at: $(which tmux)"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
 fi
 

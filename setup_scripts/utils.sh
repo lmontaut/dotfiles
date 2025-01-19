@@ -27,6 +27,7 @@ setup_base_folders () {
 }
 
 create_workspace () {
+    echo
     while true; do
         read -p "--> Do you want to setup lou's standard workspace directories? (y/n) " -n 1 -r
         echo    # Move to a new line

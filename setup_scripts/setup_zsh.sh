@@ -6,6 +6,13 @@
 echo
 echo "----------------- ZSH INSTALL -----------------"
 
+if command -v zsh &> /dev/null; then
+    echo "--> Found zsh at: $(which zsh)"
+    current_version=$(zsh --version)
+    echo "--> zsh version: ($current_version)"
+    [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+fi
+
 # Prompt for confirmation
 while true; do
     read -p "--> Install zsh (requires root privileges)? (y/n) " -n 1 -r

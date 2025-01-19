@@ -3,6 +3,12 @@
 echo
 echo "----------------- NEOVIM INSTALL -----------------"
 
+if command -v cargo &> /dev/null; then
+    echo "  --> Found nvim at: $(which nvim)"
+    current_version=$(nvim --version | head -n1)
+    echo "  --> nvim version: ($current_version)"
+fi
+
 # Prompt for confirmation
 while true; do
     read -p "--> Install nvim? (y/n) " -n 1 -r
@@ -18,11 +24,9 @@ done
 
 # Detect if nvim already exists
 if command -v nvim &> /dev/null; then
-    current_version=$(nvim --version | head -n1)
-    echo "  --> Found $(which nvim)"
-    echo "  --> nvim is already installed ($current_version). "
     while true; do
-        read -p "  --> Reinstall nvim? (y/n) " -n 1 -r
+        echo "  --> Reinstalling nvim implies losing all your nvim state."
+        read -p "  --> Are you sure you want to reinstall nvim? (y/n) " -n 1 -r
         echo    # Move to a new line
         if [[ $REPLY =~ ^[Yy]$ ]]; then
             # delete potentially existing config
@@ -95,6 +99,6 @@ if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
     done
 fi
 
-echo "  --> Neovim installation complete!"
+echo "  --> Neovim installation complete"
 # Print version to confirm installation
 echo "  --> Neovim version:  $($HOME/.local/bin/nvim --version | head -n1)"
