@@ -185,7 +185,7 @@ mods = "Command|Shift"
 
 [[keyboard.bindings]]
 chars = "\u001B\""
-key = "'"
+key = "\""
 mods = "Command|Shift"
 
 [[keyboard.bindings]]
