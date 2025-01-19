@@ -115,35 +115,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lou/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/lou/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lou/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/lou/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# export PATH=$HOME/installed_libs/bin:$PATH
-# export PATH=/usr/local/bin:$PATH
-# export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-# export PYTHONPATH=/usr/local/lib/python3.8/site-packages:$PYTHONPATH
-# export CMAKE_PREFIX_PATH=/usr/local:$CMAKE_PREFIX_PATH
-
-# export PATH=$HOME/.local/share/applications:$PATH
-# export PATH=$HOME/.local/share/bin:$PATH
-# export PATH=$HOME/libs/zotero:$PATH
-
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION
-
-# exec zsh
-
