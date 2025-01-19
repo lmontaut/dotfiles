@@ -1,12 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 ZSH_DISABLE_COMPFIX=true
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 export PATH=$HOME/bin:/usr/local/bin:usr/bin:$PATH
-# . "$HOME/.cargo/env"
 export PATH=$HOME/.config/emacs/bin:$PATH
-export PATH=$HOME/mambaforge/bin:$PATH
 export PATH=$HOME/.local/scripts:$PATH
-# Neomvim
-export PATH=$HOME/neovim/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.pixi/bin:$PATH
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -20,40 +21,27 @@ plugins=(git ssh-agent gpg-agent zsh-autosuggestions)
 zstyle :omz:plugins:ssh-agent lazy yes
 source $ZSH/oh-my-zsh.sh
 
-# Kill gpg-agent
+# Kill ssh/gpg-agent
 alias gpg-kill="gpgconf --kill gpg-agent"
+alias ssh-kill="ssh-agent -k"
 
 # -------- Aliases --------
-alias audio="alsamixer"
-alias picom="picom --config ~/.config/picom.conf -b"
+# Misc
 alias ipi="ipython -i"
-alias meshcat="chromium http://127.0.0.1:7000/static/"
-alias lum05="xrandr --output eDP-1 --brightness 0.5"
-alias lum10="xrandr --output eDP-1 --brightness 1.0"
-alias lum15="xrandr --output eDP-1 --brightness 1.5"
 alias cl="clear"
-# alias open="xdg-open"
 alias del_emacs="bash ~/dotfiles/emacs/.config/emacs/del_config.sh"
 alias jupytervim="pip install jupyterlab-vim jupyterlab-vimrc"
-# Make/CMake
-alias mkdirr='mkdir builds/build-release-$(echo $CONDA_DEFAULT_ENV)'
-alias mkdird='mkdir builds/build-debug-$(echo $CONDA_DEFAULT_ENV)'
-alias lcompr='ln -sf builds/build-release-$(echo $CONDA_DEFAULT_ENV)/compile_commands.json ./'
-alias lcompd='ln -sf builds/build-debug-$(echo $CONDA_DEFAULT_ENV)/compile_commands.json ./'
-alias cmaker='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
-alias cmaked='cmake -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_PREFIX_PATH=$CONDA_PREFIX -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache'
-alias code="/Applications/Visual\\ Studio\ Code.app/Contents/MacOS/Electron"
-# Mamba
-# alias ma="mamba activate"
-# alias mi="mamba install"
+
 # Conda
 alias ca="conda activate"
 alias ci="conda install"
 alias cic="conda install -c conda-forge"
+
 # Tmux
 alias tat="tmux attach -t"
 alias tls="tmux ls"
 alias tname="tmux rename-window -t"
+
 # Vim
 alias vi="vim"
 alias vim="nvim"
@@ -83,7 +71,11 @@ alias gspop="git stash pop --index"
 alias gdiff="git diff"
 alias grebase="git rebase -i"
 alias gbranch="git branch -vv"
-alias gsinit="git submodule update --init"
+alias gsinit="git submodule update --init --recursive"
+alias gcp="git cherry-pick"
+precom() {
+    pre-commit run --files $(git ls-files -m)
+}
 
 # Safe rm
 alias rm="rm -i"
@@ -91,22 +83,16 @@ alias rm="rm -i"
 # alias for ldd
 alias ldd="otool"
 
-if ! type "$exa" > /dev/null; then
+if ! type "$eza" > /dev/null; then
   alias grep="rg"
-  # alias top="gtop"
   alias top="btop"
-  alias ls="exa"
+  alias ls="eza"
   alias du="dust"
   alias df="duf"
   alias cat="bat"
+  # alias top="gtop"
   # alias find="fd"
 fi
-
-# export PATH="$PATH:/Users/louis/.dotnet/tools"
-# export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono
-eval "$(/opt/homebrew/bin/brew shellenv)"
-# alias nvim-server="nvim --listen /tmp/nvimsocket"
-# alias llvm-clang="/opt/homebrew/opt/llvm/bin/clang"
 
 # Export C/C++ compiler
 # Bad idea with apple because ccache comes from brew and introduces weird bugs due
@@ -114,9 +100,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # export CXX="ccache /usr/bin/clang++"
 # export CC="ccache /usr/bin/clang"
 
-# Add Tracy to path
-export PATH=$HOME/software/misc/tracy/profiler/build/unix:$PATH
-alias tracy="Tracy-release"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -132,4 +115,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
