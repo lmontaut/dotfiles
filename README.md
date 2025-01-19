@@ -1,4 +1,14 @@
 # Dotfiles
+## Automatic installation
+This scripts works either on MacOS or Linux (you must have the apt package manager).
+
+```console
+$ git clone --recursive https://github.com/lmontaut/dotfiles.git
+$ cd dotfiles
+$ chmod +x setup.sh
+$ ./setup.sh
+```
+
 ## Basic config
 Basic list of stuff that goes in the config:
 - i3 (linux only) / amethyst (macos only)
