@@ -20,7 +20,7 @@ while true; do
 done
 
 if [[ "$(uname)" == "Darwin" ]]; then
-    echo "--> You're on MacOs, zsh should be default. That's weird. Aborting."
+    echo "  --> You're on MacOs, zsh should be default. That's weird. Aborting."
     exit 1
 elif [[ "$(uname)" == "Linux" ]]; then
     sudo apt-get install zsh
