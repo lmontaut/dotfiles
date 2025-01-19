@@ -59,3 +59,5 @@ else
     echo "Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
+
+echo "  --> Alacritty installation complete."

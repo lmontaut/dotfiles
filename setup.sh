@@ -26,7 +26,7 @@ echo "--> Setup script will be run inside $CURRENT_SHELL"
 if [ "$CURRENT_SHELL" = "zsh" ]; then
   SHELL_CONFIG_FILE="$HOME/.zshrc"
   source $DOTFILES_DIR/setup_scripts/link_zsh_config.sh
-  # source $DOTFILES_DIR/setup_scripts/setup_zsh_plugins.sh
+  source $DOTFILES_DIR/setup_scripts/setup_zsh_plugins.sh
 elif [ "$CURRENT_SHELL" = "bash" ]; then
   SHELL_CONFIG_FILE="$HOME/.bashrc"
 else
@@ -37,7 +37,7 @@ fi
 # Tmux
 source $DOTFILES_DIR/setup_scripts/setup_tmux.sh
 source $DOTFILES_DIR/setup_scripts/link_tmux_config.sh
-# source $DOTFILES_DIR/setup_scripts/setup_tmux_plugins.sh
+source $DOTFILES_DIR/setup_scripts/setup_tmux_plugins.sh
 
 # Create workspace
 create_workspace

@@ -17,6 +17,7 @@ done
 echo "  --> Installing cargo..."
 curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env
+echo "  --> Cargo installation complete."
 echo "  --> rustc: $(which rustc)"
 echo "  --> rustc version: $(rustc --version)"
 echo "  --> cargo: $(which cargo)"

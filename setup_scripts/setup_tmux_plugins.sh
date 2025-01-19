@@ -11,3 +11,9 @@ while true; do
         [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
     fi
 done
+
+echo "  --> Installing tmux plugins..."
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+
+echo "  --> tmux plugins installed"
+echo "      Launch a new tmux server, then prefix + I (C-a + I) for automatic install"
