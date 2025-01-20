@@ -20,6 +20,11 @@ while true; do
     fi
 done
 
+if [[ "$(uname)" == "Linux" ]]; then
+    echo "  --> Installing alacritty dependencies"
+    sudo apt-get install -y cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+fi
+
 echo "  --> Installing alacritty using cargo..."
 cargo install alacritty
 echo "  --> Adding desktop shortcut to alacritty..."
