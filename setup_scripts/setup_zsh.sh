@@ -53,4 +53,5 @@ done
 chsh -s $(which zsh)
 
 echo "--> Please exit your shell, relaunch it, check that zsh is the default shell. Then, re-execute this setup script."
+echo "--> Note that sometimes you have to log out/log in so that default shell changes take effect."
 exit 0
