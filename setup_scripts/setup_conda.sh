@@ -3,7 +3,7 @@
 echo
 echo "----------------- CONDA INSTALL -----------------"
 
-if command -v $CONDA_EXE &> /dev/null; then
+if [ -n "$CONDA_EXE" ]; then # $CONDA_EXE is not empty
     echo "--> Found conda at: $(which $CONDA_EXE)"
     current_version=$($CONDA_EXE --version)
     echo "--> conda version: ($current_version)"
