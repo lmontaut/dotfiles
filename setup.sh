@@ -48,7 +48,7 @@ echo "--> Setup script will be run inside $CURRENT_SHELL"
 if [ "$CURRENT_SHELL" = "zsh" ]; then
   SHELL_CONFIG_FILE="$HOME/.zshrc"
   source $DOTFILES_DIR/setup_scripts/link_zsh_config.sh
-  source $HOME/.zshrc
+  export PATH=$HOME/.local/bin:$PATH
   source $DOTFILES_DIR/setup_scripts/setup_zsh_plugins.sh
 elif [ "$CURRENT_SHELL" = "bash" ]; then
   SHELL_CONFIG_FILE="$HOME/.bashrc"
