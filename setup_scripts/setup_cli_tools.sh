@@ -87,7 +87,9 @@ install_fd() {
 
         # in case install failed, e.g. no root privileges
         if ! command -v fd &> /dev/null; then
-            cargo install fd-find
+            if ! command -v fdfind &> /dev/null; then
+                cargo install fd-find
+            fi
         fi
     else
         echo "  --> Unsupported operating system"
