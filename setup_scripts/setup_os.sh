@@ -22,8 +22,8 @@ elif [[ "$(uname)" == "Linux" ]]; then
         echo "--> Could not find apt package manager. This installer needs it."
         exit 1
     fi
-    echo "  --> Installing minimum packages from apt: git, wget, unzip"
-    sudo apt-get install -y git wget unzip
+    echo "  --> Installing minimum packages from apt: git, wget, unzip, curl"
+    sudo apt-get install -y git wget unzip curl
 else
     echo "Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
