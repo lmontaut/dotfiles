@@ -177,7 +177,7 @@ install_npm() {
         brew install node
     elif [[ "$(uname)" == "Linux" ]]; then
         # Download and install nvm:
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+        wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
         # Download and install Node.js:
         nvm install 22
