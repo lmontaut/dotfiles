@@ -81,15 +81,13 @@ install_fd() {
     if [[ "$(uname)" == "Darwin" ]]; then
         brew install fd
     elif [[ "$(uname)" == "Linux" ]]; then
-        if command -v apt &> /dev/null; then
-            sudo apt-get install -y fd-find
+        if command -v cargo &> /dev/null; then
+            cargo install fd-find
         fi
 
-        # in case install failed, e.g. no root privileges
+        # in case install failed, try with apt
         if ! command -v fd &> /dev/null; then
-            if ! command -v fdfind &> /dev/null; then
-                cargo install fd-find
-            fi
+            sudo apt-get install -y fd-find
         fi
     else
         echo "  --> Unsupported operating system"
@@ -125,7 +123,7 @@ install_sad() {
         wget -O sad.deb "$LATEST_URL"
 
         if command -v apt &> /dev/null; then
-            sudo apt install ./sad.deb # system wide install to deal with dependencies
+            sudo apt-get install ./sad.deb # system wide install to deal with dependencies
         fi
 
         # install failed because e.g. no root privileges
@@ -183,6 +181,7 @@ install_npm() {
         export NVM_DIR="$HOME/.config/nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # loads nvm
         [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # nvm bash completion
+        echo "  --> If nvm install fails, just run: '$HOME/.config/nvm install 22' in your shell"
 
         # Download and install Node.js:
         $HOME/.config/nvm install 22
