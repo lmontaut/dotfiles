@@ -11,6 +11,11 @@ add_nvim_pap () {
     git clone git@github.com:lmontaut/nvim-pap.git $HOME/workspace/misc/nvim/nvim-pap
 }
 
+echo
+if [ -d "$HOME/workspace/misc/nvim/nvim-pap" ]; then
+    echo "--> Found nvim-pap at: $HOME/workspace/misc/nvim/nvim-pap"
+fi
+
 while true; do
     read -p "--> Install nvim-pap? (y/n) " -n 1 -r
     echo

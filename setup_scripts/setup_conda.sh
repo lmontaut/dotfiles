@@ -30,13 +30,14 @@ rm -rf $CONDA_PREFIX
 echo "  --> Installing conda..."
 if [[ "$(uname)" == "Darwin" ]]; then
     if [[ "$(uname -m)" == "arm64" ]]; then
-        wget -qO- https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh | sh
+        DOWNLOAD_LINK="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh"
     else
-        wget -qO- https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh | sh
+        DOWNLOAD_LINK="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh"
     fi
 elif [[ "$(uname)" == "Linux" ]]; then
-    wget -qO- https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh | sh
+    DOWNLOAD_LINK="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
 else
     echo "Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
+wget -qO-  "$DOWNLOAD_LINK" | bash
