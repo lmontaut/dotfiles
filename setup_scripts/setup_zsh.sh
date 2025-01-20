@@ -50,7 +50,7 @@ while true; do
 done
 
 # Make zsh the default shell
-chsh -s (which zsh)
+chsh -s $(which zsh)
 
 echo "--> Please exit your shell, relaunch it, check that zsh is the default shell. Then, re-execute this setup script."
 exit 0
