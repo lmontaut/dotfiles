@@ -37,24 +37,4 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}%1{✗%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 EOF
 
-# Get the actual file path if .zshrc is a symlink
-ZSHRC_PATH=$(readlink "$HOME/.zshrc" || echo "$HOME/.zshrc")
-
-# Update .zshrc to use the new theme
-ZSHRC_CONTENT=$(cat "$ZSHRC_PATH")
-if ! echo "$ZSHRC_CONTENT" | grep -q '^ZSH_THEME="lou-theme"'; then
-    # Create a temporary file
-    TEMP_FILE=$(mktemp)
-
-    # Add theme line at the top, then the rest of the content
-    echo 'ZSH_THEME="lou-theme" #important that this is set before loading oh-my-zsh' > "$TEMP_FILE"
-    echo "$ZSHRC_CONTENT" | sed '/^ZSH_THEME=.*$/d' >> "$TEMP_FILE"
-
-    # Backup original file
-    cp "$ZSHRC_PATH" "$ZSHRC_PATH.bak"
-
-    # Move temp file to the actual target file
-    mv "$TEMP_FILE" "$ZSHRC_PATH"
-fi
-
 echo "  --> Installed zsh plugins. Restart your shell or run: source ~/.zshrc"

@@ -35,26 +35,8 @@ else
   [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
-# Get the actual file path if .zshrc is a symlink
-SHELLRC_PATH=$(readlink $SHELL_CONFIG_FILE || echo $SHELL_CONFIG_FILE)
-
-# Update .zshrc to use the new theme
-SHELLRC_CONTENT=$(cat "$SHELLRC_PATH")
-if ! echo "$SHELLRC_CONTENT" | grep -q '^alias ranger=.*$/d'; then
-    # Create a temporary file
-    TEMP_FILE=$(mktemp)
-
-    # Delete already existing command and add command at the end of file
-    echo "$SHELLRC_CONTENT" | sed '/^alias ranger=.*$/d' > "$TEMP_FILE"
-    COMMAND="alias ranger=\"python $RANGER_DIR/ranger.py\""
-    echo "$COMMAND" >> "$TEMP_FILE"
-
-    # Backup original file
-    cp "$SHELLRC_PATH" "$SHELLRC_PATH.bak"
-
-    # Move temp file to the actual target file
-    mv "$TEMP_FILE" "$SHELLRC_PATH"
-fi
+COMMAND="alias ranger=\"python $RANGER_DIR/ranger.py\""
+echo "$COMMAND" >> "$SHELL_CONFIG_FILE"
 
 echo "  --> Installed ranger"
 
