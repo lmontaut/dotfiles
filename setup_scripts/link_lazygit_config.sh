@@ -13,13 +13,5 @@ while true; do
 done
 
 # Linking config file to home
-if [[ "$(uname)" == "Darwin" ]]; then
-    echo "  --> Linking config files $DOTFILES_DIR/macos/lazygit/.config/lazygit to $HOME/.config"
-    ln -sf $DOTFILES_DIR/macos/lazygit/.config/lazygit $HOME/.config
-elif [[ "$(uname)" == "Linux" ]]; then
-    echo "  --> Linking config files $DOTFILES_DIR/linux/lazygit/.config/lazygit to $HOME/.config"
-    ln -sf $DOTFILES_DIR/linux/lazygit/.config/lazygit $HOME/.config
-else
-    echo "Unsupported operating system"
-    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
-fi
+rm -rf $HOME/.config/lazygit # delete existing
+ln -sf $DOTFILES_DIR/lazygit/.config/lazygit $HOME/.config
