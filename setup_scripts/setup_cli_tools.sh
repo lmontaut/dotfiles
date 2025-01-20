@@ -179,6 +179,17 @@ install_npm() {
         # Download and install nvm:
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
+        # Source to take effect (for nvm command)
+        CURRENT_SHELL=$(basename "$SHELL")
+        if [ "$CURRENT_SHELL" = "zsh" ]; then
+          source "$HOME/.zshrc"
+        elif [ "$CURRENT_SHELL" = "bash" ]; then
+          source "$HOME/.bashrc"
+        else
+          echo "--> $CURRENT_SHELL is not supported"
+          [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+        fi
+
         # Download and install Node.js:
         nvm install 22
     else
