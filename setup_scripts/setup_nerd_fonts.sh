@@ -39,4 +39,4 @@ unzip JetBrainsMono.zip -d $HOME/.local/share/fonts/JetBrainsMono
 cd - > /dev/null
 rm -rf "$TMP_DIR"
 
-echo "  --> JetBrainsMono nerd font installation complete."
+echo "  --> JetBrainsMono nerd font installation complete"
