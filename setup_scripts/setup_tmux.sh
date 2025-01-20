@@ -27,7 +27,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     brew install tmux
 elif [[ "$(uname)" == "Linux" ]]; then
     echo "  --> Installing tmux..."
-    sudo apt-get install tmux
+    sudo apt-get install -y tmux
 else
     echo "  --> Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1

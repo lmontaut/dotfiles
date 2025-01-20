@@ -3,10 +3,10 @@
 echo
 echo "----------------- NEOVIM INSTALL -----------------"
 
-if command -v cargo &> /dev/null; then
-    echo "  --> Found nvim at: $(which nvim)"
+if command -v nvim &> /dev/null; then
+    echo "--> Found nvim at: $(which nvim)"
     current_version=$(nvim --version | head -n1)
-    echo "  --> nvim version: ($current_version)"
+    echo "--> nvim version: ($current_version)"
 fi
 
 # Prompt for confirmation

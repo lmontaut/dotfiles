@@ -23,7 +23,7 @@ elif [[ "$(uname)" == "Linux" ]]; then
         exit 1
     fi
     echo "  --> Installing minimum packages from apt: git, wget, unzip"
-    sudo apt-get install git wget unzip
+    sudo apt-get install -y git wget unzip
 else
     echo "Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1

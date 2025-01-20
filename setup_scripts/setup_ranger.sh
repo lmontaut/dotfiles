@@ -32,7 +32,7 @@ elif [ "$CURRENT_SHELL" = "bash" ]; then
   SHELL_CONFIG_FILE="$HOME/.bashrc"
 else
   echo "  --> $CURRENT_SHELL is not supported"
-  exit 1
+  [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
 # Get the actual file path if .zshrc is a symlink

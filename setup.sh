@@ -9,6 +9,18 @@ echo
 # This install works if git, wget and unzip are installed or the user has root privileges
 # If these are not present, installing part of this setup is still possible
 # (certain tools are accessible via github releases).
+#
+# Note: the current script, for linux, relies on apt.
+# For other linux flavor, it's easy to detect if another package manager is available:
+# Linux - using apt (Ubuntu/Debian)
+# if command -v apt &>/dev/null; then
+#   sudo apt-get install -y ...
+# Linux - using dnf (Fedora/RHEL)
+# if command -v dnf &>/dev/null; then
+#   sudo dnf install -y ...
+# Linux - using pacman (Arch)
+# elif command -v pacman &>/dev/null; then
+#   sudo pacman -Sy ...
 
 # Global var dotfile dir so that downstream scripts can work w.r.t this root
 export DOTFILES_DIR=$PWD
@@ -78,6 +90,7 @@ source $DOTFILES_DIR/setup_scripts/setup_ranger.sh
 # Nvim
 source $DOTFILES_DIR/setup_scripts/setup_nvim.sh
 source $DOTFILES_DIR/setup_scripts/link_nvim_config.sh
+source $DOTFILES_DIR/setup_scripts/setup_nvim_plugins.sh
 
 # Conda
 source $DOTFILES_DIR/setup_scripts/setup_conda.sh
