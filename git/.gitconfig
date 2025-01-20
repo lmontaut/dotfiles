@@ -1,7 +1,7 @@
 [user]
 	email = louismontaut@gmail.com
 	name = Louis Montaut
-	# siningkey = /path/to/ssh/key
+	; signingkey = /path/to/ssh/pub/key
 
 [core]
 	pager = delta
