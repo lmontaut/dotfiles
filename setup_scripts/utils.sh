@@ -40,6 +40,7 @@ create_workspace () {
             mkdir -p $HOME/workspace/misc
             break
         elif [[ $REPLY =~ ^[Nn]$ ]]; then
+            echo "  --> No workspace setup"
             break
         fi
     done

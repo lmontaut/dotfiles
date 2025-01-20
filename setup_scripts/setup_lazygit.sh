@@ -47,7 +47,7 @@ elif [[ "$(uname)" == "Linux" ]]; then
     install -D lazygit "${HOME}/.local/bin/lazygit"
 
     # Cleanup
-    cd $DOTFILES_DIR
+    cd - > /dev/null
     rm -rf "$TMP_DIR"
 
     # Make sure ~/.local/bin is in PATH

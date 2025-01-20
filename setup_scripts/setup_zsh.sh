@@ -3,9 +3,6 @@
 # This script installs zsh and changes the default shell to zsh.
 # This script requires root privileges.
 
-echo
-echo "----------------- ZSH INSTALL -----------------"
-
 if command -v zsh &> /dev/null; then
     echo "--> Found zsh at: $(which zsh)"
     current_version=$(zsh --version)

@@ -15,40 +15,15 @@ if [[ "$(uname)" == "Darwin" ]]; then
         done
     fi
     brew update
-    if ! command -v wget > /dev/null 2>&1; then
-        brew install wget
-    fi
+    echo "  --> Installing minimum packages from brew: wget, unzip"
+    brew install wget unzip
 elif [[ "$(uname)" == "Linux" ]]; then
     if ! command -v apt > /dev/null 2>&1; then
         echo "--> Could not find apt package manager. This installer needs it."
         exit 1
     fi
-    if ! command -v git > /dev/null 2>&1; then
-        while true; do
-            read -p "--> Could not find git, install it? You need it for this installer to work (y/n) " -n 1 -r
-            echo    # Move to a new line
-            if [[ $REPLY =~ ^[Yy]$ ]]; then
-                sudo apt-get install git
-                break
-            elif [[ $REPLY =~ ^[Nn]$ ]]; then
-                echo "  --> git won't get installed. Aborting."
-                exit 1
-            fi
-        done
-    fi
-    if ! command -v wget > /dev/null 2>&1; then
-        while true; do
-            read -p "--> Could not find wget, install it? You need it for this installer to work (y/n) " -n 1 -r
-            echo    # Move to a new line
-            if [[ $REPLY =~ ^[Yy]$ ]]; then
-                sudo apt-get install wget
-                break
-            elif [[ $REPLY =~ ^[Nn]$ ]]; then
-                echo "  --> wget won't get installed. Aborting."
-                exit 1
-            fi
-        done
-    fi
+    echo "  --> Installing minimum packages from apt: git, wget, unzip"
+    sudo apt-get install git wget unzip
 else
     echo "Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1

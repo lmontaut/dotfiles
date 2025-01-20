@@ -5,6 +5,11 @@ echo "----------------- LOU CONFIG SCRIPT -----------------"
 echo "-----------------------------------------------------"
 echo
 
+# Note: only zsh and tmux install require root privileges
+# This install works if git, wget and unzip are installed or the user has root privileges
+# If these are not present, installing part of this setup is still possible
+# (certain tools are accessible via github releases).
+
 # Global var dotfile dir so that downstream scripts can work w.r.t this root
 export DOTFILES_DIR=$PWD
 
@@ -14,10 +19,15 @@ detect_os
 # First, setup OS
 source $DOTFILES_DIR/setup_scripts/setup_os.sh
 
+# Git config
+source $DOTFILES_DIR/setup_scripts/link_gitconfig.sh
+
 # Setup usefull folders
 setup_base_folders
 
 # Setup shell
+echo
+echo "----------------- SHELL SETUP -----------------"
 if ! command -v zsh > /dev/null 2>&1; then
   source $DOTFILES_DIR/setup_scripts/setup_zsh.sh
 fi
@@ -34,16 +44,13 @@ else
   exit 1
 fi
 
-# Git config
-source $DOTFILES_DIR/setup_scripts/setup_gitconfig.sh
+# Create workspace
+create_workspace
 
 # Tmux
 source $DOTFILES_DIR/setup_scripts/setup_tmux.sh
 source $DOTFILES_DIR/setup_scripts/link_tmux_config.sh
 source $DOTFILES_DIR/setup_scripts/setup_tmux_plugins.sh
-
-# Create workspace
-create_workspace
 
 # Cargo
 source $DOTFILES_DIR/setup_scripts/setup_cargo.sh

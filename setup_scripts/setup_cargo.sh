@@ -27,7 +27,7 @@ while true; do
 done
 
 echo "  --> Installing cargo..."
-curl https://sh.rustup.rs -sSf | sh
+wget -qO- https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 echo "  --> Cargo installation complete"
 echo "  --> rustc: $(which rustc)"
