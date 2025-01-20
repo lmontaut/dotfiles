@@ -185,7 +185,7 @@ install_npm() {
         [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # nvm bash completion
 
         # Download and install Node.js:
-        nvm install 22
+        $HOME/.config/nvm install 22
     else
         echo "  --> Unsupported operating system"
         [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
