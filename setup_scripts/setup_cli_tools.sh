@@ -199,7 +199,7 @@ install_eza() {
 
     if command -v eza &> /dev/null; then
         echo "  --> eza at: $(which eza)"
-        echo "  --> eza version: $(eza --version)"
+        echo "  --> eza version: $(eza --version | head -n1)"
     fi
 }
 
@@ -209,7 +209,7 @@ install_bat() {
 
     if command -v bat &> /dev/null; then
         echo "  --> bat at: $(which bat)"
-        echo "  --> bat version: $(bat --version)"
+        echo "  --> bat version: $(bat --version | head -n1)"
     fi
 }
 
@@ -343,7 +343,7 @@ done
 echo
 if command -v eza &> /dev/null; then
     echo "--> Found eza at: $(which eza)"
-    current_version=$(eza --version)
+    current_version=$(eza --version | head -n1)
     echo "--> eza version: ($current_version)"
 fi
 
@@ -363,7 +363,7 @@ done
 echo
 if command -v bat &> /dev/null; then
     echo "--> Found bat at: $(which bat)"
-    current_version=$(bat --version)
+    current_version=$(bat --version | head -n1)
     echo "--> bat version: ($current_version)"
 fi
 
