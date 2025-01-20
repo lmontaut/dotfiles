@@ -19,4 +19,4 @@ echo "  --> Linking $DOTFILES_DIR/git/.gitconfig to $HOME"
 ln -sf $DOTFILES_DIR/git/.gitconfig $HOME 
 echo "  --> To activate the gitconfig:"
 echo "      1) Modify 'signingkey' in $HOME/.gitconfig to put your ssh signing key"
-echo "      2) Modify $HOME/.config/git/allowed_signers with your public ssh signing key
+echo "      2) Modify $HOME/.config/git/allowed_signers with your public ssh signing key"
