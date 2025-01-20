@@ -191,6 +191,26 @@ install_npm() {
     fi
 }
 
+install_eza() {
+    echo "  --> Installing eza..."
+    cargo install eza
+
+    if command -v eza &> /dev/null; then
+        echo "  --> eza at: $(which eza)"
+        echo "  --> eza version: $(eza --version)"
+    fi
+}
+
+install_bat() {
+    echo "  --> Installing bat..."
+    cargo install --locked bat
+
+    if command -v bat &> /dev/null; then
+        echo "  --> bat at: $(which bat)"
+        echo "  --> bat version: $(bat --version)"
+    fi
+}
+
 # ---- ripgrep
 echo
 if command -v rg &> /dev/null; then
@@ -313,6 +333,46 @@ while true; do
         break
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
         echo "  --> node and npm won't get installed"
+        break;
+    fi
+done
+
+# ---- eza
+echo
+if command -v eza &> /dev/null; then
+    echo "--> Found eza at: $(which eza)"
+    current_version=$(eza --version)
+    echo "--> eza version: ($current_version)"
+fi
+
+while true; do
+    read -p "--> Install eza (fancy ls)? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        install_eza
+        break
+    elif [[ $REPLY =~ ^[Nn]$ ]]; then
+        echo "  --> eza won't get installed"
+        break;
+    fi
+done
+
+# ---- bat
+echo
+if command -v bat &> /dev/null; then
+    echo "--> Found bat at: $(which bat)"
+    current_version=$(bat --version)
+    echo "--> bat version: ($current_version)"
+fi
+
+while true; do
+    read -p "--> Install bat (fancy cat)? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        install_bat
+        break
+    elif [[ $REPLY =~ ^[Nn]$ ]]; then
+        echo "  --> bat won't get installed"
         break;
     fi
 done

@@ -83,11 +83,11 @@ alias ldd="otool"
 
 if ! type "$eza" > /dev/null; then
   alias grep="rg"
-  alias top="btop"
   alias ls="eza"
-  alias du="dust"
-  alias df="duf"
   alias cat="bat"
+  # alias top="btop"
+  # alias du="dust"
+  # alias df="duf"
   # alias top="gtop"
   # alias find="fd"
 fi

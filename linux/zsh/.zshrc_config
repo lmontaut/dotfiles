@@ -73,6 +73,17 @@ alias rm="rm -i"
 
 xset r rate 300 50
 
+if ! type "$eza" > /dev/null; then
+  alias grep="rg"
+  alias ls="eza"
+  alias cat="bat"
+  # alias top="btop"
+  # alias du="dust"
+  # alias df="duf"
+  # alias top="gtop"
+  # alias find="fd"
+fi
+
 # Clang compiler
 # export CXX="/usr/bin/ccache /usr/bin/clang++"
 # export CC="/usr/bin/ccache /usr/bin/clang"
