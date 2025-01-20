@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo
+echo "----------------- NVIM CUSTOM PLUGINS -----------------"
+
 add_nvim_pap () {
     mkdir -p $HOME/workspace
     mkdir -p $HOME/workspace/misc
@@ -16,6 +19,6 @@ while true; do
         break
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
         echo "  --> nvim-pap won't get installed"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+        break
     fi
 done

@@ -19,7 +19,7 @@ while true; do
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         break
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
-        echo "  --> cargo won't get installed"
+        echo "  --> conda won't get installed"
         [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
     fi
 done

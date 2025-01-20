@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo
+echo "----------------- CLI TOOLS -----------------"
+
 install_rg() {
     echo "  --> Installing rg..."
     if [[ "$(uname)" == "Darwin" ]]; then
@@ -188,13 +191,11 @@ install_npm() {
     fi
 }
 
-echo
-echo "----------------- CLI TOOLS -----------------"
-
 # ---- ripgrep
+echo
 if command -v rg &> /dev/null; then
     echo "--> Found rg at: $(which rg)"
-    current_version=$(rg --version)
+    current_version=$(rg --version | head -n1)
     echo "--> rg version: ($current_version)"
 fi
 
@@ -206,11 +207,12 @@ while true; do
         break
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
         echo "  --> rg won't get installed"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+        break;
     fi
 done
 
 # ---- fzf
+echo
 if command -v fzf &> /dev/null; then
     echo "--> Found fzf at: $(which fzf)"
     current_version=$(fzf --version)
@@ -225,11 +227,12 @@ while true; do
         break
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
         echo "  --> fzf won't get installed"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+        break;
     fi
 done
 
 # ---- fd
+echo
 if command -v fd &> /dev/null; then
     echo "--> Found fd at: $(which fd)"
     current_version=$(fd --version)
@@ -244,11 +247,12 @@ while true; do
         break
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
         echo "  --> fd won't get installed"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+        break;
     fi
 done
 
 # ---- sad
+echo
 if command -v sad &> /dev/null; then
     echo "--> Found sad at: $(which sad)"
     current_version=$(sad --version)
@@ -263,11 +267,12 @@ while true; do
         break
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
         echo "  --> sad won't get installed"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+        break;
     fi
 done
 
 # ---- delta
+echo
 if command -v delta &> /dev/null; then
     echo "--> Found delta at: $(which delta)"
     current_version=$(delta --version)
@@ -282,11 +287,12 @@ while true; do
         break
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
         echo "  --> delta won't get installed"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+        break;
     fi
 done
 
 # ---- node and npm
+echo
 if command -v node &> /dev/null; then
     echo "--> Found node at: $(which node)"
     current_version=$(node --version)
@@ -307,6 +313,6 @@ while true; do
         break
     elif [[ $REPLY =~ ^[Nn]$ ]]; then
         echo "  --> node and npm won't get installed"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+        break;
     fi
 done
