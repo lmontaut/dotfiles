@@ -40,4 +40,14 @@ else
     echo "Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
-wget -qO-  "$DOWNLOAD_LINK" | bash
+
+# Create a temporary directory
+TMP_DIR=$(mktemp -d)
+cd $TMP_DIR
+
+wget -O conda.sh "$DOWNLOAD_LINK"
+bash conda.sh
+
+# Cleanup
+cd - > /dev/null
+rm -rf "$TMP_DIR"
