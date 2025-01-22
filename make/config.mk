@@ -27,6 +27,7 @@ define _FUTILS
 				fi
 			fi
 		fi
+	}
 
 	uninstall_current_mode() {
 		if [ -f $(MODE_FILE) ]; then
