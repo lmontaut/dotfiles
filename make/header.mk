@@ -52,8 +52,12 @@ TEST_NAME ?= name-of-test
 ADDITIONAL_COMPILATION_FLAGS ?= -Wall\
 																-Wextra
 
+# Note: the double "" "" on cxx flags is important here, as
+# the command line argument is -DCMAKE_CXX_FLAGS="flag1 flag2 ..."
+# So to convert the flags list into something that remains inside "",
+# we need these double "" ""
 PROJECT_SPECIFIC_BUILD_FLAGS ?= -DBUILD_TESTING=$(COMPILE_ALL_TESTS)\
-																-DCMAKE_CXX_FLAGS="$(ADDITIONAL_COMPILATION_FLAGS)"
+																-DCMAKE_CXX_FLAGS=""$(ADDITIONAL_COMPILATION_FLAGS)""
 
 FLAGS ?=
 
