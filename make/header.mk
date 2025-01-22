@@ -1,6 +1,8 @@
 # Lou automated compilation/build system
 # Do not change the name of the variables, as they are used by the make commands.
 # You can however give them any value you want.
+# Note: $() evaluates a Make variable
+#       $$  evaluates the shell -> add an extra '$' to escape Make
 
 # You would typically put the following content inside a Makefile, which would then
 # call the config.mk file from these dotfiles:
