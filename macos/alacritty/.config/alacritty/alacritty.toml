@@ -155,32 +155,32 @@ mods = "Command|Shift"
 
 [[keyboard.bindings]]
 chars = "\u001B]"
-key = "RBracket"
+key = "]"
 mods = "Command"
 
 [[keyboard.bindings]]
 chars = "\u001B["
-key = "LBracket"
+key = "["
 mods = "Command"
 
 [[keyboard.bindings]]
 chars = "\u001B\u001B\\"
-key = "Backslash"
+key = "\\"
 mods = "Command"
 
 [[keyboard.bindings]]
 chars = "\u001B:"
-key = "Semicolon"
+key = ":"
 mods = "Command|Shift"
 
 [[keyboard.bindings]]
 chars = "\u001B>"
-key = "Period"
+key = ">"
 mods = "Command|Shift"
 
 [[keyboard.bindings]]
 chars = "\u001B<"
-key = "Comma"
+key = "<"
 mods = "Command|Shift"
 
 [[keyboard.bindings]]
