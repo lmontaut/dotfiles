@@ -52,12 +52,18 @@ define _FUTILS
 endef
 export _FUTILS
 
-.PHONY: all test tests compile install
+.PHONY: all test tests compile install pre-command
 
 all:
 	make _lou_preambule
 	cmake --build $(LOU_BUILD_DIR) --target all $(FLAGS) -j$(JLEVEL)
 	@printf "[Compilation finished.]\n\n"
+
+%: pre-command
+	@true
+	
+pre-command:
+	@mkdir -p $(MODE_DIR)
 
 # -----------
 # Installing

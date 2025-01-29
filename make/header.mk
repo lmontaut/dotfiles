@@ -74,6 +74,7 @@ LOU_CMAKE_FLAGS ?= -G Ninja\
 # Set build dir - here using conda
 LOU_BUILD_DIR := ./build/$(CONDA_DEFAULT_ENV)/$(MODE_NAME)
 TEST_DIR := unittest
-MODE_FILE := .lou_build_mode
+MODE_DIR := .lou/$(CONDA_DEFAULT_ENV)
+MODE_FILE := $(MODE_DIR)/.lou_build_mode
 
 include $(HOME)/dotfiles/make/config.mk
