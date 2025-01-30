@@ -2,29 +2,38 @@
 # COMMON TO ALL PROJECTS
 # Note: $() evaluates a Make variable
 #       $$  evaluates the shell -> add an extra '$' to escape Make
+MODE_FILE := $(MODE_DIR)/.lou_build_mode
+COMP_FLAGS_FILE := $(MODE_DIR)/.lou_build_flags
+ADDITIONAL_COMP_FLAGS_FILE := $(MODE_DIR)/.lou_additional_build_flags
+
 define _FUTILS
 	store_current_mode() {
-		printf "%s %s %s\n" "$$1" "$$2" "$$3" > $(MODE_FILE)
-		# echo "--> Stored build mode: $$1 $$2 $$3"
+		printf "%s %s\n" "$$1" "$$2" > $(MODE_FILE)
+		printf "%s\n" "$$3" > $(COMP_FLAGS_FILE)
+		printf "%s\n" "$$4" > $(ADDITIONAL_COMP_FLAGS_FILE)
 	}
 
 	echo_current_mode() {
 		if [ -f $(MODE_FILE) ]; then
-			read -r MODE_ MODE_NAME_ COMP_FLAGS_ < $(MODE_FILE);
+			read -r MODE_ MODE_NAME_ < $(MODE_FILE);
+			read -r COMP_FLAGS_ < $(COMP_FLAGS_FILE);
+			read -r ADDITIONAL_COMP_FLAGS_ < $(ADDITIONAL_COMP_FLAGS_FILE);
 			echo "Current build configuration:"
 			echo "  --> MODE: $$MODE_"
 			echo "  --> MODE_NAME: $$MODE_NAME_"
 			echo "  --> PROJECT_SPECIFIC_BUILD_FLAGS: $$COMP_FLAGS_"
+			echo "  --> ADDITIONAL_COMPILATION_FLAGS: $$ADDITIONAL_COMP_FLAGS_"
 		fi
 	}
 
 	uninstall_previous_mode() {
 		if [ -f $(MODE_FILE) ]; then
-			read -r PREV_MODE PREV_MODE_NAME PREV_COMP_FLAGS_ < $(MODE_FILE);
-			if [ "$$PREV_MODE_NAME" != "$(MODE_NAME)" ]; then
-				if [ -d ./build/$(CONDA_DEFAULT_ENV)/$$PREV_MODE_NAME ]; then
-					# echo "--> Build mode changed from $$PREV_MODE_NAME to $(MODE_NAME), uninstalling $$PREV_MODE_NAME";
-					make uninstall MODE="$$PREV_MODE" MODE_NAME="$$PREV_MODE_NAME" PROJECT_SPECIFIC_BUILD_FLAGS="$$PREV_COMP_FLAGS_"
+			read -r PREV_MODE_ PREV_MODE_NAME_ < $(MODE_FILE);
+			read -r PREV_COMP_FLAGS_ < $(COMP_FLAGS_FILE);
+			read -r PREV_ADDITIONAL_COMP_FLAGS_ < $(ADDITIONAL_COMP_FLAGS_FILE);
+			if [ "$$PREV_MODE_NAME_" != "$(MODE_NAME)" ]; then
+				if [ -d ./build/$(CONDA_DEFAULT_ENV)/$$PREV_MODE_NAME_ ]; then
+					make uninstall MODE="$$PREV_MODE_" MODE_NAME="$$PREV_MODE_NAME_" PROJECT_SPECIFIC_BUILD_FLAGS="$$PREV_COMP_FLAGS_" ADDITIONAL_COMPILATION_FLAGS="$$PREV_ADDITIONAL_COMP_FLAGS_"
 				fi
 			fi
 		fi
@@ -32,18 +41,22 @@ define _FUTILS
 
 	uninstall_current_mode() {
 		if [ -f $(MODE_FILE) ]; then
-			read -r MODE_ MODE_NAME_ COMP_FLAGS_ < $(MODE_FILE);
+			read -r MODE_ MODE_NAME_ < $(MODE_FILE);
+			read -r COMP_FLAGS_ < $(COMP_FLAGS_FILE);
+			read -r ADDITIONAL_COMP_FLAGS_ < $(ADDITIONAL_COMP_FLAGS_FILE);
 			if [ -d ./build/$(CONDA_DEFAULT_ENV)/$$MODE_NAME_ ]; then
 				# echo "--> Uninstalling current mode $$MODE_NAME_";
-				make uninstall MODE="$$MODE_" MODE_NAME="$$MODE_NAME_" PROJECT_SPECIFIC_BUILD_FLAGS="$$COMP_FLAGS_"
+				make uninstall MODE="$$MODE_" MODE_NAME="$$MODE_NAME_" PROJECT_SPECIFIC_BUILD_FLAGS="$$COMP_FLAGS_" ADDITIONAL_COMPILATION_FLAGS="$$ADDITIONAL_COMP_FLAGS_"
 			fi
 		fi
 	}
 
 	auto_update_mode() {
 		if [ -f $(MODE_FILE) ]; then
-			read -r MODE_ MODE_NAME_ COMP_FLAGS_ < $(MODE_FILE);
-			if [ "$$COMP_FLAGS_" != "$(PROJECT_SPECIFIC_BUILD_FLAGS)" ]; then
+			read -r MODE_ MODE_NAME_ < $(MODE_FILE);
+			read -r COMP_FLAGS_ < $(COMP_FLAGS_FILE);
+			read -r ADDITIONAL_COMP_FLAGS_ < $(ADDITIONAL_COMP_FLAGS_FILE);
+			if [ "$$COMP_FLAGS_" != "$(PROJECT_SPECIFIC_BUILD_FLAGS)" ] || [ "$$ADDITIONAL_COMP_FLAGS_" != "$(ADDITIONAL_COMPILATION_FLAGS)" ]; then
 				make update
 			fi
 		fi
@@ -110,7 +123,9 @@ compile_:
 # --------
 # Building
 # --------
-BUILD_COMMAND_ = cmake -S . -B $(LOU_BUILD_DIR) $(LOU_CMAKE_FLAGS) $(PROJECT_SPECIFIC_BUILD_FLAGS) $(FLAGS) # Add additionnal flags if needed
+LOU_COMPILATION_FLAGS := -DCMAKE_CXX_FLAGS="$(ADDITIONAL_COMPILATION_FLAGS)"\
+												 -DCMAKE_C_FLAGS="$(ADDITIONAL_COMPILATION_FLAGS)"
+BUILD_COMMAND_ := cmake -S . -B $(LOU_BUILD_DIR) $(LOU_CMAKE_FLAGS) $(LOU_COMPILATION_FLAGS) $(PROJECT_SPECIFIC_BUILD_FLAGS) $(FLAGS) # Add additionnal flags if needed
 
 # we don't store the current mode, because no compilation command is launched
 update:
@@ -137,7 +152,7 @@ echo_mode:
 	@eval "$$_FUTILS"; echo_current_mode;
 
 _store_current_mode:
-	@eval "$$_FUTILS"; store_current_mode "$(MODE)" "$(MODE_NAME)" "$(PROJECT_SPECIFIC_BUILD_FLAGS)";
+	@eval "$$_FUTILS"; store_current_mode "$(MODE)" "$(MODE_NAME)" "$(PROJECT_SPECIFIC_BUILD_FLAGS)" "$(ADDITIONAL_COMPILATION_FLAGS)";
 
 _uninstall_previous_mode:
 	@eval "$$_FUTILS"; uninstall_previous_mode;

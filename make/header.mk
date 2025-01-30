@@ -51,13 +51,14 @@ TEST_NAME ?= name-of-test
 # ------------------------------------------
 ADDITIONAL_COMPILATION_FLAGS ?= -Wall\
 																-Wextra
+																# -Wno-\#warnings\
+																# -Wno-deprecated-declarations
 
 # Note: the double "" "" on cxx flags is important here, as
 # the command line argument is -DCMAKE_CXX_FLAGS="flag1 flag2 ..."
 # So to convert the flags list into something that remains inside "",
 # we need these double "" ""
-PROJECT_SPECIFIC_BUILD_FLAGS ?= -DBUILD_TESTING=$(COMPILE_ALL_TESTS)\
-																-DCMAKE_CXX_FLAGS=""$(ADDITIONAL_COMPILATION_FLAGS)""
+PROJECT_SPECIFIC_BUILD_FLAGS ?= -DBUILD_TESTING=$(COMPILE_ALL_TESTS)
 
 FLAGS ?=
 
@@ -67,6 +68,8 @@ LOU_CMAKE_FLAGS ?= -G Ninja\
 									 -DCMAKE_SYSTEM_PREFIX_PATH=$(CONDA_PREFIX)\
 									 -DCMAKE_CXX_FLAGS_DEBUG="-g -O0"\
 									 -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-g -O2"\
+									 -DCMAKE_C_FLAGS_DEBUG="-g -O0"\
+									 -DCMAKE_C_FLAGS_RELWITHDEBINFO="-g -O2"\
 									 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON\
 									 -DCMAKE_CXX_COMPILER_LAUNCHER=ccache\
 									 -DCMAKE_C_COMPILER_LAUNCHER=ccache
@@ -75,6 +78,5 @@ LOU_CMAKE_FLAGS ?= -G Ninja\
 LOU_BUILD_DIR := ./build/$(CONDA_DEFAULT_ENV)/$(MODE_NAME)
 TEST_DIR := unittest
 MODE_DIR := .lou/$(CONDA_DEFAULT_ENV)
-MODE_FILE := $(MODE_DIR)/.lou_build_mode
 
 include $(HOME)/dotfiles/make/config.mk
