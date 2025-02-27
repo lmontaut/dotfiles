@@ -2,6 +2,7 @@
 	email = louismontaut@gmail.com
 	name = Louis Montaut
 	; signingkey = /path/to/ssh/pub/key
+	signingkey = /Users/louis/.ssh/github.pub
 
 [core]
 	pager = delta
@@ -25,7 +26,23 @@
 	conflictstyle = diff3
 
 [diff]
-	colorMoved = default
+	colorMoved = plain
+	algorithm = histogram
+	renames = true
+	mnemonicPrefix = true
+
+[push]
+	default = simple
+	autoSetupRemote = true
+	followTags = true
+
+[pull]
+	rebase = true
+
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
 
 [delta "decorations"]
 	commit-decoration-style = blue ol
@@ -38,21 +55,38 @@
 
 [mergetool "fugitive"]
 	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+
 [alias]
 	root = rev-parse --show-toplevel
+
 [commit]
 	verbose = true
 	gpgsign = true
+
+[rerere]
+	enabled = true
+	autoupdate = true
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+
 [gpg]
 	format = ssh
+
 [filter "gitignore"]
 	clean = "sed '/#gitignore$/d'"
+
 [gpg "ssh"]
 	allowedSignersFile = $HOME/.config/git/allowed_signers
+
 [tag]
+	sort = version:refname
 	gpgsign = true
