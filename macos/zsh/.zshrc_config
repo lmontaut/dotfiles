@@ -84,16 +84,20 @@ alias rm="rm -i"
 # alias for ldd
 alias ldd="otool"
 
-if ! type "$eza" > /dev/null; then
+if command -v rg &> /dev/null; then
   alias grep="rg"
-  alias ls="eza"
-  alias cat="bat"
-  # alias top="btop"
-  # alias du="dust"
-  # alias df="duf"
-  # alias top="gtop"
-  # alias find="fd"
 fi
+if command -v eza &> /dev/null; then
+  alias ls="eza"
+fi
+if command -v bat &> /dev/null; then
+  alias cat="bat"
+fi
+# alias top="btop"
+# alias du="dust"
+# alias df="duf"
+# alias top="gtop"
+# alias find="fd"
 
 # Export C/C++ compiler
 # Bad idea with apple because ccache comes from brew and introduces weird bugs due

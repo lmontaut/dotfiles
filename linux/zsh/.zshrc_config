@@ -73,15 +73,14 @@ alias rm="rm -i"
 
 xset r rate 300 50
 
-if ! type "$eza" > /dev/null; then
+if command -v rg &> /dev/null; then
   alias grep="rg"
+fi
+if command -v eza &> /dev/null; then
   alias ls="eza"
+fi
+if command -v bat &> /dev/null; then
   alias cat="bat"
-  # alias top="btop"
-  # alias du="dust"
-  # alias df="duf"
-  # alias top="gtop"
-  # alias find="fd"
 fi
 
 # Clang compiler
