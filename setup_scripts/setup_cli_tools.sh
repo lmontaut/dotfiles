@@ -177,14 +177,18 @@ install_npm() {
         # Download and install nvm:
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
-        # Source to take effect (for nvm command)
-        export NVM_DIR="$HOME/.config/nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # loads nvm
-        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # nvm bash completion
-        echo "  --> If nvm install fails, just run: '$HOME/.config/nvm install 22' in your shell"
+        \. "$HOME/.nvm/nvm.sh"
 
-        # Download and install Node.js:
-        $HOME/.config/nvm install 22
+        nvm install 22
+
+        # # Source to take effect (for nvm command)
+        # export NVM_DIR="$HOME/.config/nvm"
+        # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # loads nvm
+        # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # nvm bash completion
+        # echo "  --> If nvm install fails, just run: '$HOME/.config/nvm install 22' in your shell"
+        #
+        # # Download and install Node.js:
+        # $HOME/.config/nvm install 22
     else
         echo "  --> Unsupported operating system"
         [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
