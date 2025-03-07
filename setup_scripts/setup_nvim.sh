@@ -50,7 +50,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
         DOWNLOAD_SUFFIX="macos-x86_64.tar.gz"
     fi
 elif [[ "$(uname)" == "Linux" ]]; then
-  DOWNLOAD_SUFFIX="linux64.tar.gz"
+  DOWNLOAD_SUFFIX="linux-x86_64.tar.gz"
 else
     echo "  --> Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
