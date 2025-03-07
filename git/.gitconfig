@@ -2,7 +2,6 @@
 	email = louismontaut@gmail.com
 	name = Louis Montaut
 	; signingkey = /path/to/ssh/pub/key
-	signingkey = /Users/louis/.ssh/github.pub
 
 [core]
 	pager = delta
