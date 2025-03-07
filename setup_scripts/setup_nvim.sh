@@ -60,6 +60,7 @@ fi
 mkdir -p $HOME/.local/bin
 
 # Get the latest release URL
+echo "  --> Nvim download suffix: ${DOWNLOAD_SUFFIX}"
 LATEST_URL=$(wget -qO- https://api.github.com/repos/neovim/neovim/releases/latest | \
              grep "browser_download_url.*nvim-${DOWNLOAD_SUFFIX}\"" | \
              cut -d '"' -f 4)
