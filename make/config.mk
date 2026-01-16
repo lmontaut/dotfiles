@@ -5,6 +5,8 @@
 MODE_FILE := $(MODE_DIR)/.lou_build_mode
 COMP_FLAGS_FILE := $(MODE_DIR)/.lou_build_flags
 ADDITIONAL_COMP_FLAGS_FILE := $(MODE_DIR)/.lou_additional_build_flags
+CMAKE_BIN := $(CONDA_PREFIX)/bin/cmake
+CCACHE_BIN := $(CONDA_PREFIX)/bin/ccache
 
 define _FUTILS
 	store_current_mode() {
@@ -65,11 +67,11 @@ define _FUTILS
 endef
 export _FUTILS
 
-.PHONY: all test tests compile install pre-command
+.PHONY: all test tests compile install pre-command build
 
 all:
 	make _lou_preambule
-	cmake --build $(LOU_BUILD_DIR) --target all $(FLAGS) -j$(JLEVEL)
+	$(CMAKE_BIN) --build $(LOU_BUILD_DIR) --target all $(FLAGS) -j$(JLEVEL)
 	@printf "[Compilation finished.]\n\n"
 
 %: pre-command
@@ -83,10 +85,10 @@ pre-command:
 # -----------
 install:
 	make _lou_preambule
-	cmake --build $(LOU_BUILD_DIR) --target install -j$(JLEVEL) $(FLAGS)
+	$(CMAKE_BIN) --build $(LOU_BUILD_DIR) --target install -j$(JLEVEL) $(FLAGS)
 
 uninstall:
-	cmake --build $(LOU_BUILD_DIR) --target uninstall -j$(JLEVEL) $(FLAGS)
+	$(CMAKE_BIN) --build $(LOU_BUILD_DIR) --target uninstall -j$(JLEVEL) $(FLAGS)
 
 # ------
 # Testing
@@ -114,18 +116,18 @@ subtest:
 # ---------
 compile:
 	make _lou_preambule
-	cmake --build $(LOU_BUILD_DIR) --target $(TARGET) -j$(JLEVEL) $(FLAGS)
+	$(CMAKE_BIN) --build $(LOU_BUILD_DIR) --target $(TARGET) -j$(JLEVEL) $(FLAGS)
 
 compile_:
 	make _lou_preambule
-	cmake --build $(LOU_BUILD_DIR) -j$(JLEVEL) $(FLAGS)
+	$(CMAKE_BIN) --build $(LOU_BUILD_DIR) -j$(JLEVEL) $(FLAGS)
 
 # --------
 # Building
 # --------
 LOU_COMPILATION_FLAGS := -DCMAKE_CXX_FLAGS="$(ADDITIONAL_COMPILATION_FLAGS)"\
 												 -DCMAKE_C_FLAGS="$(ADDITIONAL_COMPILATION_FLAGS)"
-BUILD_COMMAND_ := cmake -S . -B $(LOU_BUILD_DIR) $(LOU_CMAKE_FLAGS) $(LOU_COMPILATION_FLAGS) $(PROJECT_SPECIFIC_BUILD_FLAGS) $(FLAGS) # Add additionnal flags if needed
+BUILD_COMMAND_ := $(CMAKE_BIN) -S $(LOU_CMAKELISTS_DIR) -B $(LOU_BUILD_DIR) $(LOU_CMAKE_FLAGS) $(LOU_COMPILATION_FLAGS) $(PROJECT_SPECIFIC_BUILD_FLAGS) $(FLAGS) # Add additionnal flags if needed
 
 # we don't store the current mode, because no compilation command is launched
 update:
@@ -137,7 +139,7 @@ build: mkdir_build
 	$(BUILD_COMMAND_)
 
 clean:
-	cmake --build $(LOU_BUILD_DIR) --target clean
+	$(CMAKE_BIN) --build $(LOU_BUILD_DIR) --target clean
 
 mkdir_build: clean_build
 	mkdir -p $(LOU_BUILD_DIR)
