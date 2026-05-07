@@ -34,7 +34,7 @@ define _FUTILS
 			read -r PREV_COMP_FLAGS_ < $(COMP_FLAGS_FILE);
 			read -r PREV_ADDITIONAL_COMP_FLAGS_ < $(ADDITIONAL_COMP_FLAGS_FILE);
 			if [ "$$PREV_MODE_NAME_" != "$(MODE_NAME)" ]; then
-				if [ -d ./build/$(CONDA_DEFAULT_ENV)/$$PREV_MODE_NAME_ ]; then
+				if [ -f ./build/$(CONDA_DEFAULT_ENV)/$$PREV_MODE_NAME_/install_manifest.txt ]; then
 					make uninstall MODE="$$PREV_MODE_" MODE_NAME="$$PREV_MODE_NAME_" PROJECT_SPECIFIC_BUILD_FLAGS="$$PREV_COMP_FLAGS_" ADDITIONAL_COMPILATION_FLAGS="$$PREV_ADDITIONAL_COMP_FLAGS_"
 				fi
 			fi
@@ -46,7 +46,7 @@ define _FUTILS
 			read -r MODE_ MODE_NAME_ < $(MODE_FILE);
 			read -r COMP_FLAGS_ < $(COMP_FLAGS_FILE);
 			read -r ADDITIONAL_COMP_FLAGS_ < $(ADDITIONAL_COMP_FLAGS_FILE);
-			if [ -d ./build/$(CONDA_DEFAULT_ENV)/$$MODE_NAME_ ]; then
+			if [ -f ./build/$(CONDA_DEFAULT_ENV)/$$MODE_NAME_/install_manifest.txt ]; then
 				# echo "--> Uninstalling current mode $$MODE_NAME_";
 				make uninstall MODE="$$MODE_" MODE_NAME="$$MODE_NAME_" PROJECT_SPECIFIC_BUILD_FLAGS="$$COMP_FLAGS_" ADDITIONAL_COMPILATION_FLAGS="$$ADDITIONAL_COMP_FLAGS_"
 			fi
@@ -67,7 +67,7 @@ define _FUTILS
 endef
 export _FUTILS
 
-.PHONY: all test tests compile install pre-command build
+.PHONY: all test tests compile install install_links pre-command build
 
 all:
 	make _lou_preambule
@@ -87,6 +87,14 @@ install:
 	make _lou_preambule
 	$(CMAKE_BIN) --build $(LOU_BUILD_DIR) --target install -j$(JLEVEL) $(FLAGS)
 
+# Like `install`, but replaces installed copies with symlinks back to the build/source tree.
+# Recompiling is then sufficient to update the conda env — no re-install needed.
+install_links:
+	make _lou_preambule
+	$(CMAKE_BIN) --build $(LOU_BUILD_DIR) --target install -j$(JLEVEL) $(FLAGS)
+	@printf "[Converting installed files to symlinks...]\n"
+	@python3 $(HOME)/dotfiles/make/install_links.py $(LOU_BUILD_DIR) $(LOU_CMAKELISTS_DIR)
+
 uninstall:
 	$(CMAKE_BIN) --build $(LOU_BUILD_DIR) --target uninstall -j$(JLEVEL) $(FLAGS)
 
@@ -94,7 +102,8 @@ uninstall:
 # Testing
 # ------
 # We always clear the previous and current mode, to make sure we use the correct files
-tests: all
+tests:
+	make compile TARGET=$(TEST_DIR)/all
 	ctest --output-on-failure -j$(JLEVEL) --test-dir $(LOU_BUILD_DIR) $(FLAGS)
 
 retests:
