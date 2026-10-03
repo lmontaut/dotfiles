@@ -190,7 +190,7 @@
     {
         "key": "\\",
         "command": "editor.action.commentLine",
-        "when": "editorTextFocus && !editorReadonly"
+        "when": "editorReadonly && vim.active && vim.mode == 'Insert'"
     },
     {
         "key": "g l",
@@ -221,5 +221,9 @@
         "key": "ctrl+h",
         "command": "editor.action.outdentLines",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+cmd+m",
+        "command": "markdown.showPreview"
     }
 ]

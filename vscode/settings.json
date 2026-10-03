@@ -182,5 +182,14 @@
     ],
     "editor.codeLens": false,
     "editor.multiCursorModifier": "ctrlCmd",
-    "files.useExperimentalFileWatcher" : true
+    "files.useExperimentalFileWatcher": true,
+    "vsicons.dontShowNewVersionMessage": true,
+    "chat.viewSessions.orientation": "stacked",
+    "git.path": "/usr/bin/git",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
 }
