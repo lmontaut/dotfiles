@@ -38,3 +38,21 @@ customCommands:
         key: 'Remote'
         command: 'git remote'
     command: 'git push {{.Form.Remote}} {{.SelectedLocalBranch.Name | quote}}'
+  - key: "<c-u>"
+    context: "global"
+    description: "Push HEAD to <remote>:<branch>"
+    prompts:
+      - type: "menuFromCommand"
+        title: "Remote"
+        key: "Remote"
+        command: "git remote"
+        filter: "(?P<name>.+)"
+        valueFormat: "{{ .name }}"
+        labelFormat: "{{ .name }}"
+      - type: "input"
+        title: "Remote branch"
+        key: "Branch"
+        initialValue: "{{.CheckedOutBranch.UpstreamBranch}}"
+    command: "git push {{.Form.Remote | quote}} HEAD:{{.Form.Branch | quote}}"
+    loadingText: "Pushing..."
+    output: log
