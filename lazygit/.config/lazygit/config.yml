@@ -16,7 +16,7 @@ gui:
     optionsTextColor:
       - blue
     selectedLineBgColor:
-      - blue # set to `default` to have no background colour
+      - '#3e4451'
     selectedRangeBgColor:
       - magenta
     cherryPickedCommitBgColor:
@@ -27,3 +27,14 @@ gui:
       - red
     defaultFgColor:
       - default
+customCommands:
+  - key: 'X'
+    context: 'localBranches'
+    description: 'Push selected branch to a chosen remote'
+    loadingText: 'Pushing...'
+    prompts:
+      - type: 'menuFromCommand'
+        title: 'Push to which remote?'
+        key: 'Remote'
+        command: 'git remote'
+    command: 'git push {{.Form.Remote}} {{.SelectedLocalBranch.Name | quote}}'
