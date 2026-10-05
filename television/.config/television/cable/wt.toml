@@ -16,13 +16,20 @@ output = "{split:\t:0}"
 command = "git log --oneline --graph --color=always -20 '{split:\t:0}'; if [ -n '{split:\t:1}' ]; then echo; git -C '{split:\t:1}' status --short; fi"
 
 # Enter just prints the branch (shell <C-t> completion after `wt switch`).
-# The tmux popup (M-Y) rebinds enter to actions:tmux.
+# The tmux popup (M-Y) rebinds enter to actions:switch.
+# ctrl-b prompts for a new branch name, based on the highlighted branch.
 [keybindings]
+ctrl-b = "actions:create"
 ctrl-d = ["actions:remove", "reload_source"]
 
-[actions.tmux]
-description = "Open the worktree in its own tmux session (creates it if needed)"
-command = "~/.config/television/scripts/wt-tmux-open '{split:\t:0}'"
+[actions.switch]
+description = "wt switch (own tmux session inside tmux, subshell otherwise)"
+command = "~/.config/television/scripts/wt-open '{split:\t:0}'"
+mode = "execute"
+
+[actions.create]
+description = "wt switch --create <prompted name> --base <highlighted branch>"
+command = "~/.config/television/scripts/wt-open --create '{split:\t:0}'"
 mode = "execute"
 
 [actions.remove]
