@@ -97,8 +97,9 @@ source $DOTFILES_DIR/setup_scripts/link_lazygit_config.sh
 # Nerd fonts
 source $DOTFILES_DIR/setup_scripts/setup_nerd_fonts.sh
 
-# CLI tools (rg, fzf, fd, bat... used by the tv channels)
+# CLI tools (rg, fzf, fd, bat... used by the tv channels) and ccache
 source $DOTFILES_DIR/setup_scripts/setup_cli_tools.sh
+source $DOTFILES_DIR/setup_scripts/link_ccache_config.sh
 
 # Session tools: zoxide, jq, television (tv), sesh, worktrunk (wt)
 source $DOTFILES_DIR/setup_scripts/setup_session_tools.sh

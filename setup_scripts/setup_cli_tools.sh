@@ -387,3 +387,13 @@ while true; do
         break;
     fi
 done
+
+# ---- ccache (compiler cache, shared between git worktrees, see ccache/ in the dotfiles)
+install_ccache() {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        brew install ccache
+    else
+        sudo apt-get install -y ccache
+    fi
+}
+ask_install ccache ccache install_ccache
