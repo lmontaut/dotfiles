@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Open the worktree of <branch> in its own tmux session, creating the worktree
+# (via worktrunk) if the branch doesn't have one yet.
+# Session naming matches the post-start hook in ~/.config/worktrunk/config.toml.
+set -euo pipefail
+
+branch=$1
+
+worktree_path() {
+  git worktree list --porcelain |
+    awk -v ref="refs/heads/$1" '/^worktree /{wt=substr($0, 10)} $1=="branch" && $2==ref {print wt}'
+}
+
+path=$(worktree_path "$branch")
+if [ -z "$path" ]; then
+  wt switch --yes --no-cd "$branch"
+  path=$(worktree_path "$branch")
+fi
+
+session=$(basename "$path" | tr '.:' '__')
+# The worktrunk post-start hook may be creating the same session concurrently.
+tmux has-session -t "=$session" 2>/dev/null || tmux new-session -d -s "$session" -c "$path" || true
+tmux switch-client -t "=$session"

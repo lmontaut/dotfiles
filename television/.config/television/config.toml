@@ -1,0 +1,28 @@
+# Television config. Only overrides go here: tv merges this file over its
+# built-in defaults (keybindings included).
+# Defaults: https://github.com/alexpasmantier/television/blob/main/.config/config.toml
+
+# NOTE: channel_triggers is NOT merged with the defaults -- defining it replaces
+# the whole default list, so the useful defaults are repeated below.
+# <C-t> after one of these commands opens the matching channel; anything else
+# falls back to `files`.
+[shell_integration.channel_triggers]
+"alias" = ["alias", "unalias"]
+"env" = ["export", "unset"]
+"dirs" = ["cd", "ls", "rmdir", "z", "pushd"]
+"files" = [
+  "nvim", "vim", "vi", "cat", "bat", "less", "head", "tail",
+  "cp", "mv", "rm", "touch", "chmod", "chown", "ln",
+  "tar", "zip", "unzip",
+]
+"git-diff" = ["git add", "git restore", "gadd"]
+"git-branch" = [
+  "git checkout", "git switch", "git branch", "git merge", "git rebase",
+  "git cherry-pick", "gcp", "grebase", "gupstream",
+]
+"git-log" = ["git log", "git show"]
+"wt" = ["wt switch", "wt remove", "wt merge"]
+"sesh" = ["sesh connect"]
+"tmux-sessions" = ["tmux attach", "tmux kill-session", "tat"]
+"ssh-hosts" = ["ssh", "scp"]
+"docker-images" = ["docker run"]

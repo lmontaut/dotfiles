@@ -1,0 +1,31 @@
+[metadata]
+name = "wt"
+description = "Worktrunk worktrees (and local branches) of the current repo"
+requirements = ["wt", "jq", "git"]
+
+# Each line: branch \t worktree path (empty for branches without one) \t wt status symbols
+[source]
+command = [
+  { name = "Worktrees", run = "wt list --format json | jq -r '.items[] | select(.worktree) | [.branch, .worktree.path, .display.symbols] | @tsv'" },
+  { name = "Branches",  run = "wt list --branches --format json | jq -r '.items[] | [.branch, (.worktree.path // \"\"), .display.symbols] | @tsv'" },
+]
+display = "{split:\t:0}  {split:\t:2}"
+output = "{split:\t:0}"
+
+[preview]
+command = "git log --oneline --graph --color=always -20 '{split:\t:0}'; if [ -n '{split:\t:1}' ]; then echo; git -C '{split:\t:1}' status --short; fi"
+
+# Enter just prints the branch (shell <C-t> completion after `wt switch`).
+# The tmux popup (M-Y) rebinds enter to actions:tmux.
+[keybindings]
+ctrl-d = ["actions:remove", "reload_source"]
+
+[actions.tmux]
+description = "Open the worktree in its own tmux session (creates it if needed)"
+command = "~/.config/television/scripts/wt-tmux-open '{split:\t:0}'"
+mode = "execute"
+
+[actions.remove]
+description = "Remove the worktree (wt remove)"
+command = "wt remove --yes '{split:\t:0}'"
+mode = "fork"

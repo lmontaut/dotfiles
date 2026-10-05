@@ -107,3 +107,9 @@ fi
 # to it not using the right stdlib...
 # export CXX="ccache /usr/bin/clang++"
 # export CC="ccache /usr/bin/clang"
+
+# Television: <C-t> context-aware completion, <C-r> history search.
+# Channel triggers live in ~/.config/television/config.toml
+if command -v tv &> /dev/null; then
+  eval "$(tv init zsh)"
+fi

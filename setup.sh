@@ -77,8 +77,8 @@ source $DOTFILES_DIR/setup_scripts/link_alacritty_config.sh
 source $DOTFILES_DIR/setup_scripts/setup_lazygit.sh
 source $DOTFILES_DIR/setup_scripts/link_lazygit_config.sh
 
-# Tmux sesionnizer
-source $DOTFILES_DIR/setup_scripts/setup_tms.sh
+# Television (tv) -- install with `brew install television`
+source $DOTFILES_DIR/setup_scripts/link_television_config.sh
 
 # Nerd fonts
 source $DOTFILES_DIR/setup_scripts/setup_nerd_fonts.sh
