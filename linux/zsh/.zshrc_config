@@ -86,3 +86,22 @@ fi
 # Clang compiler
 # export CXX="/usr/bin/ccache /usr/bin/clang++"
 # export CC="/usr/bin/ccache /usr/bin/clang"
+
+# Rust toolchain (rustup)
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+# Worktrunk: `wt switch` can cd the current shell
+if command -v wt &> /dev/null; then
+  eval "$(command wt config shell init zsh)"
+fi
+
+# Television: <C-t> context-aware completion, <C-r> history search.
+# Channel triggers live in ~/.config/television/config.toml
+if command -v tv &> /dev/null; then
+  eval "$(tv init zsh)"
+fi
+
+# zoxide: z / zi (keep last, it hooks into chpwd)
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+fi

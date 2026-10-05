@@ -52,19 +52,8 @@ elif [[ "$(uname)" == "Linux" ]]; then
 
     # Make sure ~/.local/bin is in PATH
     if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
-        echo "  --> Warning: ~/.local/bin is not in your PATH"
-        echo "      Add this line to your shell configuration file (~/.bashrc, ~/.zshrc, etc.):"
-        echo '      export PATH="$HOME/.local/bin:$PATH"'
-        while true; do
-            read -p "  --> Should I do it for you? (y/n) " -n 1 -r
-            echo    # Move to a new line
-            if [[ $REPLY =~ ^[Yy]$ ]]; then
-                echo 'export PATH="$HOME/.local/bin:$PATH"' >> $HOME/.zshrc
-                break
-            elif [[ $REPLY =~ ^[Nn]$ ]]; then
-                break
-            fi
-        done
+            echo "  --> ~/.local/bin is not in your PATH, adding it to $SHELL_LOCAL_FILE"
+        append_once 'export PATH="$HOME/.local/bin:$PATH"' "$SHELL_LOCAL_FILE"
     fi
 else
     echo "  --> Unsupported operating system"

@@ -85,9 +85,10 @@ install_fd() {
             cargo install fd-find
         fi
 
-        # in case install failed, try with apt
+        # in case install failed, try with apt (binary is named fdfind there)
         if ! command -v fd &> /dev/null; then
             sudo apt-get install -y fd-find
+            command -v fdfind &> /dev/null && ln -sf "$(command -v fdfind)" "$HOME/.local/bin/fd"
         fi
     else
         echo "  --> Unsupported operating system"
@@ -196,7 +197,7 @@ install_npm() {
 
     if command -v npm &> /dev/null; then
         echo "  --> node version: $(node -v)"
-        echo "  --> nvm current: $(nvm current)"
+        command -v nvm &> /dev/null && echo "  --> nvm current: $(nvm current)"
         echo "  --> npm version: $(npm -v)"
     fi
 }

@@ -2,7 +2,7 @@
 
 echo
 while true; do
-    read -p "--> Link the dofiles' tmux config files? (y/n) " -n 1 -r
+    read -p "--> Link the dofiles' worktrunk config files? (y/n) " -n 1 -r
     echo    # Move to a new line
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         break
@@ -12,5 +12,5 @@ while true; do
     fi
 done
 
-
-link_config $DOTFILES_DIR/tmux/.config/tmux $HOME/.config/tmux
+# Linking config file to home
+link_config $DOTFILES_DIR/worktrunk/.config/worktrunk $HOME/.config/worktrunk

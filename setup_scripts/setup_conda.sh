@@ -25,7 +25,15 @@ while true; do
 done
 
 # Delete if existing
-rm -rf $CONDA_PREFIX
+if [ -n "$CONDA_PREFIX" ] && [ -d "$CONDA_PREFIX" ]; then
+    read -p "  --> Delete the existing conda install at $CONDA_PREFIX (all envs)? (y/n) " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        rm -rf "$CONDA_PREFIX"
+    else
+        echo "  --> Keeping $CONDA_PREFIX, the installer may refuse to overwrite it"
+    fi
+fi
 
 echo "  --> Installing conda..."
 if [[ "$(uname)" == "Darwin" ]]; then

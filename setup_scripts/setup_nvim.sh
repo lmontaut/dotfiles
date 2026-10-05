@@ -76,28 +76,20 @@ wget -qO- "$LATEST_URL" | tar xzf - -C "$TMP_DIR"
 echo "  --> Installing Neovim to $HOME/.local/bin..."
 mv "$TMP_DIR"/nvim-*/bin/nvim $HOME/.local/bin/
 
-# Move the share directory for runtime files
-mkdir -p $HOME/.local/share
-mv "$TMP_DIR"/nvim-*/share/nvim $HOME/.local/share/
+# Move the runtime files (share/nvim) and bundled parsers (lib/nvim)
+mkdir -p $HOME/.local/share $HOME/.local/lib
+rm -rf $HOME/.local/share/nvim/runtime $HOME/.local/lib/nvim
+mkdir -p $HOME/.local/share/nvim
+mv "$TMP_DIR"/nvim-*/share/nvim/runtime $HOME/.local/share/nvim/
+[ -d "$TMP_DIR"/nvim-*/lib/nvim ] && mv "$TMP_DIR"/nvim-*/lib/nvim $HOME/.local/lib/
 
 # Cleanup
 rm -rf "$TMP_DIR"
 
 # Make sure ~/.local/bin is in PATH
 if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
-    echo "  --> Warning: ~/.local/bin is not in your PATH"
-    echo "      Add this line to your shell configuration file (~/.bashrc, ~/.zshrc, etc.):"
-    echo '      export PATH="$HOME/.local/bin:$PATH"'
-    while true; do
-        read -p "  --> Should I do it for you? (y/n) " -n 1 -r
-        echo    # Move to a new line
-        if [[ $REPLY =~ ^[Yy]$ ]]; then
-            echo 'export PATH="$HOME/.local/bin:$PATH"' >> $HOME/.zshrc
-            break
-        elif [[ $REPLY =~ ^[Nn]$ ]]; then
-            break
-        fi
-    done
+    echo "  --> ~/.local/bin is not in your PATH, adding it to $SHELL_LOCAL_FILE"
+    append_once 'export PATH="$HOME/.local/bin:$PATH"' "$SHELL_LOCAL_FILE"
 fi
 
 echo "  --> Neovim installation complete"

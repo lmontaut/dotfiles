@@ -7,6 +7,10 @@ if [[ "$(uname)" == "Darwin" ]]; then
             echo    # Move to a new line
             if [[ $REPLY =~ ^[Yy]$ ]]; then
                 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+                # brew isn't on PATH yet in this shell
+                for b in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+                    [ -x "$b" ] && eval "$($b shellenv)" && break
+                done
                 break
             elif [[ $REPLY =~ ^[Nn]$ ]]; then
                 echo "  --> brew won't get installed. Aborting."
@@ -22,8 +26,9 @@ elif [[ "$(uname)" == "Linux" ]]; then
         echo "--> Could not find apt package manager. This installer needs it."
         exit 1
     fi
-    echo "  --> Installing minimum packages from apt: git, wget, unzip, curl"
-    sudo apt-get install -y git wget unzip curl
+    echo "  --> Installing minimum packages from apt: git, wget, unzip, curl, xz-utils"
+    sudo apt-get update
+    sudo apt-get install -y git wget unzip curl xz-utils
 else
     echo "Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1

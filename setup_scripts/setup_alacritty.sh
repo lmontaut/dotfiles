@@ -37,26 +37,27 @@ if [[ "$(uname)" == "Darwin" ]]; then
     mkdir -p $HOME/Applications/Alacritty.app/Contents/MacOS
     ln -sf $ALACRITTY_PATH $HOME/Applications/Alacritty.app/Contents/MacOS
     ADK_PATH="$HOME/Applications/Alacritty.app/Contents/Info.plist"
-    touch $ADK_PATH
-    echo "<?xml version="1.0" encoding="UTF-8"?>" > $ADK_PATH # no >> to overide existing
-    echo "<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">" >> $ADK_PATH
-    echo "<plist version="1.0">" >> $ADK_PATH
-    echo "<dict>" >> $ADK_PATH
-    echo "<key>CFBundleExecutable</key>" >> $ADK_PATH
-    echo "<string>alacritty</string>" >> $ADK_PATH
-    echo "<key>CFBundleIdentifier</key>" >> $ADK_PATH
-    echo "<string>com.example.myapp</string>" >> $ADK_PATH
-    echo "<key>CFBundleName</key>" >> $ADK_PATH
-    echo "<string>Alacritty</string>" >> $ADK_PATH
-    echo "<key>CFBundlePackageType</key>" >> $ADK_PATH
-    echo "<string>APPL</string>" >> $ADK_PATH
-    echo "<key>CFBundleShortVersionString</key>" >> $ADK_PATH
-    echo "<string>1.0</string>" >> $ADK_PATH
-    echo "</dict>" >> $ADK_PATH
-    echo "</plist>" >> $ADK_PATH
+    cat > $ADK_PATH <<'PLIST'
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<key>CFBundleExecutable</key>
+<string>alacritty</string>
+<key>CFBundleIdentifier</key>
+<string>org.alacritty</string>
+<key>CFBundleName</key>
+<string>Alacritty</string>
+<key>CFBundlePackageType</key>
+<string>APPL</string>
+<key>CFBundleShortVersionString</key>
+<string>1.0</string>
+</dict>
+</plist>
+PLIST
 elif [[ "$(uname)" == "Linux" ]]; then
+    mkdir -p $HOME/.local/share/applications
     ADK_PATH="$HOME/.local/share/applications/alacritty.desktop"
-    touch $ADK_PATH
     echo "[Desktop Entry]" > $ADK_PATH # no >> to overide existing
     echo "Type=Application" >> $ADK_PATH
     echo "Name=Alacritty" >> $ADK_PATH

@@ -12,5 +12,8 @@ while true; do
     fi
 done
 
-echo "  --> Linking config files $DOTFILES_DIR/nvim/.config/nvim to $HOME/.config"
-ln -sf $DOTFILES_DIR/nvim/.config/nvim $HOME/.config
+
+if [ ! -e "$DOTFILES_DIR/nvim/.config/nvim/init.lua" ] && [ ! -e "$DOTFILES_DIR/nvim/.config/nvim/init.vim" ]; then
+    echo "  --> Warning: the nvim submodule looks empty, run: git submodule update --init --recursive"
+fi
+link_config $DOTFILES_DIR/nvim/.config/nvim $HOME/.config/nvim

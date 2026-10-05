@@ -15,9 +15,12 @@ while true; do
     fi
 done
 
-# Create ~/.local/bin if it doesn't exist
-mkdir -p $HOME/.local/share
-mkdir -p $HOME/.local/share/fonts
+if [[ "$(uname)" == "Darwin" ]]; then
+    FONTS_DIR="$HOME/Library/Fonts"
+else
+    FONTS_DIR="$HOME/.local/share/fonts"
+fi
+mkdir -p "$FONTS_DIR"
 
 TMP_DIR=$(mktemp -d)
 cd "$TMP_DIR"
@@ -32,8 +35,9 @@ echo "  --> Downloading JetBrainsMono from $LATEST_URL..."
 wget "$LATEST_URL"
 
 
-echo "  --> Installing JetBrainsMono to $HOME/.local/share/fonts/JetBrainsMono..."
-unzip JetBrainsMono.zip -d $HOME/.local/share/fonts/JetBrainsMono
+echo "  --> Installing JetBrainsMono to $FONTS_DIR/JetBrainsMono..."
+unzip -o -q JetBrainsMono.zip -d "$FONTS_DIR/JetBrainsMono"
+command -v fc-cache &> /dev/null && fc-cache -f
 
 # Cleanup
 cd - > /dev/null

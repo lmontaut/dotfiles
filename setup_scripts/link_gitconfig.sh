@@ -15,8 +15,10 @@ while true; do
 done
 
 # Linking config file to home
-echo "  --> Linking $DOTFILES_DIR/git/.gitconfig to $HOME"
-ln -sf $DOTFILES_DIR/git/.gitconfig $HOME 
+link_config $DOTFILES_DIR/git/.gitconfig $HOME/.gitconfig
+if [ "$DOTFILES_DIR" != "$HOME/dotfiles" ]; then
+    echo "  --> Warning: .gitconfig expects this repo at ~/dotfiles (core.excludesfile)"
+fi
 echo "  --> To activate the gitconfig:"
 echo "      1) Modify 'signingkey' in $HOME/.gitconfig to put your ssh signing key"
 echo "      2) Modify $HOME/.config/git/allowed_signers with your public ssh signing key"

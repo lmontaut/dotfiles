@@ -14,11 +14,9 @@ done
 
 # Linking config file to home
 if [[ "$(uname)" == "Darwin" ]]; then
-    echo "  --> Linking config files $DOTFILES_DIR/macos/alacritty/.config/alacritty to $HOME/.config"
-    ln -sf $DOTFILES_DIR/macos/alacritty/.config/alacritty $HOME/.config
+    link_config $DOTFILES_DIR/macos/alacritty/.config/alacritty $HOME/.config/alacritty
 elif [[ "$(uname)" == "Linux" ]]; then
-    echo "  --> Linking config files $DOTFILES_DIR/linux/alacritty/.config/alacritty to $HOME/.config"
-    ln -sf $DOTFILES_DIR/linux/alacritty/.config/alacritty $HOME/.config
+    link_config $DOTFILES_DIR/linux/alacritty/.config/alacritty $HOME/.config/alacritty
 else
     echo "Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1

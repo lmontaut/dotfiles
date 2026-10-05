@@ -35,5 +35,7 @@ echo "  --> rustc version: $(rustc --version)"
 echo "  --> cargo: $(which cargo)"
 echo "  --> cargo version: $(cargo --version)"
 
-# Cargo
-echo '. "$HOME/.cargo/env"' >> $SHELL_CONFIG_FILE
+# Cargo (the zsh config already sources ~/.cargo/env)
+if [ "$CURRENT_SHELL" != "zsh" ]; then
+    append_once '. "$HOME/.cargo/env"' "$SHELL_LOCAL_FILE"
+fi

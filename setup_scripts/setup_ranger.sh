@@ -25,18 +25,7 @@ echo "  --> Installing ranger..."
 git clone --recursive https://github.com/ranger/ranger.git $RANGER_DIR
 
 # Create ranger command
-CURRENT_SHELL=$(basename "$SHELL")
-if [ "$CURRENT_SHELL" = "zsh" ]; then
-  SHELL_CONFIG_FILE="$HOME/.zshrc"
-elif [ "$CURRENT_SHELL" = "bash" ]; then
-  SHELL_CONFIG_FILE="$HOME/.bashrc"
-else
-  echo "  --> $CURRENT_SHELL is not supported"
-  [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
-fi
-
-COMMAND="alias ranger=\"python $RANGER_DIR/ranger.py\""
-echo "$COMMAND" >> "$SHELL_CONFIG_FILE"
+append_once "alias ranger=\"python3 $RANGER_DIR/ranger.py\"" "$SHELL_LOCAL_FILE"
 
 echo "  --> Installed ranger"
 

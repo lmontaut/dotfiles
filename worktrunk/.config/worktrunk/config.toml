@@ -8,3 +8,5 @@ s=$(printf '%s' '{{ worktree_name }}' | tr '.:' '__')
 tmux has-session -t "=$s" 2>/dev/null || tmux new-session -d -s "$s" -c '{{ worktree_path }}'
 [ -n "$TMUX" ] && tmux switch-client -t "=$s"
 """
+# Check out the submodules of the new worktree (no-op in repos without any).
+submodules = "git submodule update --init"

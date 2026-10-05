@@ -19,9 +19,10 @@ done
 
 echo "  --> Installing zsh plugins..."
 
-git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
+[ -d "$HOME/.oh-my-zsh" ] || git clone https://github.com/ohmyzsh/ohmyzsh.git $HOME/.oh-my-zsh
 
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+AUTOSUGGEST_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+[ -d "$AUTOSUGGEST_DIR" ] || git clone https://github.com/zsh-users/zsh-autosuggestions "$AUTOSUGGEST_DIR"
 
 # Create the custom themes directory if it doesn't exist
 mkdir -p "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes"

@@ -13,5 +13,4 @@ while true; do
 done
 
 # Linking config file to home
-rm -rf $HOME/.config/television # delete existing
-ln -sf $DOTFILES_DIR/television/.config/television $HOME/.config
+link_config $DOTFILES_DIR/television/.config/television $HOME/.config/television

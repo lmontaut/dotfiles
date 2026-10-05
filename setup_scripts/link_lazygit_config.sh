@@ -13,5 +13,4 @@ while true; do
 done
 
 # Linking config file to home
-rm -rf $HOME/.config/lazygit # delete existing
-ln -sf $DOTFILES_DIR/lazygit/.config/lazygit $HOME/.config
+link_config $DOTFILES_DIR/lazygit/.config/lazygit $HOME/.config/lazygit

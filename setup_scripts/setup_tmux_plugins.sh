@@ -18,7 +18,7 @@ while true; do
 done
 
 echo "  --> Installing tmux plugins..."
-git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+[ -d "$HOME/.tmux/plugins/tpm" ] || git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 
 echo "  --> tmux plugins installed"
 echo "      Launch a new tmux server, then prefix + I (C-a + I) for automatic install"
