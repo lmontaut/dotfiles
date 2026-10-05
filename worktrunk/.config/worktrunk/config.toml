@@ -1,0 +1,10 @@
+# Worktrunk user config. Docs: `wt config --help`, `wt hook --help`.
+
+# On worktree creation: start a tmux session in it (named after the worktree
+# dir, `.`/`:` replaced since tmux rejects them) and switch to it if inside tmux.
+[post-start]
+tmux = """
+s=$(printf '%s' '{{ worktree_name }}' | tr '.:' '__')
+tmux has-session -t "=$s" 2>/dev/null || tmux new-session -d -s "$s" -c '{{ worktree_path }}'
+[ -n "$TMUX" ] && tmux switch-client -t "=$s"
+"""
