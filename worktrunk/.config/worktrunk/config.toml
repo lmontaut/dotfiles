@@ -11,10 +11,21 @@ tmux = """
 # `wt switch` to the worktree you're already in: nothing to do
 [ '{{ worktree_path }}' = '{{ base_worktree_path | default('') }}' ] && exit 0
 s=$(printf '%s' '{{ worktree_name }}' | tr '.:' '__')
-tmux has-session -t "=$s" 2>/dev/null || tmux new-session -d -s "$s" -c '{{ worktree_path }}'
+if ! tmux has-session -t "=$s" 2>/dev/null; then
+  tmux new-session -d -s "$s" -c '{{ worktree_path }}'
+  # Submodules not checked out yet (new worktree): run the update in the new
+  # session's shell, in the foreground, so you can watch it finish. Objects are
+  # shared with the primary worktree's submodules instead of re-cloned.
+  if git -C '{{ worktree_path }}' submodule status 2>/dev/null | grep -q '^-'; then
+    tmux send-keys -t "=$s:" "~/.config/worktrunk/scripts/submodule-update-shared '{{ primary_worktree_path }}'" Enter
+  fi
+fi
 tmux switch-client -t "=$s"
 """
 
-# On worktree creation: check out its submodules (no-op in repos without any).
+# Outside tmux there's no session to show it in: check out the submodules of a
+# new worktree in the background (no-op in repos without any).
 [post-start]
-submodules = "git submodule update --init --recursive"
+submodules = """
+[ -n "$TMUX" ] || ~/.config/worktrunk/scripts/submodule-update-shared '{{ primary_worktree_path }}'
+"""

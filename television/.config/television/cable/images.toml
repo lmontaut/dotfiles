@@ -10,8 +10,19 @@ command = [
 ]
 
 [preview]
-command = "chafa -s 80x40 '{}' 2>/dev/null || file '{}'"
+# tv's preview panel only renders text (no kitty/sixel graphics, upstream
+# issues #133/#993), so images are drawn as coloured character art.
+# ctrl-f cycles: sextants (2x3 "pixels" per cell, drawn natively by Alacritty
+# >= 0.13) -> plain half/quarter blocks -> file info.
+# </dev/null: chafa reads stdin, which it shares with tv -- without it tv dies
+# with "Error: channel closed" a few seconds after opening.
+command = [
+  "chafa -f symbols --symbols sextant+block+space -c full -w 9 -s 90x45 '{}' </dev/null 2>/dev/null || file '{}'",
+  "chafa -f symbols --symbols block+space -c full -w 9 -s 90x45 '{}' </dev/null 2>/dev/null || file '{}'",
+  "file -b '{}'; (sips -g pixelWidth -g pixelHeight '{}' 2>/dev/null || identify '{}' 2>/dev/null) | tail -n +2",
+]
 
+# Enter opens the real image (Preview on macOS)
 [keybindings]
 enter = "actions:open"
 

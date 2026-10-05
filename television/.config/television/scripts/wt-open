@@ -4,9 +4,8 @@
 #   wt-open <branch>             wt switch <branch>
 #   wt-open --create [<base>]    prompt for a name, then wt switch --create <name> [--base <base>]
 #
-# Inside tmux the worktree is opened in its own tmux session (named like the
-# post-start hook in ~/.config/worktrunk/config.toml); outside tmux a $SHELL is
-# started in the worktree.
+# Inside tmux, the worktrunk post-switch hook opens the worktree in its own tmux
+# session; outside tmux a $SHELL is started in the worktree.
 set -euo pipefail
 
 args=()
@@ -24,13 +23,6 @@ if [ -z "${TMUX:-}" ]; then
   exec wt switch --yes --no-cd ${args[@]+"${args[@]}"} "$branch" -x "${SHELL:-zsh}"
 fi
 
-wt switch --yes --no-cd ${args[@]+"${args[@]}"} "$branch"
-
-path=$(git worktree list --porcelain |
-  awk -v ref="refs/heads/$branch" '/^worktree /{wt=substr($0, 10)} $1=="branch" && $2==ref {print wt}')
-[ -n "$path" ] || { echo "wt-open: no worktree found for $branch" >&2; exit 1; }
-
-session=$(basename "$path" | tr '.:' '__')
-# The worktrunk post-start hook may be creating the same session concurrently.
-tmux has-session -t "=$session" 2>/dev/null || tmux new-session -d -s "$session" -c "$path" || true
-tmux switch-client -t "=$session"
+# The worktrunk post-switch hook opens/creates the worktree's tmux session
+# (and checks out submodules there), see ~/.config/worktrunk/config.toml
+exec wt switch --yes --no-cd ${args[@]+"${args[@]}"} "$branch"

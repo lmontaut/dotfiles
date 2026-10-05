@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# submodule-update-shared <reference checkout>
+#
+# `git submodule update --init --recursive` for the current repo, but each
+# submodule (nested ones included) is cloned with `--reference` to the same
+# submodule in <reference checkout> (typically the primary worktree): objects
+# are borrowed from there via git alternates, so only commits missing locally
+# are fetched -- no full re-clone, and next to no extra disk.
+#
+# Falls back to a plain clone for submodules the reference doesn't have checked out.
+# Caveat of alternates: don't `git gc --prune` away objects in the reference's
+# submodules that a worktree still needs (normal use never does that).
+set -euo pipefail
+
+update() {  # update <superproject dir> <reference superproject dir>
+  local dir=$1 ref=$2 path refgit
+  [ -f "$dir/.gitmodules" ] || return 0
+  # list on fd 3: git/ssh below would otherwise swallow the loop's stdin
+  while read -r -u 3 _ path; do
+      refgit=""
+      # .git (file or dir) present = the reference has this submodule checked out
+      if [ -e "$ref/$path/.git" ]; then
+        refgit=$(git -C "$ref/$path" rev-parse --absolute-git-dir)
+      fi
+      if [ -n "$refgit" ]; then
+        echo "--> $path (objects shared with $refgit)"
+        git -C "$dir" submodule update --init --reference "$refgit" -- "$path"
+      else
+        echo "--> $path (no local copy to share, full clone)"
+        git -C "$dir" submodule update --init -- "$path"
+      fi
+      update "$dir/$path" "$ref/$path"
+  done 3< <(git -C "$dir" config -f .gitmodules --get-regexp '^submodule\..*\.path$')
+}
+
+ref=$(cd "${1:?usage: submodule-update-shared <reference checkout>}" && pwd)
+top=$(git rev-parse --show-toplevel)
+if [ "$ref" = "$top" ]; then
+  exec git submodule update --init --recursive
+fi
+update "$top" "$ref"
