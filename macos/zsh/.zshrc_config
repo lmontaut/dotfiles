@@ -38,6 +38,9 @@ alias ca="conda activate"
 alias ci="conda install"
 alias cic="conda install -c conda-forge"
 
+# Pixi
+alias pis="pixi shell"
+
 # Tmux
 alias tat="tmux attach -t"
 alias tls="tmux ls"
