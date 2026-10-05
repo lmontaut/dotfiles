@@ -38,7 +38,7 @@ customCommands:
         key: 'Remote'
         command: 'git remote'
     command: 'git push {{.Form.Remote}} {{.SelectedLocalBranch.Name | quote}}'
-  - key: "<c-u>"
+  - key: '<c-g>'
     context: "global"
     description: "Push HEAD to <remote>:<branch>"
     prompts:
