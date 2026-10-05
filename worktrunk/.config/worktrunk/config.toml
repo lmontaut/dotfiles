@@ -1,12 +1,20 @@
 # Worktrunk user config. Docs: `wt config --help`, `wt hook --help`.
 
-# On worktree creation: start a tmux session in it (named after the worktree
-# dir, `.`/`:` replaced since tmux rejects them) and switch to it if inside tmux.
-[post-start]
+# tmux workflow: one tmux session per worktree.
+# Inside tmux, the shell running `wt switch` does NOT cd (WORKTRUNK_SWITCH__CD=false
+# is exported by ~/.zshrc_config), so the session you leave stays on its
+# worktree; this hook opens/creates the destination worktree's session instead.
+# Session name = worktree dir name with `.`/`:` replaced (tmux rejects them).
+[post-switch]
 tmux = """
+[ -n "$TMUX" ] || exit 0
+# `wt switch` to the worktree you're already in: nothing to do
+[ '{{ worktree_path }}' = '{{ base_worktree_path | default('') }}' ] && exit 0
 s=$(printf '%s' '{{ worktree_name }}' | tr '.:' '__')
 tmux has-session -t "=$s" 2>/dev/null || tmux new-session -d -s "$s" -c '{{ worktree_path }}'
-[ -n "$TMUX" ] && tmux switch-client -t "=$s"
+tmux switch-client -t "=$s"
 """
-# Check out the submodules of the new worktree (no-op in repos without any).
-submodules = "git submodule update --init"
+
+# On worktree creation: check out its submodules (no-op in repos without any).
+[post-start]
+submodules = "git submodule update --init --recursive"

@@ -90,8 +90,11 @@ fi
 # Rust toolchain (rustup)
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
-# Worktrunk: `wt switch` can cd the current shell
+# Worktrunk: `wt switch` can cd the current shell -- except inside tmux, where
+# each worktree gets its own session (post-switch hook in worktrunk config) and
+# the shell you switch from should stay on its worktree.
 if command -v wt &> /dev/null; then
+  [ -n "$TMUX" ] && export WORKTRUNK_SWITCH__CD=false
   eval "$(command wt config shell init zsh)"
 fi
 
