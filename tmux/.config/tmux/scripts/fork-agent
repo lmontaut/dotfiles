@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# fork-agent [pane]
+#
+# Fork the Claude Code / Codex conversation running in <pane> (default: the
+# current pane) into a new window of the same tmux session, right after the
+# current one, in the conversation's directory. The original keeps running.
+#   Claude Code: claude --resume <session id> --fork-session
+#   Codex:       codex fork <session id>
+# The session id of the exact process in the pane is used (not "the most
+# recent conversation"), so several agents in the same directory are fine.
+#
+# FORK_AGENT_DRY_RUN=1 prints the command instead of opening the window.
+set -euo pipefail
+
+pane=${1:-${TMUX_PANE:-}}
+pane_pid=$(tmux display -p -t "$pane" '#{pane_pid}')
+dir=$(tmux display -p -t "$pane" '#{pane_current_path}')
+
+descendants() {  # (macOS pgrep -P needs a pattern, hence ps)
+  local child
+  for child in $(ps -A -o pid=,ppid= | awk -v p="$1" '$2 == p {print $1}'); do
+    echo "$child"
+    descendants "$child"
+  done
+}
+
+name="" cmd=""
+for pid in $pane_pid $(descendants "$pane_pid"); do
+  # Claude Code keeps ~/.claude/sessions/<pid>.json with the live session id
+  state=$HOME/.claude/sessions/$pid.json
+  if [ -f "$state" ]; then
+    id=$(jq -r '.sessionId // empty' "$state")
+    dir=$(jq -r ".cwd // \"$dir\"" "$state")
+    [ -n "$id" ] && cmd="claude --resume $id --fork-session" || cmd="claude --continue --fork-session"
+    name=claude-fork
+    break
+  fi
+  # Codex keeps its rollout file (.../rollout-<date>-<session id>.jsonl) open
+  comm=$(ps -o comm= -p "$pid" || true)
+  if [ "${comm##*/}" = codex ]; then
+    id=$(lsof -p "$pid" -Fn 2>/dev/null |
+      sed -n 's|^n.*/rollout-.*-\([0-9a-f]\{8\}-[0-9a-f-]\{27\}\)\.jsonl$|\1|p' | head -n1)
+    cmd="codex fork ${id:---last}"
+    name=codex-fork
+    break
+  fi
+done
+
+if [ -z "$cmd" ]; then
+  tmux display-message "fork-agent: no Claude Code or Codex running in this pane"
+  exit 0
+fi
+
+if [ -n "${FORK_AGENT_DRY_RUN:-}" ]; then
+  echo "cd $dir && $cmd"
+  exit 0
+fi
+
+# Drop to a shell when the forked agent exits, instead of closing the window
+# (new-window wants a window target, not a pane)
+window=$(tmux display -p -t "$pane" '#{window_id}')
+tmux new-window -a -t "$window" -n "$name" -c "$dir" "$cmd; exec \${SHELL:-zsh}"

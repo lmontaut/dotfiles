@@ -96,6 +96,20 @@ fi
 if command -v wt &> /dev/null; then
   [ -n "$TMUX" ] && export WORKTRUNK_SWITCH__CD=false
   eval "$(command wt config shell init zsh)"
+
+  # `wt switch --create <branch>` branches off the current branch (@) instead of
+  # the default branch, unless a base is given (--base/-b). Wraps the
+  # shell-integration function defined just above.
+  functions -c wt _wt_shell_integration
+  wt() {
+    if [[ $1 == switch ]] && (( ${@[(Ie)--create]} || ${@[(Ie)-c]} )) &&
+       ! (( ${@[(Ie)--base]} || ${@[(Ie)-b]} )) && [[ -z ${(M)@:#--base=*} ]]; then
+      # inserted right after `switch`: anything after `--` belongs to --execute
+      _wt_shell_integration switch --base @ "${@:2}"
+    else
+      _wt_shell_integration "$@"
+    fi
+  }
 fi
 
 # Television: <C-t> context-aware completion, <C-r> history search.
