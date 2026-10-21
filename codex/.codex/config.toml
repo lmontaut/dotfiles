@@ -1,0 +1,11 @@
+# Codex base config. setup.sh copies this to ~/.codex/config.toml only when that
+# file doesn't exist yet: Codex (and the desktop app) rewrite it with
+# machine-specific entries (trusted projects, plugins, app paths), so it isn't linked.
+model = "gpt-6-astra"
+personality = "pragmatic"
+model_reasoning_effort = "medium"
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+
+[tui]
+status_line = ["model-with-reasoning", "current-dir", "model-name", "project-root", "git-branch", "context-usage", "five-hour-limit", "weekly-limit", "total-input-tokens", "total-output-tokens", "fast-mode"]

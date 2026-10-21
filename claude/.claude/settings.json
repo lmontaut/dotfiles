@@ -1,0 +1,41 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 2
+  },
+  "enabledPlugins": {
+    "clangd-lsp@claude-plugins-official": true,
+    "caveman@caveman": true,
+    "mattpocock-skills@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    }
+  },
+  "alwaysThinkingEnabled": true,
+  "tui": "fullscreen",
+  "theme": "dark",
+  "preferredNotifChannel": "terminal_bell",
+  "skipDangerousModePermissionPrompt": true,
+  "sandbox": {
+    "enabled": true,
+    "filesystem": {
+      "allowWrite": ["~/Library/Caches/ccache", "~/Library/Caches/rattler"]
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Edit",
+      "Write",
+      "Read",
+      "WebSearch",
+      "WebFetch"
+    ]
+  }
+}

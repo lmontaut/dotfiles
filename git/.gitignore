@@ -3,3 +3,7 @@
 *.cache/clangd/index
 compile_commands.json
 *.DS_Store
+
+**/.claude/settings.local.json
+
+**/.claude/.cc-writes/

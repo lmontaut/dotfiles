@@ -3,9 +3,11 @@
 # Claude Code (~/.claude) and Codex (~/.codex) config.
 # Those directories also hold sessions, history, auth and caches, so only
 # individual config files are linked -- never the directories themselves.
-#   linked:        instructions, statusline, slash commands, own skills
-#   copied once:   settings.json / config.toml (the apps rewrite them with
-#                  machine-specific state, so a link would churn the repo)
+#   linked:        instructions, statusline, slash commands, own skills,
+#                  Claude settings.json (mostly hand-written; app writes show
+#                  up in git diff to commit or revert)
+#   copied once:   Codex config.toml (Codex rewrites it with machine-specific
+#                  state -- trusted projects, plugins, app paths)
 
 echo
 while true; do
@@ -40,7 +42,7 @@ for skill in "$CLAUDE_SRC"/skills/*/; do
     skill=$(basename "$skill")
     link_config "$CLAUDE_SRC/skills/$skill" "$HOME/.claude/skills/$skill"
 done
-copy_if_missing "$CLAUDE_SRC/settings.json" "$HOME/.claude/settings.json"
+link_config "$CLAUDE_SRC/settings.json" "$HOME/.claude/settings.json"
 
 # ---- Codex
 CODEX_SRC=$DOTFILES_DIR/codex/.codex
