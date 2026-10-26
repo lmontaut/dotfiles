@@ -4,13 +4,15 @@
 # Inside tmux, the shell running `wt switch` does NOT cd (WORKTRUNK_SWITCH__CD=false
 # is exported by ~/.zshrc_config), so the session you leave stays on its
 # worktree; this hook opens/creates the destination worktree's session instead.
-# Session name = worktree dir name with `.`/`:` replaced (tmux rejects them).
+# Session name = `<project>/<worktree dir>` as sesh names it, with `.`/`:`
+# replaced (tmux rejects them). <project> is the repo dir, or for a bare repo
+# in a hidden dir (myproject/.git) the dir wrapping it.
 [post-switch]
 tmux = """
 [ -n "$TMUX" ] || exit 0
 # `wt switch` to the worktree you're already in: nothing to do
 [ '{{ worktree_path }}' = '{{ base_worktree_path | default('') }}' ] && exit 0
-s=$(printf '%s' '{{ worktree_name }}' | tr '.:' '__')
+s=$(printf '%s' '{{ repo_path | dirname | basename if repo in ['.git', '.bare'] else repo }}/{{ worktree_name }}' | tr '.:' '__')
 if ! tmux has-session -t "=$s" 2>/dev/null; then
   tmux new-session -d -s "$s" -c '{{ worktree_path }}'
   # Submodules not checked out yet (new worktree): run the update in the new
@@ -22,6 +24,11 @@ if ! tmux has-session -t "=$s" 2>/dev/null; then
 fi
 tmux switch-client -t "=$s"
 """
+# zoxide learns a dir from its chpwd hook, which never fires when a shell
+# starts in the worktree (new tmux session, `wt switch -x`) instead of cd-ing.
+zoxide = """
+command -v zoxide >/dev/null && zoxide add '{{ worktree_path }}'
+"""
 
 # Outside tmux there's no session to show it in: check out the submodules of a
 # new worktree in the background (no-op in repos without any).
@@ -29,3 +36,6 @@ tmux switch-client -t "=$s"
 submodules = """
 [ -n "$TMUX" ] || ~/.config/worktrunk/scripts/submodule-update-shared '{{ primary_worktree_path }}'
 """
+
+[projects."github.com/lmontaut/simple-workspace"]
+worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
