@@ -143,3 +143,6 @@ fi
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
 fi
+
+# ssh-agent: load keys from keychain on macOS
+ssh-add --apple-load-keychain -q 2>/dev/null
