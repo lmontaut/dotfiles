@@ -31,11 +31,18 @@ elif [[ "$(uname)" == "Linux" ]]; then
     TMP_DIR=$(mktemp -d)
     cd "$TMP_DIR"
 
-    DOWNLOAD_SUFFIX="Linux_x86_64.tar.gz"
+    DOWNLOAD_SUFFIX="linux_x86_64.tar.gz"
 
     LATEST_URL=$(wget -qO- https://api.github.com/repos/jesseduffield/lazygit/releases/latest | \
-             grep "browser_download_url.*lazygit_.*${DOWNLOAD_SUFFIX}\"" | \
+             grep -i "browser_download_url.*lazygit_.*${DOWNLOAD_SUFFIX}\"" | \
              cut -d '"' -f 4)
+
+    if [[ -z "$LATEST_URL" ]]; then
+        echo "  --> Could not find a lazygit release asset matching ${DOWNLOAD_SUFFIX}"
+        cd - > /dev/null
+        rm -rf "$TMP_DIR"
+        [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+    fi
 
     # Download and extract
     echo "  --> Downloading lazygit from $LATEST_URL..."
