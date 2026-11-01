@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Session/navigation tools used by the tmux + television workflow:
-#   zoxide (z/zi), jq, television (tv), sesh (tmux sessions), worktrunk (wt)
+#   zoxide (z/zi), jq, television (tv), sesh (tmux sessions), worktrunk (wt),
+#   gh (GitHub CLI, used by octo.nvim)
 # macOS: brew. Linux: apt with root, else latest GitHub release in ~/.local/bin.
 
 echo
-echo "----------------- SESSION TOOLS (zoxide, jq, tv, sesh, worktrunk) -----------------"
+echo "----------------- SESSION TOOLS (zoxide, jq, tv, sesh, worktrunk, gh) -----------------"
 
 ARCH=$(uname -m)                       # x86_64 | aarch64 | arm64
 [[ "$ARCH" == "arm64" ]] && ARCH=aarch64
@@ -39,7 +40,11 @@ install_tv() {
     if [[ "$(uname)" == "Darwin" ]]; then
         brew install television
     else
-        install_github_binary alexpasmantier/television "${ARCH}-unknown-linux-gnu\.tar\.gz$" tv
+        # musl build is static (the gnu one needs a recent glibc, too new for
+        # clusters); only published for x86_64
+        local libc=musl
+        [ "$ARCH" = "x86_64" ] || libc=gnu
+        install_github_binary alexpasmantier/television "${ARCH}-unknown-linux-${libc}\.tar\.gz$" tv
     fi
 }
 
@@ -59,8 +64,20 @@ install_worktrunk() {
     fi
 }
 
+install_gh() {
+    if [[ "$(uname)" == "Darwin" ]]; then
+        brew install gh
+    else
+        # static Go binary
+        local arch=amd64
+        [[ "$ARCH" == "aarch64" ]] && arch=arm64
+        install_github_binary cli/cli "gh_[0-9.]+_linux_${arch}\.tar\.gz$" gh
+    fi
+}
+
 ask_install zoxide zoxide install_zoxide
 ask_install "jq (needed by the tv worktrunk channel)" jq install_jq
 ask_install "television (tv)" tv install_tv
 ask_install sesh sesh install_sesh
 ask_install "worktrunk (wt)" wt install_worktrunk
+ask_install "gh (GitHub CLI, for octo.nvim; then run gh auth login)" gh install_gh
