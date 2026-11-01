@@ -5,12 +5,10 @@ echo "----------------- LOU CONFIG SCRIPT -----------------"
 echo "-----------------------------------------------------"
 echo
 
-# Note: only zsh and tmux install require root privileges
-# This install works if git, wget and unzip are installed or the user has root privileges
-# If these are not present, installing part of this setup is still possible
-# (certain tools are accessible via github releases).
+# Linux: with root, system packages come from apt. Without root (e.g. a
+# cluster, any distro), they come from conda-forge via `pixi global`
+# (~/.pixi/bin) and the rest from GitHub releases / cargo in ~/.local/bin.
 #
-# Note: the current script, for linux, relies on apt.
 # For other linux flavor, it's easy to detect if another package manager is available:
 # Linux - using apt (Ubuntu/Debian)
 # if command -v apt &>/dev/null; then
@@ -27,7 +25,7 @@ echo
 export DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Tools installed by this script land here; make them visible to later steps
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.pixi/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 
 source $DOTFILES_DIR/setup_scripts/utils.sh
 detect_os
@@ -56,11 +54,15 @@ setup_base_folders
 # Setup shell
 echo
 echo "----------------- SHELL SETUP -----------------"
-if ! command -v zsh > /dev/null 2>&1; then
-  source $DOTFILES_DIR/setup_scripts/setup_zsh.sh
+source $DOTFILES_DIR/setup_scripts/setup_zsh.sh
+# Configure zsh whenever it's available, even if it couldn't become the login
+# shell ($SHELL stays bash when chsh is not allowed, ~/.bashrc exec's zsh then)
+if command -v zsh > /dev/null 2>&1; then
+  CURRENT_SHELL=zsh
+else
+  CURRENT_SHELL=$(basename "$SHELL")
 fi
-CURRENT_SHELL=$(basename "$SHELL")
-echo "--> Setup script will be run inside $CURRENT_SHELL"
+echo "--> Configuring $CURRENT_SHELL"
 # SHELL_LOCAL_FILE: machine-specific, untracked shell config that installers
 # may append to. ~/.zshrc is a symlink into this repo and must not be modified.
 if [ "$CURRENT_SHELL" = "zsh" ]; then

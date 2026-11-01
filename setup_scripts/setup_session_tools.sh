@@ -2,7 +2,7 @@
 
 # Session/navigation tools used by the tmux + television workflow:
 #   zoxide (z/zi), jq, television (tv), sesh (tmux sessions), worktrunk (wt)
-# macOS: brew. Linux: apt when available, else latest GitHub release in ~/.local/bin.
+# macOS: brew. Linux: apt with root, else latest GitHub release in ~/.local/bin.
 
 echo
 echo "----------------- SESSION TOOLS (zoxide, jq, tv, sesh, worktrunk) -----------------"
@@ -23,8 +23,15 @@ install_zoxide() {
 install_jq() {
     if [[ "$(uname)" == "Darwin" ]]; then
         brew install jq
-    elif command -v apt-get &> /dev/null; then
+    elif can_apt; then
         sudo apt-get install -y jq
+    else
+        # static binary, no archive
+        local arch=amd64
+        [[ "$ARCH" == "aarch64" ]] && arch=arm64
+        mkdir -p "$HOME/.local/bin"
+        wget -qO "$HOME/.local/bin/jq" "https://github.com/jqlang/jq/releases/latest/download/jq-linux-$arch" &&
+            chmod +x "$HOME/.local/bin/jq"
     fi
 }
 
@@ -57,12 +64,3 @@ ask_install "jq (needed by the tv worktrunk channel)" jq install_jq
 ask_install "television (tv)" tv install_tv
 ask_install sesh sesh install_sesh
 ask_install "worktrunk (wt)" wt install_worktrunk
-
-# tmux popups (display-popup) need tmux >= 3.2
-if command -v tmux &> /dev/null; then
-    tmux_version=$(tmux -V | sed 's/[^0-9.]//g')
-    if [ "$(printf '%s\n' 3.2 "$tmux_version" | sort -V | head -n1)" != "3.2" ]; then
-        echo
-        echo "--> Warning: tmux $tmux_version is too old for the tv popups (needs >= 3.2)"
-    fi
-fi

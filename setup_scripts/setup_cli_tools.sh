@@ -8,7 +8,7 @@ install_rg() {
     if [[ "$(uname)" == "Darwin" ]]; then
         brew install ripgrep
     elif [[ "$(uname)" == "Linux" ]]; then
-        if command -v apt &> /dev/null; then
+        if can_apt; then
             sudo apt-get install -y ripgrep
         fi
 
@@ -33,7 +33,7 @@ install_fzf() {
     if [[ "$(uname)" == "Darwin" ]]; then
         brew install fzf
     elif [[ "$(uname)" == "Linux" ]]; then
-        if command -v apt &> /dev/null; then
+        if can_apt; then
             sudo apt-get install -y fzf
         fi
 
@@ -86,7 +86,7 @@ install_fd() {
         fi
 
         # in case install failed, try with apt (binary is named fdfind there)
-        if ! command -v fd &> /dev/null; then
+        if ! command -v fd &> /dev/null && can_apt; then
             sudo apt-get install -y fd-find
             command -v fdfind &> /dev/null && ln -sf "$(command -v fdfind)" "$HOME/.local/bin/fd"
         fi
@@ -123,7 +123,7 @@ install_sad() {
         echo "  --> Downloading sad from $LATEST_URL..."
         wget -O sad.deb "$LATEST_URL"
 
-        if command -v apt &> /dev/null; then
+        if can_apt; then
             sudo apt-get install ./sad.deb # system wide install to deal with dependencies
         fi
 
@@ -175,8 +175,9 @@ install_npm() {
     if [[ "$(uname)" == "Darwin" ]]; then
         brew install node
     elif [[ "$(uname)" == "Linux" ]]; then
-        # Download and install nvm:
-        wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+        # Download and install nvm. PROFILE=/dev/null: don't let it append to
+        # ~/.zshrc (a symlink into the dotfiles), the zsh config sources nvm
+        wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | PROFILE=/dev/null bash
 
         \. "$HOME/.nvm/nvm.sh"
 
@@ -393,7 +394,7 @@ install_ccache() {
     if [[ "$(uname)" == "Darwin" ]]; then
         brew install ccache
     else
-        sudo apt-get install -y ccache
+        linux_install ccache
     fi
 }
 ask_install ccache ccache install_ccache

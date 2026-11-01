@@ -71,6 +71,34 @@ append_once () {
     grep -qxF -- "$line" "$file" || echo "$line" >> "$file"
 }
 
+# can_apt: true if packages can be installed with apt (apt present and the
+# user said they have sudo, see setup_os.sh)
+can_apt () {
+    [[ "$(uname)" == "Linux" ]] && [ "${HAS_SUDO:-n}" = y ] && command -v apt-get &> /dev/null
+}
+
+# pixi_install <package...>: install conda-forge packages with `pixi global`
+# (no root needed, binaries in ~/.pixi/bin). Installs pixi itself if missing.
+pixi_install () {
+    if ! command -v pixi &> /dev/null; then
+        echo "  --> Installing pixi..."
+        # PATH already has ~/.pixi/bin in the zsh config: don't let it edit rc files
+        curl -fsSL https://pixi.sh/install.sh | PIXI_NO_PATH_UPDATE=1 bash || return 1
+        export PATH="$HOME/.pixi/bin:$PATH"
+    fi
+    pixi global install "$@"
+}
+
+# linux_install <apt package> [<conda-forge package>]: apt with sudo, else
+# pixi global (conda-forge name defaults to the apt one)
+linux_install () {
+    if can_apt; then
+        sudo apt-get install -y "$1"
+    else
+        pixi_install "${2:-$1}"
+    fi
+}
+
 # github_latest_asset <owner/repo> <regex>: print the download URL of the
 # latest release asset whose name matches <regex>.
 github_latest_asset () {

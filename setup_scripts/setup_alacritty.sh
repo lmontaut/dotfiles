@@ -21,6 +21,11 @@ while true; do
 done
 
 if [[ "$(uname)" == "Linux" ]]; then
+    if ! can_apt; then
+        # Its build deps need root, and it's useless on a headless machine
+        echo "  --> No root: skipping alacritty (run it on your desktop machine instead)"
+        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+    fi
     echo "  --> Installing alacritty dependencies"
     sudo apt-get install -y cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 fi

@@ -22,13 +22,35 @@ if [[ "$(uname)" == "Darwin" ]]; then
     echo "  --> Installing minimum packages from brew: wget, unzip"
     brew install wget unzip
 elif [[ "$(uname)" == "Linux" ]]; then
-    if ! command -v apt > /dev/null 2>&1; then
-        echo "--> Could not find apt package manager. This installer needs it."
-        exit 1
+    # Without sudo (e.g. a cluster), whatever needs root goes through
+    # `pixi global` instead (see linux_install in utils.sh)
+    while true; do
+        read -p "--> Do you have root privileges (sudo) on this machine? (y/n) " -n 1 -r
+        echo
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            export HAS_SUDO=y
+            break
+        elif [[ $REPLY =~ ^[Nn]$ ]]; then
+            export HAS_SUDO=n
+            echo "  --> No root: system packages will be installed with pixi global (~/.pixi/bin)"
+            break
+        fi
+    done
+
+    if can_apt; then
+        echo "  --> Installing minimum packages from apt: git, wget, unzip, curl, xz-utils"
+        sudo apt-get update
+        sudo apt-get install -y git wget unzip curl xz-utils
+    else
+        missing=()
+        for tool in git wget unzip curl xz; do
+            command -v $tool &> /dev/null || missing+=($tool)
+        done
+        if [ ${#missing[@]} -gt 0 ]; then
+            echo "  --> Installing missing minimum packages with pixi: ${missing[*]}"
+            pixi_install "${missing[@]}"
+        fi
     fi
-    echo "  --> Installing minimum packages from apt: git, wget, unzip, curl, xz-utils"
-    sudo apt-get update
-    sudo apt-get install -y git wget unzip curl xz-utils
 else
     echo "Unsupported operating system"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1

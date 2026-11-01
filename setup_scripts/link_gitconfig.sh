@@ -19,6 +19,16 @@ link_config $DOTFILES_DIR/git/.gitconfig $HOME/.gitconfig
 if [ "$DOTFILES_DIR" != "$HOME/dotfiles" ]; then
     echo "  --> Warning: .gitconfig expects this repo at ~/dotfiles (core.excludesfile)"
 fi
-echo "  --> To activate the gitconfig:"
-echo "      1) Modify 'signingkey' in $HOME/.gitconfig to put your ssh signing key"
-echo "      2) Modify $HOME/.config/git/allowed_signers with your public ssh signing key"
+
+# Commits are signed (commit.gpgsign): the key path is per machine, in the
+# untracked ~/.gitconfig_local included at the end of .gitconfig. Over ssh,
+# signing works with the key in the forwarded agent: only the .pub is needed.
+if [ ! -e "$HOME/.gitconfig_local" ]; then
+    printf '[user]\n\tsigningkey = %s\n' "$HOME/.ssh/ed25519.pub" > "$HOME/.gitconfig_local"
+    echo "  --> Created $HOME/.gitconfig_local (signingkey = $HOME/.ssh/ed25519.pub)"
+fi
+if [ ! -f "$HOME/.ssh/ed25519.pub" ]; then
+    echo "  --> Warning: $HOME/.ssh/ed25519.pub is missing: commits can't be signed."
+    echo "      Copy your public signing key there (or edit $HOME/.gitconfig_local)"
+fi
+echo "  --> Put your public ssh signing key in $HOME/.config/git/allowed_signers to verify signatures"

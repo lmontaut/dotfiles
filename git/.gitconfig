@@ -1,7 +1,7 @@
 [user]
 	email = louismontaut@gmail.com
 	name = Louis Montaut
-	; signingkey = /path/to/ssh/pub/key
+	; signingkey: set per machine in ~/.gitconfig_local (key path differs)
 
 [core]
 	pager = delta
@@ -84,8 +84,13 @@
 	clean = "sed '/#gitignore$/d'"
 
 [gpg "ssh"]
-	allowedSignersFile = $HOME/.config/git/allowed_signers
+	allowedSignersFile = ~/.config/git/allowed_signers
 
 [tag]
 	sort = version:refname
 	gpgsign = true
+
+# Machine-specific settings (user.signingkey, ...), not tracked. Last so it
+# overrides the above.
+[include]
+	path = ~/.gitconfig_local
